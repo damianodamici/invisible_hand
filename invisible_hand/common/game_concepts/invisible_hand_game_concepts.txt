@@ -1,0 +1,63 @@
+﻿invisible_hand_population = { }
+
+invisible_hand_climate = { }
+
+invisible_hand_tenure = { 
+	texture = "gfx/interface/icons/message_feed/law.dds"
+	parent = law
+}
+
+invisible_hand_tenure_unfree = { 
+	texture = "gfx/interface/icons/message_feed/law.dds"
+	parent = invisible_hand_tenure
+}
+
+invisible_hand_tenure_free = { 
+	texture = "gfx/interface/icons/message_feed/law.dds"
+	parent = invisible_hand_tenure
+}
+
+invisible_hand_tropical_climate = {
+	texture = "gfx/interface/icons/terrain_types/jungle.dds"
+	parent = invisible_hand_climate
+}
+
+invisible_hand_arid_climate = {
+	texture = "gfx/interface/icons/terrain_types/desert.dds"
+	parent = invisible_hand_climate
+}
+
+invisible_hand_semi_arid_climate = {
+	texture = "gfx/interface/icons/terrain_types/steppe.dds"
+	parent = invisible_hand_climate
+}
+
+invisible_hand_subtropical_climate = {
+	texture = "gfx/interface/icons/terrain_types/floodplains.dds"
+	parent = invisible_hand_climate
+}
+
+invisible_hand_subtropical_humid_climate = {
+	texture = "gfx/interface/icons/terrain_types/wetlands.dds"
+	parent = invisible_hand_climate
+}
+
+invisible_hand_oceanic_climate = {
+	texture = "gfx/interface/icons/terrain_types/plains.dds"
+	parent = invisible_hand_climate
+}
+
+invisible_hand_continental_climate = {
+	texture = "gfx/interface/icons/terrain_types/forest.dds"
+	parent = invisible_hand_climate
+}
+
+invisible_hand_boreal_climate = {
+	texture = "gfx/interface/icons/terrain_types/taiga.dds"
+	parent = invisible_hand_climate
+}
+
+invisible_hand_alpine_climate = {
+	texture = "gfx/interface/icons/terrain_types/mountains.dds"
+	parent = invisible_hand_climate
+}

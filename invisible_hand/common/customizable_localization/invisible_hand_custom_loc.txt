@@ -1,0 +1,74 @@
+﻿ProvincePopulation = {
+	type = province
+	text = { localization_key = "PROVINCE_POPULATION_VALUE_CUSTOM_LOC" }
+}
+
+CountyPopulation = {
+	type = landed_title
+	text = { localization_key = "COUNTY_POPULATION_VALUE_CUSTOM_LOC" }
+}
+
+ProvincePopulationLoss = {
+	type = province
+	text = { localization_key = "PROVINCE_POPULATION_LOSS_CUSTOM_LOC" }
+}
+
+CountyPopulationLoss = {
+	type = landed_title
+	text = { localization_key = "COUNTY_POPULATION_LOSS_CUSTOM_LOC" }
+}
+
+RefugeeAmount = {
+	type = province
+	text = { localization_key = "REFUGEE_AMOUNT_CUSTOM_LOC" }
+}
+
+ProvinceTaxLevel = {
+	type = province
+	text = { localization_key = "PROVINCE_TAX_LEVEL_CUSTOM_LOC" }
+}
+
+ProvinceLevyLevel = {
+	type = province
+	text = { localization_key = "PROVINCE_LEVY_LEVEL_CUSTOM_LOC" }
+}
+
+ObligationLevel1CountyOpinion = {
+	type = province
+	text = { localization_key = "OBLIGATION_LEVEL_1_COUNTY_OPINION_CUSTOM_LOC" }
+}
+
+ObligationLevel2CountyOpinion = {
+	type = province
+	text = { localization_key = "OBLIGATION_LEVEL_2_COUNTY_OPINION_CUSTOM_LOC" }
+}
+
+ObligationLevel4CountyOpinion = {
+	type = province
+	text = { localization_key = "OBLIGATION_LEVEL_4_COUNTY_OPINION_CUSTOM_LOC" }
+}
+
+ObligationLevel5CountyOpinion = {
+	type = province
+	text = { localization_key = "OBLIGATION_LEVEL_5_COUNTY_OPINION_CUSTOM_LOC" }
+}
+
+ObligationLevel1CountyDevelopment = {
+	type = province
+	text = { localization_key = "OBLIGATION_LEVEL_1_COUNTY_DEVELOPMENT_CUSTOM_LOC" }
+}
+
+ObligationLevel2CountyDevelopment = {
+	type = province
+	text = { localization_key = "OBLIGATION_LEVEL_2_COUNTY_DEVELOPMENT_CUSTOM_LOC" }
+}
+
+ObligationLevel4CountyDevelopment = {
+	type = province
+	text = { localization_key = "OBLIGATION_LEVEL_4_COUNTY_DEVELOPMENT_CUSTOM_LOC" }
+}
+
+ObligationLevel5CountyDevelopment = {
+	type = province
+	text = { localization_key = "OBLIGATION_LEVEL_5_COUNTY_DEVELOPMENT_CUSTOM_LOC" }
+}

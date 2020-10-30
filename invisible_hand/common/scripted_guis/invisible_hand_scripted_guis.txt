@@ -1,0 +1,1065 @@
+﻿invisible_hand_county_has_tropical_climate = {
+	scope =	root
+	saved_scopes = { county }
+
+	is_valid = {
+		exists = scope:county.var:tropical_climate
+		scope:county.var:tropical_climate = 1
+	}
+}
+
+invisible_hand_county_has_arid_climate = {
+	scope =	root
+	saved_scopes = { county }
+
+	is_valid = {
+		exists = scope:county.var:arid_climate
+		scope:county.var:arid_climate = 1
+	}
+}
+
+invisible_hand_county_has_semi_arid_climate = {
+	scope =	root
+	saved_scopes = { county }
+
+	is_valid = {
+		exists = scope:county.var:semi_arid_climate
+		scope:county.var:semi_arid_climate = 1
+	}
+}
+
+invisible_hand_county_has_subtropical_climate = {
+	scope =	root
+	saved_scopes = { county }
+
+	is_valid = {
+		exists = scope:county.var:subtropical_climate
+		scope:county.var:subtropical_climate = 1
+	}
+}
+
+invisible_hand_county_has_subtropical_humid_climate = {
+	scope =	root
+	saved_scopes = { county }
+
+	is_valid = {
+		exists = scope:county.var:subtropical_humid_climate
+		scope:county.var:subtropical_humid_climate = 1
+	}
+}
+
+invisible_hand_county_has_oceanic_climate = {
+	scope =	root
+	saved_scopes = { county }
+
+	is_valid = {
+		exists = scope:county.var:oceanic_climate
+		scope:county.var:oceanic_climate = 1
+	}
+}
+
+invisible_hand_county_has_continental_climate = {
+	scope =	root
+	saved_scopes = { county }
+
+	is_valid = {
+		exists = scope:county.var:continental_climate
+		scope:county.var:continental_climate = 1
+	}
+}
+
+invisible_hand_county_has_boreal_climate = {
+	scope =	root
+	saved_scopes = { county }
+
+	is_valid = {
+		exists = scope:county.var:boreal_climate
+		scope:county.var:boreal_climate = 1
+	}
+}
+
+invisible_hand_county_has_alpine_climate = {
+	scope =	root
+	saved_scopes = { county }
+
+	is_valid = {
+		exists = scope:county.var:alpine_climate
+		scope:county.var:alpine_climate = 1
+	}
+}
+
+invisible_hand_tax_level_1 = {
+	scope =	root
+	saved_scopes = { county province }
+
+	is_valid = {
+		trigger_if = {
+			limit = { NOT = { scope:province = { has_province_modifier = invisible_hand_tax_level_1 } } }
+			custom_description = {
+				subject = scope:province
+				object = scope:province
+				text = "has_tax_obligations_cooldown"
+				NOT = { scope:province = { has_variable = tax_level_cooldown } }
+			}
+		}
+		custom_description = {
+			text = "tax_level_selected"
+			NOT = { scope:province = { has_province_modifier = invisible_hand_tax_level_1 } }
+		}
+	}
+
+	effect = {
+		custom_tooltip = invisible_hand_tax_level_1.tt
+		if = {
+			limit = { scope:province.var:tax_level = 2 }
+			scope:province.county = {
+				change_county_control = {
+					value = 5
+					multiply = scope:province.var:province_weight
+				}
+			}
+			add_tyranny = { 
+				value = -5
+				multiply = scope:province.var:province_weight
+			}
+		}
+		else_if = {
+			limit = { scope:province.var:tax_level = 3 }
+			scope:province.county = {
+				change_county_control = {
+					value = 10
+					multiply = scope:province.var:province_weight
+				}
+			}
+			add_tyranny = { 
+				value = -10
+				multiply = scope:province.var:province_weight
+			}
+		}
+		else_if = {
+			limit = { scope:province.var:tax_level = 4 }
+			scope:province.county = {
+				change_county_control = {
+					value = 15
+					multiply = scope:province.var:province_weight
+				}
+			}
+			add_tyranny = { 
+				value = -15
+				multiply = scope:province.var:province_weight
+			}
+		}
+		else_if = {
+			limit = { scope:province.var:tax_level = 5 }
+			scope:province.county = {
+				change_county_control = {
+					value = 20
+					multiply = scope:province.var:province_weight
+				}
+			}
+			add_tyranny = { 
+				value = -20
+				multiply = scope:province.var:province_weight
+			}
+		}
+		hidden_effect = {
+			scope:province = {
+				add_province_modifier = invisible_hand_tax_level_1
+				remove_province_modifier = invisible_hand_tax_level_2
+				remove_province_modifier = invisible_hand_tax_level_3
+				remove_province_modifier = invisible_hand_tax_level_4
+				remove_province_modifier = invisible_hand_tax_level_5
+				set_variable = {
+					name = tax_level_cooldown
+					value = 1
+					years = 1
+				}
+				set_variable = {
+					name = tax_level
+					value = 1
+				}
+				county = { invisible_hand_calculate_obligations_county_effect = yes }
+			}
+		}
+		custom_tooltip = invisible_hand_obligations_level_1_county_opinion.tt
+		custom_tooltip = invisible_hand_obligations_level_1_county_development.tt
+	}
+}
+
+invisible_hand_tax_level_2 = {
+	scope =	root
+	saved_scopes = { county province }
+
+	is_valid = {
+		trigger_if = {
+			limit = { NOT = { scope:province = { has_province_modifier = invisible_hand_tax_level_2 } } }
+			custom_description = {
+				subject = scope:province
+				object = scope:province
+				text = "has_tax_obligations_cooldown"
+				NOT = { scope:province = { has_variable = tax_level_cooldown } }
+			}
+		}
+		custom_description = {
+			text = "tax_level_selected"
+			NOT = { scope:province = { has_province_modifier = invisible_hand_tax_level_2 } }
+		}
+	}
+
+	effect = {
+		custom_tooltip = invisible_hand_tax_level_2.tt
+		if = {
+			limit = { scope:province.var:tax_level = 1 }
+			scope:province.county = {
+				change_county_control = {
+					value = -5
+					multiply = scope:province.var:province_weight
+				}
+			}
+			add_tyranny = { 
+				value = 5
+				multiply = scope:province.var:province_weight
+			}
+		}
+		else_if = {
+			limit = { scope:province.var:tax_level = 3 }
+			scope:province.county = {
+				change_county_control = {
+					value = 5
+					multiply = scope:province.var:province_weight
+				}
+			}
+			add_tyranny = { 
+				value = -5
+				multiply = scope:province.var:province_weight
+			}
+		}
+		else_if = {
+			limit = { scope:province.var:tax_level = 4 }
+			scope:province.county = {
+				change_county_control = {
+					value = 10
+					multiply = scope:province.var:province_weight
+				}
+			}
+			add_tyranny = { 
+				value = -10
+				multiply = scope:province.var:province_weight
+			}
+		}
+		else_if = {
+			limit = { scope:province.var:tax_level = 5 }
+			scope:province.county = {
+				change_county_control = {
+					value = 15
+					multiply = scope:province.var:province_weight
+				}
+			}
+			add_tyranny = { 
+				value = -15
+				multiply = scope:province.var:province_weight
+			}
+		}
+		hidden_effect = {
+			scope:province = {
+				remove_province_modifier = invisible_hand_tax_level_1
+				add_province_modifier = invisible_hand_tax_level_2
+				remove_province_modifier = invisible_hand_tax_level_3
+				remove_province_modifier = invisible_hand_tax_level_4
+				remove_province_modifier = invisible_hand_tax_level_5
+				set_variable = {
+					name = tax_level_cooldown
+					value = 1
+					years = 1
+				}
+				set_variable = {
+					name = tax_level
+					value = 2
+				}
+				county = { invisible_hand_calculate_obligations_county_effect = yes }
+			}
+		}
+		custom_tooltip = invisible_hand_obligations_level_2_county_opinion.tt
+		custom_tooltip = invisible_hand_obligations_level_2_county_development.tt
+	}
+}
+
+invisible_hand_tax_level_3 = {
+	scope =	root
+	saved_scopes = { county province }
+
+	is_valid = {
+		trigger_if = {
+			limit = { NOT = { scope:province = { has_province_modifier = invisible_hand_tax_level_3 } } }
+			custom_description = {
+				subject = scope:province
+				object = scope:province
+				text = "has_tax_obligations_cooldown"
+				NOT = { scope:province = { has_variable = tax_level_cooldown } }
+			}
+		}
+		custom_description = {
+			text = "tax_level_selected"
+			NOT = { scope:province = { has_province_modifier = invisible_hand_tax_level_3 } }
+		}
+	}
+
+	effect = {
+		custom_tooltip = invisible_hand_tax_level_3.tt
+		if = {
+			limit = { scope:province.var:tax_level = 1 }
+			scope:province.county = {
+				change_county_control = {
+					value = -10
+					multiply = scope:province.var:province_weight
+				}
+			}
+			add_tyranny = { 
+				value = 10
+				multiply = scope:province.var:province_weight
+			}
+		}
+		else_if = {
+			limit = { scope:province.var:tax_level = 2 }
+			scope:province.county = {
+				change_county_control = {
+					value = -5
+					multiply = scope:province.var:province_weight
+				}
+			}
+			add_tyranny = { 
+				value = 5
+				multiply = scope:province.var:province_weight
+			}
+		}
+		else_if = {
+			limit = { scope:province.var:tax_level = 4 }
+			scope:province.county = {
+				change_county_control = {
+					value = 5
+					multiply = scope:province.var:province_weight
+				}
+			}
+			add_tyranny = { 
+				value = -5
+				multiply = scope:province.var:province_weight
+			}
+		}
+		else_if = {
+			limit = { scope:province.var:tax_level = 5 }
+			scope:province.county = {
+				change_county_control = {
+					value = 10
+					multiply = scope:province.var:province_weight
+				}
+			}
+			add_tyranny = { 
+				value = -10
+				multiply = scope:province.var:province_weight
+			}
+		}
+		hidden_effect = {
+			scope:province = {
+				remove_province_modifier = invisible_hand_tax_level_1
+				remove_province_modifier = invisible_hand_tax_level_2
+				add_province_modifier = invisible_hand_tax_level_3
+				remove_province_modifier = invisible_hand_tax_level_4
+				remove_province_modifier = invisible_hand_tax_level_5
+				set_variable = {
+					name = tax_level_cooldown
+					value = 1
+					years = 1
+				}
+				set_variable = {
+					name = tax_level
+					value = 3
+				}
+				county = { invisible_hand_calculate_obligations_county_effect = yes }
+			}
+		}
+	}
+}
+
+invisible_hand_tax_level_4 = {
+	scope =	root
+	saved_scopes = { county province }
+
+	is_valid = {
+		trigger_if = {
+			limit = { NOT = { scope:province = { has_province_modifier = invisible_hand_tax_level_4 } } }
+			custom_description = {
+				subject = scope:province
+				object = scope:province
+				text = "has_tax_obligations_cooldown"
+				NOT = { scope:province = { has_variable = tax_level_cooldown } }
+			}
+		}
+		custom_description = {
+			text = "tax_level_selected"
+			NOT = { scope:province = { has_province_modifier = invisible_hand_tax_level_4 } }
+		}
+	}
+
+	effect = {
+		custom_tooltip = invisible_hand_tax_level_4.tt
+		if = {
+			limit = { scope:province.var:tax_level = 1 }
+			scope:province.county = {
+				change_county_control = {
+					value = -15
+					multiply = scope:province.var:province_weight
+				}
+			}
+			add_tyranny = { 
+				value = 15
+				multiply = scope:province.var:province_weight
+			}
+		}
+		else_if = {
+			limit = { scope:province.var:tax_level = 2 }
+			scope:province.county = {
+				change_county_control = {
+					value = -10
+					multiply = scope:province.var:province_weight
+				}
+			}
+			add_tyranny = { 
+				value = 10
+				multiply = scope:province.var:province_weight
+			}
+		}
+		else_if = {
+			limit = { scope:province.var:tax_level = 3 }
+			scope:province.county = {
+				change_county_control = {
+					value = -5
+					multiply = scope:province.var:province_weight
+				}
+			}
+			add_tyranny = { 
+				value = 5
+				multiply = scope:province.var:province_weight
+			}
+		}
+		else_if = {
+			limit = { scope:province.var:tax_level = 5 }
+			scope:province.county = {
+				change_county_control = {
+					value = 5
+					multiply = scope:province.var:province_weight
+				}
+			}
+			add_tyranny = { 
+				value = -5
+				multiply = scope:province.var:province_weight
+			}
+		}
+		hidden_effect = {
+			scope:province = {
+				remove_province_modifier = invisible_hand_tax_level_1
+				remove_province_modifier = invisible_hand_tax_level_2
+				remove_province_modifier = invisible_hand_tax_level_3
+				add_province_modifier = invisible_hand_tax_level_4
+				remove_province_modifier = invisible_hand_tax_level_5
+				set_variable = {
+					name = tax_level_cooldown
+					value = 1
+					years = 1
+				}
+				set_variable = {
+					name = tax_level
+					value = 4
+				}
+				county = { invisible_hand_calculate_obligations_county_effect = yes }
+			}
+		}
+		custom_tooltip = invisible_hand_obligations_level_4_county_opinion.tt
+		custom_tooltip = invisible_hand_obligations_level_4_county_development.tt
+	}
+}
+
+invisible_hand_tax_level_5 = {
+	scope =	root
+	saved_scopes = { county province }
+
+	is_valid = {
+		trigger_if = {
+			limit = { NOT = { scope:province = { has_province_modifier = invisible_hand_tax_level_5 } } }
+			custom_description = {
+				subject = scope:province
+				object = scope:province
+				text = "has_tax_obligations_cooldown"
+				NOT = { scope:province = { has_variable = tax_level_cooldown } }
+			}
+		}
+		custom_description = {
+			text = "tax_level_selected"
+			NOT = { scope:province = { has_province_modifier = invisible_hand_tax_level_5 } }
+		}
+	}
+
+	effect = {
+		custom_tooltip = invisible_hand_tax_level_5.tt
+		if = {
+			limit = { scope:province.var:tax_level = 1 }
+			scope:province.county = {
+				change_county_control = {
+					value = -20
+					multiply = scope:province.var:province_weight
+				}
+			}
+			add_tyranny = { 
+				value = 20
+				multiply = scope:province.var:province_weight
+			}
+		}
+		else_if = {
+			limit = { scope:province.var:tax_level = 2 }
+			scope:province.county = {
+				change_county_control = {
+					value = -15
+					multiply = scope:province.var:province_weight
+				}
+			}
+			add_tyranny = { 
+				value = 15
+				multiply = scope:province.var:province_weight
+			}
+		}
+		else_if = {
+			limit = { scope:province.var:tax_level = 3 }
+			scope:province.county = {
+				change_county_control = {
+					value = -10
+					multiply = scope:province.var:province_weight
+				}
+			}
+			add_tyranny = { 
+				value = 10
+				multiply = scope:province.var:province_weight
+			}
+		}
+		else_if = {
+			limit = { scope:province.var:tax_level = 4 }
+			scope:province.county = {
+				change_county_control = {
+					value = -5
+					multiply = scope:province.var:province_weight
+				}
+			}
+			add_tyranny = { 
+				value = 5
+				multiply = scope:province.var:province_weight
+			}
+		}
+		hidden_effect = {
+			scope:province = {
+				remove_province_modifier = invisible_hand_tax_level_1
+				remove_province_modifier = invisible_hand_tax_level_2
+				remove_province_modifier = invisible_hand_tax_level_3
+				remove_province_modifier = invisible_hand_tax_level_4
+				add_province_modifier = invisible_hand_tax_level_5
+				set_variable = {
+					name = tax_level_cooldown
+					value = 1
+					years = 1
+				}
+				set_variable = {
+					name = tax_level
+					value = 5
+				}
+				county = { invisible_hand_calculate_obligations_county_effect = yes }
+			}
+		}
+		custom_tooltip = invisible_hand_obligations_level_5_county_opinion.tt
+		custom_tooltip = invisible_hand_obligations_level_5_county_development.tt
+	}
+}
+
+invisible_hand_levy_level_1 = {
+	scope =	root
+	saved_scopes = { county province }
+
+	is_valid = {
+		trigger_if = {
+			limit = { NOT = { scope:province = { has_province_modifier = invisible_hand_levy_level_1 } } }
+			custom_description = {
+				subject = scope:province
+				object = scope:province
+				text = "has_levy_obligations_cooldown"
+				NOT = { scope:province = { has_variable = levy_level_cooldown } }
+			}
+		}
+		custom_description = {
+			text = "tax_level_selected"
+			NOT = { scope:province = { has_province_modifier = invisible_hand_levy_level_1 } }
+		}
+	}
+
+	effect = {
+		custom_tooltip = invisible_hand_levy_level_1.tt
+		if = {
+			limit = { scope:province.var:levy_level = 2 }
+			scope:province.county = {
+				change_county_control = {
+					value = 5
+					multiply = scope:province.var:province_weight
+				}
+			}
+			add_tyranny = { 
+				value = -5
+				multiply = scope:province.var:province_weight
+			}
+		}
+		else_if = {
+			limit = { scope:province.var:levy_level = 3 }
+			scope:province.county = {
+				change_county_control = {
+					value = 10
+					multiply = scope:province.var:province_weight
+				}
+			}
+			add_tyranny = { 
+				value = -10
+				multiply = scope:province.var:province_weight
+			}
+		}
+		else_if = {
+			limit = { scope:province.var:levy_level = 4 }
+			scope:province.county = {
+				change_county_control = {
+					value = 15
+					multiply = scope:province.var:province_weight
+				}
+			}
+			add_tyranny = { 
+				value = -15
+				multiply = scope:province.var:province_weight
+			}
+		}
+		else_if = {
+			limit = { scope:province.var:levy_level = 5 }
+			scope:province.county = {
+				change_county_control = {
+					value = 20
+					multiply = scope:province.var:province_weight
+				}
+			}
+			add_tyranny = { 
+				value = -20
+				multiply = scope:province.var:province_weight
+			}
+		}
+		hidden_effect = {
+			scope:province = {
+				add_province_modifier = invisible_hand_levy_level_1
+				remove_province_modifier = invisible_hand_levy_level_2
+				remove_province_modifier = invisible_hand_levy_level_3
+				remove_province_modifier = invisible_hand_levy_level_4
+				remove_province_modifier = invisible_hand_levy_level_5
+				set_variable = {
+					name = levy_level_cooldown
+					value = 1
+					years = 1
+				}
+				set_variable = {
+					name = levy_level
+					value = 1
+				}
+				county = { invisible_hand_calculate_obligations_county_effect = yes }
+			}
+		}
+		custom_tooltip = invisible_hand_obligations_level_1_county_opinion.tt
+		custom_tooltip = invisible_hand_obligations_level_1_county_development.tt
+	}
+}
+
+invisible_hand_levy_level_2 = {
+	scope =	root
+	saved_scopes = { county province }
+
+	is_valid = {
+		trigger_if = {
+			limit = { NOT = { scope:province = { has_province_modifier = invisible_hand_levy_level_2 } } }
+			custom_description = {
+				subject = scope:province
+				object = scope:province
+				text = "has_levy_obligations_cooldown"
+				NOT = { scope:province = { has_variable = levy_level_cooldown } }
+			}
+		}
+		custom_description = {
+			text = "levy_level_selected"
+			NOT = { scope:province = { has_province_modifier = invisible_hand_levy_level_2 } }
+		}
+	}
+
+	effect = {
+		custom_tooltip = invisible_hand_levy_level_2.tt
+		if = {
+			limit = { scope:province.var:levy_level = 1 }
+			scope:province.county = {
+				change_county_control = {
+					value = -5
+					multiply = scope:province.var:province_weight
+				}
+			}
+			add_tyranny = { 
+				value = 5
+				multiply = scope:province.var:province_weight
+			}
+		}
+		else_if = {
+			limit = { scope:province.var:levy_level = 3 }
+			scope:province.county = {
+				change_county_control = {
+					value = 5
+					multiply = scope:province.var:province_weight
+				}
+			}
+			add_tyranny = { 
+				value = -5
+				multiply = scope:province.var:province_weight
+			}
+		}
+		else_if = {
+			limit = { scope:province.var:levy_level = 4 }
+			scope:province.county = {
+				change_county_control = {
+					value = 10
+					multiply = scope:province.var:province_weight
+				}
+			}
+			add_tyranny = { 
+				value = -10
+				multiply = scope:province.var:province_weight
+			}
+		}
+		else_if = {
+			limit = { scope:province.var:levy_level = 5 }
+			scope:province.county = {
+				change_county_control = {
+					value = 15
+					multiply = scope:province.var:province_weight
+				}
+			}
+			add_tyranny = { 
+				value = -15
+				multiply = scope:province.var:province_weight
+			}
+		}
+		hidden_effect = {
+			scope:province = {
+				remove_province_modifier = invisible_hand_levy_level_1
+				add_province_modifier = invisible_hand_levy_level_2
+				remove_province_modifier = invisible_hand_levy_level_3
+				remove_province_modifier = invisible_hand_levy_level_4
+				remove_province_modifier = invisible_hand_levy_level_5
+				set_variable = {
+					name = levy_level_cooldown
+					value = 1
+					years = 1
+				}
+				set_variable = {
+					name = levy_level
+					value = 2
+				}
+				county = { invisible_hand_calculate_obligations_county_effect = yes }
+			}
+		}
+		custom_tooltip = invisible_hand_obligations_level_2_county_opinion.tt
+		custom_tooltip = invisible_hand_obligations_level_2_county_development.tt
+	}
+}
+
+invisible_hand_levy_level_3 = {
+	scope =	root
+	saved_scopes = { county province }
+
+	is_valid = {
+		trigger_if = {
+			limit = { NOT = { scope:province = { has_province_modifier = invisible_hand_levy_level_3 } } }
+			custom_description = {
+				subject = scope:province
+				object = scope:province
+				text = "has_levy_obligations_cooldown"
+				NOT = { scope:province = { has_variable = levy_level_cooldown } }
+			}
+		}
+		custom_description = {
+			text = "levy_level_selected"
+			NOT = { scope:province = { has_province_modifier = invisible_hand_levy_level_3 } }
+		}
+	}
+
+	effect = {
+		custom_tooltip = invisible_hand_levy_level_3.tt
+		if = {
+			limit = { scope:province.var:levy_level = 1 }
+			scope:province.county = {
+				change_county_control = {
+					value = -10
+					multiply = scope:province.var:province_weight
+				}
+			}
+			add_tyranny = { 
+				value = 10
+				multiply = scope:province.var:province_weight
+			}
+		}
+		else_if = {
+			limit = { scope:province.var:levy_level = 2 }
+			scope:province.county = {
+				change_county_control = {
+					value = -5
+					multiply = scope:province.var:province_weight
+				}
+			}
+			add_tyranny = { 
+				value = 5
+				multiply = scope:province.var:province_weight
+			}
+		}
+		else_if = {
+			limit = { scope:province.var:levy_level = 4 }
+			scope:province.county = {
+				change_county_control = {
+					value = 5
+					multiply = scope:province.var:province_weight
+				}
+			}
+			add_tyranny = { 
+				value = -5
+				multiply = scope:province.var:province_weight
+			}
+		}
+		else_if = {
+			limit = { scope:province.var:levy_level = 5 }
+			scope:province.county = {
+				change_county_control = {
+					value = 10
+					multiply = scope:province.var:province_weight
+				}
+			}
+			add_tyranny = { 
+				value = -10
+				multiply = scope:province.var:province_weight
+			}
+		}
+		hidden_effect = {
+			scope:province = {
+				remove_province_modifier = invisible_hand_levy_level_1
+				remove_province_modifier = invisible_hand_levy_level_2
+				add_province_modifier = invisible_hand_levy_level_3
+				remove_province_modifier = invisible_hand_levy_level_4
+				remove_province_modifier = invisible_hand_levy_level_5
+				set_variable = {
+					name = levy_level_cooldown
+					value = 1
+					years = 1
+				}
+				set_variable = {
+					name = levy_level
+					value = 3
+				}
+				county = { invisible_hand_calculate_obligations_county_effect = yes }
+			}
+		}
+	}
+}
+
+invisible_hand_levy_level_4 = {
+	scope =	root
+	saved_scopes = { county province }
+
+	is_valid = {
+		trigger_if = {
+			limit = { NOT = { scope:province = { has_province_modifier = invisible_hand_levy_level_4 } } }
+			custom_description = {
+				subject = scope:province
+				object = scope:province
+				text = "has_levy_obligations_cooldown"
+				NOT = { scope:province = { has_variable = levy_level_cooldown } }
+			}
+		}
+		custom_description = {
+			text = "levy_level_selected"
+			NOT = { scope:province = { has_province_modifier = invisible_hand_levy_level_4 } }
+		}
+	}
+
+	effect = {
+		custom_tooltip = invisible_hand_levy_level_4.tt
+		if = {
+			limit = { scope:province.var:levy_level = 1 }
+			scope:province.county = {
+				change_county_control = {
+					value = -15
+					multiply = scope:province.var:province_weight
+				}
+			}
+			add_tyranny = { 
+				value = 20
+				multiply = scope:province.var:province_weight
+			}
+		}
+		else_if = {
+			limit = { scope:province.var:levy_level = 2 }
+			scope:province.county = {
+				change_county_control = {
+					value = -10
+					multiply = scope:province.var:province_weight
+				}
+			}
+			add_tyranny = { 
+				value = 10
+				multiply = scope:province.var:province_weight
+			}
+		}
+		else_if = {
+			limit = { scope:province.var:levy_level = 3 }
+			scope:province.county = {
+				change_county_control = {
+					value = -5
+					multiply = scope:province.var:province_weight
+				}
+			}
+			add_tyranny = { 
+				value = 5
+				multiply = scope:province.var:province_weight
+			}
+		}
+		else_if = {
+			limit = { scope:province.var:levy_level = 5 }
+			scope:province.county = {
+				change_county_control = {
+					value = 5
+					multiply = scope:province.var:province_weight
+				}
+			}
+			add_tyranny = { 
+				value = -5
+				multiply = scope:province.var:province_weight
+			}
+		}
+		hidden_effect = {
+			scope:province = {
+				remove_province_modifier = invisible_hand_levy_level_1
+				remove_province_modifier = invisible_hand_levy_level_2
+				remove_province_modifier = invisible_hand_levy_level_3
+				add_province_modifier = invisible_hand_levy_level_4
+				remove_province_modifier = invisible_hand_levy_level_5
+				set_variable = {
+					name = levy_level_cooldown
+					value = 1
+					years = 1
+				}
+				set_variable = {
+					name = levy_level
+					value = 4
+				}
+				county = { invisible_hand_calculate_obligations_county_effect = yes }
+			}
+		}
+		custom_tooltip = invisible_hand_obligations_level_4_county_opinion.tt
+		custom_tooltip = invisible_hand_obligations_level_4_county_development.tt
+	}
+}
+
+invisible_hand_levy_level_5 = {
+	scope =	root
+	saved_scopes = { county province }
+
+	is_valid = {
+		trigger_if = {
+			limit = { NOT = { scope:province = { has_province_modifier = invisible_hand_levy_level_5 } } }
+			custom_description = {
+				subject = scope:province
+				object = scope:province
+				text = "has_levy_obligations_cooldown"
+				NOT = { scope:province = { has_variable = levy_level_cooldown } }
+			}
+		}
+		custom_description = {
+			text = "levy_level_selected"
+			NOT = { scope:province = { has_province_modifier = invisible_hand_levy_level_5 } }
+		}
+	}
+
+	effect = {
+		custom_tooltip = invisible_hand_levy_level_5.tt
+		if = {
+			limit = { scope:province.var:levy_level = 1 }
+			scope:province.county = {
+				change_county_control = {
+					value = -20
+					multiply = scope:province.var:province_weight
+				}
+			}
+			add_tyranny = { 
+				value = 20
+				multiply = scope:province.var:province_weight
+			}
+		}
+		else_if = {
+			limit = { scope:province.var:levy_level = 2 }
+			scope:province.county = {
+				change_county_control = {
+					value = -15
+					multiply = scope:province.var:province_weight
+				}
+			}
+			add_tyranny = { 
+				value = 15
+				multiply = scope:province.var:province_weight
+			}
+		}
+		else_if = {
+			limit = { scope:province.var:levy_level = 3 }
+			scope:province.county = {
+				change_county_control = {
+					value = -10
+					multiply = scope:province.var:province_weight
+				}
+			}
+			add_tyranny = { 
+				value = 10
+				multiply = scope:province.var:province_weight
+			}
+		}
+		else_if = {
+			limit = { scope:province.var:levy_level = 4 }
+			scope:province.county = {
+				change_county_control = {
+					value = -5
+					multiply = scope:province.var:province_weight
+				}
+			}
+			add_tyranny = { 
+				value = 5
+				multiply = scope:province.var:province_weight
+			}
+		}
+		hidden_effect = {
+			scope:province = {
+				remove_province_modifier = invisible_hand_levy_level_1
+				remove_province_modifier = invisible_hand_levy_level_2
+				remove_province_modifier = invisible_hand_levy_level_3
+				remove_province_modifier = invisible_hand_levy_level_4
+				add_province_modifier = invisible_hand_levy_level_5
+				set_variable = {
+					name = levy_level_cooldown
+					value = 1
+					years = 1
+				}
+				set_variable = {
+					name = levy_level
+					value = 5
+				}
+				county = { invisible_hand_calculate_obligations_county_effect = yes }
+			}
+		}
+		custom_tooltip = invisible_hand_obligations_level_5_county_opinion.tt
+		custom_tooltip = invisible_hand_obligations_level_5_county_development.tt
+	}
+}

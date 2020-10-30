@@ -1,0 +1,410 @@
+﻿namespace = invisible_hand_refugee
+
+# War refugee spawn looks for new home
+invisible_hand_refugee.01 = {
+	hidden = yes
+	type = empty
+	
+	immediate = {
+		scope:province = { save_scope_as = origin_province }
+		scope:county = {
+			# first we try to pick a neighboring county not at war owned by someone else
+			if = {
+				limit = {
+					any_neighboring_county = {
+						exists = holder
+						holder = {
+							is_at_war = no
+							NOT = { this = scope:county.holder }
+						}
+					}
+				}
+				random_neighboring_county = {
+					limit = {
+						exists = holder
+						holder = {
+							is_at_war = no
+							NOT = { this = scope:county.holder }
+						}
+					}
+					weight = {
+						base = 1
+						modifier = {
+							add = 1
+							this.development_level >= 10
+						}
+						modifier = {
+							add = 1
+							this.development_level >= 20
+						}
+						modifier = {
+							add = 1
+							this.development_level >= 30
+						}
+						modifier = {
+							add = 1
+							this.development_level >= 40
+						}
+						modifier = {
+							add = 1
+							this.development_level >= 50
+						}
+						modifier = {
+							add = 1
+							this.development_level >= 60
+						}
+						modifier = {
+							add = 1
+							this.development_level >= 70
+						}
+						modifier = {
+							add = 1
+							this.development_level >= 80
+						}
+						modifier = {
+							add = 1
+							this.development_level >= 90
+						}
+						modifier = {
+							factor = 5
+							scope:county.faith = this.faith
+						}
+						modifier = {
+							factor = 2.5
+							scope:county.culture = this.culture
+						}
+						modifier = {
+							factor = 2.5
+							scope:county.culture = this.culture
+						}
+						modifier = {
+							factor = 0.1
+							OR = {
+								has_county_modifier = invisible_hand_typhus_outbreak
+								has_county_modifier = invisible_hand_smallpox_outbreak
+								has_county_modifier = invisible_hand_plague_outbreak
+							}
+						}
+					}
+					save_scope_as = destination_county
+					random_county_province = {
+						limit = {
+							OR = {
+								has_holding_type = castle_holding
+								has_holding_type = city_holding
+								has_holding_type = church_holding
+								has_holding_type = tribal_holding
+							}
+						}
+						alternative_limit = { always = yes }
+						weight = {
+							base = 1
+							modifier = {
+								add = 1
+								is_county_capital = yes
+							}
+							modifier = {
+								add = 1
+								has_province_modifier = coastal_province_modifier
+							}
+							modifier = {
+								add = 1
+								has_province_modifier = capital_province_modifier
+							}
+							modifier = {
+								add = 2
+								OR = {
+									terrain = plains
+									terrain = farmlands
+									terrain = floodplains
+								}
+							}
+							modifier = {
+								add = 1
+								OR = {
+									terrain = hills
+									terrain = oasis
+								}
+							}
+							modifier = {
+								factor = 0.1
+								has_province_modifier = recently_looted_modifier
+							}
+						}
+						save_scope_as = destination_province
+						set_variable = {
+							name = refugee_amount
+							value = scope:origin_province.var:refugee_amount
+						}
+					}
+					scope:destination_county.holder = { trigger_event = invisible_hand_refugee.02 }
+				}
+			}
+			# then we settle for any neighboring county not at war
+			else_if = {
+				limit = { 
+					any_neighboring_county = { 
+						exists = holder
+						holder = { is_at_war = no } 
+					}
+				}
+				random_neighboring_county = {
+					limit = { 
+						exists = holder
+						holder = { is_at_war = no } 
+					}
+					weight = {
+						base = 1
+						modifier = {
+							add = 1
+							this.development_level >= 10
+						}
+						modifier = {
+							add = 1
+							this.development_level >= 20
+						}
+						modifier = {
+							add = 1
+							this.development_level >= 30
+						}
+						modifier = {
+							add = 1
+							this.development_level >= 40
+						}
+						modifier = {
+							add = 1
+							this.development_level >= 50
+						}
+						modifier = {
+							add = 1
+							this.development_level >= 60
+						}
+						modifier = {
+							add = 1
+							this.development_level >= 70
+						}
+						modifier = {
+							add = 1
+							this.development_level >= 80
+						}
+						modifier = {
+							add = 1
+							this.development_level >= 90
+						}
+						modifier = {
+							factor = 5
+							scope:county.faith = this.faith
+						}
+						modifier = {
+							factor = 2.5
+							scope:county.culture = this.culture
+						}
+						modifier = {
+							factor = 0.1
+							OR = {
+								has_county_modifier = invisible_hand_typhus_outbreak
+								has_county_modifier = invisible_hand_smallpox_outbreak
+								has_county_modifier = invisible_hand_plague_outbreak
+							}
+						}
+					}
+					save_scope_as = destination_county
+					random_county_province = {
+						limit = {
+							OR = {
+								has_holding_type = castle_holding
+								has_holding_type = city_holding
+								has_holding_type = church_holding
+								has_holding_type = tribal_holding
+							}
+						}
+						alternative_limit = { always = yes }
+						weight = {
+							base = 1
+							modifier = {
+								add = 1
+								is_county_capital = yes
+							}
+							modifier = {
+								add = 1
+								has_province_modifier = coastal_province_modifier
+							}
+							modifier = {
+								add = 1
+								has_province_modifier = capital_province_modifier
+							}
+							modifier = {
+								add = 2
+								OR = {
+									terrain = plains
+									terrain = farmlands
+									terrain = floodplains
+								}
+							}
+							modifier = {
+								add = 1
+								OR = {
+									terrain = hills
+									terrain = oasis
+								}
+							}
+							modifier = {
+								factor = 0.1
+								has_province_modifier = recently_looted_modifier
+							}
+						}
+						save_scope_as = destination_province
+						set_variable = {
+							name = refugee_amount
+							value = scope:origin_province.var:refugee_amount
+						}
+					}
+					scope:destination_county.holder = { trigger_event = invisible_hand_refugee.02 }
+				}
+			}
+			# as fallback any neighboring county will work
+			else_if = {
+				limit = { any_neighboring_county = { exists = this } }
+				random_neighboring_county = {
+					weight = {
+						base = 1
+						modifier = {
+							add = 1
+							this.development_level >= 10
+						}
+						modifier = {
+							add = 1
+							this.development_level >= 20
+						}
+						modifier = {
+							add = 1
+							this.development_level >= 30
+						}
+						modifier = {
+							add = 1
+							this.development_level >= 40
+						}
+						modifier = {
+							add = 1
+							this.development_level >= 50
+						}
+						modifier = {
+							add = 1
+							this.development_level >= 60
+						}
+						modifier = {
+							add = 1
+							this.development_level >= 70
+						}
+						modifier = {
+							add = 1
+							this.development_level >= 80
+						}
+						modifier = {
+							add = 1
+							this.development_level >= 90
+						}
+						modifier = {
+							factor = 5
+							scope:county.faith = this.faith
+						}
+						modifier = {
+							factor = 2.5
+							scope:county.culture = this.culture
+						}
+						modifier = {
+							factor = 0.1
+							OR = {
+								has_county_modifier = invisible_hand_typhus_outbreak
+								has_county_modifier = invisible_hand_smallpox_outbreak
+								has_county_modifier = invisible_hand_plague_outbreak
+							}
+						}
+					}
+					save_scope_as = destination_county
+					random_county_province = {
+						limit = {
+							OR = {
+								has_holding_type = castle_holding
+								has_holding_type = city_holding
+								has_holding_type = church_holding
+								has_holding_type = tribal_holding
+							}
+						}
+						alternative_limit = { always = yes }
+						weight = {
+							base = 1
+							modifier = {
+								add = 1
+								is_county_capital = yes
+							}
+							modifier = {
+								add = 1
+								has_province_modifier = coastal_province_modifier
+							}
+							modifier = {
+								add = 1
+								has_province_modifier = capital_province_modifier
+							}
+							modifier = {
+								add = 2
+								OR = {
+									terrain = plains
+									terrain = farmlands
+									terrain = floodplains
+								}
+							}
+							modifier = {
+								add = 1
+								OR = {
+									terrain = hills
+									terrain = oasis
+								}
+							}
+							modifier = {
+								factor = 0.1
+								has_province_modifier = recently_looted_modifier
+							}
+						}
+						save_scope_as = destination_province
+						set_variable = {
+							name = refugee_amount
+							value = scope:origin_province.var:refugee_amount
+						}
+					}
+					scope:destination_county.holder = { trigger_event = invisible_hand_refugee.02 }
+				}
+			}
+		}
+	}
+}
+
+# War refugees have settled in your province
+invisible_hand_refugee.02 = {
+	type = character_event
+	theme = war
+    
+	title = invisible_hand_refugee.02.t
+	desc = invisible_hand_refugee.02.desc
+
+    option = {
+		name = invisible_hand_refugee.02.a
+        scope:destination_county = {
+            custom_tooltip = invisible_hand_refugee.02.tt
+            add_county_modifier = {
+                modifier = invisible_hand_recent_war_refugee_arrival
+                years = 5
+            }
+        }
+		hidden_effect = {
+			scope:destination_province = {
+				change_variable = {
+					name = province_population
+					add = var:refugee_amount
+				}
+				invisible_hand_assign_province_population_modifiers = yes
+				county = { invisible_hand_assign_county_population_modifiers = yes }
+			}
+		}
+	}
+}

@@ -1,0 +1,170 @@
+﻿invisible_hand_unfree_tenure_protection_laws = {
+	flag = invisible_hand_realm_law
+	default = invisible_hand_unfree_tenure_protection_0
+
+	# No protection
+	invisible_hand_unfree_tenure_protection_0 = {
+
+		can_keep = { has_government = feudal_government }
+
+		can_pass = {
+			trigger_if = {
+				limit = { NOT = { has_variable = trickle_down } }
+				custom_description = {
+					subject = root
+					text = "top_realm_law"
+					is_independent_ruler = yes
+				}
+			}
+			custom_description = {
+				subject = root
+				text = "has_unfree_tenure_protection_cooldown"
+				NOT = { has_variable = unfree_tenure_protection_cooldown }
+			}
+		}
+
+		can_have = { has_government = feudal_government }
+
+		modifier = { }
+
+		pass_cost = {
+			prestige = {
+				add = increase_crown_authority_prestige_cost
+				divide = 2
+			}
+		}
+		
+		on_pass = {
+			if = {
+				limit = { has_realm_law = invisible_hand_unfree_tenure_protection_1 }
+				add_tyranny = 5
+			}
+			else_if = {
+				limit = { has_realm_law = invisible_hand_unfree_tenure_protection_2 }
+				add_tyranny = 10
+			}
+			hidden_effect = { invisible_hand_trickle_down_feudal_law_effect = { LAW = invisible_hand_unfree_tenure_protection_0 } }
+			set_variable = {
+				name = unfree_tenure_protection_cooldown
+				years = 10
+			}
+		}
+
+		ai_will_do = {
+		}
+	}
+
+	# Copyhold for lives
+	invisible_hand_unfree_tenure_protection_1 = {
+
+		can_keep = { has_government = feudal_government }
+
+		can_pass = {
+			trigger_if = {
+				limit = { NOT = { has_variable = trickle_down } }
+				custom_description = {
+					subject = root
+					text = "top_realm_law"
+					is_independent_ruler = yes
+				}
+			}
+			custom_description = {
+				subject = root
+				text = "has_unfree_tenure_protection_cooldown"
+				NOT = { has_variable = unfree_tenure_protection_cooldown }
+			}
+		}
+
+		can_have = { has_government = feudal_government }
+
+		modifier = {
+			county_opinion_add = 5
+			tax_mult = -0.05
+			levy_size = -0.05
+			development_growth_factor = 0.05
+		}
+
+		pass_cost = {
+			prestige = {
+				add = increase_crown_authority_prestige_cost
+				divide = 2
+			}
+		}
+		
+		on_pass = {
+			if = {
+				limit = { has_realm_law = invisible_hand_unfree_tenure_protection_0 }
+				add_tyranny = -5
+			}
+			else_if = {
+				limit = { has_realm_law = invisible_hand_unfree_tenure_protection_2 }
+				add_tyranny = 5
+			}
+			hidden_effect = { invisible_hand_trickle_down_feudal_law_effect = { LAW = invisible_hand_unfree_tenure_protection_1 } }
+			set_variable = {
+				name = unfree_tenure_protection_cooldown
+				years = 10
+			}
+		}
+
+		ai_will_do = {
+		}
+	}
+
+	# Copyhold of inheritance
+	invisible_hand_unfree_tenure_protection_2 = {
+
+		can_keep = { has_government = feudal_government }
+
+		can_pass = {
+			trigger_if = {
+				limit = { NOT = { has_variable = trickle_down } }
+				custom_description = {
+					subject = root
+					text = "top_realm_law"
+					is_independent_ruler = yes
+				}
+			}
+			custom_description = {
+				subject = root
+				text = "has_unfree_tenure_protection_cooldown"
+				NOT = { has_variable = unfree_tenure_protection_cooldown }
+			}
+		}
+
+		can_have = { has_government = feudal_government }
+
+		modifier = {
+			county_opinion_add = 10
+			tax_mult = -0.1
+			levy_size = -0.1
+			development_growth_factor = 0.1
+		}
+
+		pass_cost = {
+			prestige = {
+				add = increase_crown_authority_prestige_cost
+				divide = 2
+			}
+		}
+		
+		on_pass = {
+			if = {
+				limit = { has_realm_law = invisible_hand_unfree_tenure_protection_0 }
+				add_tyranny = -10
+			}
+			else_if = {
+				limit = { has_realm_law = invisible_hand_unfree_tenure_protection_1 }
+				add_tyranny = -5
+			}
+			hidden_effect = { invisible_hand_trickle_down_feudal_law_effect = { LAW = invisible_hand_unfree_tenure_protection_2 } }
+			set_variable = {
+				name = unfree_tenure_protection_cooldown
+				years = 10
+			}
+		}
+
+		ai_will_do = {
+		}
+	}
+}

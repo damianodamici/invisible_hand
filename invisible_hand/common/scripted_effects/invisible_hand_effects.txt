@@ -1,0 +1,2255 @@
+﻿invisible_hand_war_refugee_spawn_effect = {
+	random_list = {
+		100 = { }
+		# refugee spawn
+		10 = {
+			modifier = {
+				add = { 
+					value = var:population_loss
+					divide = 100
+				}
+			}
+			set_variable = {
+				name = refugee_amount
+				value = var:population_loss
+			}
+			random_list = {
+				10 = { 
+					change_variable = {
+						name = refugee_amount
+						multiply = 0.75
+					}
+				}
+				10 = { 
+					change_variable = {
+						name = refugee_amount
+						multiply = 0.7
+					}
+				}
+				10 = { 
+					change_variable = {
+						name = refugee_amount
+						multiply = 0.65
+					}
+				}
+				10 = { 
+					change_variable = {
+						name = refugee_amount
+						multiply = 0.6
+					}
+				}
+				10 = { 
+					change_variable = {
+						name = refugee_amount
+						multiply = 0.55
+					}
+				}
+				10 = { 
+					change_variable = {
+						name = refugee_amount
+						multiply = 0.5
+					}
+				}
+				10 = { 
+					change_variable = {
+						name = refugee_amount
+						multiply = 0.45
+					}
+				}
+				10 = { 
+					change_variable = {
+						name = refugee_amount
+						multiply = 0.4
+					}
+				}
+				10 = { 
+					change_variable = {
+						name = refugee_amount
+						multiply = 0.35
+					}
+				}
+				10 = { 
+					change_variable = {
+						name = refugee_amount
+						multiply = 0.3
+					}
+				}
+				10 = { 
+					change_variable = {
+						name = refugee_amount
+						multiply = 0.25
+					}
+				}
+			}
+			barony = {
+				trigger_event = {
+					id = invisible_hand_refugee.01
+					days = { 15 60 }
+				}
+			}
+		}
+	}
+}
+
+invisible_hand_assign_county_climate_effect = {
+	if = {
+		limit = { invisible_hand_tropical_climate_county = yes  }
+		set_variable = {
+			name = tropical_climate
+			value = 1
+		}
+		add_county_modifier = invisible_hand_tropical_climate_modifier
+	}
+	else_if = {
+		limit = { invisible_hand_arid_climate_county = yes  }
+		set_variable = {
+			name = arid_climate
+			value = 1
+		}
+		add_county_modifier = invisible_hand_arid_climate_modifier
+	}
+	else_if = {
+		limit = { invisible_hand_semi_arid_climate_county = yes  }
+		set_variable = {
+			name = semi_arid_climate
+			value = 1
+		}
+		add_county_modifier = invisible_hand_semi_arid_climate_modifier
+	}
+	else_if = {
+		limit = { invisible_hand_subtropical_climate_county = yes  }
+		set_variable = {
+			name = subtropical_climate
+			value = 1
+		}
+		add_county_modifier = invisible_hand_subtropical_climate_modifier
+	}
+	else_if = {
+		limit = { invisible_hand_subtropical_humid_climate_county = yes  }
+		set_variable = {
+			name = subtropical_humid_climate
+			value = 1
+		}
+		add_county_modifier = invisible_hand_subtropical_humid_climate_modifier
+	}
+	else_if = {
+		limit = { invisible_hand_oceanic_climate_county = yes  }
+		set_variable = {
+			name = oceanic_climate
+			value = 1
+		}
+		add_county_modifier = invisible_hand_oceanic_climate_modifier
+	}
+	else_if = {
+		limit = { invisible_hand_continental_climate_county = yes  }
+		set_variable = {
+			name = continental_climate
+			value = 1
+		}
+		add_county_modifier = invisible_hand_continental_climate_modifier
+	}
+	else_if = {
+		limit = { invisible_hand_boreal_climate_county = yes  }
+		set_variable = {
+			name = boreal_climate
+			value = 1
+		}
+		add_county_modifier = invisible_hand_boreal_climate_modifier
+	}
+	else_if = {
+		limit = { invisible_hand_alpine_climate_county = yes  }
+		set_variable = {
+			name = alpine_climate
+			value = 1
+		}
+		add_county_modifier = invisible_hand_alpine_climate_modifier
+	}
+}
+
+invisible_hand_assign_province_population_effect = {
+	if = {
+		limit = { NOT = { exists = var:province_population } }
+		set_variable = {
+			name = province_population
+			value = 0
+		}
+		# For some important provinces we use "historical" data
+		if = {
+			limit = {
+				barony = {
+					OR = {
+						this = title:b_amalfi
+						this = title:b_alexandria
+						this = title:b_antiocheia
+						this = title:b_athens
+						this = title:b_baghdad
+						this = title:b_bologna
+						this = title:b_bukhara
+						this = title:b_cairo
+						this = title:b_chunar
+						this = title:b_cologne
+						this = title:b_constantinople
+						this = title:b_cordoba
+						this = title:b_fes
+						this = title:b_gangaikondacolapuram
+						this = title:b_genoa
+						this = title:b_halab
+						this = title:b_kalinjar
+						this = title:b_kanyakubja
+						this = title:b_khambhat
+						this = title:b_kiev
+						this = title:b_mainz
+						this = title:b_manyakheta
+						this = title:b_merv
+						this = title:b_marrakesh
+						this = title:b_nishapur
+						this = title:b_napoli
+						this = title:b_palermo
+						this = title:b_preslav
+						this = title:b_regensburg
+						this = title:b_roma
+						this = title:b_salerno
+						this = title:b_samarqand
+						this = title:b_sevilla
+						this = title:b_tabriz
+						this = title:b_tanjavur
+						this = title:b_thessaloniki
+						this = title:b_toledo
+						this = title:b_venezia
+						this = title:b_worms
+					}
+				}
+			}
+			if = {
+				limit = { 
+					barony = {
+						OR = {
+							this = title:b_cologne
+							this = title:b_worms
+						}
+					}
+				}
+				change_variable = {
+					name = province_population
+					add = 20000
+				}
+			}
+			else_if = {
+				limit = { 
+					barony = {
+						OR = {
+							this = title:b_genoa
+							this = title:b_mainz
+							this = title:b_napoli
+							this = title:b_regensburg
+							this = title:b_thessaloniki
+							this = title:b_toledo
+						}
+					}
+				}
+				change_variable = {
+					name = province_population
+					add = 35000
+				}
+			}
+			else_if = {
+				limit = { 
+					barony = {
+						OR = {
+							this = title:b_amalfi
+							this = title:b_bologna
+							this = title:b_chunar
+							this = title:b_khambhat
+							this = title:b_kiev
+							this = title:b_manyakheta
+							this = title:b_preslav
+							this = title:b_roma
+							this = title:b_salerno
+							this = title:b_sevilla
+							this = title:b_venezia
+						}
+					}
+				}
+				change_variable = {
+					name = province_population
+					add = 50000
+				}
+			}
+			else_if = {
+				limit = { 
+					barony = {
+						OR = {
+							this = title:b_fes
+							this = title:b_halab
+							this = title:b_kalinjar
+							this = title:b_kanyakubja
+							this = title:b_palermo
+							this = title:b_samarqand
+							this = title:b_tabriz
+						}
+					}
+				}
+				change_variable = {
+					name = province_population
+					add = 75000
+				}
+			}
+			else_if = {
+				limit = { 
+					barony = {
+						OR = {
+							this = title:b_alexandria
+							this = title:b_antiocheia
+							this = title:b_athens
+							this = title:b_bukhara
+							this = title:b_cordoba
+							this = title:b_marrakesh
+							this = title:b_merv
+							this = title:b_nishapur
+						}
+					}
+				}
+				change_variable = {
+					name = province_population
+					add = 100000
+				}
+			}
+			else_if = {
+				limit = { 
+					barony = {
+						OR = {
+							this = title:b_baghdad
+							this = title:b_cairo
+						}
+					}
+				}
+				change_variable = {
+					name = province_population
+					add = 150000
+				}
+			}
+			else_if = {
+				limit = { 
+					barony = {
+						OR = {
+							this = title:b_constantinople
+							this = title:b_gangaikondacolapuram
+							this = title:b_tanjavur
+						}
+					}
+				}
+				change_variable = {
+					name = province_population
+					add = 200000
+				}
+			}
+		}
+		# Otherwise generate population
+		else = {
+			# Development level
+			change_variable = {
+				name = province_population
+				add = { 
+					value = 1001 # "clean" numbers look too scripted
+					multiply = county.development_level
+				}
+			}
+			# Holding type
+			if = {
+				limit = { has_holding_type = city_holding }
+				change_variable = {
+					name = province_population
+					add = 5000
+				}
+				if = {
+					limit = { has_building = city_04 }
+					change_variable = {
+						name = province_population
+						add = 15000
+					}
+				}
+				else_if = {
+					limit = { has_building = city_03 }
+					change_variable = {
+						name = province_population
+						add = 10000
+					}
+				}
+				else_if = {
+					limit = { has_building = city_02 }
+					change_variable = {
+						name = province_population
+						add = 5000
+					}
+				}
+			}
+			else_if = {
+				limit = { has_holding_type = castle_holding }
+				change_variable = {
+					name = province_population
+					add = 2500
+				}
+				if = {
+					limit = { has_building = castle_04 }
+					change_variable = {
+						name = province_population
+						add = 7500
+					}
+				}
+				else_if = {
+					limit = { has_building = castle_03 }
+					change_variable = {
+						name = province_population
+						add = 5000
+					}
+				}
+				else_if = {
+					limit = { has_building = castle_02 }
+					change_variable = {
+						name = province_population
+						add = 2500
+					}
+				}
+			}
+			else_if = {
+				limit = { has_holding_type = church_holding }
+				change_variable = {
+					name = province_population
+					add = 2500
+				}
+				if = {
+					limit = { has_building = temple_04 }
+					change_variable = {
+						name = province_population
+						add = 7500
+					}
+				}
+				else_if = {
+					limit = { has_building = temple_03 }
+					change_variable = {
+						name = province_population
+						add = 5000
+					}
+				}
+				else_if = {
+					limit = { has_building = temple_02 }
+					change_variable = {
+						name = province_population
+						add = 2500
+					}
+				}
+			}
+			else_if = {
+				limit = { has_holding_type = tribal_holding } 
+				change_variable = {
+					name = province_population
+					add = 2500
+				}
+				if = {
+					limit = { has_building = tribe_02 }
+					change_variable = {
+						name = province_population
+						add = 2500
+					}
+				}
+			}
+			else = {
+				change_variable = {
+					name = province_population
+					multiply = 0.5
+				}
+			}
+			# Terrain
+			if = {
+				limit = { terrain = farmlands }
+				change_variable = {
+					name = province_population
+					multiply = 1.5
+				}
+			}
+			else_if = {
+				limit = { terrain = floodplains }
+				change_variable = {
+					name = province_population
+					multiply = 1.375
+				}
+			}
+			else_if = {
+				limit = { terrain = plains }
+				change_variable = {
+					name = province_population
+					multiply = 1.25
+				}
+			}
+			else_if = {
+				limit = {
+					OR = {
+						terrain = hills
+						terrain = oasis
+					}
+				}
+				change_variable = {
+					name = province_population
+					multiply = 1.125
+				}
+			}
+			else_if = {
+				limit = {
+					OR = {
+						terrain = jungle
+						terrain = forest
+						terrain = wetlands
+					}
+				}
+				change_variable = {
+					name = province_population
+					multiply = 0.875
+				}
+			}
+			else_if = {
+				limit = {
+					OR = {
+						terrain = steppe
+						terrain = drylands
+						terrain = mountains
+					}
+				}
+				change_variable = {
+					name = province_population
+					multiply = 0.75
+				}
+			}
+			else_if = {
+				limit = {
+					OR = {
+						terrain = desert
+						terrain = desert_mountains
+					}
+				}
+				change_variable = {
+					name = province_population
+					multiply = 0.675
+				}
+			}
+			else_if = {
+				limit = { terrain = taiga }
+				change_variable = {
+					name = province_population
+					multiply = 0.5
+				}
+			}
+			# Climate
+			if = {
+				limit = { county = { has_county_modifier = invisible_hand_subtropical_climate_modifier } }
+				change_variable = {
+					name = province_population
+					multiply = 1.5
+				}
+			}
+			else_if = {
+				limit = { county = { has_county_modifier = invisible_hand_subtropical_humid_climate_modifier } }
+				change_variable = {
+					name = province_population
+					multiply = 1.375
+				}
+			}
+			else_if = {
+				limit = { county = { has_county_modifier = invisible_hand_oceanic_climate_modifier } }
+				change_variable = {
+					name = province_population
+					multiply = 1.25
+				}
+			}
+			else_if = {
+				limit = { county = { has_county_modifier = invisible_hand_tropical_climate_modifier } }
+				change_variable = {
+					name = province_population
+					multiply = 1.125
+				}
+			}
+			else_if = {
+				limit = {
+					county = {
+						OR = { 
+							has_county_modifier = invisible_hand_semi_arid_climate_modifier
+							has_county_modifier = invisible_hand_continental_climate_modifier
+						}
+					}
+				}
+				change_variable = {
+					name = province_population
+					multiply = 0.75
+				}
+			}
+			else_if = {
+				limit = {
+					county = {
+						OR = { 
+							has_county_modifier = invisible_hand_arid_climate_modifier
+							has_county_modifier = invisible_hand_alpine_climate_modifier
+						}
+					}
+				}
+				change_variable = {
+					name = province_population
+					multiply = 0.5
+				}
+			}
+			else_if = {
+				limit = { county = { has_county_modifier = invisible_hand_boreal_climate_modifier } }
+				change_variable = {
+					name = province_population
+					multiply = 0.375
+				}
+			}
+		}
+		# "Randomizer" so it doesn't look too scripted
+		random_list = {
+			10 = {
+				set_variable = {
+					name = population_randomizer
+					value = 0.9
+				}
+			}
+			10 = {
+				set_variable = {
+					name = population_randomizer
+					value = 0.925
+				}
+			}
+			10 = {
+				set_variable = {
+					name = population_randomizer
+					value = 0.95
+				}
+			}
+			10 = {
+				set_variable = {
+					name = population_randomizer
+					value = 0.975
+				}
+			}
+			10 = {
+				set_variable = {
+					name = population_randomizer
+					value = 1.025
+				}
+			}
+			10 = {
+				set_variable = {
+					name = population_randomizer
+					value = 1.05
+				}
+			}
+			10 = {
+				set_variable = {
+					name = population_randomizer
+					value = 1.075
+				}
+			}
+			10 = {
+				set_variable = {
+					name = population_randomizer
+					value = 1.1
+				}
+			}
+		}
+		change_variable = {
+			name = province_population
+			multiply = var:population_randomizer
+		}
+		# Second "randomizer"
+		random_list = {
+			10 = {
+				set_variable = {
+					name = population_randomizer
+					value = 0.9
+				}
+			}
+			10 = {
+				set_variable = {
+					name = population_randomizer
+					value = 0.925
+				}
+			}
+			10 = {
+				set_variable = {
+					name = population_randomizer
+					value = 0.95
+				}
+			}
+			10 = {
+				set_variable = {
+					name = population_randomizer
+					value = 0.975
+				}
+			}
+			10 = {
+				set_variable = {
+					name = population_randomizer
+					value = 1.025
+				}
+			}
+			10 = {
+				set_variable = {
+					name = population_randomizer
+					value = 1.05
+				}
+			}
+			10 = {
+				set_variable = {
+					name = population_randomizer
+					value = 1.075
+				}
+			}
+			10 = {
+				set_variable = {
+					name = population_randomizer
+					value = 1.1
+				}
+			}
+		}
+		change_variable = {
+			name = province_population
+			multiply = var:population_randomizer
+		}
+		# Assign pop-related modifiers at province and county levels
+		invisible_hand_assign_province_population_modifiers = yes
+		county = { invisible_hand_assign_county_population_modifiers = yes }
+	}
+}
+
+invisible_hand_assign_province_population_modifiers = {
+	if = {
+		limit = { NOT = { exists = var:population_stacks } }
+		set_variable = {
+			name = population_stacks
+			value = 0
+		}
+	}
+	else = {
+		set_variable = {
+			name = population_stacks_old
+			value = var:population_stacks
+		}
+	}
+	change_variable = {
+		name = population_stacks
+		multiply = 0
+		add = { 
+			value = var:province_population
+			divide = 5000
+		}
+	}
+	if = {
+		limit = { 
+			OR = {
+				NOT = { exists = var:population_stacks_old }
+				NOT = { var:population_stacks = var:population_stacks_old } 
+			}
+		}
+		invisible_hand_remove_province_pop_modifiers = yes
+		invisible_hand_set_province_pop_modifier_from_stack_amount = yes
+	}
+}
+
+invisible_hand_remove_province_pop_modifiers = {
+	remove_province_modifier = invisible_hand_population_modifier_1
+	remove_province_modifier = invisible_hand_population_modifier_2
+	remove_province_modifier = invisible_hand_population_modifier_3
+	remove_province_modifier = invisible_hand_population_modifier_4
+	remove_province_modifier = invisible_hand_population_modifier_5
+	remove_province_modifier = invisible_hand_population_modifier_6
+	remove_province_modifier = invisible_hand_population_modifier_7
+	remove_province_modifier = invisible_hand_population_modifier_8
+	remove_province_modifier = invisible_hand_population_modifier_9
+	remove_province_modifier = invisible_hand_population_modifier_10
+	remove_province_modifier = invisible_hand_population_modifier_11
+	remove_province_modifier = invisible_hand_population_modifier_12
+	remove_province_modifier = invisible_hand_population_modifier_13
+	remove_province_modifier = invisible_hand_population_modifier_14
+	remove_province_modifier = invisible_hand_population_modifier_15
+	remove_province_modifier = invisible_hand_population_modifier_16
+	remove_province_modifier = invisible_hand_population_modifier_17
+	remove_province_modifier = invisible_hand_population_modifier_18
+	remove_province_modifier = invisible_hand_population_modifier_19
+	remove_province_modifier = invisible_hand_population_modifier_20
+	remove_province_modifier = invisible_hand_population_modifier_21
+	remove_province_modifier = invisible_hand_population_modifier_22
+	remove_province_modifier = invisible_hand_population_modifier_23
+	remove_province_modifier = invisible_hand_population_modifier_24
+	remove_province_modifier = invisible_hand_population_modifier_25
+	remove_province_modifier = invisible_hand_population_modifier_26
+	remove_province_modifier = invisible_hand_population_modifier_27
+	remove_province_modifier = invisible_hand_population_modifier_28
+	remove_province_modifier = invisible_hand_population_modifier_29
+	remove_province_modifier = invisible_hand_population_modifier_30
+	remove_province_modifier = invisible_hand_population_modifier_31
+	remove_province_modifier = invisible_hand_population_modifier_32
+	remove_province_modifier = invisible_hand_population_modifier_33
+	remove_province_modifier = invisible_hand_population_modifier_34
+	remove_province_modifier = invisible_hand_population_modifier_35
+	remove_province_modifier = invisible_hand_population_modifier_36
+	remove_province_modifier = invisible_hand_population_modifier_37
+	remove_province_modifier = invisible_hand_population_modifier_38
+	remove_province_modifier = invisible_hand_population_modifier_39
+	remove_province_modifier = invisible_hand_population_modifier_40
+	remove_province_modifier = invisible_hand_population_modifier_41
+	remove_province_modifier = invisible_hand_population_modifier_42
+	remove_province_modifier = invisible_hand_population_modifier_43
+	remove_province_modifier = invisible_hand_population_modifier_44
+	remove_province_modifier = invisible_hand_population_modifier_45
+	remove_province_modifier = invisible_hand_population_modifier_46
+	remove_province_modifier = invisible_hand_population_modifier_47
+	remove_province_modifier = invisible_hand_population_modifier_48
+	remove_province_modifier = invisible_hand_population_modifier_49
+	remove_province_modifier = invisible_hand_population_modifier_50
+	remove_province_modifier = invisible_hand_population_modifier_51
+	remove_province_modifier = invisible_hand_population_modifier_52
+	remove_province_modifier = invisible_hand_population_modifier_53
+	remove_province_modifier = invisible_hand_population_modifier_54
+	remove_province_modifier = invisible_hand_population_modifier_55
+	remove_province_modifier = invisible_hand_population_modifier_56
+	remove_province_modifier = invisible_hand_population_modifier_57
+	remove_province_modifier = invisible_hand_population_modifier_58
+	remove_province_modifier = invisible_hand_population_modifier_59
+	remove_province_modifier = invisible_hand_population_modifier_60
+	remove_province_modifier = invisible_hand_population_modifier_61
+	remove_province_modifier = invisible_hand_population_modifier_62
+	remove_province_modifier = invisible_hand_population_modifier_63
+	remove_province_modifier = invisible_hand_population_modifier_64
+	remove_province_modifier = invisible_hand_population_modifier_65
+	remove_province_modifier = invisible_hand_population_modifier_66
+	remove_province_modifier = invisible_hand_population_modifier_67
+	remove_province_modifier = invisible_hand_population_modifier_68
+	remove_province_modifier = invisible_hand_population_modifier_69
+	remove_province_modifier = invisible_hand_population_modifier_70
+	remove_province_modifier = invisible_hand_population_modifier_71
+	remove_province_modifier = invisible_hand_population_modifier_72
+	remove_province_modifier = invisible_hand_population_modifier_73
+	remove_province_modifier = invisible_hand_population_modifier_74
+	remove_province_modifier = invisible_hand_population_modifier_75
+	remove_province_modifier = invisible_hand_population_modifier_76
+	remove_province_modifier = invisible_hand_population_modifier_77
+	remove_province_modifier = invisible_hand_population_modifier_78
+	remove_province_modifier = invisible_hand_population_modifier_79
+	remove_province_modifier = invisible_hand_population_modifier_80
+	remove_province_modifier = invisible_hand_population_modifier_81
+	remove_province_modifier = invisible_hand_population_modifier_82
+	remove_province_modifier = invisible_hand_population_modifier_83
+	remove_province_modifier = invisible_hand_population_modifier_84
+	remove_province_modifier = invisible_hand_population_modifier_85
+	remove_province_modifier = invisible_hand_population_modifier_86
+	remove_province_modifier = invisible_hand_population_modifier_87
+	remove_province_modifier = invisible_hand_population_modifier_88
+	remove_province_modifier = invisible_hand_population_modifier_89
+	remove_province_modifier = invisible_hand_population_modifier_90
+	remove_province_modifier = invisible_hand_population_modifier_91
+	remove_province_modifier = invisible_hand_population_modifier_92
+	remove_province_modifier = invisible_hand_population_modifier_93
+	remove_province_modifier = invisible_hand_population_modifier_94
+	remove_province_modifier = invisible_hand_population_modifier_95
+	remove_province_modifier = invisible_hand_population_modifier_96
+	remove_province_modifier = invisible_hand_population_modifier_97
+	remove_province_modifier = invisible_hand_population_modifier_98
+	remove_province_modifier = invisible_hand_population_modifier_99
+	remove_province_modifier = invisible_hand_population_modifier_100
+}
+
+invisible_hand_set_province_pop_modifier_from_stack_amount = {
+	if = {
+		limit = { var:population_stacks <= 100 }
+		if = {
+			limit = { var:population_stacks <= 10 }
+			if = {
+				limit = { var:population_stacks <= 1 }
+				add_province_modifier = invisible_hand_population_modifier_1
+			}
+			else_if = {
+				limit = { var:population_stacks <= 2 }
+				add_province_modifier = invisible_hand_population_modifier_2
+			}
+			else_if = {
+				limit = { var:population_stacks <= 3 }
+				add_province_modifier = invisible_hand_population_modifier_3
+			}
+			else_if = {
+				limit = { var:population_stacks <= 4 }
+				add_province_modifier = invisible_hand_population_modifier_4
+			}
+			else_if = {
+				limit = { var:population_stacks <= 5 }
+				add_province_modifier = invisible_hand_population_modifier_5
+			}
+			else_if = {
+				limit = { var:population_stacks <= 6 }
+				add_province_modifier = invisible_hand_population_modifier_6
+			}
+			else_if = {
+				limit = { var:population_stacks <= 7 }
+				add_province_modifier = invisible_hand_population_modifier_7
+			}
+			else_if = {
+				limit = { var:population_stacks <= 8 }
+				add_province_modifier = invisible_hand_population_modifier_8
+			}
+			else_if = {
+				limit = { var:population_stacks <= 9 }
+				add_province_modifier = invisible_hand_population_modifier_9
+			}
+			else_if = {
+				limit = { var:population_stacks <= 10 }
+				add_province_modifier = invisible_hand_population_modifier_10
+			}
+		}
+		else_if = {
+			limit = { var:population_stacks <= 20 }
+			if = {
+				limit = { var:population_stacks <= 11 }
+				add_province_modifier = invisible_hand_population_modifier_11
+			}
+			else_if = {
+				limit = { var:population_stacks <= 12 }
+				add_province_modifier = invisible_hand_population_modifier_12
+			}
+			else_if = {
+				limit = { var:population_stacks <= 13 }
+				add_province_modifier = invisible_hand_population_modifier_13
+			}
+			else_if = {
+				limit = { var:population_stacks <= 14 }
+				add_province_modifier = invisible_hand_population_modifier_14
+			}
+			else_if = {
+				limit = { var:population_stacks <= 15 }
+				add_province_modifier = invisible_hand_population_modifier_15
+			}
+			else_if = {
+				limit = { var:population_stacks <= 16 }
+				add_province_modifier = invisible_hand_population_modifier_16
+			}
+			else_if = {
+				limit = { var:population_stacks <= 17 }
+				add_province_modifier = invisible_hand_population_modifier_17
+			}
+			else_if = {
+				limit = { var:population_stacks <= 18 }
+				add_province_modifier = invisible_hand_population_modifier_18
+			}
+			else_if = {
+				limit = { var:population_stacks <= 19 }
+				add_province_modifier = invisible_hand_population_modifier_19
+			}
+			else_if = {
+				limit = { var:population_stacks <= 20 }
+				add_province_modifier = invisible_hand_population_modifier_20
+			}
+		}
+		else_if = {
+			limit = { var:population_stacks <= 30 }
+			if = {
+				limit = { var:population_stacks <= 21 }
+				add_province_modifier = invisible_hand_population_modifier_21
+			}
+			else_if = {
+				limit = { var:population_stacks <= 22 }
+				add_province_modifier = invisible_hand_population_modifier_22
+			}
+			else_if = {
+				limit = { var:population_stacks <= 23 }
+				add_province_modifier = invisible_hand_population_modifier_23
+			}
+			else_if = {
+				limit = { var:population_stacks <= 24 }
+				add_province_modifier = invisible_hand_population_modifier_24
+			}
+			else_if = {
+				limit = { var:population_stacks <= 25 }
+				add_province_modifier = invisible_hand_population_modifier_25
+			}
+			else_if = {
+				limit = { var:population_stacks <= 26 }
+				add_province_modifier = invisible_hand_population_modifier_26
+			}
+			else_if = {
+				limit = { var:population_stacks <= 27 }
+				add_province_modifier = invisible_hand_population_modifier_27
+			}
+			else_if = {
+				limit = { var:population_stacks <= 28 }
+				add_province_modifier = invisible_hand_population_modifier_28
+			}
+			else_if = {
+				limit = { var:population_stacks <= 29 }
+				add_province_modifier = invisible_hand_population_modifier_29
+			}
+			else_if = {
+				limit = { var:population_stacks <= 30 }
+				add_province_modifier = invisible_hand_population_modifier_30
+			}
+		}
+		else_if = {
+			limit = { var:population_stacks <= 40 }
+			if = {
+				limit = { var:population_stacks <= 31 }
+				add_province_modifier = invisible_hand_population_modifier_31
+			}
+			else_if = {
+				limit = { var:population_stacks <= 32 }
+				add_province_modifier = invisible_hand_population_modifier_32
+			}
+			else_if = {
+				limit = { var:population_stacks <= 33 }
+				add_province_modifier = invisible_hand_population_modifier_33
+			}
+			else_if = {
+				limit = { var:population_stacks <= 34 }
+				add_province_modifier = invisible_hand_population_modifier_34
+			}
+			else_if = {
+				limit = { var:population_stacks <= 35 }
+				add_province_modifier = invisible_hand_population_modifier_35
+			}
+			else_if = {
+				limit = { var:population_stacks <= 36 }
+				add_province_modifier = invisible_hand_population_modifier_36
+			}
+			else_if = {
+				limit = { var:population_stacks <= 37 }
+				add_province_modifier = invisible_hand_population_modifier_37
+			}
+			else_if = {
+				limit = { var:population_stacks <= 38 }
+				add_province_modifier = invisible_hand_population_modifier_38
+			}
+			else_if = {
+				limit = { var:population_stacks <= 39 }
+				add_province_modifier = invisible_hand_population_modifier_39
+			}
+			else_if = {
+				limit = { var:population_stacks <= 40 }
+				add_province_modifier = invisible_hand_population_modifier_40
+			}
+		}
+		else_if = {
+			limit = { var:population_stacks <= 50 }
+			if = {
+				limit = { var:population_stacks <= 41 }
+				add_province_modifier = invisible_hand_population_modifier_41
+			}
+			else_if = {
+				limit = { var:population_stacks <= 42 }
+				add_province_modifier = invisible_hand_population_modifier_42
+			}
+			else_if = {
+				limit = { var:population_stacks <= 43 }
+				add_province_modifier = invisible_hand_population_modifier_43
+			}
+			else_if = {
+				limit = { var:population_stacks <= 44 }
+				add_province_modifier = invisible_hand_population_modifier_44
+			}
+			else_if = {
+				limit = { var:population_stacks <= 45 }
+				add_province_modifier = invisible_hand_population_modifier_45
+			}
+			else_if = {
+				limit = { var:population_stacks <= 46 }
+				add_province_modifier = invisible_hand_population_modifier_46
+			}
+			else_if = {
+				limit = { var:population_stacks <= 47 }
+				add_province_modifier = invisible_hand_population_modifier_47
+			}
+			else_if = {
+				limit = { var:population_stacks <= 48 }
+				add_province_modifier = invisible_hand_population_modifier_48
+			}
+			else_if = {
+				limit = { var:population_stacks <= 49 }
+				add_province_modifier = invisible_hand_population_modifier_49
+			}
+			else_if = {
+				limit = { var:population_stacks <= 50 }
+				add_province_modifier = invisible_hand_population_modifier_50
+			}
+		}
+		else_if = {
+			limit = { var:population_stacks <= 60 }
+			if = {
+				limit = { var:population_stacks <= 51 }
+				add_province_modifier = invisible_hand_population_modifier_51
+			}
+			else_if = {
+				limit = { var:population_stacks <= 52 }
+				add_province_modifier = invisible_hand_population_modifier_52
+			}
+			else_if = {
+				limit = { var:population_stacks <= 53 }
+				add_province_modifier = invisible_hand_population_modifier_53
+			}
+			else_if = {
+				limit = { var:population_stacks <= 54 }
+				add_province_modifier = invisible_hand_population_modifier_54
+			}
+			else_if = {
+				limit = { var:population_stacks <= 55 }
+				add_province_modifier = invisible_hand_population_modifier_55
+			}
+			else_if = {
+				limit = { var:population_stacks <= 56 }
+				add_province_modifier = invisible_hand_population_modifier_56
+			}
+			else_if = {
+				limit = { var:population_stacks <= 57 }
+				add_province_modifier = invisible_hand_population_modifier_57
+			}
+			else_if = {
+				limit = { var:population_stacks <= 58 }
+				add_province_modifier = invisible_hand_population_modifier_58
+			}
+			else_if = {
+				limit = { var:population_stacks <= 59 }
+				add_province_modifier = invisible_hand_population_modifier_59
+			}
+			else_if = {
+				limit = { var:population_stacks <= 60 }
+				add_province_modifier = invisible_hand_population_modifier_60
+			}
+		}
+		else_if = {
+			limit = { var:population_stacks <= 70 }
+			if = {
+				limit = { var:population_stacks <= 61 }
+				add_province_modifier = invisible_hand_population_modifier_61
+			}
+			else_if = {
+				limit = { var:population_stacks <= 62 }
+				add_province_modifier = invisible_hand_population_modifier_62
+			}
+			else_if = {
+				limit = { var:population_stacks <= 63 }
+				add_province_modifier = invisible_hand_population_modifier_63
+			}
+			else_if = {
+				limit = { var:population_stacks <= 64 }
+				add_province_modifier = invisible_hand_population_modifier_64
+			}
+			else_if = {
+				limit = { var:population_stacks <= 65 }
+				add_province_modifier = invisible_hand_population_modifier_65
+			}
+			else_if = {
+				limit = { var:population_stacks <= 66 }
+				add_province_modifier = invisible_hand_population_modifier_66
+			}
+			else_if = {
+				limit = { var:population_stacks <= 67 }
+				add_province_modifier = invisible_hand_population_modifier_67
+			}
+			else_if = {
+				limit = { var:population_stacks <= 68 }
+				add_province_modifier = invisible_hand_population_modifier_68
+			}
+			else_if = {
+				limit = { var:population_stacks <= 69 }
+				add_province_modifier = invisible_hand_population_modifier_69
+			}
+			else_if = {
+				limit = { var:population_stacks <= 70 }
+				add_province_modifier = invisible_hand_population_modifier_70
+			}
+		}
+		else_if = {
+			limit = { var:population_stacks <= 80 }
+			if = {
+				limit = { var:population_stacks <= 71 }
+				add_province_modifier = invisible_hand_population_modifier_71
+			}
+			else_if = {
+				limit = { var:population_stacks <= 72 }
+				add_province_modifier = invisible_hand_population_modifier_72
+			}
+			else_if = {
+				limit = { var:population_stacks <= 73 }
+				add_province_modifier = invisible_hand_population_modifier_73
+			}
+			else_if = {
+				limit = { var:population_stacks <= 74 }
+				add_province_modifier = invisible_hand_population_modifier_74
+			}
+			else_if = {
+				limit = { var:population_stacks <= 75 }
+				add_province_modifier = invisible_hand_population_modifier_75
+			}
+			else_if = {
+				limit = { var:population_stacks <= 76 }
+				add_province_modifier = invisible_hand_population_modifier_76
+			}
+			else_if = {
+				limit = { var:population_stacks <= 77 }
+				add_province_modifier = invisible_hand_population_modifier_77
+			}
+			else_if = {
+				limit = { var:population_stacks <= 78 }
+				add_province_modifier = invisible_hand_population_modifier_78
+			}
+			else_if = {
+				limit = { var:population_stacks <= 79 }
+				add_province_modifier = invisible_hand_population_modifier_79
+			}
+			else_if = {
+				limit = { var:population_stacks <= 80 }
+				add_province_modifier = invisible_hand_population_modifier_80
+			}
+		}
+		else_if = {
+			limit = { var:population_stacks <= 90 }
+			if = {
+				limit = { var:population_stacks <= 81 }
+				add_province_modifier = invisible_hand_population_modifier_81
+			}
+			else_if = {
+				limit = { var:population_stacks <= 82 }
+				add_province_modifier = invisible_hand_population_modifier_82
+			}
+			else_if = {
+				limit = { var:population_stacks <= 83 }
+				add_province_modifier = invisible_hand_population_modifier_83
+			}
+			else_if = {
+				limit = { var:population_stacks <= 84 }
+				add_province_modifier = invisible_hand_population_modifier_84
+			}
+			else_if = {
+				limit = { var:population_stacks <= 85 }
+				add_province_modifier = invisible_hand_population_modifier_85
+			}
+			else_if = {
+				limit = { var:population_stacks <= 86 }
+				add_province_modifier = invisible_hand_population_modifier_86
+			}
+			else_if = {
+				limit = { var:population_stacks <= 87 }
+				add_province_modifier = invisible_hand_population_modifier_87
+			}
+			else_if = {
+				limit = { var:population_stacks <= 88 }
+				add_province_modifier = invisible_hand_population_modifier_88
+			}
+			else_if = {
+				limit = { var:population_stacks <= 89 }
+				add_province_modifier = invisible_hand_population_modifier_89
+			}
+			else_if = {
+				limit = { var:population_stacks <= 90 }
+				add_province_modifier = invisible_hand_population_modifier_90
+			}
+		}
+		else_if = {
+			limit = { var:population_stacks <= 100 }
+			if = {
+				limit = { var:population_stacks <= 91 }
+				add_province_modifier = invisible_hand_population_modifier_91
+			}
+			else_if = {
+				limit = { var:population_stacks <= 92 }
+				add_province_modifier = invisible_hand_population_modifier_92
+			}
+			else_if = {
+				limit = { var:population_stacks <= 93 }
+				add_province_modifier = invisible_hand_population_modifier_93
+			}
+			else_if = {
+				limit = { var:population_stacks <= 94 }
+				add_province_modifier = invisible_hand_population_modifier_94
+			}
+			else_if = {
+				limit = { var:population_stacks <= 95 }
+				add_province_modifier = invisible_hand_population_modifier_95
+			}
+			else_if = {
+				limit = { var:population_stacks <= 96 }
+				add_province_modifier = invisible_hand_population_modifier_96
+			}
+			else_if = {
+				limit = { var:population_stacks <= 97 }
+				add_province_modifier = invisible_hand_population_modifier_97
+			}
+			else_if = {
+				limit = { var:population_stacks <= 98 }
+				add_province_modifier = invisible_hand_population_modifier_98
+			}
+			else_if = {
+				limit = { var:population_stacks <= 99 }
+				add_province_modifier = invisible_hand_population_modifier_99
+			}
+			else_if = {
+				limit = { var:population_stacks <= 100 }
+				add_province_modifier = invisible_hand_population_modifier_100
+			}
+		}
+	}
+	else = {
+		add_province_modifier = invisible_hand_population_modifier_100
+	}
+}
+
+invisible_hand_assign_county_population_modifiers = {
+	if = {
+		limit = { NOT = { exists = var:population_stacks } }
+		set_variable = {
+			name = population_stacks
+			value = 0
+		}
+	}
+	else = {
+		set_variable = {
+			name = population_stacks_old
+			value = var:population_stacks
+		}
+	}
+	change_variable = {
+		name = population_stacks
+		multiply = 0
+		add = { 
+			value = invisible_hand_county_population
+			divide = 10000
+		}
+	}
+	if = {
+		limit = { 
+			OR = {
+				NOT = { exists = var:population_stacks_old }
+				NOT = { var:population_stacks = var:population_stacks_old } 
+			}
+		}
+		invisible_hand_remove_county_pop_modifiers = yes
+		invisible_hand_set_county_pop_modifier_from_stack_amount = yes
+	}
+}
+
+invisible_hand_remove_county_pop_modifiers = {
+	remove_county_modifier = invisible_hand_population_modifier_1_county
+	remove_county_modifier = invisible_hand_population_modifier_2_county
+	remove_county_modifier = invisible_hand_population_modifier_3_county
+	remove_county_modifier = invisible_hand_population_modifier_4_county
+	remove_county_modifier = invisible_hand_population_modifier_5_county
+	remove_county_modifier = invisible_hand_population_modifier_6_county
+	remove_county_modifier = invisible_hand_population_modifier_7_county
+	remove_county_modifier = invisible_hand_population_modifier_8_county
+	remove_county_modifier = invisible_hand_population_modifier_9_county
+	remove_county_modifier = invisible_hand_population_modifier_10_county
+	remove_county_modifier = invisible_hand_population_modifier_11_county
+	remove_county_modifier = invisible_hand_population_modifier_12_county
+	remove_county_modifier = invisible_hand_population_modifier_13_county
+	remove_county_modifier = invisible_hand_population_modifier_14_county
+	remove_county_modifier = invisible_hand_population_modifier_15_county
+	remove_county_modifier = invisible_hand_population_modifier_16_county
+	remove_county_modifier = invisible_hand_population_modifier_17_county
+	remove_county_modifier = invisible_hand_population_modifier_18_county
+	remove_county_modifier = invisible_hand_population_modifier_19_county
+	remove_county_modifier = invisible_hand_population_modifier_20_county
+	remove_county_modifier = invisible_hand_population_modifier_21_county
+	remove_county_modifier = invisible_hand_population_modifier_22_county
+	remove_county_modifier = invisible_hand_population_modifier_23_county
+	remove_county_modifier = invisible_hand_population_modifier_24_county
+	remove_county_modifier = invisible_hand_population_modifier_25_county
+	remove_county_modifier = invisible_hand_population_modifier_26_county
+	remove_county_modifier = invisible_hand_population_modifier_27_county
+	remove_county_modifier = invisible_hand_population_modifier_28_county
+	remove_county_modifier = invisible_hand_population_modifier_29_county
+	remove_county_modifier = invisible_hand_population_modifier_30_county
+	remove_county_modifier = invisible_hand_population_modifier_31_county
+	remove_county_modifier = invisible_hand_population_modifier_32_county
+	remove_county_modifier = invisible_hand_population_modifier_33_county
+	remove_county_modifier = invisible_hand_population_modifier_34_county
+	remove_county_modifier = invisible_hand_population_modifier_35_county
+	remove_county_modifier = invisible_hand_population_modifier_36_county
+	remove_county_modifier = invisible_hand_population_modifier_37_county
+	remove_county_modifier = invisible_hand_population_modifier_38_county
+	remove_county_modifier = invisible_hand_population_modifier_39_county
+	remove_county_modifier = invisible_hand_population_modifier_40_county
+	remove_county_modifier = invisible_hand_population_modifier_41_county
+	remove_county_modifier = invisible_hand_population_modifier_42_county
+	remove_county_modifier = invisible_hand_population_modifier_43_county
+	remove_county_modifier = invisible_hand_population_modifier_44_county
+	remove_county_modifier = invisible_hand_population_modifier_45_county
+	remove_county_modifier = invisible_hand_population_modifier_46_county
+	remove_county_modifier = invisible_hand_population_modifier_47_county
+	remove_county_modifier = invisible_hand_population_modifier_48_county
+	remove_county_modifier = invisible_hand_population_modifier_49_county
+	remove_county_modifier = invisible_hand_population_modifier_50_county
+}
+
+invisible_hand_set_county_pop_modifier_from_stack_amount = {
+	if = {
+		limit = { var:population_stacks <= 50 }
+		if = {
+			limit = { var:population_stacks <= 10 }
+			if = {
+				limit = { var:population_stacks <= 1 }
+				add_county_modifier = invisible_hand_population_modifier_1_county
+			}
+			else_if = {
+				limit = { var:population_stacks <= 2 }
+				add_county_modifier = invisible_hand_population_modifier_2_county
+			}
+			else_if = {
+				limit = { var:population_stacks <= 3 }
+				add_county_modifier = invisible_hand_population_modifier_3_county
+			}
+			else_if = {
+				limit = { var:population_stacks <= 4 }
+				add_county_modifier = invisible_hand_population_modifier_4_county
+			}
+			else_if = {
+				limit = { var:population_stacks <= 5 }
+				add_county_modifier = invisible_hand_population_modifier_5_county
+			}
+			else_if = {
+				limit = { var:population_stacks <= 6 }
+				add_county_modifier = invisible_hand_population_modifier_6_county
+			}
+			else_if = {
+				limit = { var:population_stacks <= 7 }
+				add_county_modifier = invisible_hand_population_modifier_7_county
+			}
+			else_if = {
+				limit = { var:population_stacks <= 8 }
+				add_county_modifier = invisible_hand_population_modifier_8_county
+			}
+			else_if = {
+				limit = { var:population_stacks <= 9 }
+				add_county_modifier = invisible_hand_population_modifier_9_county
+			}
+			else_if = {
+				limit = { var:population_stacks <= 10 }
+				add_county_modifier = invisible_hand_population_modifier_10_county
+			}
+		}
+		else_if = {
+			limit = { var:population_stacks <= 20 }
+			if = {
+				limit = { var:population_stacks <= 11 }
+				add_county_modifier = invisible_hand_population_modifier_11_county
+			}
+			else_if = {
+				limit = { var:population_stacks <= 12 }
+				add_county_modifier = invisible_hand_population_modifier_12_county
+			}
+			else_if = {
+				limit = { var:population_stacks <= 13 }
+				add_county_modifier = invisible_hand_population_modifier_13_county
+			}
+			else_if = {
+				limit = { var:population_stacks <= 14 }
+				add_county_modifier = invisible_hand_population_modifier_14_county
+			}
+			else_if = {
+				limit = { var:population_stacks <= 15 }
+				add_county_modifier = invisible_hand_population_modifier_15_county
+			}
+			else_if = {
+				limit = { var:population_stacks <= 16 }
+				add_county_modifier = invisible_hand_population_modifier_16_county
+			}
+			else_if = {
+				limit = { var:population_stacks <= 17 }
+				add_county_modifier = invisible_hand_population_modifier_17_county
+			}
+			else_if = {
+				limit = { var:population_stacks <= 18 }
+				add_county_modifier = invisible_hand_population_modifier_18_county
+			}
+			else_if = {
+				limit = { var:population_stacks <= 19 }
+				add_county_modifier = invisible_hand_population_modifier_19_county
+			}
+			else_if = {
+				limit = { var:population_stacks <= 20 }
+				add_county_modifier = invisible_hand_population_modifier_20_county
+			}
+		}
+		else_if = {
+			limit = { var:population_stacks <= 30 }
+			if = {
+				limit = { var:population_stacks <= 21 }
+				add_county_modifier = invisible_hand_population_modifier_21_county
+			}
+			else_if = {
+				limit = { var:population_stacks <= 22 }
+				add_county_modifier = invisible_hand_population_modifier_22_county
+			}
+			else_if = {
+				limit = { var:population_stacks <= 23 }
+				add_county_modifier = invisible_hand_population_modifier_23_county
+			}
+			else_if = {
+				limit = { var:population_stacks <= 24 }
+				add_county_modifier = invisible_hand_population_modifier_24_county
+			}
+			else_if = {
+				limit = { var:population_stacks <= 25 }
+				add_county_modifier = invisible_hand_population_modifier_25_county
+			}
+			else_if = {
+				limit = { var:population_stacks <= 26 }
+				add_county_modifier = invisible_hand_population_modifier_26_county
+			}
+			else_if = {
+				limit = { var:population_stacks <= 27 }
+				add_county_modifier = invisible_hand_population_modifier_27_county
+			}
+			else_if = {
+				limit = { var:population_stacks <= 28 }
+				add_county_modifier = invisible_hand_population_modifier_28_county
+			}
+			else_if = {
+				limit = { var:population_stacks <= 29 }
+				add_county_modifier = invisible_hand_population_modifier_29_county
+			}
+			else_if = {
+				limit = { var:population_stacks <= 30 }
+				add_county_modifier = invisible_hand_population_modifier_30_county
+			}
+		}
+		else_if = {
+			limit = { var:population_stacks <= 40 }
+			if = {
+				limit = { var:population_stacks <= 31 }
+				add_county_modifier = invisible_hand_population_modifier_31_county
+			}
+			else_if = {
+				limit = { var:population_stacks <= 32 }
+				add_county_modifier = invisible_hand_population_modifier_32_county
+			}
+			else_if = {
+				limit = { var:population_stacks <= 33 }
+				add_county_modifier = invisible_hand_population_modifier_33_county
+			}
+			else_if = {
+				limit = { var:population_stacks <= 34 }
+				add_county_modifier = invisible_hand_population_modifier_34_county
+			}
+			else_if = {
+				limit = { var:population_stacks <= 35 }
+				add_county_modifier = invisible_hand_population_modifier_35_county
+			}
+			else_if = {
+				limit = { var:population_stacks <= 36 }
+				add_county_modifier = invisible_hand_population_modifier_36_county
+			}
+			else_if = {
+				limit = { var:population_stacks <= 37 }
+				add_county_modifier = invisible_hand_population_modifier_37_county
+			}
+			else_if = {
+				limit = { var:population_stacks <= 38 }
+				add_county_modifier = invisible_hand_population_modifier_38_county
+			}
+			else_if = {
+				limit = { var:population_stacks <= 39 }
+				add_county_modifier = invisible_hand_population_modifier_39_county
+			}
+			else_if = {
+				limit = { var:population_stacks <= 40 }
+				add_county_modifier = invisible_hand_population_modifier_40_county
+			}
+		}
+		else_if = {
+			limit = { var:population_stacks <= 50 }
+			if = {
+				limit = { var:population_stacks <= 41 }
+				add_county_modifier = invisible_hand_population_modifier_41_county
+			}
+			else_if = {
+				limit = { var:population_stacks <= 42 }
+				add_county_modifier = invisible_hand_population_modifier_42_county
+			}
+			else_if = {
+				limit = { var:population_stacks <= 43 }
+				add_county_modifier = invisible_hand_population_modifier_43_county
+			}
+			else_if = {
+				limit = { var:population_stacks <= 44 }
+				add_county_modifier = invisible_hand_population_modifier_44_county
+			}
+			else_if = {
+				limit = { var:population_stacks <= 45 }
+				add_county_modifier = invisible_hand_population_modifier_45_county
+			}
+			else_if = {
+				limit = { var:population_stacks <= 46 }
+				add_county_modifier = invisible_hand_population_modifier_46_county
+			}
+			else_if = {
+				limit = { var:population_stacks <= 47 }
+				add_county_modifier = invisible_hand_population_modifier_47_county
+			}
+			else_if = {
+				limit = { var:population_stacks <= 48 }
+				add_county_modifier = invisible_hand_population_modifier_48_county
+			}
+			else_if = {
+				limit = { var:population_stacks <= 49 }
+				add_county_modifier = invisible_hand_population_modifier_49_county
+			}
+			else_if = {
+				limit = { var:population_stacks <= 50 }
+				add_county_modifier = invisible_hand_population_modifier_50_county
+			}
+		}
+	}
+	else = {
+		add_county_modifier = invisible_hand_population_modifier_50_county
+	}
+}
+
+invisible_hand_calculate_obligations_county_effect = {
+	every_county_province = {
+		set_variable = {
+			name = obligations_average
+			value = 0
+		}
+		change_variable = {
+			name = obligations_average
+			add = { 
+				value = var:tax_level
+				add = var:levy_level
+				divide = 2
+			}
+		}
+		set_variable = {
+			name = province_weight
+			value = 0
+		}
+		change_variable = {
+			name = province_weight
+			add = { 
+				value = var:province_population
+				divide = county.invisible_hand_county_population
+			}
+		}
+		set_variable = {
+			name = opinion_impact
+			value = 0
+		}
+		if = {
+			limit = { NOT = { var:obligations_average = 3 } }
+			if = {
+				limit = { NOT = { var:tax_level = 3 } }
+				if = {
+					limit = { var:tax_level = 1 }
+					change_variable = {
+						name = opinion_impact
+						add = 25
+					}
+				}
+				else_if = {
+					limit = { var:tax_level = 2 }
+					change_variable = {
+						name = opinion_impact
+						add = 12.5
+					}
+				}
+				else_if = {
+					limit = { var:tax_level = 4 }
+					change_variable = {
+						name = opinion_impact
+						add = -12.5
+					}
+				}
+				else_if = {
+					limit = { var:tax_level = 5 }
+					change_variable = {
+						name = opinion_impact
+						add = -25
+					}
+				}
+			}
+			if = {
+				limit = { NOT = { var:levy_level = 3 } }
+				if = {
+					limit = { var:levy_level = 1 }
+					change_variable = {
+						name = opinion_impact
+						add = 25
+					}
+				}
+				else_if = {
+					limit = { var:levy_level = 2 }
+					change_variable = {
+						name = opinion_impact
+						add = 12.5
+					}
+				}
+				else_if = {
+					limit = { var:levy_level = 4 }
+					change_variable = {
+						name = opinion_impact
+						add = -12.5
+					}
+				}
+				else_if = {
+					limit = { var:levy_level = 5 }
+					change_variable = {
+						name = opinion_impact
+						add = -25
+					}
+				}
+			}
+			change_variable = {
+				name = opinion_impact
+				multiply = var:province_weight
+			}
+		}
+	}
+	hidden_effect = { invisible_hand_remove_county_obligations_modifiers = yes }
+	if = {
+		limit = { NOT = { this.invisible_hand_county_opinion_loss = 0 } }
+		if = {
+			limit = { this.invisible_hand_county_opinion_loss < 0 }
+			if = {
+				limit = { this.invisible_hand_county_opinion_loss >= -10 }
+				if = {
+					limit = { this.invisible_hand_county_opinion_loss >= -1 }
+					add_county_modifier = invisible_hand_obligations_county_effect_neg_1
+				}
+				else_if = {
+					limit = { this.invisible_hand_county_opinion_loss >= -2 }
+					add_county_modifier = invisible_hand_obligations_county_effect_neg_2
+				}
+				else_if = {
+					limit = { this.invisible_hand_county_opinion_loss >= -3 }
+					add_county_modifier = invisible_hand_obligations_county_effect_neg_3
+				}
+				else_if = {
+					limit = { this.invisible_hand_county_opinion_loss >= -4 }
+					add_county_modifier = invisible_hand_obligations_county_effect_neg_4
+				}
+				else_if = {
+					limit = { this.invisible_hand_county_opinion_loss >= -5 }
+					add_county_modifier = invisible_hand_obligations_county_effect_neg_5
+				}
+				else_if = {
+					limit = { this.invisible_hand_county_opinion_loss >= -6 }
+					add_county_modifier = invisible_hand_obligations_county_effect_neg_6
+				}
+				else_if = {
+					limit = { this.invisible_hand_county_opinion_loss >= -7 }
+					add_county_modifier = invisible_hand_obligations_county_effect_neg_7
+				}
+				else_if = {
+					limit = { this.invisible_hand_county_opinion_loss >= -8 }
+					add_county_modifier = invisible_hand_obligations_county_effect_neg_8
+				}
+				else_if = {
+					limit = { this.invisible_hand_county_opinion_loss >= -9 }
+					add_county_modifier = invisible_hand_obligations_county_effect_neg_9
+				}
+				else_if = {
+					limit = { this.invisible_hand_county_opinion_loss >= -10 }
+					add_county_modifier = invisible_hand_obligations_county_effect_neg_10
+				}
+			}
+			else_if = {
+				limit = { this.invisible_hand_county_opinion_loss >= -20 }
+				if = {
+					limit = { this.invisible_hand_county_opinion_loss >= -11 }
+					add_county_modifier = invisible_hand_obligations_county_effect_neg_11
+				}
+				else_if = {
+					limit = { this.invisible_hand_county_opinion_loss >= -12 }
+					add_county_modifier = invisible_hand_obligations_county_effect_neg_12
+				}
+				else_if = {
+					limit = { this.invisible_hand_county_opinion_loss >= -13 }
+					add_county_modifier = invisible_hand_obligations_county_effect_neg_13
+				}
+				else_if = {
+					limit = { this.invisible_hand_county_opinion_loss >= -14 }
+					add_county_modifier = invisible_hand_obligations_county_effect_neg_14
+				}
+				else_if = {
+					limit = { this.invisible_hand_county_opinion_loss >= -15 }
+					add_county_modifier = invisible_hand_obligations_county_effect_neg_15
+				}
+				else_if = {
+					limit = { this.invisible_hand_county_opinion_loss >= -16 }
+					add_county_modifier = invisible_hand_obligations_county_effect_neg_16
+				}
+				else_if = {
+					limit = { this.invisible_hand_county_opinion_loss >= -17 }
+					add_county_modifier = invisible_hand_obligations_county_effect_neg_17
+				}
+				else_if = {
+					limit = { this.invisible_hand_county_opinion_loss >= -18 }
+					add_county_modifier = invisible_hand_obligations_county_effect_neg_18
+				}
+				else_if = {
+					limit = { this.invisible_hand_county_opinion_loss >= -19 }
+					add_county_modifier = invisible_hand_obligations_county_effect_neg_19
+				}
+				else_if = {
+					limit = { this.invisible_hand_county_opinion_loss >= -20 }
+					add_county_modifier = invisible_hand_obligations_county_effect_neg_20
+				}
+			}
+			else_if = {
+				limit = { this.invisible_hand_county_opinion_loss >= -30 }
+				if = {
+					limit = { this.invisible_hand_county_opinion_loss >= -21 }
+					add_county_modifier = invisible_hand_obligations_county_effect_neg_21
+				}
+				else_if = {
+					limit = { this.invisible_hand_county_opinion_loss >= -22 }
+					add_county_modifier = invisible_hand_obligations_county_effect_neg_22
+				}
+				else_if = {
+					limit = { this.invisible_hand_county_opinion_loss >= -23 }
+					add_county_modifier = invisible_hand_obligations_county_effect_neg_23
+				}
+				else_if = {
+					limit = { this.invisible_hand_county_opinion_loss >= -24 }
+					add_county_modifier = invisible_hand_obligations_county_effect_neg_24
+				}
+				else_if = {
+					limit = { this.invisible_hand_county_opinion_loss >= -25 }
+					add_county_modifier = invisible_hand_obligations_county_effect_neg_25
+				}
+				else_if = {
+					limit = { this.invisible_hand_county_opinion_loss >= -26 }
+					add_county_modifier = invisible_hand_obligations_county_effect_neg_26
+				}
+				else_if = {
+					limit = { this.invisible_hand_county_opinion_loss >= -27 }
+					add_county_modifier = invisible_hand_obligations_county_effect_neg_27
+				}
+				else_if = {
+					limit = { this.invisible_hand_county_opinion_loss >= -28 }
+					add_county_modifier = invisible_hand_obligations_county_effect_neg_28
+				}
+				else_if = {
+					limit = { this.invisible_hand_county_opinion_loss >= -29 }
+					add_county_modifier = invisible_hand_obligations_county_effect_neg_29
+				}
+				else_if = {
+					limit = { this.invisible_hand_county_opinion_loss >= -30 }
+					add_county_modifier = invisible_hand_obligations_county_effect_neg_30
+				}
+			}
+			else_if = {
+				limit = { this.invisible_hand_county_opinion_loss >= -40 }
+				if = {
+					limit = { this.invisible_hand_county_opinion_loss >= -31 }
+					add_county_modifier = invisible_hand_obligations_county_effect_neg_31
+				}
+				else_if = {
+					limit = { this.invisible_hand_county_opinion_loss >= -32 }
+					add_county_modifier = invisible_hand_obligations_county_effect_neg_32
+				}
+				else_if = {
+					limit = { this.invisible_hand_county_opinion_loss >= -33 }
+					add_county_modifier = invisible_hand_obligations_county_effect_neg_33
+				}
+				else_if = {
+					limit = { this.invisible_hand_county_opinion_loss >= -34 }
+					add_county_modifier = invisible_hand_obligations_county_effect_neg_34
+				}
+				else_if = {
+					limit = { this.invisible_hand_county_opinion_loss >= -35 }
+					add_county_modifier = invisible_hand_obligations_county_effect_neg_35
+				}
+				else_if = {
+					limit = { this.invisible_hand_county_opinion_loss >= -36 }
+					add_county_modifier = invisible_hand_obligations_county_effect_neg_36
+				}
+				else_if = {
+					limit = { this.invisible_hand_county_opinion_loss >= -37 }
+					add_county_modifier = invisible_hand_obligations_county_effect_neg_37
+				}
+				else_if = {
+					limit = { this.invisible_hand_county_opinion_loss >= -38 }
+					add_county_modifier = invisible_hand_obligations_county_effect_neg_38
+				}
+				else_if = {
+					limit = { this.invisible_hand_county_opinion_loss >= -39 }
+					add_county_modifier = invisible_hand_obligations_county_effect_neg_39
+				}
+				else_if = {
+					limit = { this.invisible_hand_county_opinion_loss >= -40 }
+					add_county_modifier = invisible_hand_obligations_county_effect_neg_40
+				}
+			}
+			else = {
+				if = {
+					limit = { this.invisible_hand_county_opinion_loss >= -41 }
+					add_county_modifier = invisible_hand_obligations_county_effect_neg_41
+				}
+				else_if = {
+					limit = { this.invisible_hand_county_opinion_loss >= -42 }
+					add_county_modifier = invisible_hand_obligations_county_effect_neg_42
+				}
+				else_if = {
+					limit = { this.invisible_hand_county_opinion_loss >= -43 }
+					add_county_modifier = invisible_hand_obligations_county_effect_neg_43
+				}
+				else_if = {
+					limit = { this.invisible_hand_county_opinion_loss >= -44 }
+					add_county_modifier = invisible_hand_obligations_county_effect_neg_44
+				}
+				else_if = {
+					limit = { this.invisible_hand_county_opinion_loss >= -45 }
+					add_county_modifier = invisible_hand_obligations_county_effect_neg_45
+				}
+				else_if = {
+					limit = { this.invisible_hand_county_opinion_loss >= -46 }
+					add_county_modifier = invisible_hand_obligations_county_effect_neg_46
+				}
+				else_if = {
+					limit = { this.invisible_hand_county_opinion_loss >= -47 }
+					add_county_modifier = invisible_hand_obligations_county_effect_neg_47
+				}
+				else_if = {
+					limit = { this.invisible_hand_county_opinion_loss >= -48 }
+					add_county_modifier = invisible_hand_obligations_county_effect_neg_48
+				}
+				else_if = {
+					limit = { this.invisible_hand_county_opinion_loss >= -49 }
+					add_county_modifier = invisible_hand_obligations_county_effect_neg_49
+				}
+				else = { add_county_modifier = invisible_hand_obligations_county_effect_neg_50 }
+			}
+		}
+		else_if = {
+			limit = { this.invisible_hand_county_opinion_loss > 0 }
+			if = {
+				limit = { this.invisible_hand_county_opinion_loss <= 10 }
+				if = {
+					limit = { this.invisible_hand_county_opinion_loss <= 1 }
+					add_county_modifier = invisible_hand_obligations_county_effect_pos_1
+				}
+				else_if = {
+					limit = { this.invisible_hand_county_opinion_loss <= 2 }
+					add_county_modifier = invisible_hand_obligations_county_effect_pos_2
+				}
+				else_if = {
+					limit = { this.invisible_hand_county_opinion_loss <= 3 }
+					add_county_modifier = invisible_hand_obligations_county_effect_pos_3
+				}
+				else_if = {
+					limit = { this.invisible_hand_county_opinion_loss <= 4 }
+					add_county_modifier = invisible_hand_obligations_county_effect_pos_4
+				}
+				else_if = {
+					limit = { this.invisible_hand_county_opinion_loss <= 5 }
+					add_county_modifier = invisible_hand_obligations_county_effect_pos_5
+				}
+				else_if = {
+					limit = { this.invisible_hand_county_opinion_loss <= 6 }
+					add_county_modifier = invisible_hand_obligations_county_effect_pos_6
+				}
+				else_if = {
+					limit = { this.invisible_hand_county_opinion_loss <= 7 }
+					add_county_modifier = invisible_hand_obligations_county_effect_pos_7
+				}
+				else_if = {
+					limit = { this.invisible_hand_county_opinion_loss <= 8 }
+					add_county_modifier = invisible_hand_obligations_county_effect_pos_8
+				}
+				else_if = {
+					limit = { this.invisible_hand_county_opinion_loss <= 9 }
+					add_county_modifier = invisible_hand_obligations_county_effect_pos_9
+				}
+				else_if = {
+					limit = { this.invisible_hand_county_opinion_loss <= 10 }
+					add_county_modifier = invisible_hand_obligations_county_effect_pos_10
+				}
+			}
+			else_if = {
+				limit = { this.invisible_hand_county_opinion_loss <= 20 }
+				if = {
+					limit = { this.invisible_hand_county_opinion_loss <= 11 }
+					add_county_modifier = invisible_hand_obligations_county_effect_pos_11
+				}
+				else_if = {
+					limit = { this.invisible_hand_county_opinion_loss <= 12 }
+					add_county_modifier = invisible_hand_obligations_county_effect_pos_12
+				}
+				else_if = {
+					limit = { this.invisible_hand_county_opinion_loss <= 13 }
+					add_county_modifier = invisible_hand_obligations_county_effect_pos_13
+				}
+				else_if = {
+					limit = { this.invisible_hand_county_opinion_loss <= 14 }
+					add_county_modifier = invisible_hand_obligations_county_effect_pos_14
+				}
+				else_if = {
+					limit = { this.invisible_hand_county_opinion_loss <= 15 }
+					add_county_modifier = invisible_hand_obligations_county_effect_pos_15
+				}
+				else_if = {
+					limit = { this.invisible_hand_county_opinion_loss <= 16 }
+					add_county_modifier = invisible_hand_obligations_county_effect_pos_16
+				}
+				else_if = {
+					limit = { this.invisible_hand_county_opinion_loss <= 17 }
+					add_county_modifier = invisible_hand_obligations_county_effect_pos_17
+				}
+				else_if = {
+					limit = { this.invisible_hand_county_opinion_loss <= 18 }
+					add_county_modifier = invisible_hand_obligations_county_effect_pos_18
+				}
+				else_if = {
+					limit = { this.invisible_hand_county_opinion_loss <= 19 }
+					add_county_modifier = invisible_hand_obligations_county_effect_pos_19
+				}
+				else_if = {
+					limit = { this.invisible_hand_county_opinion_loss <= 20 }
+					add_county_modifier = invisible_hand_obligations_county_effect_pos_20
+				}
+			}
+			else_if = {
+				limit = { this.invisible_hand_county_opinion_loss <= 30 }
+				if = {
+					limit = { this.invisible_hand_county_opinion_loss <= 21 }
+					add_county_modifier = invisible_hand_obligations_county_effect_pos_21
+				}
+				else_if = {
+					limit = { this.invisible_hand_county_opinion_loss <= 22 }
+					add_county_modifier = invisible_hand_obligations_county_effect_pos_22
+				}
+				else_if = {
+					limit = { this.invisible_hand_county_opinion_loss <= 23 }
+					add_county_modifier = invisible_hand_obligations_county_effect_pos_23
+				}
+				else_if = {
+					limit = { this.invisible_hand_county_opinion_loss <= 24 }
+					add_county_modifier = invisible_hand_obligations_county_effect_pos_24
+				}
+				else_if = {
+					limit = { this.invisible_hand_county_opinion_loss <= 25 }
+					add_county_modifier = invisible_hand_obligations_county_effect_pos_25
+				}
+				else_if = {
+					limit = { this.invisible_hand_county_opinion_loss <= 26 }
+					add_county_modifier = invisible_hand_obligations_county_effect_pos_26
+				}
+				else_if = {
+					limit = { this.invisible_hand_county_opinion_loss <= 27 }
+					add_county_modifier = invisible_hand_obligations_county_effect_pos_27
+				}
+				else_if = {
+					limit = { this.invisible_hand_county_opinion_loss <= 28 }
+					add_county_modifier = invisible_hand_obligations_county_effect_pos_28
+				}
+				else_if = {
+					limit = { this.invisible_hand_county_opinion_loss <= 29 }
+					add_county_modifier = invisible_hand_obligations_county_effect_pos_29
+				}
+				else_if = {
+					limit = { this.invisible_hand_county_opinion_loss <= 30 }
+					add_county_modifier = invisible_hand_obligations_county_effect_pos_30
+				}
+			}
+			else_if = {
+				limit = { this.invisible_hand_county_opinion_loss <= 40 }
+				if = {
+					limit = { this.invisible_hand_county_opinion_loss <= 31 }
+					add_county_modifier = invisible_hand_obligations_county_effect_pos_31
+				}
+				else_if = {
+					limit = { this.invisible_hand_county_opinion_loss <= 32 }
+					add_county_modifier = invisible_hand_obligations_county_effect_pos_32
+				}
+				else_if = {
+					limit = { this.invisible_hand_county_opinion_loss <= 33 }
+					add_county_modifier = invisible_hand_obligations_county_effect_pos_33
+				}
+				else_if = {
+					limit = { this.invisible_hand_county_opinion_loss <= 34 }
+					add_county_modifier = invisible_hand_obligations_county_effect_pos_34
+				}
+				else_if = {
+					limit = { this.invisible_hand_county_opinion_loss <= 35 }
+					add_county_modifier = invisible_hand_obligations_county_effect_pos_35
+				}
+				else_if = {
+					limit = { this.invisible_hand_county_opinion_loss <= 36 }
+					add_county_modifier = invisible_hand_obligations_county_effect_pos_36
+				}
+				else_if = {
+					limit = { this.invisible_hand_county_opinion_loss <= 37 }
+					add_county_modifier = invisible_hand_obligations_county_effect_pos_37
+				}
+				else_if = {
+					limit = { this.invisible_hand_county_opinion_loss <= 38 }
+					add_county_modifier = invisible_hand_obligations_county_effect_pos_38
+				}
+				else_if = {
+					limit = { this.invisible_hand_county_opinion_loss <= 39 }
+					add_county_modifier = invisible_hand_obligations_county_effect_pos_39
+				}
+				else_if = {
+					limit = { this.invisible_hand_county_opinion_loss <= 40 }
+					add_county_modifier = invisible_hand_obligations_county_effect_pos_40
+				}
+			}
+			else = {
+				if = {
+					limit = { this.invisible_hand_county_opinion_loss <= 41 }
+					add_county_modifier = invisible_hand_obligations_county_effect_pos_41
+				}
+				else_if = {
+					limit = { this.invisible_hand_county_opinion_loss <= 42 }
+					add_county_modifier = invisible_hand_obligations_county_effect_pos_42
+				}
+				else_if = {
+					limit = { this.invisible_hand_county_opinion_loss <= 43 }
+					add_county_modifier = invisible_hand_obligations_county_effect_pos_43
+				}
+				else_if = {
+					limit = { this.invisible_hand_county_opinion_loss <= 44 }
+					add_county_modifier = invisible_hand_obligations_county_effect_pos_44
+				}
+				else_if = {
+					limit = { this.invisible_hand_county_opinion_loss <= 45 }
+					add_county_modifier = invisible_hand_obligations_county_effect_pos_45
+				}
+				else_if = {
+					limit = { this.invisible_hand_county_opinion_loss <= 46 }
+					add_county_modifier = invisible_hand_obligations_county_effect_pos_46
+				}
+				else_if = {
+					limit = { this.invisible_hand_county_opinion_loss <= 47 }
+					add_county_modifier = invisible_hand_obligations_county_effect_pos_47
+				}
+				else_if = {
+					limit = { this.invisible_hand_county_opinion_loss <= 48 }
+					add_county_modifier = invisible_hand_obligations_county_effect_pos_48
+				}
+				else_if = {
+					limit = { this.invisible_hand_county_opinion_loss <= 49 }
+					add_county_modifier = invisible_hand_obligations_county_effect_pos_49
+				}
+				else = { add_county_modifier = invisible_hand_obligations_county_effect_pos_50 }
+			}
+		}
+	}
+}
+
+invisible_hand_remove_county_obligations_modifiers = {
+	remove_county_modifier = invisible_hand_obligations_county_effect_pos_1
+	remove_county_modifier = invisible_hand_obligations_county_effect_pos_2
+	remove_county_modifier = invisible_hand_obligations_county_effect_pos_3
+	remove_county_modifier = invisible_hand_obligations_county_effect_pos_4
+	remove_county_modifier = invisible_hand_obligations_county_effect_pos_5
+	remove_county_modifier = invisible_hand_obligations_county_effect_pos_6
+	remove_county_modifier = invisible_hand_obligations_county_effect_pos_7
+	remove_county_modifier = invisible_hand_obligations_county_effect_pos_8
+	remove_county_modifier = invisible_hand_obligations_county_effect_pos_9
+	remove_county_modifier = invisible_hand_obligations_county_effect_pos_10
+	remove_county_modifier = invisible_hand_obligations_county_effect_pos_11
+	remove_county_modifier = invisible_hand_obligations_county_effect_pos_12
+	remove_county_modifier = invisible_hand_obligations_county_effect_pos_13
+	remove_county_modifier = invisible_hand_obligations_county_effect_pos_14
+	remove_county_modifier = invisible_hand_obligations_county_effect_pos_15
+	remove_county_modifier = invisible_hand_obligations_county_effect_pos_16
+	remove_county_modifier = invisible_hand_obligations_county_effect_pos_17
+	remove_county_modifier = invisible_hand_obligations_county_effect_pos_18
+	remove_county_modifier = invisible_hand_obligations_county_effect_pos_19
+	remove_county_modifier = invisible_hand_obligations_county_effect_pos_20
+	remove_county_modifier = invisible_hand_obligations_county_effect_pos_21
+	remove_county_modifier = invisible_hand_obligations_county_effect_pos_22
+	remove_county_modifier = invisible_hand_obligations_county_effect_pos_23
+	remove_county_modifier = invisible_hand_obligations_county_effect_pos_24
+	remove_county_modifier = invisible_hand_obligations_county_effect_pos_25
+	remove_county_modifier = invisible_hand_obligations_county_effect_pos_26
+	remove_county_modifier = invisible_hand_obligations_county_effect_pos_27
+	remove_county_modifier = invisible_hand_obligations_county_effect_pos_28
+	remove_county_modifier = invisible_hand_obligations_county_effect_pos_29
+	remove_county_modifier = invisible_hand_obligations_county_effect_pos_30
+	remove_county_modifier = invisible_hand_obligations_county_effect_pos_31
+	remove_county_modifier = invisible_hand_obligations_county_effect_pos_32
+	remove_county_modifier = invisible_hand_obligations_county_effect_pos_33
+	remove_county_modifier = invisible_hand_obligations_county_effect_pos_34
+	remove_county_modifier = invisible_hand_obligations_county_effect_pos_35
+	remove_county_modifier = invisible_hand_obligations_county_effect_pos_36
+	remove_county_modifier = invisible_hand_obligations_county_effect_pos_37
+	remove_county_modifier = invisible_hand_obligations_county_effect_pos_38
+	remove_county_modifier = invisible_hand_obligations_county_effect_pos_39
+	remove_county_modifier = invisible_hand_obligations_county_effect_pos_40
+	remove_county_modifier = invisible_hand_obligations_county_effect_pos_41
+	remove_county_modifier = invisible_hand_obligations_county_effect_pos_42
+	remove_county_modifier = invisible_hand_obligations_county_effect_pos_43
+	remove_county_modifier = invisible_hand_obligations_county_effect_pos_44
+	remove_county_modifier = invisible_hand_obligations_county_effect_pos_45
+	remove_county_modifier = invisible_hand_obligations_county_effect_pos_46
+	remove_county_modifier = invisible_hand_obligations_county_effect_pos_47
+	remove_county_modifier = invisible_hand_obligations_county_effect_pos_48
+	remove_county_modifier = invisible_hand_obligations_county_effect_pos_49
+	remove_county_modifier = invisible_hand_obligations_county_effect_pos_50
+	remove_county_modifier = invisible_hand_obligations_county_effect_neg_1
+	remove_county_modifier = invisible_hand_obligations_county_effect_neg_2
+	remove_county_modifier = invisible_hand_obligations_county_effect_neg_3
+	remove_county_modifier = invisible_hand_obligations_county_effect_neg_4
+	remove_county_modifier = invisible_hand_obligations_county_effect_neg_5
+	remove_county_modifier = invisible_hand_obligations_county_effect_neg_6
+	remove_county_modifier = invisible_hand_obligations_county_effect_neg_7
+	remove_county_modifier = invisible_hand_obligations_county_effect_neg_8
+	remove_county_modifier = invisible_hand_obligations_county_effect_neg_9
+	remove_county_modifier = invisible_hand_obligations_county_effect_neg_10
+	remove_county_modifier = invisible_hand_obligations_county_effect_neg_11
+	remove_county_modifier = invisible_hand_obligations_county_effect_neg_12
+	remove_county_modifier = invisible_hand_obligations_county_effect_neg_13
+	remove_county_modifier = invisible_hand_obligations_county_effect_neg_14
+	remove_county_modifier = invisible_hand_obligations_county_effect_neg_15
+	remove_county_modifier = invisible_hand_obligations_county_effect_neg_16
+	remove_county_modifier = invisible_hand_obligations_county_effect_neg_17
+	remove_county_modifier = invisible_hand_obligations_county_effect_neg_18
+	remove_county_modifier = invisible_hand_obligations_county_effect_neg_19
+	remove_county_modifier = invisible_hand_obligations_county_effect_neg_20
+	remove_county_modifier = invisible_hand_obligations_county_effect_neg_21
+	remove_county_modifier = invisible_hand_obligations_county_effect_neg_22
+	remove_county_modifier = invisible_hand_obligations_county_effect_neg_23
+	remove_county_modifier = invisible_hand_obligations_county_effect_neg_24
+	remove_county_modifier = invisible_hand_obligations_county_effect_neg_25
+	remove_county_modifier = invisible_hand_obligations_county_effect_neg_26
+	remove_county_modifier = invisible_hand_obligations_county_effect_neg_27
+	remove_county_modifier = invisible_hand_obligations_county_effect_neg_28
+	remove_county_modifier = invisible_hand_obligations_county_effect_neg_29
+	remove_county_modifier = invisible_hand_obligations_county_effect_neg_30
+	remove_county_modifier = invisible_hand_obligations_county_effect_neg_31
+	remove_county_modifier = invisible_hand_obligations_county_effect_neg_32
+	remove_county_modifier = invisible_hand_obligations_county_effect_neg_33
+	remove_county_modifier = invisible_hand_obligations_county_effect_neg_34
+	remove_county_modifier = invisible_hand_obligations_county_effect_neg_35
+	remove_county_modifier = invisible_hand_obligations_county_effect_neg_36
+	remove_county_modifier = invisible_hand_obligations_county_effect_neg_37
+	remove_county_modifier = invisible_hand_obligations_county_effect_neg_38
+	remove_county_modifier = invisible_hand_obligations_county_effect_neg_39
+	remove_county_modifier = invisible_hand_obligations_county_effect_neg_40
+	remove_county_modifier = invisible_hand_obligations_county_effect_neg_41
+	remove_county_modifier = invisible_hand_obligations_county_effect_neg_42
+	remove_county_modifier = invisible_hand_obligations_county_effect_neg_43
+	remove_county_modifier = invisible_hand_obligations_county_effect_neg_44
+	remove_county_modifier = invisible_hand_obligations_county_effect_neg_45
+	remove_county_modifier = invisible_hand_obligations_county_effect_neg_46
+	remove_county_modifier = invisible_hand_obligations_county_effect_neg_47
+	remove_county_modifier = invisible_hand_obligations_county_effect_neg_48
+	remove_county_modifier = invisible_hand_obligations_county_effect_neg_49
+	remove_county_modifier = invisible_hand_obligations_county_effect_neg_50
+}
+
+invisible_hand_trickle_down_feudal_law_effect = {
+	every_vassal_or_below = {
+		limit = { has_government = feudal_government }
+		set_variable = {
+			name = trickle_down
+			days = 1
+		}
+		add_realm_law_skip_effects = $LAW$
+		remove_variable = trickle_down
+	}
+}

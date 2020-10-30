@@ -1,0 +1,51 @@
+﻿namespace = invisible_hand_gamestart
+
+# Setup
+invisible_hand_gamestart.01 = {
+	hidden = yes
+	type = empty
+	
+	immediate = {
+		every_county = {
+			invisible_hand_assign_county_climate_effect = yes
+			every_county_province = {
+				invisible_hand_assign_province_population_effect = yes
+				add_province_modifier = invisible_hand_tax_level_3
+				set_variable = {
+					name = tax_level
+					value = 3
+				}
+				add_province_modifier = invisible_hand_levy_level_3
+				set_variable = {
+					name = levy_level
+					value = 3
+				}
+				set_variable = {
+					name = obligations_average
+					value = 0
+				}
+				change_variable = {
+					name = obligations_average
+					add = { 
+						value = var:tax_level
+						add = var:levy_level
+						divide = 2
+					}
+				}
+			}
+			every_county_province = {
+				set_variable = {
+					name = province_weight
+					value = 0
+				}
+				change_variable = {
+					name = province_weight
+					add = { 
+						value = var:province_population
+						divide = county.invisible_hand_county_population
+					}
+				}
+			}
+		}
+	}
+}

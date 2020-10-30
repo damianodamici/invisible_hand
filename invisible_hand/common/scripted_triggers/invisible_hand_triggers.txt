@@ -1,0 +1,869 @@
+invisible_hand_tropical_climate_county = {
+	duchy = {
+		OR = {
+			# gurma
+			this = title:d_lower_gurma
+			this = title:d_upper_gurma
+			this = title:d_yatenga
+			# mali
+			this = title:d_manding
+			this = title:d_bambuk
+			this = title:d_futa_jalon
+			# jenne
+			this = title:d_jenne
+			this = title:d_bobo
+			# kaabu
+			this = title:d_kaabu
+			this = title:d_wuli
+			this = title:d_kasa
+			# guinea
+			this = title:d_sapi
+			this = title:d_kono
+			this = title:d_bassa
+			# toro
+			this = title:d_toro
+			this = title:d_loma
+			# kong
+			this = title:d_worodugu
+			this = title:d_kong
+			this = title:d_lobi
+			# adiukru
+			this = title:d_wenyon
+			this = title:d_kru
+			this = title:d_adiukru
+			# akan
+			this = title:d_brong
+			this = title:d_ashanti
+			this = title:d_eweland
+			# gur
+			this = title:d_dagomba
+			this = title:d_wagadugu
+			this = title:d_mamprusi
+			# borgu
+			this = title:d_borgu
+			this = title:d_savalu
+			# yorubaland
+			this = title:d_ibadan
+			this = title:d_oyo
+			this = title:d_ife
+			this = title:d_benin
+			# igbo-benue
+			this = title:d_igboland
+			this = title:d_nupe
+			this = title:d_kwararafa
+			# burma
+			this = title:d_pagan
+			this = title:d_tagaung
+			this = title:d_sriksetra
+			this = title:d_arakan
+			this = title:d_ramannadesa
+			# bengal
+			this = title:d_daksina_kosala
+			this = title:d_tosali
+			this = title:d_kalinga
+			this = title:d_dandakaranya
+			this = title:d_tirabhukti
+			this = title:d_kasi
+			this = title:d_jharkand
+			this = title:d_magadha
+			this = title:d_kamarupanagara
+			this = title:d_para_lauhitya
+			this = title:d_sutiya
+			this = title:d_vanga
+			this = title:d_varendra
+			this = title:d_gauda
+			this = title:d_nadia
+			this = title:d_suhma
+			# rajastan
+			this = title:d_kuru
+			this = title:d_mathura
+			this = title:d_vodamayutja
+			this = title:d_lata
+			this = title:d_kanyakubja
+			this = title:d_saryupara
+			this = title:d_jejakabhukti
+			# deccan
+			this = title:d_konkana
+			this = title:d_nasikya
+			this = title:d_rattapadi
+			this = title:d_kalyani
+			this = title:d_gangavadi
+			this = title:d_nulambavadi
+			this = title:d_raichur_doab
+			this = title:d_chola_nadu
+			this = title:d_pandya_nadu
+			this = title:d_chera_nadu
+			this = title:d_tondai_nadu
+			this = title:d_vengi
+			this = title:d_udayagiri
+			this = title:d_dakhina_desa
+			this = title:d_ruhunu
+			this = title:d_sinhala
+		}
+	}
+}
+
+invisible_hand_arid_climate_county = {
+	duchy = {
+		OR = {
+			# nubia
+			this = title:d_shamir
+			this = title:d_nobatia
+			this = title:d_makuria
+			this = title:d_alwa
+			# blemmyia
+			this = title:d_naqis
+			this = title:d_bazin
+			this = title:d_baqlin
+			# abyssinia
+			this = title:d_aksum
+			this = title:d_dahlaks
+			# adal
+			this = title:d_danakil
+			this = title:d_zaila
+			this = title:d_sanaag
+			# ajuraan
+			this = title:d_hafun
+			this = title:d_mogadishu
+			# sahara
+			this = title:d_zammour
+			this = title:d_adrar
+			this = title:d_touat
+			this = title:d_taghaza
+			this = title:d_tadmekka
+			this = title:d_ghat
+			this = title:d_air
+			this = title:d_kawar
+			this = title:d_tibesti
+			this = title:d_fezzan
+			# north africa
+			this = title:d_tripolitania
+			this = title:d_syrte
+			this = title:d_cairo
+			this = title:d_al-said
+			this = title:d_eastern_desert
+			this = title:d_al-wahat
+			# arabia
+			this = title:d_jawf
+			this = title:d_shammar
+			this = title:d_oman
+			this = title:d_bahrain
+			this = title:d_yamama
+			this = title:d_asir
+			this = title:d_medina
+			this = title:d_najd
+			this = title:d_al-hasa
+			# yemen
+			this = title:d_jawf-al-yamani
+			this = title:d_hadramawt
+			this = title:d_mahra
+			# sinai
+			this = title:d_sinai
+			# persia
+			this = title:d_isfahan
+			this = title:d_yazd
+			this = title:d_kirman
+			this = title:d_rayy
+			# khorasan
+			this = title:d_ghur 
+			this = title:d_herat
+			# makran
+			this = title:d_sistan
+			# transoxiana
+			this = title:d_soghd
+			this = title:d_osrushana
+			this = title:d_ferghana
+			this = title:d_khorezm
+			this = title:d_uzboy
+			this = title:d_khuttal
+			this = title:d_badakhshan
+			# tarim steppe
+			this = title:d_kashgar
+			this = title:d_khotan
+			this = title:d_karashar
+			this = title:d_charkliq
+			# cumania
+			this = title:d_atyrau
+			this = title:d_turgay
+			this = title:d_saryarka
+			this = title:d_karkaraly
+			this = title:d_kentarlau
+			this = title:d_karabas
+			this = title:d_betpa
+			# turkestan
+			this = title:d_jemba
+			this = title:d_transcaspiana
+			this = title:d_barsuki
+			this = title:d_aral_il
+			this = title:d_syr_darya
+			this = title:d_chah
+			this = title:d_muyunkum
+			this = title:d_zhetysu
+			this = title:d_tarbagatai
+			this = title:d_alakol
+			this = title:d_ili-alatau
+			# dzungaria
+			this = title:d_altay
+			this = title:d_gurbantunggut
+			this = title:d_naiman_gobi
+			this = title:d_kara_khoja
+			# rajastan
+			this = title:d_sauvira
+			this = title:d_stravani
+			this = title:d_maru
+			this = title:d_jangladesh
+			this = title:d_stravani
+			this = title:d_bhakkar
+			this = title:d_multan
+		}
+	}
+}
+
+invisible_hand_semi_arid_climate_county = {
+	duchy = {
+		OR = {
+			# takrur
+			this = title:d_takrur
+			this = title:d_silla
+			this = title:d_djolof
+			# ghana
+			this = title:d_wagadu
+			this = title:d_mema
+			this = title:d_tagant
+			this = title:d_diafunu
+			this = title:d_kaniaga
+			# songhay
+			this = title:d_kawkaw
+			this = title:d_timbuktu
+			this = title:d_dendi
+			# hausaland
+			this = title:d_kano
+			this = title:d_katsina
+			this = title:d_kebbi
+			this = title:d_gobir
+			# kanem
+			this = title:d_kanem
+			this = title:d_bornu
+			this = title:d_kagha
+			# sao
+			this = title:d_baguirmi
+			this = title:d_salamat
+			this = title:d_wandala
+			# darfur
+			this = title:d_darfur
+			this = title:d_west_darfur
+			this = title:d_wadai
+			this = title:d_kordofan
+			# nubia
+			this = title:d_sennar
+			# adal
+		  	this = title:d_dawaro
+		    this = title:d_adal
+		  	this = title:d_mora
+			# damot
+		  	this = title:d_damot
+		  	this = title:d_kaffa
+		  	this = title:d_sharka
+			# outer_ajuraan
+		  	this = title:d_shabelle
+		  	this = title:d_bali
+		  	this = title:d_samalo
+			# ajuraan
+			this = title:d_west_ajuraan
+			# abyssinia
+			this = title:d_lasta
+			this = title:d_gondar
+			this = title:d_gojjam
+			this = title:d_showa
+			# north africa
+			this = title:d_marrakesh
+			this = title:d_sous
+			this = title:d_tafilalt
+			this = title:d_tahert
+			this = title:d_zab
+			this = title:d_mzab
+			this = title:d_jerid
+			this = title:d_kairouan
+			this = title:d_cyrenaica
+			this = title:d_alexandria
+			this = title:d_delta
+			# arabia
+			this = title:d_mecca
+			this = title:d_amman
+			# yemen
+			this = title:d_taizz
+			this = title:d_sanaa
+			this = title:d_socotra
+			# jerusalem
+			this = title:d_oultrejourdain
+			# persia
+			this = title:d_fars
+			this = title:d_hormuz
+			this = title:d_hamadan
+			this = title:d_khuzestan
+			# syria
+			this = title:d_damascus
+			this = title:d_palmyra
+			this = title:d_aleppo
+			this = title:d_edessa
+			this = title:d_homs
+			# jazira
+			this = title:d_euphrates
+			this = title:d_diyarmudar
+			this = title:d_diyarrabia
+			this = title:d_diyarbakr
+			# mesopotamia
+			this = title:d_kermanshah
+			this = title:d_basra
+			this = title:d_kurdistan
+			this = title:d_kufa
+			# iberia
+			this = title:d_toledo
+			this = title:d_cordoba
+			this = title:d_murcia
+			this = title:d_badajoz
+			this = title:d_leon
+			this = title:d_castilla
+			this = title:d_navarra
+			this = title:d_aragon
+			# anatolia
+			this = title:d_anatolia
+			this = title:d_charsianon
+			this = title:d_cappadocia
+			this = title:d_sebasteia
+			this = title:d_thracesia
+			# armenia
+			this = title:d_mesopotamia
+			this = title:d_vaspurakan
+			this = title:d_greater_armenia
+			# georgia
+			this = title:d_georgia
+			# azerbaijan
+			this = title:d_shirvan
+			this = title:d_azerbaijan
+			# daylam
+			this = title:d_gurgan
+			# makran
+			this = title:d_jabal_kufs
+			this = title:d_makran
+			# khorasan
+			this = title:d_merv
+			this = title:d_nishapur
+			this = title:d_balkh
+			this = title:d_nasa
+			this = title:d_kohestan
+			# siberia
+			this = title:d_salair
+			this = title:d_kulyndy_steppe
+			# cumania
+			this = title:d_semey
+			this = title:d_mugodzhar_hills
+			this = title:d_kurgan
+			this = title:d_kush-murun
+			this = title:d_kazakh
+			# pontic steppe
+			this = title:d_levedia
+			this = title:d_don_valley
+			this = title:d_itil
+			this = title:d_pecheneg
+			this = title:d_ciscaucasia
+			this = title:d_alania
+			this = title:d_azov
+			this = title:d_khazaria
+			# volga bulgaria
+			this = title:d_aqtobe
+			this = title:d_volga_bulgaria
+			this = title:d_bashkiria
+			this = title:d_jalmat
+			# mongolia
+			this = title:d_gobi_altai
+			this = title:d_ubsunur_hollow
+			this = title:d_khovd
+			this = title:d_ovorkhangai
+			this = title:d_otuken
+			this = title:d_uda_valley
+			this = title:d_ogrash
+			this = title:d_selenga_valley
+			this = title:d_arkhangai
+			this = title:d_khovsgol
+			this = title:d_togina
+			this = title:d_tannu_ola
+			this = title:d_western_sayan
+			this = title:d_shoria
+			# xia
+			this = title:d_xia
+			this = title:d_wuluhai
+			this = title:d_zhenfan
+			this = title:d_liangzhou
+			this = title:d_shanzhou
+			this = title:d_qilin
+			this = title:d_ganzhou
+			this = title:d_yijinai
+			this = title:d_guiyi
+			this = title:d_aksay
+			# bengal
+			this = title:d_dahala
+			this = title:d_ratanpur
+			# rajastan
+			this = title:d_anartta
+			this = title:d_saurashtra
+			this = title:d_gurjara_mandala
+			this = title:d_haritanaka
+			this = title:d_lahore
+			this = title:d_gandhara
+			this = title:d_ajmer
+			this = title:d_akara_dasarna
+			this = title:d_medapata
+			this = title:d_anupa
+			this = title:d_dadhipadra
+			# deccan
+			this = title:d_vidharba
+			this = title:d_devagiri
+			this = title:d_warangal
+			this = title:d_racakonda
+		}
+	}
+}
+
+invisible_hand_subtropical_climate_county = {
+	duchy = {
+		OR = {
+			# north africa
+			this = title:d_fes
+			this = title:d_tlemcen
+			this = title:d_alger
+			this = title:d_tunis
+			this = title:d_gabes
+			this = title:d_rif
+			this = title:d_bejaia
+			this = title:d_kroumerie
+			this = title:d_canarias
+			# jerusalem
+			this = title:d_palestine
+			this = title:d_urdunn
+			# syria
+			this = title:d_lebanon
+			this = title:d_antioch
+			# mesopotamia
+			this = title:d_baghdad
+			this = title:d_samarra
+			this = title:d_wasit
+			# sicily
+			this = title:d_benevento
+			this = title:d_capua
+			this = title:d_apulia
+			this = title:d_salerno
+			this = title:d_calabria
+			this = title:d_sicily
+			# italy
+			this = title:d_genoa
+			this = title:d_toscana
+			this = title:d_pisa
+			this = title:d_ancona
+			this = title:d_spoleto
+			this = title:d_latium
+			this = title:d_corsica
+			this = title:d_sardinia
+			# iberia
+			this = title:d_barcelona
+			this = title:d_valencia
+			this = title:d_mallorca
+			this = title:d_beja
+			this = title:d_algarve
+			this = title:d_granada
+			this = title:d_sevilla
+			# france
+			this = title:d_languedoc
+			this = title:d_provence
+			# greece
+			this = title:d_thrace
+			this = title:d_strymon
+			this = title:d_thessalonika
+			this = title:d_thessaly
+			this = title:d_dyrrachion
+			this = title:d_cephalonia
+			this = title:d_epirus
+			this = title:d_athens
+			this = title:d_achaia
+			this = title:d_krete
+			this = title:d_cyprus
+			# balkans
+			this = title:d_croatia
+			this = title:d_dalmatia
+			this = title:d_usora
+			this = title:d_istria
+			this = title:d_ragusa
+			this = title:d_duklja
+			# anatolia
+			this = title:d_aegean_islands
+			this = title:d_ephese
+			this = title:d_opsikion
+			this = title:d_cilicia
+			this = title:d_cibyrrhaeot
+			this = title:d_optimatoi
+			this = title:d_bucellaria
+			this = title:d_paphlagonia
+			# pontic steppe
+			this = title:d_crimea
+		}
+	}
+}
+
+invisible_hand_subtropical_humid_climate_county = {
+	duchy = {
+		OR = {
+			# italy
+			this = title:d_verona
+			this = title:d_lombardia
+			this = title:d_emilia
+			this = title:d_romagna
+			this = title:d_venice
+			this = title:d_piedmonte
+			this = title:d_friuli
+			# anatolia
+			this = title:d_armeniac
+			this = title:d_chaldia
+			# georgia
+			this = title:d_tao-klarjeti
+			this = title:d_abkhazia
+			# daylam
+			this = title:d_daylam
+			this = title:d_tabaristan
+		}
+	}
+}
+
+invisible_hand_oceanic_climate_county = {
+	duchy = {
+		OR = {
+			# england
+			this = title:d_bedford
+			this = title:d_northumberland
+			this = title:d_lancaster
+			this = title:d_york
+			this = title:d_norfolk
+			this = title:d_hereford
+			this = title:d_gloucester
+			this = title:d_canterbury
+			this = title:d_somerset
+			# wales
+			this = title:d_gwynedd
+			this = title:d_powys
+			this = title:d_deheubarth
+			this = title:d_cornwall
+			# scotland
+			this = title:d_albany
+			this = title:d_the_isles
+			this = title:d_galloway
+			this = title:d_western_isles
+			this = title:d_lothian
+			this = title:d_moray
+			# ireland
+			this = title:d_meath
+			this = title:d_ulster
+			this = title:d_connacht
+			this = title:d_leinster
+			this = title:d_munster
+			# denmark
+			this = title:d_sjaelland
+			this = title:d_jylland
+			this = title:d_slesvig
+			# norway
+			this = title:d_northern_isles
+			this = title:d_agder
+			this = title:d_trandalog
+			# iberia
+			this = title:d_cantabria
+			this = title:d_viscaya
+			this = title:d_asturias
+			this = title:d_galicia
+			this = title:d_coimbra
+			this = title:d_porto
+			# france
+			this = title:d_normandy
+			this = title:d_champagne
+			this = title:d_berry
+			this = title:d_burgundy
+			this = title:d_valois
+			this = title:d_toulouse
+			this = title:d_aquitaine
+			this = title:d_bar
+			this = title:d_anjou
+			this = title:d_orleans
+			this = title:d_armagnac
+			this = title:d_gascogne
+			this = title:d_poitou
+			this = title:d_auvergne
+			this = title:d_bourbon
+			this = title:d_brittany
+			this = title:d_dauphine
+			# benelux
+			this = title:d_flanders
+			this = title:d_holland
+			this = title:d_gelre
+			this = title:d_utrecht
+			this = title:d_frisia
+			this = title:d_luxembourg
+			this = title:d_brabant
+			# lotharingia
+			this = title:d_julich
+			this = title:d_upper_lorraine
+			this = title:d_lower_lorraine
+			# saxony
+			this = title:d_westfalen
+			this = title:d_holstein
+			this = title:d_angria
+		}
+	}
+}
+
+invisible_hand_continental_climate_county = {
+	duchy = {
+		OR = {
+			# france
+			this = title:d_upper_burgundy
+			this = title:d_alsace
+			# bavaria
+			this = title:d_bavaria
+			this = title:d_nordgau
+			this = title:d_salzburg
+			this = title:d_augsburg
+			this = title:d_osterreich
+			# bohemia
+			this = title:d_bohemia
+			this = title:d_moravia
+			# east francia
+			this = title:d_swabia
+			this = title:d_west_franconia
+			this = title:d_east_franconia
+			this = title:d_hesse
+			# saxony
+			this = title:d_ostfalen
+			this = title:d_anhalt
+			this = title:d_thuringia
+			this = title:d_meissen
+			this = title:d_lausitz
+			# pomerania
+			this = title:d_pommerania
+			this = title:d_nordmark
+			this = title:d_pomerelia
+			this = title:d_ostmark
+			# sweden
+			this = title:d_ostergotland
+			this = title:d_gotland
+			this = title:d_vastergotland
+			this = title:d_svealand
+			this = title:d_smaland
+			this = title:d_bergslagen
+			this = title:d_skane
+			# norway
+			this = title:d_viken
+			# finland
+			this = title:d_finland
+			# balkans
+			this = title:d_vidin
+			this = title:d_philippopolis
+			this = title:d_bulgaria
+			this = title:d_turnovo
+			this = title:d_dobrudja
+			this = title:d_rashka
+			this = title:d_macva
+			this = title:d_slavonia
+			this = title:d_bosna
+			# poland-lithuania + baltic
+			this = title:d_mazovia
+			this = title:d_upper_silesia
+			this = title:d_lower_silesia
+			this = title:d_lesser_poland
+			this = title:d_wielkopolska
+			this = title:d_kuyavia
+			this = title:d_livonia
+			this = title:d_prussia
+			this = title:d_masuria
+			this = title:d_grodno
+			this = title:d_pinsk
+			this = title:d_minsk
+			this = title:d_polotsk
+			this = title:d_smolensk
+			this = title:d_lithuanians
+			this = title:d_samogitia
+			this = title:d_latgalians
+			this = title:d_courland
+			this = title:d_esthonia
+			# galicia
+			this = title:d_volhynia
+			this = title:d_halych
+			this = title:d_cherven_cities
+			# hungary
+			this = title:d_visegrad
+			this = title:d_somogy
+			this = title:d_nyitra
+			this = title:d_ungvar
+			this = title:d_transcarpathia
+			this = title:d_transylvania
+			this = title:d_bihar
+			this = title:d_temes
+			this = title:d_bacs
+			this = title:d_gyor
+			this = title:d_syrmia
+			# wallachia
+			this = title:d_oltenia
+			this = title:d_muntenia
+			this = title:d_transylvanian_alps
+			this = title:d_moldova
+			this = title:d_bugeac
+			this = title:d_bukovina
+			# russia
+			this = title:d_novgorod
+			this = title:d_vepsia
+			this = title:d_luki
+			this = title:d_kiev
+			this = title:d_karachev
+			this = title:d_novosil
+			this = title:d_opolye
+			this = title:d_ryazan
+			this = title:d_nizhny_novgorod
+			this = title:d_turov
+			this = title:d_chernigov
+			this = title:d_pereyaslavl
+			# volga bulgaria
+			this = title:d_martyuba
+			this = title:d_kazan
+			this = title:d_perm
+			this = title:d_uraltau
+			this = title:d_vogulia
+			this = title:d_chuvashia
+			this = title:d_voronezh
+			this = title:d_mordvinia
+			this = title:d_khopyor
+			# siberia
+			this = title:d_ostyaki
+			this = title:d_ishim
+			this = title:d_tara
+			# pontic steppe
+			this = title:d_yedisan
+		}
+	}
+}
+
+invisible_hand_boreal_climate_county = {
+	duchy = {
+		OR = {
+			# sweden
+			this = title:d_norrland
+			# norway
+			this = title:d_vestlandi
+			this = title:d_dalir
+			this = title:d_halogaland
+			this = title:d_iceland
+			this = title:d_jamtland
+			# finland
+			this = title:d_karelia
+			this = title:d_savo
+			this = title:d_pohjanmaa
+			# sapmi
+			this = title:d_aarjetje
+			this = title:d_duortnoseatnu
+			this = title:d_giemajohka
+			this = title:d_guoldat
+			# bjarmaland
+			this = title:d_biarmia
+			this = title:d_vologda
+			this = title:d_chudia
+			this = title:d_ustyug
+			# siberia
+			this = title:d_konda
+			this = title:d_pelym
+			this = title:d_kazym
+			this = title:d_sibir
+			this = title:d_lanikaz
+			this = title:d_vasyugan_mire
+			this = title:d_baraba_steppe
+			this = title:d_ala_tau
+			# volga bulgaria
+			this = title:d_udmurtia
+			this = title:d_ural
+			# mongolia
+			this = title:d_yenisei_kan
+			this = title:d_chuna_valley
+			this = title:d_angara
+			this = title:d_bargujin_tukum
+			this = title:d_dauria
+			this = title:d_baigaluuls
+			this = title:d_tsagaanbaigal
+			this = title:d_chuna_valley
+			this = title:d_lena
+			this = title:d_khakass_hollow
+			this = title:d_kargassia
+			this = title:d_eastern_sayan
+		}
+	}
+}
+
+invisible_hand_alpine_climate_county = {
+	duchy = {
+		OR = {
+			# france
+			this = title:d_savoie
+			this = title:d_transjurania
+			this = title:d_currezia
+			# austria
+			this = title:d_tyrol
+			this = title:d_carinthia
+			this = title:d_steyermark
+			this = title:d_krain
+			# tibet
+			this = title:d_yarlung
+			this = title:d_lhasa
+			this = title:d_nagchu
+			this = title:d_conyi
+			this = title:d_xigaze
+			this = title:d_sagya
+			this = title:d_ngamring
+			this = title:d_nyima
+			this = title:d_qamdo
+			this = title:d_boyul
+			this = title:d_nyingchi
+			this = title:d_nangqen
+			this = title:d_lhatok
+			this = title:d_lingtsang
+			this = title:d_dege
+			this = title:d_pamir
+			this = title:d_bumthang
+			this = title:d_paro
+			this = title:d_monyul
+			this = title:d_lhoyul
+			this = title:d_batang
+			this = title:d_litang
+			this = title:d_xining
+			this = title:d_tuyuhun
+			this = title:d_nagormo
+			this = title:d_amdo
+			this = title:d_zadoi
+			this = title:d_qumarleb
+			this = title:d_gyalrong
+			this = title:d_chakla
+			this = title:d_golog
+			this = title:d_malho
+			this = title:d_gainlho
+			this = title:d_ngari
+			this = title:d_kinnaur
+			this = title:d_purang
+			this = title:d_ladakh
+			this = title:d_zanskar
+			this = title:d_baltiyul
+			this = title:d_aksai_chin
+			this = title:d_rutog
+			this = title:d_dzayul
+			# kabulistan
+			this = title:d_zabulistan
+			this = title:d_kabul
+			# rajastan
+			this = title:d_kasmira
+			this = title:d_kurmanchal
+			this = title:d_khasa
+			this = title:d_nepal
+			this = title:d_limbuwan
+		}
+	}
+}

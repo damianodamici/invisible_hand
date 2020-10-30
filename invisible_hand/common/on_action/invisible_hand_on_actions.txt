@@ -1,0 +1,17 @@
+﻿on_game_start_after_lobby = {
+	events = {
+		invisible_hand_gamestart.01 # Setup for gamestart holdings
+	}
+}
+
+on_siege_completion = {
+	events = {
+		invisible_hand_population_loss.01 # Pop loss from siege
+	}
+}
+
+on_raid_action_completion = {
+	events = {
+		invisible_hand_population_loss.02 # Pop loss from raid
+	}
+}

@@ -1,0 +1,193 @@
+﻿invisible_hand_province_population = {
+	value = 0
+	if = {
+		limit = { exists = var:province_population }
+		add = var:province_population
+	}
+}
+
+invisible_hand_county_population = {
+	value = 0
+	every_county_province = {
+		if = {
+			limit = { exists = var:province_population }
+			add = var:province_population
+		}
+	}
+}
+
+invisible_hand_province_population_loss = {
+	value = 0
+	if = {
+		limit = { exists = var:population_loss }
+		add = var:population_loss
+	}
+}
+
+invisible_hand_county_population_loss = {
+	value = 0
+	every_county_province = {
+		if = {
+			limit = { exists = var:population_loss }
+			add = var:population_loss
+		}
+	}
+}
+
+invisible_hand_province_tax_level = {
+	value = 0
+	if = {
+		limit = { exists = var:tax_level }
+		add = var:tax_level
+	}
+}
+
+invisible_hand_province_levy_level = {
+	value = 0
+	if = {
+		limit = { exists = var:levy_level }
+		add = var:levy_level
+	}
+}
+
+invisible_hand_refugee_amount = {
+	value = 0
+	if = {
+		limit = { exists = var:refugee_amount }
+		add = var:refugee_amount
+	}
+}
+
+invisible_hand_county_opinion_loss = {
+	value = 0
+	every_county_province = {
+		if = {
+			limit = { exists = var:opinion_impact }
+			add = var:opinion_impact
+			#Rounds up to the closest integer
+			divide = 1
+			ceiling = yes
+			multiply = 1
+		}
+	}
+}
+
+invisible_hand_obligation_level_1_county_opinion = {
+	value = 0
+	if = {
+		limit = { exists = var:province_weight }
+		add = {
+			value = var:province_weight
+			multiply = 25
+		}
+	}
+	#Rounds up to the closest integer
+	divide = 1
+	ceiling = yes
+	multiply = 1
+}
+
+invisible_hand_obligation_level_2_county_opinion = {
+	value = 0
+	if = {
+		limit = { exists = var:province_weight }
+		add = {
+			value = var:province_weight
+			multiply = 12.5
+		}
+	}
+	#Rounds up to the closest integer
+	divide = 1
+	ceiling = yes
+	multiply = 1
+}
+
+invisible_hand_obligation_level_4_county_opinion = {
+	value = 0
+	if = {
+		limit = { exists = var:province_weight }
+		add = {
+			value = var:province_weight
+			multiply = -12.5
+		}
+	}
+	#Rounds up to the closest integer
+	divide = 1
+	ceiling = yes
+	multiply = 1
+}
+
+invisible_hand_obligation_level_5_county_opinion = {
+	value = 0
+	if = {
+		limit = { exists = var:province_weight }
+		add = {
+			value = var:province_weight
+			multiply = -25
+		}
+	}
+	#Rounds up to the closest integer
+	divide = 1
+	ceiling = yes
+	multiply = 1
+}
+
+invisible_hand_obligation_level_1_county_development = {
+	value = 0
+	if = {
+		limit = { exists = var:province_weight }
+		add = {
+			value = var:province_weight
+			multiply = 25
+		}
+	}
+	#Rounds up to the closest integer
+	divide = 1
+	ceiling = yes
+	multiply = 1
+}
+
+invisible_hand_obligation_level_2_county_development = {
+	value = 0
+	if = {
+		limit = { exists = var:province_weight }
+		add = {
+			value = var:province_weight
+			multiply = 12.5
+		}
+	}
+	#Rounds up to the closest integer
+	divide = 1
+	ceiling = yes
+	multiply = 1
+}
+
+invisible_hand_obligation_level_4_county_development = {
+	value = 0
+	if = {
+		limit = { exists = var:province_weight }
+		add = {
+			value = var:province_weight
+			multiply = -12.5
+		}
+	}
+	#Rounds up to the closest integer
+	divide = 1
+	ceiling = yes
+	multiply = 1
+}
+
+invisible_hand_obligation_level_5_county_development = {
+	value = 0
+	if = {
+		limit = { exists = var:province_weight }
+		add = {
+			value = var:province_weight
+			multiply = -25
+		}
+	}
+	#Rounds up to the closest integer
+	divide = 1
+	ceiling = yes
+	multiply = 1
+}

@@ -1,0 +1,19 @@
+﻿has_unfree_tenure_protection_cooldown = {
+	first_not = UNFREE_TENURE_PROTECTION_IS_ON_COOLDOWN
+}
+
+tax_level_selected = {
+	first_not = TAX_LEVEL_SELECTED
+}
+
+has_tax_obligations_cooldown = {
+	first_not = TAX_OBLIGATIONS_ON_COOLDOWN
+}
+
+has_levy_obligations_cooldown = {
+	first_not = LEVY_OBLIGATIONS_ON_COOLDOWN
+}
+
+top_realm_law = {
+	first_not = LAW_SET_AT_TOP_REALM_LEVEL
+}
