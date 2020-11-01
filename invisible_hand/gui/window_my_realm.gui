@@ -1194,12 +1194,13 @@ window = {
 					}
 
 					vbox = {
-						margin = { 30 15 }
-						margin_bottom = 10
+						margin = { 30 0 }
+						margin_top = 15
 						layoutpolicy_horizontal = expanding
 
 						text_label_center = {
-							text = "[invisible_hand_tenure] [laws]"
+							text = "[realm] [laws]"
+							visible = "[And( GuiLawGroup.GetLawGroup.HasFlag( 'invisible_hand_legal_system' ), GuiLawGroup.IsAvailable )]"
 						}
 
 						vbox = {
@@ -1211,7 +1212,7 @@ window = {
 
 							item = {
 								hbox = {
-									visible = "[And( GuiLawGroup.GetLawGroup.HasFlag( 'invisible_hand_realm_law' ), GuiLawGroup.IsAvailable )]"
+									visible = "[And( GuiLawGroup.GetLawGroup.HasFlag( 'invisible_hand_legal_system' ), GuiLawGroup.IsAvailable )]"
 									layoutpolicy_horizontal = growing
 
 									vbox = {
@@ -1246,6 +1247,65 @@ window = {
 										datacontext = "[GuiLawGroup]"
 										size = { 150 32 }
 										onclick = "[OpenSuccessionLawChangeWindow(GuiLawGroup.Self)]"
+										onclick = "[GetVariableSystem.Toggle( 'invisible_hand_law' )]"
+										text = "MRW_CHANGE_LAW"
+										tooltip = "MRW_CHANGE_LAW_TT"
+									}
+								}
+							}
+						}
+					}
+
+					vbox = {
+						margin = { 30 0 }
+						margin_top = 15
+						layoutpolicy_horizontal = expanding
+
+						vbox = {
+							datamodel = "[MyRealmWindow.GetRealmLaws]"
+							spacing = 10
+							margin_bottom = 5
+							ignoreinvisible = yes
+							layoutpolicy_horizontal = expanding
+
+							item = {
+								hbox = {
+									visible = "[And( GuiLawGroup.GetLawGroup.HasFlag( 'invisible_hand_tenure_law' ), GuiLawGroup.IsAvailable )]"
+									layoutpolicy_horizontal = growing
+
+									vbox = {
+										layoutpolicy_horizontal = growing
+
+										text_single = {
+											layoutpolicy_horizontal = growing
+											max_width = 350
+											text = "[GuiLawGroup.GetLawGroup.GetNameSingular]:"
+										}
+
+										text_single = {
+											layoutpolicy_horizontal = growing
+											max_width = 350
+											text = "[GuiLawGroup.GetCurrentLevel.GetLaw.GetName]"
+											default_format = "#high"
+										}
+
+										text_single = {
+											layoutpolicy_horizontal = growing
+											max_width = 350
+											visible = "[GuiLawGroup.GetCurrentLevel.GetLaw.HasSubName]"
+											text = "[GuiLawGroup.GetCurrentLevel.GetLaw.GetSubName]"
+											default_format = "#F"
+										}
+									}
+									expand = {
+										layoutpolicy_horizontal = growing
+									}
+
+									button_standard = {
+										datacontext = "[GuiLawGroup]"
+										size = { 150 32 }
+										onclick = "[OpenSuccessionLawChangeWindow(GuiLawGroup.Self)]"
+										onclick = "[GetVariableSystem.Toggle( 'invisible_hand_law' )]"
 										text = "MRW_CHANGE_LAW"
 										tooltip = "MRW_CHANGE_LAW_TT"
 									}
@@ -1257,7 +1317,6 @@ window = {
 					# Succession
 					vbox = {
 						margin = { 30 15 }
-						margin_bottom = 10
 						spacing = 8
 						layoutpolicy_horizontal = expanding
 
@@ -1308,6 +1367,7 @@ window = {
 										datacontext = "[GuiLawGroup]"
 										size = { 150 32 }
 										onclick = "[OpenSuccessionLawChangeWindow(GuiLawGroup.Self)]"
+										onclick = "[GetVariableSystem.Clear( 'invisible_hand_law' )]"
 										text = "MRW_CHANGE_LAW"
 										tooltip = "MRW_CHANGE_LAW_TT"
 									}

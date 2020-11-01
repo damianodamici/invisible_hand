@@ -2,6 +2,11 @@
 
 invisible_hand_climate = { }
 
+invisible_hand_legal_system = { 
+	texture = "gfx/interface/icons/message_feed/law.dds"
+	parent = law
+}
+
 invisible_hand_tenure = { 
 	texture = "gfx/interface/icons/message_feed/law.dds"
 	parent = law
@@ -15,6 +20,11 @@ invisible_hand_tenure_unfree = {
 invisible_hand_tenure_free = { 
 	texture = "gfx/interface/icons/message_feed/law.dds"
 	parent = invisible_hand_tenure
+}
+
+invisible_hand_quit_rent = { 
+	texture = "gfx/interface/icons/message_feed/law.dds"
+	parent = invisible_hand_tenure_free
 }
 
 invisible_hand_tropical_climate = {

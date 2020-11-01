@@ -867,3 +867,34 @@ invisible_hand_alpine_climate_county = {
 		}
 	}
 }
+
+invisible_hand_common_law_trigger = {
+	capital_county.title_province = { geographical_region = world_europe_west_britannia }
+	invisible_hand_religious_law_trigger = no
+}
+
+invisible_hand_civil_law_trigger = {
+	capital_county.title_province = {
+		OR = {
+			geographical_region = custom_roman_full_borders
+			geographical_region = world_europe_west_germania
+		}
+	}
+	invisible_hand_religious_law_trigger = no
+	invisible_hand_common_law_trigger = no
+}
+
+invisible_hand_religious_law_trigger = {
+	OR = {
+		faith.religion = religion:islam_religion
+		faith.religion = religion:judaism_religion
+	}
+}
+
+invisible_hand_customary_law_trigger = {
+	NOR = {
+		invisible_hand_common_law_trigger = yes
+		invisible_hand_civil_law_trigger = yes
+		invisible_hand_religious_law_trigger = yes
+	}
+}

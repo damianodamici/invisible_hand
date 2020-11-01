@@ -350,7 +350,7 @@ invisible_hand_assign_province_population_effect = {
 			change_variable = {
 				name = province_population
 				add = { 
-					value = 1001 # "clean" numbers look too scripted
+					value = 501 # "clean" numbers look too scripted
 					multiply = county.development_level
 				}
 			}
@@ -2242,14 +2242,31 @@ invisible_hand_remove_county_obligations_modifiers = {
 	remove_county_modifier = invisible_hand_obligations_county_effect_neg_50
 }
 
-invisible_hand_trickle_down_feudal_law_effect = {
+invisible_hand_trickle_down_law_effect = {
+	root = { save_scope_as = law_passer }
 	every_vassal_or_below = {
-		limit = { has_government = feudal_government }
-		set_variable = {
-			name = trickle_down
-			days = 1
-		}
+		set_variable = trickle_down
 		add_realm_law_skip_effects = $LAW$
 		remove_variable = trickle_down
+		send_interface_message = {
+			type = msg_vassal_contract_change
+			title = invisible_hand_law_passed.t
+			desc = invisible_hand_law_passed.$LAW$.desc
+		}
+	}
+}
+
+invisible_hand_trickle_down_feudal_law_effect = {
+	root = { save_scope_as = law_passer }
+	every_vassal_or_below = {
+		limit = { has_government = feudal_government }
+		set_variable = trickle_down
+		add_realm_law_skip_effects = $LAW$
+		remove_variable = trickle_down
+		send_interface_message = {
+			type = msg_vassal_contract_change
+			title = invisible_hand_law_passed.t
+			desc = invisible_hand_law_passed.$LAW$.desc
+		}
 	}
 }

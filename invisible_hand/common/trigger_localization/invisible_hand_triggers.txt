@@ -14,6 +14,14 @@ has_levy_obligations_cooldown = {
 	first_not = LEVY_OBLIGATIONS_ON_COOLDOWN
 }
 
+has_quit_rent_cooldown = {
+	first_not = QUIT_RENT_ON_COOLDOWN
+}
+
+has_legal_system_cooldown = {
+	first_not = LEGAL_SYSTEM_ON_COOLDOWN
+}
+
 top_realm_law = {
 	first_not = LAW_SET_AT_TOP_REALM_LEVEL
 }

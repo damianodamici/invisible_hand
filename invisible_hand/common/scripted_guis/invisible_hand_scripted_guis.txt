@@ -90,7 +90,7 @@ invisible_hand_county_has_alpine_climate = {
 
 invisible_hand_tax_level_1 = {
 	scope =	root
-	saved_scopes = { county province }
+	saved_scopes = { province }
 
 	is_valid = {
 		trigger_if = {
@@ -188,7 +188,7 @@ invisible_hand_tax_level_1 = {
 
 invisible_hand_tax_level_2 = {
 	scope =	root
-	saved_scopes = { county province }
+	saved_scopes = { province }
 
 	is_valid = {
 		trigger_if = {
@@ -286,7 +286,7 @@ invisible_hand_tax_level_2 = {
 
 invisible_hand_tax_level_3 = {
 	scope =	root
-	saved_scopes = { county province }
+	saved_scopes = { province }
 
 	is_valid = {
 		trigger_if = {
@@ -382,9 +382,10 @@ invisible_hand_tax_level_3 = {
 
 invisible_hand_tax_level_4 = {
 	scope =	root
-	saved_scopes = { county province }
+	saved_scopes = { province }
 
 	is_valid = {
+		NOT = { has_realm_law = crown_authority_0 }
 		trigger_if = {
 			limit = { NOT = { scope:province = { has_province_modifier = invisible_hand_tax_level_4 } } }
 			custom_description = {
@@ -480,9 +481,13 @@ invisible_hand_tax_level_4 = {
 
 invisible_hand_tax_level_5 = {
 	scope =	root
-	saved_scopes = { county province }
+	saved_scopes = { province }
 
 	is_valid = {
+		OR = { 
+			has_realm_law = crown_authority_2
+			has_realm_law = crown_authority_3
+		}
 		trigger_if = {
 			limit = { NOT = { scope:province = { has_province_modifier = invisible_hand_tax_level_5 } } }
 			custom_description = {
@@ -578,7 +583,7 @@ invisible_hand_tax_level_5 = {
 
 invisible_hand_levy_level_1 = {
 	scope =	root
-	saved_scopes = { county province }
+	saved_scopes = { province }
 
 	is_valid = {
 		trigger_if = {
@@ -676,7 +681,7 @@ invisible_hand_levy_level_1 = {
 
 invisible_hand_levy_level_2 = {
 	scope =	root
-	saved_scopes = { county province }
+	saved_scopes = { province }
 
 	is_valid = {
 		trigger_if = {
@@ -774,7 +779,7 @@ invisible_hand_levy_level_2 = {
 
 invisible_hand_levy_level_3 = {
 	scope =	root
-	saved_scopes = { county province }
+	saved_scopes = { province }
 
 	is_valid = {
 		trigger_if = {
@@ -870,9 +875,10 @@ invisible_hand_levy_level_3 = {
 
 invisible_hand_levy_level_4 = {
 	scope =	root
-	saved_scopes = { county province }
+	saved_scopes = { province }
 
 	is_valid = {
+		NOT = { has_realm_law = crown_authority_0 }
 		trigger_if = {
 			limit = { NOT = { scope:province = { has_province_modifier = invisible_hand_levy_level_4 } } }
 			custom_description = {
@@ -968,9 +974,13 @@ invisible_hand_levy_level_4 = {
 
 invisible_hand_levy_level_5 = {
 	scope =	root
-	saved_scopes = { county province }
+	saved_scopes = { province }
 
 	is_valid = {
+		OR = { 
+			has_realm_law = crown_authority_2
+			has_realm_law = crown_authority_3
+		}
 		trigger_if = {
 			limit = { NOT = { scope:province = { has_province_modifier = invisible_hand_levy_level_5 } } }
 			custom_description = {

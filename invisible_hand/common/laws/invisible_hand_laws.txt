@@ -1,5 +1,253 @@
-﻿invisible_hand_unfree_tenure_protection_laws = {
+﻿# Legal system
+invisible_hand_legal_system_laws = {
+	default = invisible_hand_customary_law
 	flag = invisible_hand_realm_law
+	flag = invisible_hand_legal_system
+
+	# Common law
+	invisible_hand_common_law = {
+		
+		should_start_with = {
+			invisible_hand_common_law_trigger = yes
+		}
+
+		can_pass = {
+			trigger_if = {
+				limit = { NOT = { has_variable = trickle_down } }
+				OR = {
+					has_realm_law = crown_authority_2
+					has_realm_law = crown_authority_3
+				}
+			}
+			trigger_if = {
+				limit = { NOT = { has_variable = trickle_down } }
+				custom_description = {
+					subject = root
+					text = "top_realm_law"
+					is_independent_ruler = yes
+				}
+			}
+			custom_description = {
+				subject = root
+				text = "has_legal_system_cooldown"
+				NOT = { has_variable = legal_system_cooldown }
+			}
+		}
+
+		modifier = {
+			tax_mult = -0.05
+			development_growth_factor = 0.025
+			monthly_county_control_change_factor = 0.05
+			title_creation_cost_mult = -0.1
+		}
+
+		pass_cost = {
+			prestige = {
+				add = increase_crown_authority_prestige_cost
+				multiply = 2
+			}
+			gold = massive_gold_value
+		}
+		
+		on_pass = {
+			hidden_effect = { invisible_hand_trickle_down_law_effect = { LAW = invisible_hand_common_law } }
+			set_variable = {
+				name = legal_system_cooldown
+				years = 25
+			}
+		}
+
+		ai_will_do = {
+		}
+	}
+
+	# Civil law
+	invisible_hand_civil_law = {
+		
+		should_start_with = {
+			invisible_hand_civil_law_trigger = yes
+		}
+
+		can_pass = {
+			trigger_if = {
+				limit = { NOT = { has_variable = trickle_down } }
+				OR = {
+					has_realm_law = crown_authority_2
+					has_realm_law = crown_authority_3
+				}
+			}
+			trigger_if = {
+				limit = { NOT = { has_variable = trickle_down } }
+				custom_description = {
+					subject = root
+					text = "top_realm_law"
+					is_independent_ruler = yes
+				}
+			}
+			custom_description = {
+				subject = root
+				text = "has_legal_system_cooldown"
+				NOT = { has_variable = legal_system_cooldown }
+			}
+		}
+
+		modifier = {
+			tax_mult = -0.1
+			development_growth_factor = 0.05
+			monthly_county_control_change_factor = 0.1
+			title_creation_cost_mult = 0.1
+		}
+
+		pass_cost = {
+			prestige = {
+				add = increase_crown_authority_prestige_cost
+				multiply = 2
+			}
+			gold = massive_gold_value
+		}
+		
+		on_pass = {
+			hidden_effect = { invisible_hand_trickle_down_law_effect = { LAW = invisible_hand_civil_law } }
+			set_variable = {
+				name = legal_system_cooldown
+				years = 25
+			}
+		}
+
+		ai_will_do = {
+		}
+	}
+	
+	# Religious law
+	invisible_hand_religious_law = {
+		
+		should_start_with = {
+			invisible_hand_religious_law_trigger = yes
+		}
+		
+		can_have = {
+			invisible_hand_religious_law_trigger = yes
+		}
+		
+		can_keep = {
+			invisible_hand_religious_law_trigger = yes
+		}
+
+		can_pass = {
+			trigger_if = {
+				limit = { NOT = { has_variable = trickle_down } }
+				OR = {
+					has_realm_law = crown_authority_2
+					has_realm_law = crown_authority_3
+				}
+			}
+			invisible_hand_religious_law_trigger = yes
+			trigger_if = {
+				limit = { NOT = { has_variable = trickle_down } }
+				custom_description = {
+					subject = root
+					text = "top_realm_law"
+					is_independent_ruler = yes
+				}
+			}
+			custom_description = {
+				subject = root
+				text = "has_legal_system_cooldown"
+				NOT = { has_variable = legal_system_cooldown }
+			}
+		}
+
+		modifier = {
+			clergy_opinion = 5
+			development_growth_factor = -0.1
+			monthly_county_control_change_factor = 0.1
+		}
+
+		pass_cost = {
+			prestige = {
+				add = increase_crown_authority_prestige_cost
+				multiply = 2
+			}
+			gold = major_gold_value
+		}
+		
+		on_pass = {
+			hidden_effect = { invisible_hand_trickle_down_law_effect = { LAW = invisible_hand_religious_law } }
+			set_variable = {
+				name = legal_system_cooldown
+				years = 25
+			}
+		}
+
+		ai_will_do = {
+			if = {
+				limit = { invisible_hand_religious_law_trigger = yes }
+				value = 1
+			}
+		}
+	}
+	
+	# Customary law
+	invisible_hand_customary_law = {
+		
+		should_start_with = {
+			invisible_hand_customary_law_trigger = yes
+		}
+
+		can_pass = {
+			trigger_if = {
+				limit = { NOT = { has_variable = trickle_down } }
+				OR = {
+					has_realm_law = crown_authority_2
+					has_realm_law = crown_authority_3
+				}
+			}
+			trigger_if = {
+				limit = { NOT = { has_variable = trickle_down } }
+				custom_description = {
+					subject = root
+					text = "top_realm_law"
+					is_independent_ruler = yes
+				}
+			}
+			custom_description = {
+				subject = root
+				text = "has_legal_system_cooldown"
+				NOT = { has_variable = legal_system_cooldown }
+			}
+		}
+
+		modifier = {
+			development_growth_factor = -0.05
+			monthly_county_control_change_factor = -0.05
+			title_creation_cost_mult = -0.2
+		}
+
+		pass_cost = {
+			prestige = {
+				add = increase_crown_authority_prestige_cost
+				multiply = 2
+			}
+			gold = major_gold_value
+		}
+		
+		on_pass = {
+			hidden_effect = { invisible_hand_trickle_down_law_effect = { LAW = invisible_hand_customary_law } }
+			set_variable = {
+				name = legal_system_cooldown
+				years = 25
+			}
+		}
+
+		ai_will_do = {
+		}
+	}
+}
+
+# Unfree tenure rights
+invisible_hand_unfree_tenure_protection_laws = {
+	flag = invisible_hand_realm_law
+	flag = invisible_hand_tenure_law
 	default = invisible_hand_unfree_tenure_protection_0
 
 	# No protection
@@ -8,6 +256,10 @@
 		can_keep = { has_government = feudal_government }
 
 		can_pass = {
+			trigger_if = {
+				limit = { NOT = { has_variable = trickle_down } }
+				NOT = { has_realm_law = crown_authority_0 }
+			}
 			trigger_if = {
 				limit = { NOT = { has_variable = trickle_down } }
 				custom_description = {
@@ -60,6 +312,10 @@
 		can_keep = { has_government = feudal_government }
 
 		can_pass = {
+			trigger_if = {
+				limit = { NOT = { has_variable = trickle_down } }
+				NOT = { has_realm_law = crown_authority_0 }
+			}
 			trigger_if = {
 				limit = { NOT = { has_variable = trickle_down } }
 				custom_description = {
@@ -119,6 +375,10 @@
 		can_pass = {
 			trigger_if = {
 				limit = { NOT = { has_variable = trickle_down } }
+				NOT = { has_realm_law = crown_authority_0 }
+			}
+			trigger_if = {
+				limit = { NOT = { has_variable = trickle_down } }
 				custom_description = {
 					subject = root
 					text = "top_realm_law"
@@ -160,6 +420,195 @@
 			hidden_effect = { invisible_hand_trickle_down_feudal_law_effect = { LAW = invisible_hand_unfree_tenure_protection_2 } }
 			set_variable = {
 				name = unfree_tenure_protection_cooldown
+				years = 10
+			}
+		}
+
+		ai_will_do = {
+		}
+	}
+}
+
+# Quit rent rights
+invisible_hand_quit_rent_laws = {
+	flag = invisible_hand_realm_law
+	flag = invisible_hand_tenure_law
+	default = invisible_hand_quit_rent_0
+
+	# No quit rent
+	invisible_hand_quit_rent_0 = {
+
+		can_keep = { has_government = feudal_government }
+
+		can_pass = {
+			trigger_if = {
+				limit = { NOT = { has_variable = trickle_down } }
+				NOT = { has_realm_law = crown_authority_0 }
+			}
+			trigger_if = {
+				limit = { NOT = { has_variable = trickle_down } }
+				custom_description = {
+					subject = root
+					text = "top_realm_law"
+					is_independent_ruler = yes
+				}
+			}
+			custom_description = {
+				subject = root
+				text = "has_quit_rent_cooldown"
+				NOT = { has_variable = quit_rent_cooldown }
+			}
+		}
+
+		can_have = { has_government = feudal_government }
+
+		modifier = { }
+
+		pass_cost = {
+			prestige = {
+				add = increase_crown_authority_prestige_cost
+				divide = 2
+			}
+		}
+		
+		on_pass = {
+			if = {
+				limit = { has_realm_law = invisible_hand_quit_rent_1 }
+				add_tyranny = 5
+			}
+			else_if = {
+				limit = { has_realm_law = invisible_hand_quit_rent_2 }
+				add_tyranny = 10
+			}
+			hidden_effect = { invisible_hand_trickle_down_feudal_law_effect = { LAW = invisible_hand_quit_rent_0 } }
+			set_variable = {
+				name = quit_rent_cooldown
+				years = 10
+			}
+		}
+
+		ai_will_do = {
+		}
+	}
+
+	# Tax-like quit rent
+	invisible_hand_quit_rent_1 = {
+
+		can_keep = { has_government = feudal_government }
+
+		can_pass = {
+			trigger_if = {
+				limit = { NOT = { has_variable = trickle_down } }
+				NOT = { has_realm_law = crown_authority_0 }
+			}
+			trigger_if = {
+				limit = { NOT = { has_variable = trickle_down } }
+				custom_description = {
+					subject = root
+					text = "top_realm_law"
+					is_independent_ruler = yes
+				}
+			}
+			custom_description = {
+				subject = root
+				text = "has_quit_rent_cooldown"
+				NOT = { has_variable = quit_rent_cooldown }
+			}
+		}
+
+		can_have = { has_government = feudal_government }
+
+		modifier = {
+			county_opinion_add = 5
+			tax_mult = 0.05
+			levy_size = -0.1
+			garrison_size = -0.1
+			development_growth_factor = 0.05
+			monthly_county_control_change_factor = -0.05
+		}
+
+		pass_cost = {
+			prestige = {
+				add = increase_crown_authority_prestige_cost
+				divide = 2
+			}
+		}
+		
+		on_pass = {
+			if = {
+				limit = { has_realm_law = invisible_hand_quit_rent_0 }
+				add_tyranny = -5
+			}
+			else_if = {
+				limit = { has_realm_law = invisible_hand_quit_rent_2 }
+				add_tyranny = 5
+			}
+			hidden_effect = { invisible_hand_trickle_down_feudal_law_effect = { LAW = invisible_hand_quit_rent_1 } }
+			set_variable = {
+				name = quit_rent_cooldown
+				years = 10
+			}
+		}
+
+		ai_will_do = {
+		}
+	}
+	
+	# Fixed ceiling quit rent
+	invisible_hand_quit_rent_2 = {
+
+		can_keep = { has_government = feudal_government }
+
+		can_pass = {
+			trigger_if = {
+				limit = { NOT = { has_variable = trickle_down } }
+				NOT = { has_realm_law = crown_authority_0 }
+			}
+			trigger_if = {
+				limit = { NOT = { has_variable = trickle_down } }
+				custom_description = {
+					subject = root
+					text = "top_realm_law"
+					is_independent_ruler = yes
+				}
+			}
+			custom_description = {
+				subject = root
+				text = "has_quit_rent_cooldown"
+				NOT = { has_variable = quit_rent_cooldown }
+			}
+		}
+
+		can_have = { has_government = feudal_government }
+
+		modifier = {
+			county_opinion_add = 10
+			tax_mult = 0.1
+			levy_size = -0.2
+			garrison_size = -0.2
+			development_growth_factor = 0.1
+			monthly_county_control_change_factor = -0.1
+		}
+
+		pass_cost = {
+			prestige = {
+				add = increase_crown_authority_prestige_cost
+				divide = 2
+			}
+		}
+		
+		on_pass = {
+			if = {
+				limit = { has_realm_law = invisible_hand_quit_rent_0 }
+				add_tyranny = -10
+			}
+			else_if = {
+				limit = { has_realm_law = invisible_hand_quit_rent_1 }
+				add_tyranny = -5
+			}
+			hidden_effect = { invisible_hand_trickle_down_feudal_law_effect = { LAW = invisible_hand_quit_rent_2 } }
+			set_variable = {
+				name = quit_rent_cooldown
 				years = 10
 			}
 		}
