@@ -44,7 +44,6 @@ invisible_hand_legal_system_laws = {
 		pass_cost = {
 			prestige = {
 				add = increase_crown_authority_prestige_cost
-				multiply = 2
 			}
 			gold = massive_gold_value
 		}
@@ -101,7 +100,6 @@ invisible_hand_legal_system_laws = {
 		pass_cost = {
 			prestige = {
 				add = increase_crown_authority_prestige_cost
-				multiply = 2
 			}
 			gold = massive_gold_value
 		}
@@ -166,7 +164,6 @@ invisible_hand_legal_system_laws = {
 		pass_cost = {
 			prestige = {
 				add = increase_crown_authority_prestige_cost
-				multiply = 2
 			}
 			gold = major_gold_value
 		}
@@ -226,7 +223,6 @@ invisible_hand_legal_system_laws = {
 		pass_cost = {
 			prestige = {
 				add = increase_crown_authority_prestige_cost
-				multiply = 2
 			}
 			gold = major_gold_value
 		}
@@ -236,6 +232,193 @@ invisible_hand_legal_system_laws = {
 			set_variable = {
 				name = legal_system_cooldown
 				years = 25
+			}
+		}
+
+		ai_will_do = {
+		}
+	}
+}
+
+# Alienation rights
+invisible_hand_alienation_rights_laws = {
+	flag = invisible_hand_realm_law
+	flag = invisible_hand_tenure_law
+	default = invisible_hand_alienation_rights_0
+
+	# Subinfeudation
+	invisible_hand_alienation_rights_0 = {
+
+		can_keep = { has_government = feudal_government }
+
+		can_pass = {
+			trigger_if = {
+				limit = { NOT = { has_variable = trickle_down } }
+				NOT = { has_realm_law = crown_authority_0 }
+			}
+			trigger_if = {
+				limit = { NOT = { has_variable = trickle_down } }
+				custom_description = {
+					subject = root
+					text = "top_realm_law"
+					is_independent_ruler = yes
+				}
+			}
+			custom_description = {
+				subject = root
+				text = "has_alienation_rights_cooldown"
+				NOT = { has_variable = alienation_rights_cooldown }
+			}
+		}
+
+		can_have = { has_government = feudal_government }
+
+		modifier = { }
+
+		pass_cost = {
+			prestige = {
+				add = increase_crown_authority_prestige_cost
+			}
+		}
+		
+		on_pass = {
+			if = {
+				limit = { has_realm_law = invisible_hand_alienation_rights_1 }
+				add_tyranny = -5
+			}
+			else_if = {
+				limit = { has_realm_law = invisible_hand_alienation_rights_2 }
+				add_tyranny = -10
+			}
+			hidden_effect = { invisible_hand_trickle_down_feudal_law_effect = { LAW = invisible_hand_alienation_rights_0 } }
+			set_variable = {
+				name = alienation_rights_cooldown
+				years = 10
+			}
+		}
+
+		ai_will_do = {
+		}
+	}
+
+	# Mixed
+	invisible_hand_alienation_rights_1 = {
+
+		can_keep = { has_government = feudal_government }
+
+		can_pass = {
+			trigger_if = {
+				limit = { NOT = { has_variable = trickle_down } }
+				NOT = { has_realm_law = crown_authority_0 }
+			}
+			trigger_if = {
+				limit = { NOT = { has_variable = trickle_down } }
+				custom_description = {
+					subject = root
+					text = "top_realm_law"
+					is_independent_ruler = yes
+				}
+			}
+			custom_description = {
+				subject = root
+				text = "has_alienation_rights_cooldown"
+				NOT = { has_variable = alienation_rights_cooldown }
+			}
+		}
+
+		can_have = { has_government = feudal_government }
+
+		modifier = {
+			development_growth_factor = 0.05
+			monthly_county_control_change_factor = 0.1
+			vassal_opinion = -10
+			county_opinion_add = -5
+			domain_limit = 1
+		}
+
+		pass_cost = {
+			prestige = {
+				add = increase_crown_authority_prestige_cost
+			}
+		}
+		
+		on_pass = {
+			if = {
+				limit = { has_realm_law = invisible_hand_alienation_rights_1 }
+				add_tyranny = 5
+			}
+			else_if = {
+				limit = { has_realm_law = invisible_hand_alienation_rights_2 }
+				add_tyranny = -5
+			}
+			hidden_effect = { invisible_hand_trickle_down_feudal_law_effect = { LAW = invisible_hand_alienation_rights_1 } }
+			set_variable = {
+				name = alienation_rights_cooldown
+				years = 10
+			}
+		}
+
+		ai_will_do = {
+		}
+	}
+
+	# Substitution
+	invisible_hand_alienation_rights_2 = {
+
+		can_keep = { has_government = feudal_government }
+
+		can_pass = {
+			trigger_if = {
+				limit = { NOT = { has_variable = trickle_down } }
+				OR = { 
+					has_realm_law = crown_authority_2 
+					has_realm_law = crown_authority_3 
+				}
+			}
+			trigger_if = {
+				limit = { NOT = { has_variable = trickle_down } }
+				custom_description = {
+					subject = root
+					text = "top_realm_law"
+					is_independent_ruler = yes
+				}
+			}
+			custom_description = {
+				subject = root
+				text = "has_alienation_rights_cooldown"
+				NOT = { has_variable = alienation_rights_cooldown }
+			}
+		}
+
+		can_have = { has_government = feudal_government }
+
+		modifier = {
+			development_growth_factor = 0.1
+			monthly_county_control_change_factor = 0.2
+			vassal_opinion = -20
+			county_opinion_add = -10
+			domain_limit = 2
+		}
+
+		pass_cost = {
+			prestige = {
+				add = increase_crown_authority_prestige_cost
+			}
+		}
+		
+		on_pass = {
+			if = {
+				limit = { has_realm_law = invisible_hand_alienation_rights_0 }
+				add_tyranny = 10
+			}
+			else_if = {
+				limit = { has_realm_law = invisible_hand_alienation_rights_1 }
+				add_tyranny = 5
+			}
+			hidden_effect = { invisible_hand_trickle_down_feudal_law_effect = { LAW = invisible_hand_alienation_rights_2 } }
+			set_variable = {
+				name = alienation_rights_cooldown
+				years = 10
 			}
 		}
 

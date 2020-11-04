@@ -1,4 +1,176 @@
-﻿invisible_hand_county_has_tropical_climate = {
+﻿invisible_hand_religious_rights = {
+	scope =	root
+
+	is_valid = {
+		vassal_contract_has_flag = religiously_protected
+	}
+}
+
+invisible_hand_fortification_rights = {
+	scope =	root
+
+	is_valid = {
+		vassal_contract_obligation_level:fortification_rights = 1
+	}
+}
+
+invisible_hand_coinage_rights = {
+	scope =	root
+
+	is_valid = {
+		vassal_contract_obligation_level:coinage_rights = 1
+	}
+}
+
+invisible_hand_succession_rights = {
+	scope =	root
+
+	is_valid = {
+		vassal_contract_has_flag = locked_to_partition
+	}
+}
+
+invisible_hand_war_declaration_rights = {
+	scope =	root
+
+	is_valid = {
+		vassal_contract_has_flag = vassal_contract_war_override
+	}
+}
+
+invisible_hand_council_rights = {
+	scope =	root
+
+	is_valid = {
+		vassal_contract_has_flag = can_demand_council_seat
+	}
+}
+
+invisible_hand_title_revocation_rights = {
+	scope =	root
+
+	is_valid = {
+		vassal_contract_has_flag = vassal_contract_cannot_revoke_titles
+	}
+}
+
+invisible_hand_no_special_contract = {
+	scope =	root
+
+	is_valid = {
+		NOR = {
+			vassal_contract_has_flag = has_palatinate_contract
+			vassal_contract_has_flag = has_march_contract
+			vassal_contract_has_flag = has_scutage_contract
+		}
+	}
+}
+
+invisible_hand_palatinate_special_contract = {
+	scope =	root
+
+	is_valid = {
+		vassal_contract_has_flag = has_palatinate_contract
+	}
+}
+
+invisible_hand_march_special_contract = {
+	scope =	root
+
+	is_valid = {
+		vassal_contract_has_flag = has_march_contract
+	}
+}
+
+invisible_hand_scutage_special_contract = {
+	scope =	root
+
+	is_valid = {
+		vassal_contract_has_flag = has_scutage_contract
+	}
+}
+
+invisible_hand_feudal_contract_tax_level_1 = {
+	scope =	root
+
+	is_valid = {
+		vassal_contract_obligation_level:feudal_government_taxes = feudal_tax_exempt_level
+	}
+}
+
+invisible_hand_feudal_contract_tax_level_2 = {
+	scope =	root
+
+	is_valid = {
+		vassal_contract_obligation_level:feudal_government_taxes = feudal_tax_low_level
+	}
+}
+
+invisible_hand_feudal_contract_tax_level_3 = {
+	scope =	root
+
+	is_valid = {
+		vassal_contract_obligation_level:feudal_government_taxes = feudal_tax_normal_level
+	}
+}
+
+invisible_hand_feudal_contract_tax_level_4 = {
+	scope =	root
+
+	is_valid = {
+		vassal_contract_obligation_level:feudal_government_taxes = feudal_tax_high_level
+	}
+}
+
+invisible_hand_feudal_contract_tax_level_5 = {
+	scope =	root
+
+	is_valid = {
+		vassal_contract_obligation_level:feudal_government_taxes = feudal_tax_extortionate_level
+	}
+}
+
+invisible_hand_feudal_contract_levy_level_1 = {
+	scope =	root
+
+	is_valid = {
+		vassal_contract_obligation_level:feudal_government_levies = feudal_levies_exempt_level
+	}
+}
+
+invisible_hand_feudal_contract_levy_level_2 = {
+	scope =	root
+
+	is_valid = {
+		vassal_contract_obligation_level:feudal_government_levies = feudal_levies_low_level
+	}
+}
+
+invisible_hand_feudal_contract_levy_level_3 = {
+	scope =	root
+
+	is_valid = {
+		vassal_contract_obligation_level:feudal_government_levies = feudal_levies_normal_level
+	}
+}
+
+invisible_hand_feudal_contract_levy_level_4 = {
+	scope =	root
+
+	is_valid = {
+		vassal_contract_obligation_level:feudal_government_levies = feudal_levies_high_level
+	}
+}
+
+invisible_hand_feudal_contract_levy_level_5 = {
+	scope =	root
+
+	is_valid = {
+		vassal_contract_obligation_level:feudal_government_levies = feudal_levies_extortionate_level
+	}
+}
+
+invisible_hand_county_has_tropical_climate = {
 	scope =	root
 	saved_scopes = { county }
 

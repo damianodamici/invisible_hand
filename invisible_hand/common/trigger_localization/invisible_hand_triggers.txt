@@ -22,6 +22,10 @@ has_legal_system_cooldown = {
 	first_not = LEGAL_SYSTEM_ON_COOLDOWN
 }
 
+has_alienation_rights_cooldown = {
+	first_not = ALIENATION_RIGHTS_ON_COOLDOWN
+}
+
 top_realm_law = {
 	first_not = LAW_SET_AT_TOP_REALM_LEVEL
 }

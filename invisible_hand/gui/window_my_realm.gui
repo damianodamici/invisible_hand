@@ -29,6 +29,7 @@ window = {
 		using = Window_Position_MainTab_Hide
 
 		on_start = "[GetVariableSystem.Clear( 'right_window_open' )]"
+		on_finish = "[GetVariableSystem.Clear( 'liege_tab' )]"
 	}
 
 	state = {
@@ -97,19 +98,9 @@ window = {
 							}
 						}
 
-						spacer = {
-							visible = "[GetPlayer.HasLiege]"
-							layoutpolicy_vertical = expanding
-						}
-
 						hbox = {
 							layoutpolicy_horizontal = expanding
 							margin_top = 10
-
-							expand = {
-								visible = "[GetPlayer.HasLiege]"
-								size = { 90 5 }
-							}
 
 							hbox = {
 								name = "crown_authority"
@@ -124,34 +115,12 @@ window = {
 										ignoreinvisible = yes
 
 										text_label_center = {
-											visible = "[Not(GetPlayer.HasLiege)]"
 											text = "[LawGroup.GetName]"
 										}
 
 										hbox = {
-											margin_left = 5
-											layoutpolicy_horizontal = expanding
-
-											text_label_left = {
-												visible = "[GetPlayer.HasLiege]"
-												layoutpolicy_horizontal = expanding
-												text = "[LawGroup.GetName]"
-											}
-										}
-
-										spacer = {
-											visible = "[GetPlayer.HasLiege]"
-											size = { 5 8 }
-										}
-
-										hbox = {
+											margin_top = 4
 											datamodel = "[GuiLawGroup.GetLaws]"
-
-											background = {
-												texture = "gfx/lines/line_lifestyles_unavailable.dds"
-												margin = { -8 -12 }
-												tintcolor = { 0.7 0.5 0.25 1 }
-											}
 
 											item = {
 												icon_button_decorative = {
@@ -194,73 +163,8 @@ window = {
 												}
 											}
 										}
-
-										expand = {
-											visible = "[GetPlayer.HasLiege]"
-											layoutpolicy_horizontal = expanding
-										}
 									}
 								}
-							}
-
-							spacer = {
-								visible = "[GetPlayer.HasLiege]"
-								size = { 20 5 }
-							}
-
-							## LIEGE INFO
-							vbox = {
-								name = "liege"
-								layoutpolicy_horizontal = expanding
-								layoutpolicy_vertical = expanding
-								margin_right = 10
-								datacontext = "[MyRealmWindow.GetCharacter.GetLiege]"
-								visible = "[GetPlayer.HasLiege]"
-
-								text_label_left = {
-									text = "MY_REALM_WINDOW_MY_LIEGE"
-									layoutpolicy_horizontal = expanding
-									margin_left = 2
-								}
-
-								expand = {}
-
-								vbox = {
-									layoutpolicy_horizontal = expanding
-
-									text_single = {
-										layoutpolicy_horizontal = expanding
-										text = "[Character.GetUIName]"
-										autoresize = no
-									}
-
-									hbox = {
-										layoutpolicy_horizontal = expanding
-
-										widget = {
-											size = { 30 25 }
-
-											button_icon_highlight = {
-												datacontext = "[Character.GetActiveLawInGroupWithFlag( 'realm_law' )]"
-												size = { 35 35 }
-												parentanchor = center
-												texture = "[Law.GetIcon]"
-												tooltipwidget = { general_law_tooltip = {} }
-												using = tooltip_ws
-											}
-										}
-
-										text_single = {
-											text = "[Character.GetGovernment.GetName]"
-										}
-
-										expand = {}
-
-									}
-								}
-
-								expand = {}
-
 							}
 						}
 					}
@@ -272,7 +176,7 @@ window = {
 
 						coa_realm_big_crown = {
 							parentanchor = top|hcenter
-							position = { 5 5 }
+							position = { 30 5 }
 						}
 					}
 				}
@@ -286,17 +190,30 @@ window = {
 						layoutpolicy_horizontal = expanding
 						layoutpolicy_vertical = expanding
 						onclick = "[MyRealmWindow.ShowDomain]"
-						down = "[MyRealmWindow.IsShowingDomain]"
+						onclick = "[GetVariableSystem.Clear( 'liege_tab' )]"
+						down = "[And(MyRealmWindow.IsShowingDomain,Not(GetVariableSystem.Exists( 'liege_tab' )))]"
 
 						text = "MY_REALM_WINDOW_DOMAIN_TAB"
 					}
 
 					button_tab = {
+						visible = "[GetPlayer.HasLiege]"
+						layoutpolicy_horizontal = expanding
+						layoutpolicy_vertical = expanding
+						onclick = "[GetVariableSystem.Toggle( 'liege_tab' )]"
+						down = "[GetVariableSystem.Exists( 'liege_tab' )]"
+
+						text = "MY_REALM_WINDOW_LIEGE_TAB"
+					}
+
+					button_tab = {
+						visible = "[GreaterThan_int32( MyRealmWindow.GetVassalCount, '(int32)0' )]"
 						name = "tutorial_highlight_vassals_tab"
 						layoutpolicy_horizontal = expanding
 						layoutpolicy_vertical = expanding
 						onclick = "[MyRealmWindow.ShowVassals]"
-						down = "[MyRealmWindow.IsShowingVassals]"
+						onclick = "[GetVariableSystem.Clear( 'liege_tab' )]"
+						down = "[And(MyRealmWindow.IsShowingVassals,Not(GetVariableSystem.Exists( 'liege_tab' )))]"
 
 						text = "MY_REALM_WINDOW_VASSALS_TAB"
 					}
@@ -306,7 +223,8 @@ window = {
 						layoutpolicy_horizontal = expanding
 						layoutpolicy_vertical = expanding
 						onclick = "[MyRealmWindow.ShowSuccession]"
-						down = "[MyRealmWindow.IsShowingSuccession]"
+						onclick = "[GetVariableSystem.Clear( 'liege_tab' )]"
+						down = "[And(MyRealmWindow.IsShowingSuccession,Not(GetVariableSystem.Exists( 'liege_tab' )))]"
 
 						text = "MY_REALM_WINDOW_SUCCESSION_TAB"
 					}
@@ -317,7 +235,7 @@ window = {
 					name = "tab_domain"
 					layoutpolicy_horizontal = expanding
 					layoutpolicy_vertical = expanding
-					visible = "[MyRealmWindow.IsShowingDomain]"
+					visible = "[And(MyRealmWindow.IsShowingDomain,Not(GetVariableSystem.Exists( 'liege_tab' )))]"
 
 					using = Animation_Tab_Switch
 
@@ -785,28 +703,35 @@ window = {
 														margin_top = -20
 														allow_outside = yes
 
-														button_group = {
-															onclick = "[CountyGroup.ToggleExpanded]"
+														hbox = {
 															layoutpolicy_horizontal = expanding
 
-															flowcontainer = {
-																spacing = 5
+															expand = {}
 
-																widget = {
-																	size = { 18 22 }
+															button_group = {
+																onclick = "[CountyGroup.ToggleExpanded]"
 
-																	button_expand = {
-																		frame = "[Select_int32( CountyGroup.IsExpanded, '(int32)2', '(int32)1' )]"
-																		parentanchor = center
+																flowcontainer = {
+																	spacing = 5
+
+																	widget = {
+																		size = { 18 22 }
+
+																		button_expand = {
+																			frame = "[Select_int32( CountyGroup.IsExpanded, '(int32)2', '(int32)1' )]"
+																			parentanchor = center
+																		}
+																	}
+
+																	text_single = {
+																		text = "ME_REALM_WINDOW_EMPTY_HOLDINGS"
+																		default_format = "#low"
+																		align = nobaseline
 																	}
 																}
-
-																text_single = {
-																	text = "ME_REALM_WINDOW_EMPTY_HOLDINGS"
-																	default_format = "#low"
-																	align = nobaseline
-																}
 															}
+
+															expand = {}
 														}
 
 														expand = {}
@@ -815,8 +740,7 @@ window = {
 															datamodel = "[CountyGroup.GetEmptyHoldings]"
 															visible = "[CountyGroup.IsExpanded]"
 															layoutpolicy_horizontal = expanding
-															margin_bottom = 5
-															spacing = 4
+															spacing = 12
 
 															item = {
 																vbox = {
@@ -946,7 +870,7 @@ window = {
 					name = "tab_vassals"
 					layoutpolicy_horizontal = expanding
 					layoutpolicy_vertical = expanding
-					visible = "[MyRealmWindow.IsShowingVassals]"
+					visible = "[And(MyRealmWindow.IsShowingVassals,Not(GetVariableSystem.Exists( 'liege_tab' )))]"
 
 					state = {
 						name = _show
@@ -1020,7 +944,7 @@ window = {
 								button_standard_clean = {
 									name = "small_government_filter"
 									datacontext = "[GovernmentTypeHeader.GetGovernmentType]"
-									size = { 100 33 }
+									size = { 90 33 }
 
 									text = "[GovernmentType.GetNameNoTooltip]"
 									default_format = "#low"
@@ -1104,82 +1028,833 @@ window = {
 							}
 						}
 					}
+				}
 
-					vbox = {
+				### LIEGE TAB
+				vbox = {
+					name = "tab_liege"
+					layoutpolicy_horizontal = expanding
+					layoutpolicy_vertical = expanding
+					visible = "[GetVariableSystem.Exists( 'liege_tab' )]"
+
+					using = Animation_Tab_Switch
+
+					scrollbox = {
 						layoutpolicy_horizontal = expanding
-						margin = { 15 5 }
+						layoutpolicy_vertical = expanding
 
-						vbox = {
+						blockoverride "scrollbox_content" {
 							layoutpolicy_horizontal = expanding
-							margin = { 0 5 }
+							layoutpolicy_vertical = expanding
+							datacontext = "[MyRealmWindow.GetCharacter.GetLiege]"
+							datacontext = "[MyRealmWindow.GetCharacter.GetVassalContract]"
 
-							background = {
-								using = Background_Area
-								margin = { -20 0 }
-								margin_bottom = 10
-								margin_top = 3
-							}
+							vbox = {
+								margin_top = 4
 
-							hbox = {
-								spacing = 20
+								hbox = {
+									margin_top = 6
+									margin_bottom = 6
 
-								text_single = {
-									default_format = "#high"
-									text = "MY_REALM_WINDOW_VASSAL_OPINION"
-									tooltip = "MY_REALM_WINDOW_VASSAL_OPINION_TT"
+									text_label_center = {
+										text = "MY_REALM_WINDOW_MY_LIEGE_ALT"
+									}
 								}
 
 								hbox = {
+									margin_top = 4
+									spacing = 24
 
-									tooltip = "[GetPlayer.GetDreadBreakdown]"
+									portrait_head = { 
+										blockoverride "coa" { }
+										blockoverride "opinion_box" {
 
-									icon = {
-										name = "dread_icon"
-										size = { 30 30 }
-										texture = "gfx/interface/icons/icon_dread.dds"
+											text_single = {
+												max_width = 45
+												align = nobaseline
+												margin = { 3 0 }
+												tooltipwidget = liege_opinion_tooltip
+												default_format = "#true_white"
+
+												block "opinion_text" {
+													text = "[GetPlayer.GetOpinionOf( GetPlayer.GetLiege )|=]"
+													fonttintcolor = "[GetPlayer.GetOpinionOfTint( GetPlayer.GetLiege )]"
+												}
+											}
+										}
+									}
+
+									hbox = {
+										margin_top = -12
+
+										coa_realm_big_crown = {	}
+									}
+								}
+
+								hbox = {
+									margin_top = 2
+
+									text_single = {
+										align = center
+										layoutpolicy_horizontal = expanding
+										text = "[Character.GetUINameNoTooltip]"
+										autoresize = yes
+									}
+								}
+
+								hbox = {
+									margin_top = 10
+									margin_left = 10
+									spacing = 4
+
+									text_single = {
+										text = "[crown_authority|e]:"
 									}
 
 									text_single = {
-										name = "dread_name"
-										text = "[dread|E]: [GetPlayer.GetDread|0]"
-										default_format = "#high"
+										text = "[Character.GetActiveLawInGroupWithFlag( 'realm_law' ).GetName]"
+									}
+
+									hbox = {
+										margin_bottom = -5
+										margin_left = -2
+
+										button_icon_highlight = {
+											datacontext = "[Character.GetActiveLawInGroupWithFlag( 'realm_law' )]"
+											size = { 26 26 }
+											texture = "[Law.GetIcon]"
+											using = tooltip_ws
+										}
 									}
 								}
 
 								hbox = {
+									visible = "[GetPlayer.IsPowerfulVassal]"
 									spacing = 2
-									tooltip = "[Character.GetVassalLimitTooltip]"
-									name = "tutorial_highlight_vassal_limit"
+									margin_top = 5
+									margin_left = -6
+										
+									hbox = {
+										margin_bottom = -5
 
-									background = {
-										visible = "[GreaterThan_int32( Character.GetNumVassalsTowardsLimit, Character.GetVassalLimit )]"
-										using = Status_Bad
+										icon = {
+											visible = "[EqualTo_int32( GetPlayer.GetPowerfulVassalFrame, '(int32)1' )]"
+											size = { 20 20 }
+											texture = "gfx/interface/icons/portraits/powerful_vassal.dds"
+											framesize = { 40 40 }
+											frame = "1"
+											tooltip = "POWERFUL_VASSAL_IN_COUNCIL"
+										}
+
+										icon = {
+											visible = "[EqualTo_int32( GetPlayer.GetPowerfulVassalFrame, '(int32)2' )]"
+											size = { 20 20 }
+											texture = "gfx/interface/icons/portraits/powerful_vassal.dds"
+											framesize = { 40 40 }
+											frame = "2"
+											tooltip = "POWERFUL_VASSAL_NOT_IN_COUNCIL"
+										}
+
+										icon = {
+											visible = "[EqualTo_int32( GetPlayer.GetPowerfulVassalFrame, '(int32)3' )]"
+											size = { 20 20 }
+											texture = "gfx/interface/icons/portraits/powerful_vassal.dds"
+											framesize = { 40 40 }
+											frame = "3"
+											tooltip = "POWERFUL_VASSAL_CHILL"
+										}
 									}
 
-									icon = {
-										size = { 30 30 }
-										texture = "gfx/interface/icons/icon_vassal.dds"
-									}
 
 									text_single = {
-										text = "MY_REALM_WINDOW_VASSAL_LIMIT"
-									}
-
-									text_single = {
-										text = "MY_REALM_WINDOW_VASSAL_LIMIT_VALUE"
+										text = "MY_REALM_WINDOW_I_AM_POWERFUL_VASSAL"
 									}
 								}
 
+								hbox = {
+									datacontext = "[GetPlayer.GetVassalContract]"
+									visible = "[Not( VassalContract.IsRightfulLiege )]"
+									tooltip = "MRW_TT_NOT_RIGHTFUL_LIEGE_ALT"
+									spacing = 2
+									margin_top = 4
 
+									hbox = {
+										margin_bottom = -10
+										
+										icon = {
+											name = "icon_non_dejure"
+											size = { 30 30 }
+											texture = "gfx/interface/icons/levy_tax_reduction.dds"
+										}
+									}
 
+									text_single = {
+										text = "MY_REALM_WINDOW_NOT_RIGHTFUL_LIEGE"
+									}
+								}
 							}
+
+							vbox = {
+								visible = "[Character.IsPlayerInteractionValid('vassal_modify_vassal_contract_interaction')]"
+								layoutpolicy_horizontal = expanding
+
+								background = {
+									using = Background_Area_Border
+									margin_top = -20
+								}
+
+								hbox = {
+									margin_top = 32
+									spacing = 3
+
+									hbox = {
+										margin_left = 10
+
+										text_label_center = {
+											text = "MY_REALM_WINDOW_MY_CONTRACT"
+										}
+									}
+
+									hbox = {
+										margin_bottom = -17
+										margin_right = -14
+										scale = 0.6
+										allow_outside = yes
+
+										button_round = {
+											enabled = "[Character.IsPlayerInteractionValid('vassal_modify_vassal_contract_interaction')]"
+											onclick = "[Character.OpenPlayerInteraction('vassal_modify_vassal_contract_interaction')]"
+											tooltip = "[Character.GetPlayerInteractionTooltip('vassal_modify_vassal_contract_interaction')]"
+
+											button_feudal_contract = {
+												alwaystransparent = yes
+												parentanchor = center
+											}
+										}
+									}
+								}
+
+								vbox = {
+									margin_top = 18
+									margin_bottom = 16
+
+									text_single = {
+										text = "[tax] [obligations]"
+									}
+
+									hbox = {
+										margin_top = 10
+										spacing = 10
+
+										vbox = {
+											button_standard_clean = {
+												size = { 90 32 }
+												datacontext = "[GetScriptedGui( 'invisible_hand_feudal_contract_tax_level_1' )]"
+												down = "[ScriptedGui.IsValid( GuiScope.SetRoot( GetPlayer.MakeScope ).End)]"
+												tooltip = "TAX_OBLIGATIONS_LEVEL_EXEMPT_TT"
+												
+												background = {
+													using = Background_Area
+													alpha = 0.6
+												}
+
+												text_multi = {
+													margin_top = -6
+													text = "FEUDAL_OBLIGATIONS_LEVEL_EXEMPT"
+													size = { 100% 100% }
+													align = center
+													default_format = "#high"
+												}
+											}
+										}
+
+										vbox = {
+											button_standard_clean = {
+												size = { 90 32 }
+												datacontext = "[GetScriptedGui( 'invisible_hand_feudal_contract_tax_level_2' )]"
+												down = "[ScriptedGui.IsValid( GuiScope.SetRoot( GetPlayer.MakeScope ).End)]"
+												tooltip = "TAX_OBLIGATIONS_LEVEL_LOW_TT"
+												
+												background = {
+													using = Background_Area
+													alpha = 0.6
+												}
+
+												text_multi = {
+													margin_top = -6
+													text = "FEUDAL_OBLIGATIONS_LEVEL_LOW"
+													size = { 100% 100% }
+													align = center
+													default_format = "#high"
+												}
+											}
+										}
+
+										vbox = {
+											button_standard_clean = {
+												size = { 90 32 }
+												datacontext = "[GetScriptedGui( 'invisible_hand_feudal_contract_tax_level_3' )]"
+												down = "[ScriptedGui.IsValid( GuiScope.SetRoot( GetPlayer.MakeScope ).End)]"
+												tooltip = "TAX_OBLIGATIONS_LEVEL_NORMAL_TT"
+												
+												background = {
+													using = Background_Area
+													alpha = 0.6
+												}
+
+												text_multi = {
+													margin_top = -6
+													text = "FEUDAL_OBLIGATIONS_LEVEL_NORMAL"
+													size = { 100% 100% }
+													align = center
+													default_format = "#high"
+												}
+											}
+										}
+
+										vbox = {
+											button_standard_clean = {
+												size = { 90 32 }
+												datacontext = "[GetScriptedGui( 'invisible_hand_feudal_contract_tax_level_4' )]"
+												down = "[ScriptedGui.IsValid( GuiScope.SetRoot( GetPlayer.MakeScope ).End)]"
+												tooltip = "TAX_OBLIGATIONS_LEVEL_HIGH_TT"
+												
+												background = {
+													using = Background_Area
+													alpha = 0.6
+												}
+
+												text_multi = {
+													margin_top = -6
+													text = "FEUDAL_OBLIGATIONS_LEVEL_HIGH"
+													size = { 100% 100% }
+													align = center
+													default_format = "#high"
+												}
+											}
+										}
+
+										vbox = {
+											button_standard_clean = {
+												size = { 90 32 }
+												datacontext = "[GetScriptedGui( 'invisible_hand_feudal_contract_tax_level_5' )]"
+												down = "[ScriptedGui.IsValid( GuiScope.SetRoot( GetPlayer.MakeScope ).End)]"
+												tooltip = "TAX_OBLIGATIONS_LEVEL_EXTORTIONATE_TT"
+												
+												background = {
+													using = Background_Area
+													alpha = 0.6
+												}
+
+												text_multi = {
+													margin_top = -6
+													margin_left = 6
+													margin_right = 6
+													text = "FEUDAL_OBLIGATIONS_LEVEL_EXTORTIONATE"
+													size = { 100% 100% }
+													align = center
+													default_format = "#high"
+												}
+											}
+										}
+									}
+
+									text_single = {
+										margin_top = 2
+										datacontext = "[MyRealmWindow.GetIncomeTax]"
+										text = "TAX_OBLIGATIONS_AMOUNT"
+
+										tooltipwidget = {
+											my_realm_window_contribution_tooltip = {
+												datacontext = "[MyRealmWindow.GetCharacter]"
+												blockoverride "contribution_tooltip_header"
+												{
+													text = "MRW_TT_TAXES_TO_MY_LIEGE"
+												}
+												blockoverride "contribution_tooltip_content_suffix" {}
+											}
+										}
+									}
+								}
+
+								vbox = {
+									margin_top = 8
+									margin_bottom = 16
+
+									text_single = {
+										text = "[levy] [obligations]"
+									}
+
+									hbox = {
+										margin_top = 10
+										spacing = 10
+
+										vbox = {
+											button_standard_clean = {
+												size = { 90 32 }
+												datacontext = "[GetScriptedGui( 'invisible_hand_feudal_contract_levy_level_1' )]"
+												down = "[ScriptedGui.IsValid( GuiScope.SetRoot( GetPlayer.MakeScope ).End)]"
+												tooltip = "LEVY_OBLIGATIONS_LEVEL_NONE_TT"
+												
+												background = {
+													using = Background_Area
+													alpha = 0.6
+												}
+
+												text_multi = {
+													margin_top = -6
+													text = "FEUDAL_OBLIGATIONS_LEVEL_NONE"
+													size = { 100% 100% }
+													align = center
+													default_format = "#high"
+												}
+											}
+										}
+
+										vbox = {
+											button_standard_clean = {
+												size = { 90 32 }
+												datacontext = "[GetScriptedGui( 'invisible_hand_feudal_contract_levy_level_2' )]"
+												down = "[ScriptedGui.IsValid( GuiScope.SetRoot( GetPlayer.MakeScope ).End)]"
+												tooltip = "LEVY_OBLIGATIONS_LEVEL_LOW_TT"
+												
+												background = {
+													using = Background_Area
+													alpha = 0.6
+												}
+
+												text_multi = {
+													margin_top = -6
+													text = "FEUDAL_OBLIGATIONS_LEVEL_LOW"
+													size = { 100% 100% }
+													align = center
+													default_format = "#high"
+												}
+											}
+										}
+
+										vbox = {
+											button_standard_clean = {
+												size = { 90 32 }
+												datacontext = "[GetScriptedGui( 'invisible_hand_feudal_contract_levy_level_3' )]"
+												down = "[ScriptedGui.IsValid( GuiScope.SetRoot( GetPlayer.MakeScope ).End)]"
+												tooltip = "LEVY_OBLIGATIONS_LEVEL_NORMAL_TT"
+												
+												background = {
+													using = Background_Area
+													alpha = 0.6
+												}
+
+												text_multi = {
+													margin_top = -6
+													text = "FEUDAL_OBLIGATIONS_LEVEL_NORMAL"
+													size = { 100% 100% }
+													align = center
+													default_format = "#high"
+												}
+											}
+										}
+
+										vbox = {
+											button_standard_clean = {
+												size = { 90 32 }
+												datacontext = "[GetScriptedGui( 'invisible_hand_feudal_contract_levy_level_4' )]"
+												down = "[ScriptedGui.IsValid( GuiScope.SetRoot( GetPlayer.MakeScope ).End)]"
+												tooltip = "LEVY_OBLIGATIONS_LEVEL_HIGH_TT"
+												
+												background = {
+													using = Background_Area
+													alpha = 0.6
+												}
+
+												text_multi = {
+													margin_top = -6
+													text = "FEUDAL_OBLIGATIONS_LEVEL_HIGH"
+													size = { 100% 100% }
+													align = center
+													default_format = "#high"
+												}
+											}
+										}
+
+										vbox = {
+											button_standard_clean = {
+												size = { 90 32 }
+												datacontext = "[GetScriptedGui( 'invisible_hand_feudal_contract_levy_level_5' )]"
+												down = "[ScriptedGui.IsValid( GuiScope.SetRoot( GetPlayer.MakeScope ).End)]"
+												tooltip = "LEVY_OBLIGATIONS_LEVEL_MASSIVE_TT"
+												
+												background = {
+													using = Background_Area
+													alpha = 0.6
+												}
+
+												text_multi = {
+													margin_top = -6
+													margin_left = 6
+													margin_right = 6
+													text = "FEUDAL_OBLIGATIONS_LEVEL_MASSIVE"
+													size = { 100% 100% }
+													align = center
+													default_format = "#high"
+												}
+											}
+										}
+									}
+
+									text_single = {
+										margin_top = 2
+										datacontext = "[MyRealmWindow.GetLevyTax]"
+										text = "LEVY_OBLIGATIONS_AMOUNT"
+
+										tooltipwidget = {
+											my_realm_window_contribution_tooltip = {
+												datacontext = "[MyRealmWindow.GetCharacter]"
+												blockoverride "contribution_tooltip_header"
+												{
+													text = "MRW_TT_LEVIES_TO_MY_LIEGE"
+												}
+												blockoverride "contribution_tooltip_content_suffix" {}
+											}
+										}
+									}
+								}
+
+								vbox = {
+									margin_top = 6
+									margin_bottom = 6
+									allow_outside = yes
+									layoutpolicy_horizontal = expanding
+									spacing = 12
+
+									text_single = {
+										text = "MY_REALM_WINDOW_SPECIAL_RIGHTS"
+									}
+
+									hbox = {
+										layoutpolicy_horizontal = expanding
+										allow_outside = yes
+										margin_top = -14
+									
+										vbox = {
+											minimumsize = { 142 50 }
+
+											background = {
+												using = Background_Area_With_Header
+												alpha = 0.75
+											}
+													
+											text_single = {
+												text = "MY_REALM_WINDOW_SPECIAL_CONTRACT"
+												using = Font_Size_Small
+												default_format = "#high"
+												margin_top = -5
+											}
+
+											text_single = {
+												datacontext = "[GetScriptedGui('invisible_hand_no_special_contract')]"
+												visible = "[ScriptedGui.IsValid( GuiScope.SetRoot( GetPlayer.MakeScope ).End)]"
+												text = "MY_REALM_WINDOW_NO_SPECIAL_CONTRACT"
+												using = Font_Size_Small
+												default_format = "#medium"
+												margin_top = -10
+											}
+
+											text_single = {
+												datacontext = "[GetScriptedGui('invisible_hand_palatinate_special_contract')]"
+												visible = "[ScriptedGui.IsValid( GuiScope.SetRoot( GetPlayer.MakeScope ).End)]"
+												text = "MY_REALM_WINDOW_PALATINATE_SPECIAL_CONTRACT"
+												tooltip = "SPECIAL_CONTRACT_PALATINATE_TT"
+												using = Font_Size_Small
+												default_format = "#medium"
+												margin_top = -10
+											}
+
+											text_single = {
+												datacontext = "[GetScriptedGui('invisible_hand_march_special_contract')]"
+												visible = "[ScriptedGui.IsValid( GuiScope.SetRoot( GetPlayer.MakeScope ).End)]"
+												text = "MY_REALM_WINDOW_MARCH_SPECIAL_CONTRACT"
+												tooltip = "SPECIAL_CONTRACT_MARCH_TT"
+												using = Font_Size_Small
+												default_format = "#medium"
+												margin_top = -10
+											}
+
+											text_single = {
+												datacontext = "[GetScriptedGui('invisible_hand_scutage_special_contract')]"
+												visible = "[ScriptedGui.IsValid( GuiScope.SetRoot( GetPlayer.MakeScope ).End)]"
+												text = "MY_REALM_WINDOW_SCUTAGE_SPECIAL_CONTRACT"
+												tooltip = "SPECIAL_CONTRACT_SCUTAGE_TT"
+												using = Font_Size_Small
+												default_format = "#medium"
+												margin_top = -10
+											}
+										}
+
+										vbox = {
+											minimumsize = { 142 50 }
+											datacontext = "[GetScriptedGui('invisible_hand_war_declaration_rights')]"
+
+											background = {
+												using = Background_Area_With_Header
+												alpha = 0.75
+											}
+										
+											text_single = {
+												text = "MY_REALM_WINDOW_WAR_DECLARATION_RIGHTS"
+												using = Font_Size_Small
+												default_format = "#high"
+												margin_top = -5
+											}
+
+											text_single = {
+												visible = "[Not(ScriptedGui.IsValid( GuiScope.SetRoot( GetPlayer.MakeScope ).End))]"
+												text = "MY_REALM_WINDOW_WAR_DECLARATION_RIGHTS_NO"
+												using = Font_Size_Small
+												default_format = "#medium"
+												margin_top = -10
+											}
+
+											text_single = {
+												visible = "[ScriptedGui.IsValid( GuiScope.SetRoot( GetPlayer.MakeScope ).End)]"
+												text = "MY_REALM_WINDOW_WAR_DECLARATION_RIGHTS_YES"
+												tooltip = "MY_REALM_WINDOW_WAR_DECLARATION_RIGHTS_TT"
+												using = Font_Size_Small
+												default_format = "#medium"
+												margin_top = -10
+											}
+										}
+
+										vbox = {
+											minimumsize = { 142 50 }
+											datacontext = "[GetScriptedGui('invisible_hand_fortification_rights')]"
+
+											background = {
+												using = Background_Area_With_Header
+												alpha = 0.75
+											}
+										
+											text_single = {
+												text = "MY_REALM_WINDOW_FORTIFICATION_RIGHTS"
+												using = Font_Size_Small
+												default_format = "#high"
+												margin_top = -5
+											}
+
+											text_single = {
+												visible = "[Not(ScriptedGui.IsValid( GuiScope.SetRoot( GetPlayer.MakeScope ).End))]"
+												text = "MY_REALM_WINDOW_FORTIFICATION_RIGHTS_NO"
+												using = Font_Size_Small
+												default_format = "#medium"
+												margin_top = -10
+											}
+
+											text_single = {
+												visible = "[ScriptedGui.IsValid( GuiScope.SetRoot( GetPlayer.MakeScope ).End)]"
+												text = "MY_REALM_WINDOW_FORTIFICATION_RIGHTS_YES"
+												tooltip = "MY_REALM_WINDOW_FORTIFICATION_RIGHTS_TT"
+												using = Font_Size_Small
+												default_format = "#medium"
+												margin_top = -10
+											}
+										}
+									}
+
+									hbox = {
+										layoutpolicy_horizontal = expanding
+										allow_outside = yes
+
+										vbox = {
+											minimumsize = { 142 50 }
+											datacontext = "[GetScriptedGui('invisible_hand_religious_rights')]"
+
+											background = {
+												using = Background_Area_With_Header
+												alpha = 0.75
+											}
+										
+											text_single = {
+												text = "MY_REALM_WINDOW_RELIGIOUS_RIGHTS"
+												using = Font_Size_Small
+												default_format = "#high"
+												margin_top = -5
+											}
+
+											text_single = {
+												visible = "[Not(ScriptedGui.IsValid( GuiScope.SetRoot( GetPlayer.MakeScope ).End))]"
+												text = "MY_REALM_WINDOW_RELIGIOUS_RIGHTS_NO"
+												using = Font_Size_Small
+												default_format = "#medium"
+												margin_top = -10
+											}
+
+											text_single = {
+												visible = "[ScriptedGui.IsValid( GuiScope.SetRoot( GetPlayer.MakeScope ).End)]"
+												text = "MY_REALM_WINDOW_RELIGIOUS_RIGHTS_YES"
+												tooltip = "MY_REALM_WINDOW_RELIGIOUS_RIGHTS_TT"
+												using = Font_Size_Small
+												default_format = "#medium"
+												margin_top = -10
+											}
+										}
+
+										vbox = {
+											minimumsize = { 142 50 }
+											datacontext = "[GetScriptedGui('invisible_hand_succession_rights')]"
+
+											background = {
+												using = Background_Area_With_Header
+												alpha = 0.75
+											}
+										
+											text_single = {
+												text = "MY_REALM_WINDOW_SUCCESSION_RIGHTS"
+												using = Font_Size_Small
+												default_format = "#high"
+												margin_top = -5
+											}
+
+											text_single = {
+												visible = "[Not(ScriptedGui.IsValid( GuiScope.SetRoot( GetPlayer.MakeScope ).End))]"
+												text = "MY_REALM_WINDOW_SUCCESSION_RIGHTS_NO"
+												using = Font_Size_Small
+												default_format = "#medium"
+												margin_top = -10
+											}
+
+											text_single = {
+												visible = "[ScriptedGui.IsValid( GuiScope.SetRoot( GetPlayer.MakeScope ).End)]"
+												text = "MY_REALM_WINDOW_SUCCESSION_RIGHTS_YES"
+												tooltip = "MY_REALM_WINDOW_SUCCESSION_RIGHTS_TT"
+												using = Font_Size_Small
+												default_format = "#medium"
+												margin_top = -10
+											}
+										}
+
+										vbox = {
+											minimumsize = { 142 50 }
+											datacontext = "[GetScriptedGui('invisible_hand_council_rights')]"
+
+											background = {
+												using = Background_Area_With_Header
+												alpha = 0.75
+											}
+										
+											text_single = {
+												text = "MY_REALM_WINDOW_COUNCIL_RIGHTS"
+												using = Font_Size_Small
+												default_format = "#high"
+												margin_top = -5
+											}
+
+											text_single = {
+												visible = "[Not(ScriptedGui.IsValid( GuiScope.SetRoot( GetPlayer.MakeScope ).End))]"
+												text = "MY_REALM_WINDOW_COUNCIL_RIGHTS_NO"
+												using = Font_Size_Small
+												default_format = "#medium"
+												margin_top = -10
+											}
+
+											text_single = {
+												visible = "[ScriptedGui.IsValid( GuiScope.SetRoot( GetPlayer.MakeScope ).End)]"
+												text = "MY_REALM_WINDOW_COUNCIL_RIGHTS_YES"
+												tooltip = "MY_REALM_WINDOW_COUNCIL_RIGHTS_TT"
+												using = Font_Size_Small
+												default_format = "#medium"
+												margin_top = -10
+											}
+										}
+									}
+
+									hbox = {
+										layoutpolicy_horizontal = expanding
+										allow_outside = yes
+										margin_bottom = 20
+
+										vbox = {
+											minimumsize = { 142 50 }
+											datacontext = "[GetScriptedGui('invisible_hand_title_revocation_rights')]"
+
+											background = {
+												using = Background_Area_With_Header
+												alpha = 0.75
+											}
+										
+											text_single = {
+												text = "MY_REALM_WINDOW_TITLE_REVOCATION_RIGHTS"
+												using = Font_Size_Small
+												default_format = "#high"
+												margin_top = -5
+											}
+
+											text_single = {
+												visible = "[Not(ScriptedGui.IsValid( GuiScope.SetRoot( GetPlayer.MakeScope ).End))]"
+												text = "MY_REALM_WINDOW_TITLE_REVOCATION_RIGHTS_NO"
+												using = Font_Size_Small
+												default_format = "#medium"
+												margin_top = -10
+											}
+
+											text_single = {
+												visible = "[ScriptedGui.IsValid( GuiScope.SetRoot( GetPlayer.MakeScope ).End)]"
+												text = "MY_REALM_WINDOW_TITLE_REVOCATION_RIGHTS_YES"
+												tooltip = "MY_REALM_WINDOW_TITLE_REVOCATION_RIGHTS_TT"
+												using = Font_Size_Small
+												default_format = "#medium"
+												margin_top = -10
+											}
+										}
+
+										vbox = {
+											minimumsize = { 142 50 }
+											datacontext = "[GetScriptedGui('invisible_hand_coinage_rights')]"
+
+											background = {
+												using = Background_Area_With_Header
+												alpha = 0.75
+											}
+										
+											text_single = {
+												text = "MY_REALM_WINDOW_COINAGE_RIGHTS"
+												using = Font_Size_Small
+												default_format = "#high"
+												margin_top = -5
+											}
+
+											text_single = {
+												visible = "[Not(ScriptedGui.IsValid( GuiScope.SetRoot( GetPlayer.MakeScope ).End))]"
+												text = "MY_REALM_WINDOW_COINAGE_RIGHTS_NO"
+												using = Font_Size_Small
+												default_format = "#medium"
+												margin_top = -10
+											}
+
+											text_single = {
+												visible = "[ScriptedGui.IsValid( GuiScope.SetRoot( GetPlayer.MakeScope ).End)]"
+												text = "MY_REALM_WINDOW_COINAGE_RIGHTS_YES"
+												tooltip = "MY_REALM_WINDOW_COINAGE_RIGHTS_TT"
+												using = Font_Size_Small
+												default_format = "#medium"
+												margin_top = -10
+											}
+										}
+
+										spacer = {
+											size = { 140 44 }
+										}
+									}
+								}
+							}
+
+							expand = { }
 						}
 					}
 				}
 
-				### LAWS TAB
+				### LAWS & SUCCESSION TAB
 				vbox = {
-					visible = "[MyRealmWindow.IsShowingSuccession]"
+					visible = "[And(MyRealmWindow.IsShowingSuccession,Not(GetVariableSystem.Exists( 'liege_tab' )))]"
 					layoutpolicy_horizontal = expanding
 					layoutpolicy_vertical = expanding
 
@@ -1193,695 +1868,830 @@ window = {
 						alpha = 0
 					}
 
-					vbox = {
-						margin = { 30 0 }
-						margin_top = 15
-						layoutpolicy_horizontal = expanding
-
-						text_label_center = {
-							text = "[realm] [laws]"
-							visible = "[And( GuiLawGroup.GetLawGroup.HasFlag( 'invisible_hand_legal_system' ), GuiLawGroup.IsAvailable )]"
-						}
-
-						vbox = {
-							datamodel = "[MyRealmWindow.GetRealmLaws]"
-							spacing = 10
-							margin_bottom = 5
-							ignoreinvisible = yes
-							layoutpolicy_horizontal = expanding
-
-							item = {
-								hbox = {
-									visible = "[And( GuiLawGroup.GetLawGroup.HasFlag( 'invisible_hand_legal_system' ), GuiLawGroup.IsAvailable )]"
-									layoutpolicy_horizontal = growing
-
-									vbox = {
-										layoutpolicy_horizontal = growing
-
-										text_single = {
-											layoutpolicy_horizontal = growing
-											max_width = 350
-											text = "[GuiLawGroup.GetLawGroup.GetNameSingular]:"
-										}
-
-										text_single = {
-											layoutpolicy_horizontal = growing
-											max_width = 350
-											text = "[GuiLawGroup.GetCurrentLevel.GetLaw.GetName]"
-											default_format = "#high"
-										}
-
-										text_single = {
-											layoutpolicy_horizontal = growing
-											max_width = 350
-											visible = "[GuiLawGroup.GetCurrentLevel.GetLaw.HasSubName]"
-											text = "[GuiLawGroup.GetCurrentLevel.GetLaw.GetSubName]"
-											default_format = "#F"
-										}
-									}
-									expand = {
-										layoutpolicy_horizontal = growing
-									}
-
-									button_standard = {
-										datacontext = "[GuiLawGroup]"
-										size = { 150 32 }
-										onclick = "[OpenSuccessionLawChangeWindow(GuiLawGroup.Self)]"
-										onclick = "[GetVariableSystem.Toggle( 'invisible_hand_law' )]"
-										text = "MRW_CHANGE_LAW"
-										tooltip = "MRW_CHANGE_LAW_TT"
-									}
-								}
-							}
-						}
-					}
-
-					vbox = {
-						margin = { 30 0 }
-						margin_top = 15
-						layoutpolicy_horizontal = expanding
-
-						vbox = {
-							datamodel = "[MyRealmWindow.GetRealmLaws]"
-							spacing = 10
-							margin_bottom = 5
-							ignoreinvisible = yes
-							layoutpolicy_horizontal = expanding
-
-							item = {
-								hbox = {
-									visible = "[And( GuiLawGroup.GetLawGroup.HasFlag( 'invisible_hand_tenure_law' ), GuiLawGroup.IsAvailable )]"
-									layoutpolicy_horizontal = growing
-
-									vbox = {
-										layoutpolicy_horizontal = growing
-
-										text_single = {
-											layoutpolicy_horizontal = growing
-											max_width = 350
-											text = "[GuiLawGroup.GetLawGroup.GetNameSingular]:"
-										}
-
-										text_single = {
-											layoutpolicy_horizontal = growing
-											max_width = 350
-											text = "[GuiLawGroup.GetCurrentLevel.GetLaw.GetName]"
-											default_format = "#high"
-										}
-
-										text_single = {
-											layoutpolicy_horizontal = growing
-											max_width = 350
-											visible = "[GuiLawGroup.GetCurrentLevel.GetLaw.HasSubName]"
-											text = "[GuiLawGroup.GetCurrentLevel.GetLaw.GetSubName]"
-											default_format = "#F"
-										}
-									}
-									expand = {
-										layoutpolicy_horizontal = growing
-									}
-
-									button_standard = {
-										datacontext = "[GuiLawGroup]"
-										size = { 150 32 }
-										onclick = "[OpenSuccessionLawChangeWindow(GuiLawGroup.Self)]"
-										onclick = "[GetVariableSystem.Toggle( 'invisible_hand_law' )]"
-										text = "MRW_CHANGE_LAW"
-										tooltip = "MRW_CHANGE_LAW_TT"
-									}
-								}
-							}
-						}
-					}
-
-					# Succession
-					vbox = {
-						margin = { 30 15 }
-						spacing = 8
-						layoutpolicy_horizontal = expanding
-
-						text_label_center = {
-							text = "[succession_laws]"
-						}
-
-						vbox = {
-							datamodel = "[MyRealmWindow.GetRealmLaws]"
-							spacing = 10
-							margin_bottom = 5
-							ignoreinvisible = yes
-							layoutpolicy_horizontal = expanding
-
-							item = {
-								hbox = {
-									visible = "[And( Not( Or( GuiLawGroup.GetLawGroup.HasFlag( 'realm_law' ), GuiLawGroup.GetLawGroup.HasFlag( 'invisible_hand_realm_law' ) ) ), GuiLawGroup.IsAvailable )]"
-									layoutpolicy_horizontal = growing
-
-									vbox = {
-										layoutpolicy_horizontal = growing
-										text_single = {
-											layoutpolicy_horizontal = growing
-											max_width = 350
-											text = "[GuiLawGroup.GetLawGroup.GetNameSingular]:"
-										}
-
-										text_single = {
-											layoutpolicy_horizontal = growing
-											max_width = 350
-											text = "[GuiLawGroup.GetCurrentLevel.GetLaw.GetName]"
-											default_format = "#high"
-										}
-
-										text_single = {
-											layoutpolicy_horizontal = growing
-											max_width = 350
-											visible = "[GuiLawGroup.GetCurrentLevel.GetLaw.HasSubName]"
-											text = "[GuiLawGroup.GetCurrentLevel.GetLaw.GetSubName]"
-											default_format = "#F"
-										}
-									}
-									expand = {
-										layoutpolicy_horizontal = growing
-									}
-
-									button_standard = {
-										datacontext = "[GuiLawGroup]"
-										size = { 150 32 }
-										onclick = "[OpenSuccessionLawChangeWindow(GuiLawGroup.Self)]"
-										onclick = "[GetVariableSystem.Clear( 'invisible_hand_law' )]"
-										text = "MRW_CHANGE_LAW"
-										tooltip = "MRW_CHANGE_LAW_TT"
-									}
-								}
-							}
-						}
-
-						divider_light = {
-							layoutpolicy_horizontal = growing
-						}
-
-						hbox = {
-							layoutpolicy_horizontal = growing
-
-							vbox = {
-								layoutpolicy_horizontal = growing
-
-
-								text_single = {
-									layoutpolicy_horizontal = growing
-									max_width = 350
-									text = "MRW_DESIGNATED_HEIR_LABEL"
-								}
-
-								text_single = {
-									visible = "[MyRealmWindow.GetCharacter.GetDesignatedHeir.IsValid]"
-									layoutpolicy_horizontal = growing
-									text = "MRW_DESIGNATED_HEIR"
-									max_width = 350
-								}
-
-								text_single = {
-									visible = "[Not(MyRealmWindow.GetCharacter.GetDesignatedHeir.IsValid)]"
-									layoutpolicy_horizontal = growing
-									text = "MRW_NO_DESIGNATED_HEIR"
-									max_width = 350
-								}
-							}
-
-							button_standard = {
-								text = "MY_REALM_WINDOW_DESIGNATE_HEIR"
-								size = { 150 32 }
-								tooltip = "MRW_DESIGNATE_HEIR_TT"
-								enabled = "[MyRealmWindow.CanDesignateHeir]"
-								onclick = "[OpenDesignateHeirWindow]"
-							}
-						}
-					}
-
 					scrollbox = {
-						name = "succession_scrollbox"
 						layoutpolicy_horizontal = expanding
 						layoutpolicy_vertical = expanding
-						minimumsize = { 0 350 }
+						minimumsize = { 0 650 }
 
-						blockoverride "scrollbox_content"
-						{
-							margin = { 17 10 }
-							spacing = 10
+						blockoverride "scrollbox_content" {
+							margin_left = 20
 
-							hbox = {
-								name = "current_heir"
+							# Realm Laws
+							vbox = {
+								margin = { 30 0 }
+								margin_top = 15
 								layoutpolicy_horizontal = expanding
 
-								portrait_head = {
-									datacontext = "[MyRealmWindow.GetCharacter.GetPlayerHeir]"
-									blockoverride "glow_visible"
-									{
-										visible = no
-									}
+								text_label_center = {
+									text = "[realm] [laws]"
 								}
 
 								vbox = {
-									layoutpolicy_vertical = expanding
+									datamodel = "[MyRealmWindow.GetRealmLaws]"
+									spacing = 10
+									margin_bottom = 5
+									ignoreinvisible = yes
 									layoutpolicy_horizontal = expanding
-									margin = { 10 8 }
 
-									vbox = {
-										layoutpolicy_horizontal = expanding
+									item = {
+										hbox = {
+											visible = "[And( GuiLawGroup.GetLawGroup.HasFlag( 'invisible_hand_realm_law' ), GuiLawGroup.IsAvailable )]"
+											layoutpolicy_horizontal = growing
 
-										text_single = {
-											visible = "[MyRealmWindow.HasHeir]"
-											layoutpolicy_horizontal = expanding
-											layoutpolicy_vertical = expanding
-											autoresize = no
+											vbox = {
+												layoutpolicy_horizontal = growing
 
-											text = "MRW_YOUR_PLAYER_HEIR"
-											default_format = "#low"
-										}
+												text_single = {
+													layoutpolicy_horizontal = growing
+													max_width = 350
+													text = "[GuiLawGroup.GetLawGroup.GetNameSingular]:"
+												}
 
-										text_single = {
-											visible = "[MyRealmWindow.HasHeir]"
-											layoutpolicy_horizontal = expanding
-											autoresize = no
-											using = Font_Size_Medium
-											fontsize_min = 14
+												text_single = {
+													layoutpolicy_horizontal = growing
+													max_width = 350
+													text = "[GuiLawGroup.GetCurrentLevel.GetLaw.GetName]"
+													default_format = "#high"
+												}
 
-											text = "[MyRealmWindow.GetCharacter.GetPlayerHeir.GetUINameNoTooltip]"
-											default_format = "#low"
-										}
-									}
+												text_single = {
+													layoutpolicy_horizontal = growing
+													max_width = 350
+													visible = "[GuiLawGroup.GetCurrentLevel.GetLaw.HasSubName]"
+													text = "[GuiLawGroup.GetCurrentLevel.GetLaw.GetSubName]"
+													default_format = "#F"
+												}
+											}
+											expand = {
+												layoutpolicy_horizontal = growing
+											}
 
-									vbox = {
-										layoutpolicy_horizontal = expanding
-
-										text_single = {
-											name = "no_heir_warning"
-											visible = "[Not( MyRealmWindow.HasHeir )]"
-											layoutpolicy_horizontal = expanding
-											text = "MY_REALM_WINDOW_NO_HEIR_FLAVOR"
-										}
-
-										text_single = {
-											name = "not_primary_heir"
-											visible = "[And( MyRealmWindow.HasHeir, Not( ObjectsEqual( MyRealmWindow.GetCharacter.GetPlayerHeir, MyRealmWindow.GetCharacter.GetPrimaryTitle.GetHeir.Self ) ) )]"
-											layoutpolicy_horizontal = expanding
-											text = "MY_REALM_WINDOW_NOT_PRIMARY_HEIR"
+											button_standard = {
+												datacontext = "[GuiLawGroup]"
+												size = { 150 32 }
+												onclick = "[OpenSuccessionLawChangeWindow(GuiLawGroup.Self)]"
+												onclick = "[GetVariableSystem.Toggle( 'invisible_hand_law' )]"
+												text = "MRW_CHANGE_LAW"
+												tooltip = "MRW_CHANGE_LAW_TT"
+											}
 										}
 									}
 								}
 							}
 
-							divider = {
+							# Succession Laws
+							vbox = {
+								margin = { 30 15 }
+								spacing = 8
 								layoutpolicy_horizontal = expanding
+
+								text_label_center = {
+									text = "[succession_laws]"
+								}
+
+								vbox = {
+									datamodel = "[MyRealmWindow.GetRealmLaws]"
+									spacing = 10
+									margin_bottom = 5
+									ignoreinvisible = yes
+									layoutpolicy_horizontal = expanding
+
+									item = {
+										hbox = {
+											visible = "[And( Not( Or( GuiLawGroup.GetLawGroup.HasFlag( 'realm_law' ), GuiLawGroup.GetLawGroup.HasFlag( 'invisible_hand_realm_law' ) ) ), GuiLawGroup.IsAvailable )]"
+											layoutpolicy_horizontal = growing
+
+											vbox = {
+												layoutpolicy_horizontal = growing
+												text_single = {
+													layoutpolicy_horizontal = growing
+													max_width = 350
+													text = "[GuiLawGroup.GetLawGroup.GetNameSingular]:"
+												}
+
+												text_single = {
+													layoutpolicy_horizontal = growing
+													max_width = 350
+													text = "[GuiLawGroup.GetCurrentLevel.GetLaw.GetName]"
+													default_format = "#high"
+												}
+
+												text_single = {
+													layoutpolicy_horizontal = growing
+													max_width = 350
+													visible = "[GuiLawGroup.GetCurrentLevel.GetLaw.HasSubName]"
+													text = "[GuiLawGroup.GetCurrentLevel.GetLaw.GetSubName]"
+													default_format = "#F"
+												}
+											}
+											expand = {
+												layoutpolicy_horizontal = growing
+											}
+
+											button_standard = {
+												datacontext = "[GuiLawGroup]"
+												size = { 150 32 }
+												onclick = "[OpenSuccessionLawChangeWindow(GuiLawGroup.Self)]"
+												onclick = "[GetVariableSystem.Clear( 'invisible_hand_law' )]"
+												text = "MRW_CHANGE_LAW"
+												tooltip = "MRW_CHANGE_LAW_TT"
+											}
+										}
+									}
+								}
 							}
 
-							##### FROM REALM'S PARTITION #####
+							# Succession
 							vbox = {
 								layoutpolicy_horizontal = expanding
+								layoutpolicy_vertical = expanding
+								margin = { 30 15 }
+								spacing = 8
+
+								background = {
+									using = Background_Area_Border
+									margin_right = -10
+								}
+
+								text_label_center = {
+									text = "[succession]"
+								}
+
+								hbox = {
+									layoutpolicy_horizontal = growing
+
+									vbox = {
+										layoutpolicy_horizontal = growing
+
+
+										text_single = {
+											layoutpolicy_horizontal = growing
+											max_width = 350
+											text = "MRW_DESIGNATED_HEIR_LABEL"
+										}
+
+										text_single = {
+											visible = "[MyRealmWindow.GetCharacter.GetDesignatedHeir.IsValid]"
+											layoutpolicy_horizontal = growing
+											text = "MRW_DESIGNATED_HEIR"
+											max_width = 350
+										}
+
+										text_single = {
+											visible = "[Not(MyRealmWindow.GetCharacter.GetDesignatedHeir.IsValid)]"
+											layoutpolicy_horizontal = growing
+											text = "MRW_NO_DESIGNATED_HEIR"
+											max_width = 350
+										}
+									}
+
+									button_standard = {
+										text = "MY_REALM_WINDOW_DESIGNATE_HEIR"
+										size = { 150 32 }
+										tooltip = "MRW_DESIGNATE_HEIR_TT"
+										enabled = "[MyRealmWindow.CanDesignateHeir]"
+										onclick = "[OpenDesignateHeirWindow]"
+									}
+								}
+
+								divider = {
+									layoutpolicy_horizontal = expanding
+								}
 
 								vbox = {
-									name = "their_partition_share"
-									visible = "[And(MyRealmWindow.HasPartition, DataModelHasItems(MyRealmWindow.GetMyPartitionShare))]"
 									layoutpolicy_horizontal = expanding
+
+									text_single = {
+										name = "no_heir_warning"
+										visible = "[Not( MyRealmWindow.HasHeir )]"
+										layoutpolicy_horizontal = expanding
+										text = "MY_REALM_WINDOW_NO_HEIR_FLAVOR"
+										align = center
+										margin_bottom = 8
+									}
+
+									text_single = {
+										name = "not_primary_heir"
+										visible = "[And( MyRealmWindow.HasHeir, Not( ObjectsEqual( MyRealmWindow.GetCharacter.GetPlayerHeir, MyRealmWindow.GetCharacter.GetPrimaryTitle.GetHeir.Self ) ) )]"
+										layoutpolicy_horizontal = expanding
+										text = "MY_REALM_WINDOW_NOT_PRIMARY_HEIR"
+										align = center
+										margin_bottom = 8
+									}
+								}
+
+								hbox = {
+									layoutpolicy_horizontal = expanding
+									visible = "[MyRealmWindow.HasHeir]"
+									datacontext = "[MyRealmWindow.GetCharacter.GetPlayerHeir]"
+
+									background = {
+										using = Background_Area_With_Header
+										margin_left = 8
+									}
+
+									vbox = {
+										layoutpolicy_horizontal = expanding
+										layoutpolicy_vertical = growing
+										margin_bottom = 5
+
+										text_single = {
+											name = "heir_name"
+											align = left
+											text = "[primary_heir|e]: [Character.GetNameNoTooltip]"
+											layoutpolicy_horizontal = expanding
+											using = Font_Size_Medium
+											max_width = 340
+											fontsize_min = 14
+										}
+
+										spacer = {
+											size = { 10 3 }
+										}
+
+										text_single = {
+											margin_left = 2
+											name = "heir_share"
+											datacontext = "[GetPlayer]"
+											layoutpolicy_horizontal = expanding
+
+											text = "MY_REALM_WINDOW_PARTITION_SHARE"
+										}
+
+										overlappingitembox = {
+											name = "titles_box"
+											datamodel = "[MyRealmWindow.GetMyPartitionShare]"
+											minimumsize = { 250 50 }
+											maximumsize = { 350 50 }
+											margin_top = -6
+											margin_left = -4
+
+											item = {
+												container = {
+
+													coa_title_tiny_crown = {
+														datacontext = "[TitleItem.GetTitle]"
+														using = tooltip_ne
+													}
+
+													icon = {
+														name = "has_laws"
+														parentanchor = bottom|right
+														visible = [TitleItem.GetTitle.HasLaws]
+														size = { 10 10 }
+														texture = "gfx/interface/icons/flat_icons/menu.dds"
+													}
+												}
+											}
+										}
+									}
+
+									portrait_head = { }
+								}
+
+								text_single = {
+									layoutpolicy_horizontal = expanding
+									align = center
+
+									text = "MY_REALM_WINDOW_HEIR_NOT_MY_DYNASTY"
+									visible = "[Not(ObjectsEqual(Character.GetHouse.GetDynasty.Self, GetPlayer.GetHouse.GetDynasty.Self))]"
+									using = Font_Size_Small
+									margin_bottom = 10
+								}
+
+								divider = {
+									layoutpolicy_horizontal = expanding
+								}
+
+								##### FROM REALM'S PARTITION #####
+								vbox = {
+									layoutpolicy_horizontal = expanding
+
+									spacer = {
+										size = { 5 5 }
+									}
 
 									hbox = {
 										layoutpolicy_horizontal = expanding
+										visible = "[DataModelHasItems(MyRealmWindow.GetTitleSuccession)]"
+										margin_bottom = 10
 
-										text_label_center = {
-											text = "MY_REALM_WINDOW_PARTITION_SHARE"
+										expand = {}
+
+										button_group = {
+											onclick = "[GetVariableSystem.Toggle( 'expand_partition' )]"
+
+											flowcontainer = {
+												ignoreinvisible = yes
+												spacing = 5
+
+												widget = {
+													size = { 18 22 }
+
+													button_expand = {
+														visible = "[Not(GetVariableSystem.Exists( 'expand_partition' ))]"
+														parentanchor = center
+														frame = 1
+													}
+
+													button_expand = {
+														visible = "[GetVariableSystem.Exists( 'expand_partition' )]"
+														parentanchor = center
+														frame = 2
+													}
+												}
+
+												text_single = {
+													text = "MY_REALM_WINDOW_TITLES_LOST_ON_SUCCESSION"
+													align = nobaseline
+												}
+											}
 										}
 
 										expand = {}
 									}
 
-									overlappingitembox = {
-										name = "partition_share_box"
-										datamodel = "[MyRealmWindow.GetMyPartitionShare]"
+									spacer = {
+										visible = "[GetVariableSystem.Exists( 'expand_partition' )]"
+										size = { 5 5 }
+									}
+
+									vbox = {
+										name = "title_succession"
+										datamodel = "[MyRealmWindow.GetTitleSuccession]"
+										visible = "[GetVariableSystem.Exists( 'expand_partition' )]"
 										layoutpolicy_horizontal = expanding
-										size = { 460 55 }
 										spacing = 10
 
 										item = {
-											coa_title_tiny_crown = {
-												datacontext = "[TitleItem.GetTitle]"
-												using = tooltip_ne
-											}
-										}
-									}
-								}
-
-								spacer = {
-									size = { 5 5 }
-								}
-
-								hbox = {
-									layoutpolicy_horizontal = expanding
-									visible = "[DataModelHasItems(MyRealmWindow.GetTitleSuccession)]"
-									margin = { 5 0 }
-
-									button_group = {
-										onclick = "[GetVariableSystem.Toggle( 'expand_partition' )]"
-
-										flowcontainer = {
-											ignoreinvisible = yes
-											spacing = 5
-
-											widget = {
-												size = { 18 22 }
-
-												button_expand = {
-													visible = "[Not(GetVariableSystem.Exists( 'expand_partition' ))]"
-													parentanchor = center
-													frame = 1
-												}
-
-												button_expand = {
-													visible = "[GetVariableSystem.Exists( 'expand_partition' )]"
-													parentanchor = center
-													frame = 2
-												}
-											}
-
-											text_single = {
-												text = "MY_REALM_WINDOW_TITLES_LOST_ON_SUCCESSION"
-												align = nobaseline
-											}
-										}
-									}
-
-									expand = {}
-								}
-
-								spacer = {
-									visible = "[GetVariableSystem.Exists( 'expand_partition' )]"
-									size = { 5 5 }
-								}
-
-								dynamicgridbox = {
-									name = "title_succession"
-									datamodel = "[MyRealmWindow.GetTitleSuccession]"
-									visible = "[GetVariableSystem.Exists( 'expand_partition' )]"
-									layoutpolicy_horizontal = expanding
-
-									item = {
-										hbox = {
-											maximumsize = { -1 100 }
-											margin_left = 10
-											margin_bottom = 5
-											datacontext = "[TitleSuccessionItem.GetHeir]"
-
-											background = {
-												using = Background_Area_With_Header
-											}
-
 											vbox = {
 												layoutpolicy_horizontal = expanding
-												layoutpolicy_vertical = growing
-												margin_bottom = 5
-
-												text_single = {
-													name = "heir_name"
-													text = "[Character.GetUINameNoTooltip]"
-													layoutpolicy_horizontal = expanding
-													using = Font_Size_Medium
-													max_width = 400
-													fontsize_min = 14
-												}
-
-												spacer = {
-													size = { 10 5 }
-												}
-
-												text_single = {
-													name = "heir_not_your_dynasty"
-													layoutpolicy_horizontal = expanding
-
-													text = "MY_REALM_WINDOW_HEIR_NOT_MY_DYNASTY"
-													visible = "[Not(ObjectsEqual(Character.GetHouse.GetDynasty.Self, GetPlayer.GetHouse.GetDynasty.Self))]"
-													using = Font_Size_Small
-												}
-
-												text_single = {
-													name = "heir_share"
-													datacontext = "[GetPlayer]"
-													visible = "[DataModelHasItems(TitleSuccessionItem.GetPartitionTitles)]"
-													layoutpolicy_horizontal = expanding
-
-													text = "MY_REALM_WINDOW_PARTITION_SHARE"
-												}
-
-												overlappingitembox = {
-													name = "titles_box"
-													datamodel = "[TitleSuccessionItem.GetPartitionTitles]"
-													visible = "[DataModelHasItems(TitleSuccessionItem.GetPartitionTitles)]"
-													minimumsize = { 350 50 }
-													spacing = 10
-
-													item = {
-														container = {
-
-															coa_title_tiny_crown = {
-																datacontext = "[TitleItem.GetTitle]"
-																using = tooltip_ne
-															}
-
-															icon = {
-																name = "has_laws"
-																parentanchor = bottom|right
-																visible = [TitleItem.GetTitle.HasLaws]
-																size = { 10 10 }
-																texture = "gfx/interface/icons/flat_icons/menu.dds"
-															}
-														}
-													}
-												}
-
-												text_single = {
-													name = "exception_label"
-													visible = "[DataModelHasItems(TitleSuccessionItem.GetExceptionTitles)]"
-													layoutpolicy_horizontal = expanding
-
-													text = "MY_REALM_WINDOW_EXCEPTIONS"
-												}
-
-												overlappingitembox = {
-													name = "exception_box"
-													datamodel = "[TitleSuccessionItem.GetExceptionTitles]"
-													visible = "[DataModelHasItems(TitleSuccessionItem.GetExceptionTitles)]"
-													minimumsize = { 350 50 }
-													spacing = 10
-
-													item = {
-														container = {
-
-															coa_title_tiny_crown = {
-																datacontext = "[TitleItem.GetTitle]"
-																using = tooltip_ne
-
-																icon = {
-																	name = "has_laws"
-																	visible = "[TitleItem.GetTitle.HasLaws]"
-																	parentanchor = bottom|right
-																	size = { 25 25 }
-																	position = { 5 0 }
-																	texture = "gfx/interface/icons/title_status/icon_title_law.dds"
-																}
-															}
-														}
-													}
-												}
-											}
-
-											vbox = {
-												portrait_head = {
-													name = "primary_spouse_portrait"
-												}
-
-												expand = {}
-											}
-										}
-									}
-								}
-							}
-
-							vbox = {
-								name = "exceptions"
-								layoutpolicy_horizontal = expanding
-								layoutpolicy_vertical = growing
-
-								visible = "[DataModelHasItems(MyRealmWindow.GetSuccessionExceptions)]"
-
-								hbox = {
-									layoutpolicy_horizontal = expanding
-
-									text_label_center = {
-										text = "MY_REALM_WINDOW_EXCEPTIONS"
-									}
-
-									expand = {}
-								}
-
-								overlappingitembox = {
-									name = "exceptions_box"
-									layoutpolicy_horizontal = expanding
-									size = { 460 55 }
-									spacing = 10
-
-									datamodel = "[MyRealmWindow.GetSuccessionExceptions]"
-
-									item = {
-										container = {
-											coa_title_tiny_crown = {
-												datacontext = "[TitleItem.GetTitle]"
-												using = tooltip_ne
-											}
-										}
-									}
-								}
-							}
-
-							vbox = {
-								name = "line_of_succession"
-								visible = "[MyRealmWindow.HasSingleHeir]"
-								layoutpolicy_horizontal = expanding
-								layoutpolicy_vertical = growing
-								spacing = 10
-
-								hbox = {
-									layoutpolicy_horizontal = expanding
-
-									text_label_left = {
-										name = "line_of_succession_label"
-
-										text = "MY_REALM_WINDOW_LINE_OF_SUCCESSION"
-									}
-
-									expand = {}
-								}
-
-								flowcontainer = {
-									name = "line_of_succession_box"
-									layoutpolicy_horizontal = expanding
-									spacing = 0
-									margin_right = 10
-
-									datamodel = "[MyRealmWindow.GetLineOfSuccession]"
-
-									item = {
-										portrait_head = {
-											name = "heir_portrait"
-										}
-									}
-								}
-							}
-
-							divider = {
-								layoutpolicy_horizontal = expanding
-							}
-
-							#### ELECTIONS ####
-							vbox = {
-								layoutpolicy_horizontal = expanding
-								visible = "[MyRealmWindow.CanVote]"
-
-								hbox = {
-									layoutpolicy_horizontal = expanding
-
-									text_label_center = {
-										text = "MY_REALM_WINDOW_ELECTIONS"
-									}
-
-									expand = {}
-								}
-
-								flowcontainer = {
-									name = "elections"
-									direction = vertical
-
-									fixedgridbox = {
-										name = "exceptions_box"
-										addcolumn = 480
-										addrow = 90
-										datamodel = "[MyRealmWindow.GetTitlesCanVote]"
-
-										item = {
-											widget = {
-												name = "election_title"
-												size = { 480 90 }
-												datacontext = "[TitleItem.GetTitle]"
-
+												datacontext = "[TitleSuccessionItem.GetHeir]"
 												hbox = {
-													layoutpolicy_vertical = expanding
-													spacing = 10
+													layoutpolicy_horizontal = expanding
 
-													coa_title_small_crown = {
-														datacontext = "[Title]"
-														using = tooltip_ne
+													background = {
+														using = Background_Area_With_Header
+														margin_left = 8
 													}
 
 													vbox = {
-														spacing = 7
+														layoutpolicy_horizontal = expanding
+														layoutpolicy_vertical = growing
+														margin_bottom = 5
+														margin_right = -10
+														margin_left = -10
 
-														text_single = {
+														hbox = {
 															layoutpolicy_horizontal = expanding
-															text = "[Title.GetNameNoTooltip]"
+															margin_left = 12
+
+															text_single = {
+																name = "heir_name"
+																align = left
+																text = "[heir|e]: [Character.GetNameNoTooltip]"
+																using = Font_Size_Medium
+																max_width = 340
+																fontsize_min = 14
+															}
+
+															expand = { }
+														}
+
+														spacer = {
+															size = { 10 3 }
 														}
 
 														hbox = {
 															layoutpolicy_horizontal = expanding
+															margin_left = 12
 
-															button_standard_select_arrow = {
-																name = "go_to_vote"
-																onclick = "[OpenSuccessionElectionWindowForTitle(Title.Self)]"
-																
-																blockoverride "button_text"{
-																	text = "MY_REALM_WINDOW_VOTE"
-																}
-																
-																tooltip = "MY_REALM_WINDOW_VOTE_TOOLTIP"
+															text_single = {
+																name = "heir_share"
+																datacontext = "[GetPlayer]"
+																visible = "[DataModelHasItems(TitleSuccessionItem.GetPartitionTitles)]"
+																layoutpolicy_horizontal = expanding
+
+																text = "MY_REALM_WINDOW_PARTITION_SHARE"
 															}
 
-															expand = {}
+															expand = { }
+														}
+
+														hbox = {
+															layoutpolicy_horizontal = expanding
+															margin_left = 12
+
+															overlappingitembox = {
+																name = "titles_box"
+																datamodel = "[TitleSuccessionItem.GetPartitionTitles]"
+																visible = "[DataModelHasItems(TitleSuccessionItem.GetPartitionTitles)]"
+																minimumsize = { 250 50 }
+																maximumsize = { 350 50 }
+																margin_top = -6
+																margin_left = -5
+
+																item = {
+																	container = {
+
+																		coa_title_tiny_crown = {
+																			datacontext = "[TitleItem.GetTitle]"
+																			using = tooltip_ne
+																		}
+
+																		icon = {
+																			name = "has_laws"
+																			parentanchor = bottom|right
+																			visible = [TitleItem.GetTitle.HasLaws]
+																			size = { 10 10 }
+																			texture = "gfx/interface/icons/flat_icons/menu.dds"
+																		}
+																	}
+																}
+															}
+
+															expand = { }
+														}
+
+														text_single = {
+															name = "exception_label"
+															visible = "[DataModelHasItems(TitleSuccessionItem.GetExceptionTitles)]"
+															layoutpolicy_horizontal = expanding
+
+															text = "MY_REALM_WINDOW_EXCEPTIONS"
+														}
+
+														overlappingitembox = {
+															name = "exception_box"
+															datamodel = "[TitleSuccessionItem.GetExceptionTitles]"
+															visible = "[DataModelHasItems(TitleSuccessionItem.GetExceptionTitles)]"
+															minimumsize = { 350 50 }
+															spacing = 4
+
+															item = {
+																container = {
+
+																	coa_title_tiny_crown = {
+																		datacontext = "[TitleItem.GetTitle]"
+																		using = tooltip_ne
+
+																		icon = {
+																			name = "has_laws"
+																			visible = "[TitleItem.GetTitle.HasLaws]"
+																			parentanchor = bottom|right
+																			size = { 25 25 }
+																			position = { 5 0 }
+																			texture = "gfx/interface/icons/title_status/icon_title_law.dds"
+																		}
+																	}
+																}
+															}
 														}
 													}
 
-													expand = {}
+													portrait_head = { }
+												}
+
+												text_single = {
+													layoutpolicy_horizontal = expanding
+													align = center
+
+													text = "MY_REALM_WINDOW_HEIR_NOT_MY_DYNASTY"
+													visible = "[Not(ObjectsEqual(Character.GetHouse.GetDynasty.Self, GetPlayer.GetHouse.GetDynasty.Self))]"
+													using = Font_Size_Small
+													margin_top = 10
+													margin_bottom = 10
+												}
+
+												hbox = {
+													margin_top = 10
+													layoutpolicy_horizontal = expanding
+
+													divider = {
+														layoutpolicy_horizontal = expanding
+													}
 												}
 											}
 										}
 									}
 								}
-							}
 
-							expand = {
-								layoutpolicy_vertical = expanding
+								vbox = {
+									margin_top = -10
+									name = "exceptions"
+									layoutpolicy_horizontal = expanding
+									layoutpolicy_vertical = growing
+
+									visible = "[DataModelHasItems(MyRealmWindow.GetSuccessionExceptions)]"
+
+									hbox = {
+										layoutpolicy_horizontal = expanding
+
+										text_label_center = {
+											text = "MY_REALM_WINDOW_EXCEPTIONS"
+										}
+									}
+
+									hbox = {
+										name = "exceptions_box"
+										layoutpolicy_horizontal = expanding
+										spacing = 10
+										margin_top = 4
+
+										datamodel = "[MyRealmWindow.GetSuccessionExceptions]"
+
+										item = {
+											container = {
+												coa_title_tiny_crown = {
+													datacontext = "[TitleItem.GetTitle]"
+													using = tooltip_ne
+												}
+											}
+										}
+									}
+								}
+
+								vbox = {
+									name = "line_of_succession"
+									visible = "[MyRealmWindow.HasSingleHeir]"
+									layoutpolicy_horizontal = expanding
+									layoutpolicy_vertical = growing
+									spacing = 10
+									margin_top = -12
+
+									hbox = {
+										layoutpolicy_horizontal = expanding
+										margin_bottom = 4
+
+										text_label_center = {
+											name = "line_of_succession_label"
+											text = "MY_REALM_WINDOW_LINE_OF_SUCCESSION"
+										}
+									}
+
+									hbox = {
+										name = "line_of_succession_box"
+										layoutpolicy_horizontal = expanding
+										spacing = 0
+										margin_right = 10
+
+										datamodel = "[MyRealmWindow.GetLineOfSuccession]"
+
+										item = {
+											portrait_head_small = {
+												name = "heir_portrait"
+											}
+										}
+									}
+								}
+
+								divider = {
+									layoutpolicy_horizontal = expanding
+									visible = "[MyRealmWindow.CanVote]"
+								}
+
+								#### ELECTIONS ####
+								vbox = {
+									layoutpolicy_horizontal = expanding
+									visible = "[MyRealmWindow.CanVote]"
+
+									hbox = {
+										layoutpolicy_horizontal = expanding
+
+										text_label_center = {
+											text = "MY_REALM_WINDOW_ELECTIONS"
+										}
+									}
+
+									hbox = {
+										layoutpolicy_horizontal = expanding
+										margin_left = -20
+
+										fixedgridbox = {
+											name = "exceptions_box"
+											addcolumn = 480
+											addrow = 90
+											datamodel = "[MyRealmWindow.GetTitlesCanVote]"
+
+											item = {
+												widget = {
+													name = "election_title"
+													size = { 480 90 }
+													datacontext = "[TitleItem.GetTitle]"
+
+													hbox = {
+														layoutpolicy_vertical = expanding
+														spacing = 10
+
+														expand = {}
+
+														coa_title_small_crown = {
+															datacontext = "[Title]"
+															using = tooltip_ne
+														}
+
+														vbox = {
+															spacing = 7
+
+															text_single = {
+																layoutpolicy_horizontal = expanding
+																text = "[Title.GetNameNoTooltip]"
+															}
+
+															hbox = {
+																layoutpolicy_horizontal = expanding
+
+																button_standard_select_arrow = {
+																	name = "go_to_vote"
+																	onclick = "[OpenSuccessionElectionWindowForTitle(Title.Self)]"
+																	
+																	blockoverride "button_text"{
+																		text = "MY_REALM_WINDOW_VOTE"
+																	}
+																	
+																	tooltip = "MY_REALM_WINDOW_VOTE_TOOLTIP"
+																}
+															}
+														}
+
+														expand = {}
+													}
+												}
+											}
+										}
+									}
+								}
+								expand = { }
 							}
 						}
 					}
 				}
 
 				vbox = {
-					visible = "[Or( MyRealmWindow.IsShowingDomain, MyRealmWindow.IsShowingVassals)]"
+					visible = "[Or(Or( MyRealmWindow.IsShowingDomain, MyRealmWindow.IsShowingVassals),GetVariableSystem.Exists('liege_tab'))]"
 					layoutpolicy_horizontal = expanding
 					margin = { 15 5 }
 					margin_bottom = 15
 					spacing = 8
 
-					hbox = {
-						visible = "[MyRealmWindow.IsShowingDomain]"
-						tooltip = "[GetPlayer.GetDomainLimitTooltip]"
-						spacing = 2
+					vbox = {
+						visible = "[And(MyRealmWindow.IsShowingVassals,Not(GetVariableSystem.Exists('liege_tab')))]"
+						layoutpolicy_horizontal = expanding
+						margin_top = 2
+						margin_bottom = 6
 
-						text_single = {
-							text = "[SelectLocalization(MyRealmWindow.IsOverDomainLimit, 'MY_REALM_WINDOW_DOMAIN_LIMIT_WARNING', 'MY_REALM_WINDOW_DOMAIN_LIMIT')]"
+						hbox = {
+							spacing = 16
+
+							text_single = {
+								default_format = "#high"
+								text = "MY_REALM_WINDOW_VASSAL_OPINION"
+								tooltip = "MY_REALM_WINDOW_VASSAL_OPINION_TT"
+							}
+
+							hbox = {
+
+								tooltip = "[GetPlayer.GetDreadBreakdown]"
+
+								icon = {
+									name = "dread_icon"
+									size = { 30 30 }
+									texture = "gfx/interface/icons/icon_dread.dds"
+								}
+
+								text_single = {
+									name = "dread_name"
+									text = "[dread|E]: [GetPlayer.GetDread|0]"
+									default_format = "#high"
+								}
+							}
+
+							hbox = {
+								spacing = 2
+								tooltip = "[Character.GetVassalLimitTooltip]"
+								name = "tutorial_highlight_vassal_limit"
+
+								icon = {
+									size = { 30 30 }
+									texture = "gfx/interface/icons/icon_vassal.dds"
+								}
+
+								text_single = {
+									margin_right = 2
+									text = "[vassal_limit|e]:"
+								}
+
+								text_single = {
+									visible = "[Not(GreaterThan_int32( Character.GetNumVassalsTowardsLimit, Character.GetVassalLimit ))]"
+									text = "MY_REALM_WINDOW_VASSAL_LIMIT_VALUE"
+								}
+
+								text_single = {
+									visible = "[GreaterThan_int32( Character.GetNumVassalsTowardsLimit, Character.GetVassalLimit )]"
+									text = "MY_REALM_WINDOW_VASSAL_LIMIT_VALUE_WARNING"
+								}
+							}
 						}
+					}
 
-						icon = {
-							size = { 35 35 }
-							texture = "gfx/interface/icons/icon_domain.dds"
+					vbox = {
+						visible = "[GetVariableSystem.Exists('liege_tab')]"
+						layoutpolicy_horizontal = expanding
+						margin_bottom = 4
+
+						hbox = {
+							spacing = 16
+
+							hbox = {
+								margin_bottom = 2
+
+								tooltip = "[GetPlayer.GetLiege.GetDreadBreakdown]"
+
+								icon = {
+									name = "dread_icon"
+									size = { 30 30 }
+									texture = "gfx/interface/icons/icon_dread.dds"
+								}
+
+								text_single = {
+									name = "dread_name"
+									text = "[dread|E]: [GetPlayer.GetLiege.GetDread|0]"
+									default_format = "#high"
+								}
+							}
+
+							hbox = {
+								spacing = 2
+
+								icon = {
+									size = { 35 35 }
+									texture = "gfx/interface/icons/icon_domain.dds"
+								}
+
+								text_single = {
+									margin_right = 2
+									text = "[domain_limit|e]:"
+								}
+
+								text_single = {
+									visible = "[GreaterThan_int32( GetPlayer.GetLiege.GetDomainSize, GetPlayer.GetLiege.GetDomainLimit )]"
+									text = "MY_REALM_WINDOW_LIEGE_DOMAIN_LIMIT_VALUE_WARNING_ALT"
+								}
+
+								text_single = {
+									visible = "[Not(GreaterThan_int32( GetPlayer.GetLiege.GetDomainSize, GetPlayer.GetLiege.GetDomainLimit ))]"
+									text = "MY_REALM_WINDOW_LIEGE_DOMAIN_LIMIT_VALUE_ALT"
+								}
+							}
+
+							hbox = {
+								spacing = 2
+
+								icon = {
+									size = { 30 30 }
+									texture = "gfx/interface/icons/icon_vassal.dds"
+								}
+
+								text_single = {
+									margin_right = 2
+									text = "[vassal_limit|e]:"
+								}
+
+								text_single = {
+									visible = "[Not(GreaterThan_int32( GetPlayer.GetLiege.GetNumVassalsTowardsLimit, GetPlayer.GetLiege.GetVassalLimit ))]"
+									text = "MY_REALM_WINDOW_LIEGE_VASSAL_LIMIT_VALUE"
+								}
+
+								text_single = {
+									visible = "[GreaterThan_int32( GetPlayer.GetLiege.GetNumVassalsTowardsLimit, GetPlayer.GetLiege.GetVassalLimit )]"
+									text = "MY_REALM_WINDOW_LIEGE_VASSAL_LIMIT_VALUE_WARNING"
+								}
+							}
 						}
+					}
 
-						text_single = {
-							text = "[SelectLocalization(MyRealmWindow.IsOverDomainLimit, 'MY_REALM_WINDOW_DOMAIN_LIMIT_VALUE_WARNING', 'MY_REALM_WINDOW_DOMAIN_LIMIT_VALUE')]"
+					vbox = {
+						visible = "[And(MyRealmWindow.IsShowingDomain,Not(GetVariableSystem.Exists('liege_tab')))]"
+						layoutpolicy_horizontal = expanding
+						margin_bottom = 3
+
+						hbox = {
+							tooltip = "[GetPlayer.GetDomainLimitTooltip]"
+							spacing = 2
+
+							icon = {
+								size = { 35 35 }
+								texture = "gfx/interface/icons/icon_domain.dds"
+							}
+
+							text_single = {
+								margin_right = 2
+								text = "[domain_limit|e]:"
+							}
+
+							text_single = {
+								text = "[SelectLocalization(MyRealmWindow.IsOverDomainLimit, 'MY_REALM_WINDOW_DOMAIN_LIMIT_VALUE_WARNING_ALT', 'MY_REALM_WINDOW_DOMAIN_LIMIT_VALUE_ALT')]"
+							}
 						}
 					}
 
@@ -1928,15 +2738,8 @@ window = {
 							layoutpolicy_horizontal = expanding
 
 							background = {
-								visible = "[MyRealmWindow.IsShowingDomain]"
+								visible = "[And(MyRealmWindow.IsShowingDomain,Not(GetVariableSystem.Exists('liege_tab')))]"
 								using = Status_Highlight
-							}
-
-							icon = {
-								visible = "[MyRealmWindow.IsOverDomainLimit]"
-								size = { 25 25 }
-								texture = "gfx/interface/icons/symbols/icon_warning.dds"
-								tooltip = "[Character.GetDomainLimitTooltip]"
 							}
 
 							text_single = {
@@ -1979,18 +2782,12 @@ window = {
 
 						hbox = {
 							name = "vassals_income_row"
+							visible = "[GreaterThan_int32( MyRealmWindow.GetVassalCount, '(int32)0' )]"
 							layoutpolicy_horizontal = expanding
 
 							background = {
-								visible = "[MyRealmWindow.IsShowingVassals]"
+								visible = "[And(MyRealmWindow.IsShowingVassals,Not(GetVariableSystem.Exists('liege_tab')))]"
 								using = Status_Highlight
-							}
-
-							icon = {
-								visible = "[GreaterThan_int32( Character.GetNumVassalsTowardsLimit, Character.GetVassalLimit )]"
-								size = { 25 25 }
-								texture = "gfx/interface/icons/symbols/icon_warning.dds"
-								tooltip = "[Character.GetVassalLimitTooltip]"
 							}
 
 							text_single = {
@@ -2037,6 +2834,11 @@ window = {
 							layoutpolicy_horizontal = expanding
 							visible = "[GetPlayer.HasLiege]"
 
+							background = {
+								visible = "[GetVariableSystem.Exists('liege_tab')]"
+								using = Status_Highlight
+							}
+
 							text_single = {
 								layoutpolicy_horizontal = expanding
 								text = "MY_REALM_WINDOW_FROM_TO_LIEGE"
@@ -2082,27 +2884,28 @@ window = {
 						}
 
 						hbox = {
-							name = "vassal_contract"
-							datacontext = "[MyRealmWindow.GetCharacter.GetLiege]"
-							datacontext = "[MyRealmWindow.GetCharacter.GetVassalContract]"
-							visible = "[GetPlayer.HasLiege]"
-							margin_left = 3
-							spacing = 10
+							layoutpolicy_horizontal = expanding
 
-							button_replace = {
-								enabled = "[Character.IsPlayerInteractionValid('vassal_modify_vassal_contract_interaction')]"
-								onclick = "[Character.OpenPlayerInteraction('vassal_modify_vassal_contract_interaction')]"
-								tooltip = "[Character.GetPlayerInteractionTooltip('vassal_modify_vassal_contract_interaction')]"
+							text_single = {
+								layoutpolicy_horizontal = expanding
+								text = "MY_REALM_WINDOW_TOTAL"
 							}
 
 							text_single = {
-								visible = "[VassalContract.UsesObligationLevels]"
-								layoutpolicy_horizontal = expanding
-								align = center
-								text = "MY_REALM_WINDOW_MY_OBLIGATIONS"
+								text = "[GetPlayerBalance|1V]"
+								min_width = 100
+								max_width = 100
+								align = right
 							}
 
-							vassal_contract_not_default_icon = {}
+							text_single = {
+								datacontext = "[GetPlayer]"
+								datacontext = "[GetPlayerArmyComposition]"
+								text = "[ArmyComposition.GetLeviesCountString|V]"
+								min_width = 100
+								max_width = 100
+								align = right
+							}
 						}
 					}
 				}
