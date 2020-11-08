@@ -281,7 +281,9 @@ invisible_hand_tax_level_1 = {
 	}
 
 	effect = {
-		custom_tooltip = invisible_hand_tax_level_1.tt
+		custom_description_no_bullet = {
+			text = invisible_hand_tax_level_1_tt
+		}
 		if = {
 			limit = { scope:province.var:tax_level = 2 }
 			scope:province.county = {
@@ -355,6 +357,9 @@ invisible_hand_tax_level_1 = {
 		}
 		custom_tooltip = invisible_hand_obligations_level_1_county_opinion.tt
 		custom_tooltip = invisible_hand_obligations_level_1_county_development.tt
+		custom_description_no_bullet = {
+			text = obligations_click_to_set
+		}
 	}
 }
 
@@ -379,7 +384,9 @@ invisible_hand_tax_level_2 = {
 	}
 
 	effect = {
-		custom_tooltip = invisible_hand_tax_level_2.tt
+		custom_description_no_bullet = {
+			text = invisible_hand_tax_level_2_tt
+		}
 		if = {
 			limit = { scope:province.var:tax_level = 1 }
 			scope:province.county = {
@@ -453,6 +460,9 @@ invisible_hand_tax_level_2 = {
 		}
 		custom_tooltip = invisible_hand_obligations_level_2_county_opinion.tt
 		custom_tooltip = invisible_hand_obligations_level_2_county_development.tt
+		custom_description_no_bullet = {
+			text = obligations_click_to_set
+		}
 	}
 }
 
@@ -477,7 +487,9 @@ invisible_hand_tax_level_3 = {
 	}
 
 	effect = {
-		custom_tooltip = invisible_hand_tax_level_3.tt
+		custom_description_no_bullet = {
+			text = invisible_hand_tax_level_3_tt
+		}
 		if = {
 			limit = { scope:province.var:tax_level = 1 }
 			scope:province.county = {
@@ -549,6 +561,9 @@ invisible_hand_tax_level_3 = {
 				county = { invisible_hand_calculate_obligations_county_effect = yes }
 			}
 		}
+		custom_description_no_bullet = {
+			text = obligations_click_to_set
+		}
 	}
 }
 
@@ -557,7 +572,17 @@ invisible_hand_tax_level_4 = {
 	saved_scopes = { province }
 
 	is_valid = {
-		NOT = { has_realm_law = crown_authority_0 }
+		trigger_if = {
+			limit = { NOT = { scope:province = { has_province_modifier = invisible_hand_tax_level_5 } } }
+			custom_description = {
+				subject = root
+				text = "needs_limited_authority_alt"
+				NOR = { 
+					has_realm_law = crown_authority_0
+					has_realm_law = tribal_authority_0
+				}
+			}
+		}
 		trigger_if = {
 			limit = { NOT = { scope:province = { has_province_modifier = invisible_hand_tax_level_4 } } }
 			custom_description = {
@@ -574,7 +599,9 @@ invisible_hand_tax_level_4 = {
 	}
 
 	effect = {
-		custom_tooltip = invisible_hand_tax_level_4.tt
+		custom_description_no_bullet = {
+			text = invisible_hand_tax_level_4_tt
+		}
 		if = {
 			limit = { scope:province.var:tax_level = 1 }
 			scope:province.county = {
@@ -648,6 +675,9 @@ invisible_hand_tax_level_4 = {
 		}
 		custom_tooltip = invisible_hand_obligations_level_4_county_opinion.tt
 		custom_tooltip = invisible_hand_obligations_level_4_county_development.tt
+		custom_description_no_bullet = {
+			text = obligations_click_to_set
+		}
 	}
 }
 
@@ -656,9 +686,25 @@ invisible_hand_tax_level_5 = {
 	saved_scopes = { province }
 
 	is_valid = {
-		OR = { 
-			has_realm_law = crown_authority_2
-			has_realm_law = crown_authority_3
+		trigger_if = {
+			limit = { realm_law_use_crown_authority = yes }
+			custom_description = {
+				text = "needs_high_crown_authority_alt"
+				OR = { 
+					has_realm_law = crown_authority_2
+					has_realm_law = crown_authority_3
+				}
+			}
+		}
+		trigger_if = {
+			limit = { realm_law_use_crown_authority = no }
+			custom_description = {
+				text = "needs_high_tribal_authority_alt"
+				OR = { 
+					has_realm_law = tribal_authority_2
+					has_realm_law = tribal_authority_3
+				}
+			}
 		}
 		trigger_if = {
 			limit = { NOT = { scope:province = { has_province_modifier = invisible_hand_tax_level_5 } } }
@@ -676,7 +722,9 @@ invisible_hand_tax_level_5 = {
 	}
 
 	effect = {
-		custom_tooltip = invisible_hand_tax_level_5.tt
+		custom_description_no_bullet = {
+			text = invisible_hand_tax_level_5_tt
+		}
 		if = {
 			limit = { scope:province.var:tax_level = 1 }
 			scope:province.county = {
@@ -750,6 +798,9 @@ invisible_hand_tax_level_5 = {
 		}
 		custom_tooltip = invisible_hand_obligations_level_5_county_opinion.tt
 		custom_tooltip = invisible_hand_obligations_level_5_county_development.tt
+		custom_description_no_bullet = {
+			text = obligations_click_to_set
+		}
 	}
 }
 
@@ -774,7 +825,9 @@ invisible_hand_levy_level_1 = {
 	}
 
 	effect = {
-		custom_tooltip = invisible_hand_levy_level_1.tt
+		custom_description_no_bullet = {
+			text = invisible_hand_levy_level_1_tt
+		}
 		if = {
 			limit = { scope:province.var:levy_level = 2 }
 			scope:province.county = {
@@ -848,6 +901,9 @@ invisible_hand_levy_level_1 = {
 		}
 		custom_tooltip = invisible_hand_obligations_level_1_county_opinion.tt
 		custom_tooltip = invisible_hand_obligations_level_1_county_development.tt
+		custom_description_no_bullet = {
+			text = obligations_click_to_set
+		}
 	}
 }
 
@@ -872,7 +928,9 @@ invisible_hand_levy_level_2 = {
 	}
 
 	effect = {
-		custom_tooltip = invisible_hand_levy_level_2.tt
+		custom_description_no_bullet = {
+			text = invisible_hand_levy_level_2_tt
+		}
 		if = {
 			limit = { scope:province.var:levy_level = 1 }
 			scope:province.county = {
@@ -946,6 +1004,9 @@ invisible_hand_levy_level_2 = {
 		}
 		custom_tooltip = invisible_hand_obligations_level_2_county_opinion.tt
 		custom_tooltip = invisible_hand_obligations_level_2_county_development.tt
+		custom_description_no_bullet = {
+			text = obligations_click_to_set
+		}
 	}
 }
 
@@ -970,7 +1031,9 @@ invisible_hand_levy_level_3 = {
 	}
 
 	effect = {
-		custom_tooltip = invisible_hand_levy_level_3.tt
+		custom_description_no_bullet = {
+			text = invisible_hand_levy_level_3_tt
+		}
 		if = {
 			limit = { scope:province.var:levy_level = 1 }
 			scope:province.county = {
@@ -1042,6 +1105,9 @@ invisible_hand_levy_level_3 = {
 				county = { invisible_hand_calculate_obligations_county_effect = yes }
 			}
 		}
+		custom_description_no_bullet = {
+			text = obligations_click_to_set
+		}
 	}
 }
 
@@ -1050,7 +1116,17 @@ invisible_hand_levy_level_4 = {
 	saved_scopes = { province }
 
 	is_valid = {
-		NOT = { has_realm_law = crown_authority_0 }
+		trigger_if = {
+			limit = { NOT = { scope:province = { has_province_modifier = invisible_hand_levy_level_5 } } }
+			custom_description = {
+				subject = root
+				text = "needs_limited_authority_alt"
+				NOR = { 
+					has_realm_law = crown_authority_0
+					has_realm_law = tribal_authority_0
+				}
+			}
+		}
 		trigger_if = {
 			limit = { NOT = { scope:province = { has_province_modifier = invisible_hand_levy_level_4 } } }
 			custom_description = {
@@ -1067,7 +1143,9 @@ invisible_hand_levy_level_4 = {
 	}
 
 	effect = {
-		custom_tooltip = invisible_hand_levy_level_4.tt
+		custom_description_no_bullet = {
+			text = invisible_hand_levy_level_4_tt
+		}
 		if = {
 			limit = { scope:province.var:levy_level = 1 }
 			scope:province.county = {
@@ -1141,6 +1219,9 @@ invisible_hand_levy_level_4 = {
 		}
 		custom_tooltip = invisible_hand_obligations_level_4_county_opinion.tt
 		custom_tooltip = invisible_hand_obligations_level_4_county_development.tt
+		custom_description_no_bullet = {
+			text = obligations_click_to_set
+		}
 	}
 }
 
@@ -1149,17 +1230,24 @@ invisible_hand_levy_level_5 = {
 	saved_scopes = { province }
 
 	is_valid = {
-		OR = { 
-			has_realm_law = crown_authority_2
-			has_realm_law = crown_authority_3
+		trigger_if = {
+			limit = { realm_law_use_crown_authority = yes }
+			custom_description = {
+				text = "needs_high_crown_authority_alt"
+				OR = { 
+					has_realm_law = crown_authority_2
+					has_realm_law = crown_authority_3
+				}
+			}
 		}
 		trigger_if = {
-			limit = { NOT = { scope:province = { has_province_modifier = invisible_hand_levy_level_5 } } }
+			limit = { realm_law_use_crown_authority = no }
 			custom_description = {
-				subject = scope:province
-				object = scope:province
-				text = "has_levy_obligations_cooldown"
-				NOT = { scope:province = { has_variable = levy_level_cooldown } }
+				text = "needs_high_tribal_authority_alt"
+				OR = { 
+					has_realm_law = tribal_authority_2
+					has_realm_law = tribal_authority_3
+				}
 			}
 		}
 		custom_description = {
@@ -1169,7 +1257,9 @@ invisible_hand_levy_level_5 = {
 	}
 
 	effect = {
-		custom_tooltip = invisible_hand_levy_level_5.tt
+		custom_description_no_bullet = {
+			text = invisible_hand_levy_level_5_tt
+		}
 		if = {
 			limit = { scope:province.var:levy_level = 1 }
 			scope:province.county = {
@@ -1243,5 +1333,8 @@ invisible_hand_levy_level_5 = {
 		}
 		custom_tooltip = invisible_hand_obligations_level_5_county_opinion.tt
 		custom_tooltip = invisible_hand_obligations_level_5_county_development.tt
+		custom_description_no_bullet = {
+			text = obligations_click_to_set
+		}
 	}
 }

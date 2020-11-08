@@ -59,14 +59,14 @@ window = {
 				##### HEADER NO LIEGE TEXT #####
 				header_with_picture = {
 					layoutpolicy_horizontal = expanding
-					minimumsize = { 0 180 }
+					minimumsize = { 0 170 }
 
 					blockoverride "header_text" {
 						text = "[GetPlayer.GetPrimaryTitle.GetNameNoTooltip|U]"
 					}
 
 					blockoverride "size" {
-						size = { 100% 200 }
+						size = { 100% 190 }
 					}
 
 					blockoverride "illustration_texture" {
@@ -80,12 +80,13 @@ window = {
 
 					vbox = {
 						margin_top = 42
-						margin_bottom = 5
+						margin_bottom = 6
 						layoutpolicy_horizontal = expanding
 						layoutpolicy_vertical = expanding
 
 						hbox = {
 							spacing = 20
+							margin_top = -4
 
 							text_single = {
 								name = "realm_type"
@@ -100,7 +101,6 @@ window = {
 
 						hbox = {
 							layoutpolicy_horizontal = expanding
-							margin_top = 10
 
 							hbox = {
 								name = "crown_authority"
@@ -109,14 +109,9 @@ window = {
 
 								item = {
 									vbox = {
-										layoutpolicy_vertical = expanding
 										datacontext = "[GuiLawGroup.GetLawGroup]"
-										visible = "[And( GuiLawGroup.GetLawGroup.HasFlag( 'realm_law' ), GuiLawGroup.IsAvailable )]"
+										visible = "[And( GuiLawGroup.GetLawGroup.HasFlag( 'crown_authority_law' ), GuiLawGroup.IsAvailable )]"
 										ignoreinvisible = yes
-
-										text_label_center = {
-											text = "[LawGroup.GetName]"
-										}
 
 										hbox = {
 											margin_top = 4
@@ -124,13 +119,13 @@ window = {
 
 											item = {
 												icon_button_decorative = {
+													scale = 0.95
 													datacontext = "[GuiLaw.GetLaw]"
 													size = { 60 60 }
-													enabled = "[Or(GuiLaw.CanEnact, GuiLaw.IsEnacted)]"
+													enabled = "[GuiLaw.IsEnacted]"
 													down = "[GuiLaw.IsEnacted]"
 													alwaystransparent = "[GuiLaw.IsEnacted]"
-													onclick = "[GuiLaw.Enact]"
-													tooltipwidget = { pass_law_tooltip = {} }
+													tooltipwidget = { pass_law_tooltip_alt = {} }
 													using = tooltip_below
 
 													icon_button_decorative = {
@@ -163,6 +158,18 @@ window = {
 												}
 											}
 										}
+										
+										hbox = {
+											spacing = 4
+
+											text_single = {
+												text = "CROWN_AUTHORITY_HEADER_LABEL"
+											}
+
+											text_single = {
+												text = "CROWN_AUTHORITY_HEADER_SCORE_LABEL"
+											}
+										}
 									}
 								}
 							}
@@ -191,19 +198,10 @@ window = {
 						layoutpolicy_vertical = expanding
 						onclick = "[MyRealmWindow.ShowDomain]"
 						onclick = "[GetVariableSystem.Clear( 'liege_tab' )]"
-						down = "[And(MyRealmWindow.IsShowingDomain,Not(GetVariableSystem.Exists( 'liege_tab' )))]"
+						onclick = "[GetVariableSystem.Clear( 'laws_tab' )]"
+						down = "[And(MyRealmWindow.IsShowingDomain,Not(Or(GetVariableSystem.Exists( 'liege_tab' ),GetVariableSystem.Exists( 'laws_tab' ))))]"
 
 						text = "MY_REALM_WINDOW_DOMAIN_TAB"
-					}
-
-					button_tab = {
-						visible = "[GetPlayer.HasLiege]"
-						layoutpolicy_horizontal = expanding
-						layoutpolicy_vertical = expanding
-						onclick = "[GetVariableSystem.Toggle( 'liege_tab' )]"
-						down = "[GetVariableSystem.Exists( 'liege_tab' )]"
-
-						text = "MY_REALM_WINDOW_LIEGE_TAB"
 					}
 
 					button_tab = {
@@ -213,9 +211,32 @@ window = {
 						layoutpolicy_vertical = expanding
 						onclick = "[MyRealmWindow.ShowVassals]"
 						onclick = "[GetVariableSystem.Clear( 'liege_tab' )]"
-						down = "[And(MyRealmWindow.IsShowingVassals,Not(GetVariableSystem.Exists( 'liege_tab' )))]"
+						onclick = "[GetVariableSystem.Clear( 'laws_tab' )]"
+						down = "[And(MyRealmWindow.IsShowingVassals,Not(Or(GetVariableSystem.Exists( 'liege_tab' ),GetVariableSystem.Exists( 'laws_tab' ))))]"
 
 						text = "MY_REALM_WINDOW_VASSALS_TAB"
+					}
+
+					button_tab = {
+						visible = "[GetPlayer.HasLiege]"
+						layoutpolicy_horizontal = expanding
+						layoutpolicy_vertical = expanding
+						onclick = "[GetVariableSystem.Toggle( 'liege_tab' )]"
+						onclick = "[GetVariableSystem.Clear( 'laws_tab' )]"
+						down = "[GetVariableSystem.Exists( 'liege_tab' )]"
+
+						text = "MY_REALM_WINDOW_LIEGE_TAB"
+					}
+
+					button_tab = {
+						layoutpolicy_horizontal = expanding
+						layoutpolicy_vertical = expanding
+						onclick = "[MyRealmWindow.ShowSuccession]"
+						onclick = "[GetVariableSystem.Toggle( 'laws_tab' )]"
+						onclick = "[GetVariableSystem.Clear( 'liege_tab' )]"
+						down = "[GetVariableSystem.Exists( 'laws_tab' )]"
+
+						text = "MY_REALM_WINDOW_LAWS_TAB"
 					}
 
 					button_tab = {
@@ -224,7 +245,8 @@ window = {
 						layoutpolicy_vertical = expanding
 						onclick = "[MyRealmWindow.ShowSuccession]"
 						onclick = "[GetVariableSystem.Clear( 'liege_tab' )]"
-						down = "[And(MyRealmWindow.IsShowingSuccession,Not(GetVariableSystem.Exists( 'liege_tab' )))]"
+						onclick = "[GetVariableSystem.Clear( 'laws_tab' )]"
+						down = "[And(MyRealmWindow.IsShowingSuccession,Not(Or(GetVariableSystem.Exists( 'liege_tab' ),GetVariableSystem.Exists( 'laws_tab' ))))]"
 
 						text = "MY_REALM_WINDOW_SUCCESSION_TAB"
 					}
@@ -235,7 +257,7 @@ window = {
 					name = "tab_domain"
 					layoutpolicy_horizontal = expanding
 					layoutpolicy_vertical = expanding
-					visible = "[And(MyRealmWindow.IsShowingDomain,Not(GetVariableSystem.Exists( 'liege_tab' )))]"
+					visible = "[And(MyRealmWindow.IsShowingDomain,Not(Or(GetVariableSystem.Exists( 'liege_tab' ),GetVariableSystem.Exists( 'laws_tab' ))))]"
 
 					using = Animation_Tab_Switch
 
@@ -273,12 +295,12 @@ window = {
 												text_single = {
 													text = "[DuchyGroup.GetDuchy.GetNameNoTooltip]"
 													using = Font_Size_Medium
-													default_format = "#low"
 												}
 											}
 										}
 
 										vbox = {
+											margin_top = 3
 											name = "county_group"
 											datamodel = "[DuchyGroup.GetCounties]"
 											layoutpolicy_horizontal = expanding
@@ -301,27 +323,208 @@ window = {
 															margin_left = 3
 														}
 
-														coa_title_tiny = {}
+														hbox = {
+															spacing = 2
 
-														text_single = {
-															margin_top = -4
-															layoutpolicy_horizontal = expanding
-															text = "[Title.GetNameNoTooltip]"
+															hbox = {
+																minimumsize = { 38 0 }
+																maximumsize = { 38 400 }
+
+																coa_title_tiny = {}
+															}
+
+															hbox = {
+																minimumsize = { 124 0 }
+																maximumsize = { 124 400 }
+																margin_top = -4
+
+																text_single = {
+																	layoutpolicy_horizontal = expanding
+																	text = "[Title.GetNameNoTooltip]"
+																	autoresize = yes
+																}
+															}
 														}
 
-														text_single = {
-															margin_top = -4
-															name = "development"
-															text = "MY_REALM_WINDOW_DEVELOPMENT"
-															tooltip = "COUNTY_DEVELOPMENT_TOOLTIP"
+														expand = { }
+
+														hbox = {
+															margin_left = -12
+															minimumsize = { 130 0 }
+															maximumsize = { 130 400 }
+
+															hbox = {
+																allow_outside = yes
+																margin_top = -4
+																spacing = 4
+																margin_right = 6
+
+																hbox = {
+																	margin_bottom = -6
+
+																	icon = {
+																		size = { 20 20 }
+																		texture = "gfx/interface/icons/icon_opinion.dds"
+																		tooltip = "MRW_COUNTY_OPINION_TOOLTIP"
+																	}
+																}
+
+																text_single = {
+																	name = "opinion"
+																	text = "[Title.Custom('CountyOpinion')|0V]"
+																}
+															}
+
+															hbox = {
+																allow_outside = yes
+																margin_top = -4
+																spacing = 4
+																margin_right = 6
+
+																hbox = {
+																	margin_bottom = -6
+
+																	icon = {
+																		size = { 22 22 }
+																		texture = "gfx/interface/icons/council_task_types/task_develop_county.dds"
+																		tooltip = "MRW_COUNTY_DEVELOPMENT_TOOLTIP"
+																	}
+																}
+
+																text_single = {
+																	name = "development"
+																	text = "[County.GetDevelopmentLevel]"
+																	default_format = "#high"
+																	tooltip = "COUNTY_DEVELOPMENT_TOOLTIP"
+																}
+															}
+
+															hbox = {
+																allow_outside = yes
+																margin_top = -4
+																spacing = 4
+
+																hbox = {
+																	margin_bottom = -6
+
+																	icon = {
+																		size = { 22 22 }
+																		texture = "gfx/interface/icons/council_task_types/task_increase_control.dds"
+																		tooltip = "MRW_COUNTY_CONTROL_TOOLTIP"
+																	}
+																}
+
+																text_single = {
+																	margin_right = 10
+																	name = "tutorial_highlight_control"
+																	text = "[County.GetControlLevel]"
+																	default_format = "#high"
+																	tooltip = "MY_REALM_WINDOW_CONTROL_TOOLTIP"
+																}
+															}
 														}
 
-														text_single = {
-															margin_top = -4
-															margin_right = 10
-															name = "tutorial_highlight_control"
-															text = "[CountyGroup.GetCountyControlColored]"
-															tooltip = "MY_REALM_WINDOW_CONTROL_TOOLTIP"
+														expand = { }
+
+														vbox = {
+															minimumsize = { 140 0 }
+															maximumsize = { 140 400 }
+															margin_right = 6
+															margin_bottom = 1
+
+															hbox = {
+																datacontext = "[County.GetCulture]"
+																layoutpolicy_horizontal = expanding
+																spacing = 2
+
+																using = tooltip_ne
+
+																tooltipwidget = {
+
+																	culture_tooltip = {
+
+																		blockoverride "extra_info"
+																		{
+																			text_single = {
+																				fonttintcolor = "[TooltipInfo.GetTintColor]"
+																				using = DefaultTooltipText
+																				visible = "[Not( ObjectsEqual( Culture.Self, GetPlayer.GetCulture ) )]"
+																				text = "COUNTY_NOT_YOUR_CULTURE"
+																			}
+																		}
+																	}
+																}
+
+																text_single = {
+																	layoutpolicy_horizontal = expanding
+																	text = "[culture|E]:"
+																}
+
+																button_group = {
+																	# shortcut = "innovations_window"
+																	onclick = "[DefaultOnCultureClick(Culture.GetID)]"
+
+																	text_single = {
+																		text = "CULTURE_COUNTY_WINDOW"
+																		default_format = "#high"
+
+																		background = {
+																			visible = "[NotEqualTo_uint32(Culture.GetID, GetPlayer.GetCulture.GetID)]"
+																			margin = { 5 0 }
+																			using = Status_Bad
+																		}
+																	}
+																}
+															}
+
+															hbox = {
+																margin_top = -2
+																margin_bottom = 4
+																datacontext = "[County.GetFaith]"
+																layoutpolicy_horizontal = expanding
+																spacing = 2
+																using = tooltip_ne
+
+																tooltipwidget = {
+
+																	faith_tooltip = {
+
+																		blockoverride "extra_info" {
+																			using = faith_tooltip_click_default_extra_info
+
+																			text_single = {
+																				margin = { 10 0 }
+																				layoutpolicy_horizontal = expanding
+																				fonttintcolor = "[TooltipInfo.GetTintColor]"
+																				using = DefaultTooltipText
+																				visible = "[Not( ObjectsEqual( Faith.Self, GetPlayer.GetFaith ) )]"
+																				text = "COUNTY_NOT_YOUR_FAITH"
+																			}
+																		}
+																	}
+																}
+
+																text_single = {
+																	layoutpolicy_horizontal = expanding
+																	text = "[faith|E]:"
+																}
+
+																button_group = {
+																	# shortcut = "faith_window"
+																	onclick = "[DefaultOnFaithClick(Faith.GetID)]"
+
+																	text_single = {
+																		text = "[Faith.GetNameNoTooltip]"
+																		default_format = "#high"
+
+																		background = {
+																			visible = "[NotEqualTo_uint32(Faith.GetID, GetPlayer.GetFaith.GetID)]"
+																			margin = { 5 0 }
+																			using = Status_Bad
+																		}
+																	}
+																}
+															}
 														}
 													}
 
@@ -343,8 +546,6 @@ window = {
 																	onclick = "[HoldingItem.OnClick]"
 																	down = "[Holding.IsSelected]"
 
-																	tooltipwidget = { holding_tooltip_click = {} }
-
 																	using = Holding_Mouse_Entry
 
 																	widget = {
@@ -354,7 +555,7 @@ window = {
 
 																		icon = {
 																			parentanchor = right|top
-																			size = { 120 43 }
+																			size = { 104 43 }
 																			mirror = horizontal
 																			texture = "[HoldingItem.GetHolding.GetIllustration]"
 																			alpha = 0.8
@@ -377,11 +578,27 @@ window = {
 																			layoutpolicy_horizontal = expanding
 																			margin_left = -28
 																			spacing = 6
+						
+																			hbox = {
+																				margin_top = 2
+																				margin_right = -99
+																				allow_outside = yes
+																				icon = {
+																					datacontext = "[HoldingItem.GetHolding.GetProvince.GetTerrain]"
+																					texture = "[Terrain.GetIcon]"
+																					size = { 22 22 }
+																					tooltip = "HOLDING_TERRAIN_TOOLTIP"
+																					alpha = 0.8
+																				}
+																			}
 
 																			expand = {}
 
 																			hbox = {
+																				allow_outside = yes
 																				min_width = 25
+																				margin_bottom = 2
+																				margin_left = -12
 
 																				icon = {
 																					name = "realm_capital_icon"
@@ -395,6 +612,10 @@ window = {
 																			}
 
 																			hbox = {
+																				allow_outside = yes
+																				margin_top = -2
+																				margin_left = -10
+
 																				text_single = {
 																					text = "MY_REALM_WINDOW_HOLDING_NAME"
 																				}
@@ -405,8 +626,106 @@ window = {
 																	}
 																}
 
+																spacer = {
+																	size = { 0 4 }
+																}
+
+																hbox = {
+																	spacing = 20
+
+																	hbox = {
+																		spacing = 7
+
+																		icon = {
+																			texture = "gfx/interface/window_siege/fort_icon.dds"
+																			tooltip = "MRW_FORT_LEVEL_TOOLTIP"
+																			size = { 25 20 }
+																		}
+
+																		text_single = {
+																			tooltip = "[Title.GetProvince.GetFortLevelTooltip]"
+																			text = "[Title.GetProvince.GetFortLevel]"
+																			default_format = "#high"
+																			align = nobaseline
+																		}
+																	}
+
+																	hbox = {
+																		spacing = 2
+
+																		icon = {
+																			texture = "gfx/interface/icons/icon_garrison.dds"
+																			tooltip = "MRW_GARRISON_TOOLTIP"
+																			size = { 28 28 }
+																		}
+
+																		text_single = {
+																			text = "[HoldingItem.GetHolding.GetGarrisonSize]"
+																			#tooltip = "[HoldingItem.GetHolding.GetGarrisonTooltip]"
+																			default_format = "#high"
+																			align = nobaseline
+																		}
+																	}
+
+																	hbox = {
+																		spacing = 3
+
+																		icon = {
+																			texture = "gfx/interface/icons/stress/icon_stress_level.dds"
+																			tooltip = "MRW_POPULATION_TOOLTIP"
+																			frame = 1
+																			framesize = { 70 70 }
+																			size = { 22 22 }
+																		}
+
+
+																		hbox = {
+																			allow_outside = yes
+																			margin_top = -5
+
+																			text_single = {
+																				text = "[Title.GetProvince.Custom('ProvincePopulation')|v]"
+																				default_format = "#high"
+																				tooltip = "POPULATION_VALUE_PROVINCE_TOOLTIP"
+																			}
+																		}
+																	}
+
+																	hbox = {
+																		spacing = 4
+
+																		icon = {
+																			texture = "gfx/interface/icons/icon_supplies.dds"
+																			tooltip = "MRW_SUPPLY_LIMIT_TOOLTIP"
+																			frame = 3
+																			framesize = { 60 60 }
+																			size = { 24 24 }
+																		}
+
+
+																		hbox = {
+																			allow_outside = yes
+																			margin_top = -5
+
+																			text_single = {
+																				text = "[Title.GetProvince.GetSupplyLimitFor( GetPlayer )|V]"
+																				default_format = "#high"
+																				tooltip = "HOLDING_TT_SUPPLY_TT_ALT"
+																			}
+																		}
+																	}
+																}
+
+																spacer = {
+																	size = { 0 4 }
+																}
+
+																divider = {
+																	layoutpolicy_horizontal = growing
+																}
+
 																vbox = {
-																	margin_top = 8
+																	margin_top = 5
 																	margin_bottom = 16
 
 																	text_single = {
@@ -718,15 +1037,19 @@ window = {
 																		size = { 18 22 }
 
 																		button_expand = {
-																			frame = "[Select_int32( CountyGroup.IsExpanded, '(int32)2', '(int32)1' )]"
+																			down = "[CountyGroup.IsExpanded]"
 																			parentanchor = center
 																		}
 																	}
 
-																	text_single = {
-																		text = "ME_REALM_WINDOW_EMPTY_HOLDINGS"
-																		default_format = "#low"
-																		align = nobaseline
+																	flowcontainer = {
+																		margin_top = 1
+
+																		text_single = {
+																			text = "ME_REALM_WINDOW_EMPTY_HOLDINGS"
+																			default_format = "#low"
+																			align = nobaseline
+																		}
 																	}
 																}
 															}
@@ -753,7 +1076,6 @@ window = {
 																		down = "[Holding.IsSelected]"
 
 																		using = Holding_Mouse_Entry
-																		tooltipwidget = { holding_tooltip_click = {} }
 
 																		layoutpolicy_horizontal = expanding
 																		layoutpolicy_vertical = expanding
@@ -761,13 +1083,13 @@ window = {
 
 																		widget = {
 																			scissor = yes
-																			size = { 350 43 }
+																			size = { 150 43 }
 																			parentanchor = right|top
 
 																			icon = {
 																				name = "illustration"
 																				parentanchor = right|top
-																				size = { 120 75 }
+																				size = { 104 75 }
 																				mirror = horizontal
 																				texture = "[HoldingItem.GetHolding.GetProvince.GetTerrain.GetIllustration]"
 																				alpha = 0.7
@@ -784,6 +1106,18 @@ window = {
 																		hbox = {
 																			layoutpolicy_horizontal = expanding
 																			layoutpolicy_vertical = expanding
+						
+																			hbox = {
+																				margin_right = -41
+																				allow_outside = yes
+																				icon = {
+																					datacontext = "[HoldingItem.GetHolding.GetProvince.GetTerrain]"
+																					texture = "[Terrain.GetIcon]"
+																					size = { 22 22 }
+																					tooltip = "HOLDING_TERRAIN_TOOLTIP"
+																					alpha = 0.8
+																				}
+																			}
 
 																			expand = {}
 
@@ -791,6 +1125,7 @@ window = {
 																				visible = "[HoldingItem.GetHolding.CanConstructAnyBuilding(GetPlayer)]"
 																				layoutpolicy_horizontal = expanding
 																				layoutpolicy_vertical = expanding
+																				margin_right = -10
 
 																				text_multi = {
 																					margin_bottom = -6
@@ -816,6 +1151,7 @@ window = {
 																				layoutpolicy_horizontal = expanding
 																				layoutpolicy_vertical = expanding
 																				margin_top = 4
+																				margin_right = -10
 
 																				text_multi = {
 																					margin_bottom = -6
@@ -840,6 +1176,7 @@ window = {
 																				visible = "[Not(Or(HoldingItem.GetHolding.CanConstructAnyBuilding(GetPlayer),HoldingItem.GetHolding.IsConstructionInProgress))]"
 																				layoutpolicy_horizontal = expanding
 																				layoutpolicy_vertical = expanding
+																				margin_right = -10
 
 																				text_multi = {
 																					default_format = "#low"
@@ -870,7 +1207,7 @@ window = {
 					name = "tab_vassals"
 					layoutpolicy_horizontal = expanding
 					layoutpolicy_vertical = expanding
-					visible = "[And(MyRealmWindow.IsShowingVassals,Not(GetVariableSystem.Exists( 'liege_tab' )))]"
+					visible = "[And(MyRealmWindow.IsShowingVassals,Not(Or(GetVariableSystem.Exists( 'liege_tab' ),GetVariableSystem.Exists( 'laws_tab' ))))]"
 
 					state = {
 						name = _show
@@ -1108,11 +1445,11 @@ window = {
 									spacing = 4
 
 									text_single = {
-										text = "[crown_authority|e]:"
+										text = "MRW_LIEGE_TAB_AUTHORITY_LABEL"
 									}
 
 									text_single = {
-										text = "[Character.GetActiveLawInGroupWithFlag( 'realm_law' ).GetName]"
+										text = "[Character.GetActiveLawInGroupWithFlag( 'crown_authority_law' ).GetName]"
 									}
 
 									hbox = {
@@ -1120,7 +1457,7 @@ window = {
 										margin_left = -2
 
 										button_icon_highlight = {
-											datacontext = "[Character.GetActiveLawInGroupWithFlag( 'realm_law' )]"
+											datacontext = "[Character.GetActiveLawInGroupWithFlag( 'crown_authority_law' )]"
 											size = { 26 26 }
 											texture = "[Law.GetIcon]"
 											using = tooltip_ws
@@ -1852,9 +2189,9 @@ window = {
 					}
 				}
 
-				### LAWS & SUCCESSION TAB
+				### LAWS TAB
 				vbox = {
-					visible = "[And(MyRealmWindow.IsShowingSuccession,Not(GetVariableSystem.Exists( 'liege_tab' )))]"
+					visible = "[GetVariableSystem.Exists( 'laws_tab' )]"
 					layoutpolicy_horizontal = expanding
 					layoutpolicy_vertical = expanding
 
@@ -1871,10 +2208,137 @@ window = {
 					scrollbox = {
 						layoutpolicy_horizontal = expanding
 						layoutpolicy_vertical = expanding
-						minimumsize = { 0 650 }
+						minimumsize = { 0 640 }
 
 						blockoverride "scrollbox_content" {
 							margin_left = 20
+							layoutpolicy_horizontal = expanding
+							layoutpolicy_vertical = expanding
+
+
+							vbox = {
+								margin = { 30 0 }
+								margin_top = 15
+								layoutpolicy_horizontal = expanding
+
+								text_label_center = {
+									text = "[invisible_hand_centralization]"
+								}
+
+								spacer = {
+									size = { 0 30 }
+								}
+
+								widget = {
+							
+									button_standard_clean = {
+										size = { 450 3 }
+										down = "[ObjectsEqual( GetPlayer, GetPlayer )]"
+									}
+								}
+							
+								hbox = {
+									datamodel = "[MyRealmWindow.GetRealmLaws]"
+									allow_outside = yes
+
+									item = {
+										hbox = {
+											datamodel = "[GuiLawGroup.GetLaws]"
+											visible = "[GuiLawGroup.GetLawGroup.HasFlag( 'invisible_hand_centralization_law' )]"
+											spacing = 40
+											allow_outside = yes
+											margin_top = -10
+
+											item = {
+												vbox = {
+													datacontext = "[GuiLaw.GetLaw]"
+													allow_outside = yes
+
+													button_round = {
+														size = { 24 24 }
+														enabled = "[Or(GuiLaw.CanEnact,GuiLaw.IsEnacted)]"
+														down = "[GuiLaw.IsEnacted]"
+														onclick = "[GuiLaw.Enact]"
+														tooltipwidget = { pass_law_tooltip_alt_2 = {} }
+														using = tooltip_below
+													}
+
+													text_single = {
+														text = "[GuiLaw.GetLaw.GetNameNoTooltip]"
+													}
+												}
+											}
+										}
+									}
+								}
+
+								spacer = {
+									size = { 0 20 }
+								}
+							}
+							
+							# Crown Laws
+							vbox = {
+								margin = { 30 0 }
+								margin_top = 15
+								layoutpolicy_horizontal = expanding
+
+								text_label_center = {
+									text = "[invisible_hand_crown_laws]"
+								}
+
+								vbox = {
+									datamodel = "[MyRealmWindow.GetRealmLaws]"
+									spacing = 10
+									margin_bottom = 5
+									ignoreinvisible = yes
+									layoutpolicy_horizontal = expanding
+
+									item = {
+										hbox = {
+											visible = "[And( GuiLawGroup.GetLawGroup.HasFlag( 'invisible_hand_crown_law' ), GuiLawGroup.IsAvailable )]"
+											layoutpolicy_horizontal = growing
+
+											vbox = {
+												layoutpolicy_horizontal = growing
+
+												text_single = {
+													layoutpolicy_horizontal = growing
+													max_width = 350
+													text = "[GuiLawGroup.GetLawGroup.GetNameSingular]:"
+												}
+
+												text_single = {
+													layoutpolicy_horizontal = growing
+													max_width = 350
+													text = "[GuiLawGroup.GetCurrentLevel.GetLaw.GetName]"
+													default_format = "#high"
+												}
+
+												text_single = {
+													layoutpolicy_horizontal = growing
+													max_width = 350
+													visible = "[GuiLawGroup.GetCurrentLevel.GetLaw.HasSubName]"
+													text = "[GuiLawGroup.GetCurrentLevel.GetLaw.GetSubName]"
+													default_format = "#F"
+												}
+											}
+											expand = {
+												layoutpolicy_horizontal = growing
+											}
+
+											button_standard = {
+												datacontext = "[GuiLawGroup]"
+												size = { 150 32 }
+												onclick = "[OpenSuccessionLawChangeWindow(GuiLawGroup.Self)]"
+												onclick = "[GetVariableSystem.Toggle( 'invisible_hand_law' )]"
+												text = "MRW_CHANGE_LAW"
+												tooltip = "MRW_CHANGE_LAW_TT"
+											}
+										}
+									}
+								}
+							}
 
 							# Realm Laws
 							vbox = {
@@ -1883,7 +2347,7 @@ window = {
 								layoutpolicy_horizontal = expanding
 
 								text_label_center = {
-									text = "[realm] [laws]"
+									text = "[invisible_hand_realm_laws]"
 								}
 
 								vbox = {
@@ -1938,6 +2402,35 @@ window = {
 									}
 								}
 							}
+
+							expand = { }
+						}
+					}
+				}
+
+				### SUCCESSION TAB
+				vbox = {
+					visible = "[And(MyRealmWindow.IsShowingSuccession,Not(Or(GetVariableSystem.Exists( 'liege_tab' ),GetVariableSystem.Exists( 'laws_tab' ))))]"
+					layoutpolicy_horizontal = expanding
+					layoutpolicy_vertical = expanding
+
+					state = {
+						name = _show
+						using = Animation_FadeIn_Quick
+					}
+
+					state = {
+						name = _hide
+						alpha = 0
+					}
+
+					scrollbox = {
+						layoutpolicy_horizontal = expanding
+						layoutpolicy_vertical = expanding
+						minimumsize = { 0 650 }
+
+						blockoverride "scrollbox_content" {
+							margin_left = 20
 
 							# Succession Laws
 							vbox = {
@@ -2163,6 +2656,40 @@ window = {
 									layoutpolicy_horizontal = expanding
 								}
 
+								vbox = {
+									name = "line_of_succession"
+									#visible = "[MyRealmWindow.HasSingleHeir]"
+									layoutpolicy_horizontal = expanding
+									spacing = 10
+
+									hbox = {
+										layoutpolicy_horizontal = expanding
+										margin_bottom = 4
+										margin_top = 4
+
+										text_label_center = {
+											name = "line_of_succession_label"
+											text = "MY_REALM_WINDOW_LINE_OF_SUCCESSION"
+										}
+									}
+
+									hbox = {
+										name = "line_of_succession_box"
+										allow_outside = yes
+										layoutpolicy_horizontal = expanding
+										spacing = 0
+										margin_right = 10
+
+										datamodel = "[MyRealmWindow.GetLineOfSuccession]"
+
+										item = {
+											portrait_head_small = {
+												name = "heir_portrait"
+											}
+										}
+									}
+								}
+
 								##### FROM REALM'S PARTITION #####
 								vbox = {
 									layoutpolicy_horizontal = expanding
@@ -2189,21 +2716,18 @@ window = {
 													size = { 18 22 }
 
 													button_expand = {
-														visible = "[Not(GetVariableSystem.Exists( 'expand_partition' ))]"
 														parentanchor = center
-														frame = 1
-													}
-
-													button_expand = {
-														visible = "[GetVariableSystem.Exists( 'expand_partition' )]"
-														parentanchor = center
-														frame = 2
+														down = "[GetVariableSystem.Exists( 'expand_partition' )]"
 													}
 												}
 
-												text_single = {
-													text = "MY_REALM_WINDOW_TITLES_LOST_ON_SUCCESSION"
-													align = nobaseline
+												flowcontainer = {
+													margin_top = -1
+
+													text_single = {
+														text = "MY_REALM_WINDOW_TITLES_LOST_ON_SUCCESSION"
+														align = nobaseline
+													}
 												}
 											}
 										}
@@ -2411,40 +2935,6 @@ window = {
 									}
 								}
 
-								vbox = {
-									name = "line_of_succession"
-									visible = "[MyRealmWindow.HasSingleHeir]"
-									layoutpolicy_horizontal = expanding
-									layoutpolicy_vertical = growing
-									spacing = 10
-									margin_top = -12
-
-									hbox = {
-										layoutpolicy_horizontal = expanding
-										margin_bottom = 4
-
-										text_label_center = {
-											name = "line_of_succession_label"
-											text = "MY_REALM_WINDOW_LINE_OF_SUCCESSION"
-										}
-									}
-
-									hbox = {
-										name = "line_of_succession_box"
-										layoutpolicy_horizontal = expanding
-										spacing = 0
-										margin_right = 10
-
-										datamodel = "[MyRealmWindow.GetLineOfSuccession]"
-
-										item = {
-											portrait_head_small = {
-												name = "heir_portrait"
-											}
-										}
-									}
-								}
-
 								divider = {
 									layoutpolicy_horizontal = expanding
 									visible = "[MyRealmWindow.CanVote]"
@@ -2528,14 +3018,75 @@ window = {
 				}
 
 				vbox = {
-					visible = "[Or(Or( MyRealmWindow.IsShowingDomain, MyRealmWindow.IsShowingVassals),GetVariableSystem.Exists('liege_tab'))]"
+					visible = "[Or(Or(Or( MyRealmWindow.IsShowingDomain, MyRealmWindow.IsShowingVassals),GetVariableSystem.Exists('liege_tab')),GetVariableSystem.Exists('laws_tab'))]"
 					layoutpolicy_horizontal = expanding
 					margin = { 15 5 }
 					margin_bottom = 15
 					spacing = 8
 
 					vbox = {
-						visible = "[And(MyRealmWindow.IsShowingVassals,Not(GetVariableSystem.Exists('liege_tab')))]"
+						visible = "[GetVariableSystem.Exists('laws_tab')]"
+						layoutpolicy_horizontal = expanding
+						margin_bottom = 3
+
+						hbox = {
+							spacing = 16
+
+							text_single = {
+								default_format = "#high"
+								text = "MY_REALM_WINDOW_VASSAL_OPINION"
+								tooltip = "MY_REALM_WINDOW_VASSAL_OPINION_TT"
+							}
+
+							hbox = {
+								tooltip = "[GetPlayer.GetDomainLimitTooltip]"
+								spacing = 2
+
+								icon = {
+									size = { 35 35 }
+									texture = "gfx/interface/icons/icon_domain.dds"
+								}
+
+								text_single = {
+									margin_right = 2
+									text = "[domain_limit|e]:"
+								}
+
+								text_single = {
+									text = "[SelectLocalization(MyRealmWindow.IsOverDomainLimit, 'MY_REALM_WINDOW_DOMAIN_LIMIT_VALUE_WARNING_ALT', 'MY_REALM_WINDOW_DOMAIN_LIMIT_VALUE_ALT')]"
+								}
+							}
+
+							hbox = {
+								spacing = 2
+								tooltip = "[Character.GetVassalLimitTooltip]"
+								name = "tutorial_highlight_vassal_limit"
+
+								icon = {
+									size = { 30 30 }
+									texture = "gfx/interface/icons/icon_vassal.dds"
+								}
+
+								text_single = {
+									margin_right = 2
+									text = "[vassal_limit|e]:"
+								}
+
+								text_single = {
+									visible = "[Not(GreaterThan_int32( Character.GetNumVassalsTowardsLimit, Character.GetVassalLimit ))]"
+									text = "MY_REALM_WINDOW_VASSAL_LIMIT_VALUE"
+								}
+
+								text_single = {
+									visible = "[GreaterThan_int32( Character.GetNumVassalsTowardsLimit, Character.GetVassalLimit )]"
+									text = "MY_REALM_WINDOW_VASSAL_LIMIT_VALUE_WARNING"
+								}
+							}
+						}
+					}
+
+					vbox = {
+						visible = "[And(MyRealmWindow.IsShowingVassals,Not(Or(GetVariableSystem.Exists('liege_tab'),GetVariableSystem.Exists('laws_tab'))))]"
 						layoutpolicy_horizontal = expanding
 						margin_top = 2
 						margin_bottom = 6
@@ -2671,7 +3222,7 @@ window = {
 					}
 
 					vbox = {
-						visible = "[And(MyRealmWindow.IsShowingDomain,Not(GetVariableSystem.Exists('liege_tab')))]"
+						visible = "[And(MyRealmWindow.IsShowingDomain,Not(Or(GetVariableSystem.Exists('liege_tab'),GetVariableSystem.Exists('laws_tab'))))]"
 						layoutpolicy_horizontal = expanding
 						margin_bottom = 3
 

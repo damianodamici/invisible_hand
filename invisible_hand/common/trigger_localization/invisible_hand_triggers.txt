@@ -6,6 +6,10 @@ tax_level_selected = {
 	first_not = TAX_LEVEL_SELECTED
 }
 
+levy_level_selected = {
+	first_not = LEVY_LEVEL_SELECTED
+}
+
 has_tax_obligations_cooldown = {
 	first_not = TAX_OBLIGATIONS_ON_COOLDOWN
 }
@@ -26,6 +30,42 @@ has_alienation_rights_cooldown = {
 	first_not = ALIENATION_RIGHTS_ON_COOLDOWN
 }
 
+has_realm_law_cooldown = {
+	first_not = REALM_LAW_ON_COOLDOWN
+}
+
 top_realm_law = {
 	first_not = LAW_SET_AT_TOP_REALM_LEVEL
+}
+
+needs_high_crown_authority = {
+	first_not = LAW_NEEDS_HIGH_CROWN_AUTHORITY
+}
+
+needs_high_tribal_authority = {
+	first_not = LAW_NEEDS_HIGH_TRIBAL_AUTHORITY
+}
+
+needs_high_crown_authority_alt = {
+	first_not = OBLIGATION_NEEDS_HIGH_CROWN_AUTHORITY
+}
+
+needs_high_tribal_authority_alt = {
+	first_not = OBLIGATION_NEEDS_HIGH_TRIBAL_AUTHORITY
+}
+
+needs_limited_authority = {
+	first_not = LAW_NEEDS_LIMITED_AUTHORITY
+}
+
+needs_limited_authority_alt = {
+	first_not = OBLIGATION_NEEDS_LIMITED_AUTHORITY
+}
+
+needs_absolute_crown_authority = {
+	first_not = LAW_NEEDS_ABSOLUTE_AUTHORITY
+}
+
+has_centralization_cooldown = {
+	first_not = CENTRALIZATION_ON_COOLDOWN
 }

@@ -1,4 +1,9 @@
-﻿ProvincePopulation = {
+﻿AuthorityScore = {
+	type = landed_title
+	text = { localization_key = "AUTHORITY_SCORE_VALUE_CUSTOM_LOC" }
+}
+
+ProvincePopulation = {
 	type = province
 	text = { localization_key = "PROVINCE_POPULATION_VALUE_CUSTOM_LOC" }
 }
@@ -6,6 +11,11 @@
 CountyPopulation = {
 	type = landed_title
 	text = { localization_key = "COUNTY_POPULATION_VALUE_CUSTOM_LOC" }
+}
+
+CountyOpinion = {
+	type = landed_title
+	text = { localization_key = "COUNTY_OPINION_VALUE_CUSTOM_LOC" }
 }
 
 ProvincePopulationLoss = {

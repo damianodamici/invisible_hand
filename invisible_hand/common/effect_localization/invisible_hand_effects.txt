@@ -1,0 +1,43 @@
+﻿invisible_hand_tax_level_1_tt = {
+	global = invisible_hand_tax_level_1.tt
+}
+
+invisible_hand_tax_level_2_tt = {
+	global = invisible_hand_tax_level_2.tt
+}
+
+invisible_hand_tax_level_3_tt = {
+	global = invisible_hand_tax_level_3.tt
+}
+
+invisible_hand_tax_level_4_tt = {
+	global = invisible_hand_tax_level_4.tt
+}
+
+invisible_hand_tax_level_5_tt = {
+	global = invisible_hand_tax_level_5.tt
+}
+
+invisible_hand_levy_level_1_tt = {
+	global = invisible_hand_levy_level_1.tt
+}
+
+invisible_hand_levy_level_2_tt = {
+	global = invisible_hand_levy_level_2.tt
+}
+
+invisible_hand_levy_level_3_tt = {
+	global = invisible_hand_levy_level_3.tt
+}
+
+invisible_hand_levy_level_4_tt = {
+	global = invisible_hand_levy_level_4.tt
+}
+
+invisible_hand_levy_level_5_tt = {
+	global = invisible_hand_levy_level_5.tt
+}
+
+obligations_click_to_set = {
+	global = CLICK_TO_SET_OBLIGATIONS
+}

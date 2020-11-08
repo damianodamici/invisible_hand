@@ -1,4 +1,888 @@
-﻿# Legal system
+﻿# Centralization
+invisible_hand_centralization_laws = {
+	flag = realm_law
+	flag = invisible_hand_centralization_law
+
+	# Very low
+	invisible_hand_centralization_0 = {
+		
+		can_have = { highest_held_title_tier > tier_barony }
+		
+		should_start_with = {
+			has_realm_law = tribal_authority_0
+		}
+
+		can_pass = {
+			custom_description = {
+				subject = root
+				text = "has_centralization_cooldown"
+				NOT = { has_variable = centralization_cooldown }
+			}
+		}
+		
+		on_pass = {
+			set_variable = {
+				name = centralization_cooldown
+				years = 25
+			}
+			if = {
+				limit = { has_realm_law = invisible_hand_centralization_4 }
+				add_tyranny = -40
+			}
+			else_if = {
+				limit = { has_realm_law = invisible_hand_centralization_3 }
+				add_tyranny = -30
+			}
+			else_if = {
+				limit = { has_realm_law = invisible_hand_centralization_2 }
+				add_tyranny = -20
+			}
+			else_if = {
+				limit = { has_realm_law = invisible_hand_centralization_1 }
+				add_tyranny = -10
+			}
+		}
+
+		pass_cost = {
+			prestige = {
+				add = increase_crown_authority_prestige_cost
+				divide = 1.5
+			}
+			gold = { 
+				add = massive_gold_value
+				divide = 2
+			}
+		}
+
+		modifier = { 
+			vassal_tax_contribution_mult = -0.5
+			vassal_levy_contribution_mult = -0.5
+			direct_vassal_opinion = 20
+			vassal_limit = 10
+			domain_limit = -1
+		}
+
+		ai_will_do = {
+		}
+	}
+
+	# Low
+	invisible_hand_centralization_1 = {
+		
+		can_have = { highest_held_title_tier > tier_barony }
+		
+		should_start_with = {
+			OR = {
+				has_realm_law = tribal_authority_1
+				has_realm_law = crown_authority_0
+			}
+		}
+
+		can_pass = {
+			custom_description = {
+				subject = root
+				text = "has_centralization_cooldown"
+				NOT = { has_variable = centralization_cooldown }
+			}
+			trigger_if = {
+				limit = { realm_law_use_crown_authority = no }
+				custom_description = {
+					subject = root
+					text = "needs_limited_authority"
+					NOT = { has_realm_law = tribal_authority_0 }
+				}
+			}
+		}
+
+		can_keep = {
+			trigger_if = {
+				limit = { 
+					realm_law_use_crown_authority = no 
+					has_realm_law = invisible_hand_centralization_1
+				}
+				custom_description = {
+					subject = root
+					text = "needs_limited_authority"
+					NOT = { has_realm_law = tribal_authority_0 }
+				}
+			}
+		}
+
+		modifier = { 
+			vassal_tax_contribution_mult = -0.25
+			vassal_levy_contribution_mult = -0.25
+			direct_vassal_opinion = 10
+			vassal_limit = 5
+		}
+		
+		on_pass = {
+			set_variable = {
+				name = centralization_cooldown
+				years = 25
+			}
+			if = {
+				limit = { has_realm_law = invisible_hand_centralization_4 }
+				add_tyranny = -15
+			}
+			else_if = {
+				limit = { has_realm_law = invisible_hand_centralization_3 }
+				add_tyranny = -10
+			}
+			else_if = {
+				limit = { has_realm_law = invisible_hand_centralization_2 }
+				add_tyranny = -5
+			}
+			else_if = {
+				limit = { has_realm_law = invisible_hand_centralization_0 }
+				add_tyranny = 5
+			}
+		}
+
+		pass_cost = {
+			prestige = {
+				add = increase_crown_authority_prestige_cost
+				divide = 1.5
+			}
+			gold = { 
+				add = massive_gold_value
+				divide = 2
+			}
+		}
+
+		ai_will_do = {
+		}
+	}
+
+	# Medium
+	invisible_hand_centralization_2 = {
+		
+		can_have = { highest_held_title_tier > tier_barony }
+		
+		should_start_with = {
+			OR = {
+				has_realm_law = tribal_authority_2
+				has_realm_law = tribal_authority_3
+				has_realm_law = crown_authority_1
+			}
+		}
+
+		can_pass = {
+			custom_description = {
+				subject = root
+				text = "has_centralization_cooldown"
+				NOT = { has_variable = centralization_cooldown }
+			}
+			trigger_if = {
+				limit = { realm_law_use_crown_authority = yes }
+				custom_description = {
+					subject = root
+					text = "needs_limited_authority"
+					NOT = { has_realm_law = crown_authority_0 }
+				}
+			}
+			trigger_if = {
+				limit = { realm_law_use_crown_authority = no }
+				custom_description = {
+					subject = root
+					text = "needs_high_tribal_authority"
+					OR = {
+						has_realm_law = tribal_authority_2
+						has_realm_law = tribal_authority_3
+					}
+				}
+			}
+		}
+
+		can_keep = {
+			trigger_if = {
+				limit = { 
+					realm_law_use_crown_authority = yes
+					has_realm_law = invisible_hand_centralization_2
+				}
+				custom_description = {
+					subject = root
+					text = "needs_limited_authority"
+					NOT = { has_realm_law = crown_authority_0 }
+				}
+			}
+			trigger_if = {
+				limit = { 
+					realm_law_use_crown_authority = no 
+					has_realm_law = invisible_hand_centralization_2
+				}
+				custom_description = {
+					subject = root
+					text = "needs_high_tribal_authority"
+					OR = {
+						has_realm_law = tribal_authority_2
+						has_realm_law = tribal_authority_3
+					}
+				}
+			}
+		}
+
+		modifier = { 
+		}
+		
+		on_pass = {
+			set_variable = {
+				name = centralization_cooldown
+				years = 25
+			}
+			if = {
+				limit = { has_realm_law = invisible_hand_centralization_4 }
+				add_tyranny = -10
+			}
+			else_if = {
+				limit = { has_realm_law = invisible_hand_centralization_3 }
+				add_tyranny = -5
+			}
+			else_if = {
+				limit = { has_realm_law = invisible_hand_centralization_1 }
+				add_tyranny = 5
+			}
+			else_if = {
+				limit = { has_realm_law = invisible_hand_centralization_0 }
+				add_tyranny = 10
+			}
+		}
+
+		pass_cost = {
+			prestige = {
+				add = increase_crown_authority_prestige_cost
+				divide = 1.5
+			}
+			gold = { 
+				add = massive_gold_value
+				divide = 2
+			}
+		}
+
+		ai_will_do = {
+		}
+	}
+
+	# High
+	invisible_hand_centralization_3 = {
+		
+		can_have = { highest_held_title_tier > tier_barony }
+		
+		should_start_with = {
+			OR = {
+				has_realm_law = crown_authority_2
+				has_realm_law = crown_authority_3
+			}
+		}
+
+		can_pass = {
+			custom_description = {
+				subject = root
+				text = "has_centralization_cooldown"
+				NOT = { has_variable = centralization_cooldown }
+			}
+			trigger_if = {
+				limit = { realm_law_use_crown_authority = yes }
+				custom_description = {
+					subject = root
+					text = "needs_high_crown_authority"
+					OR = {
+						has_realm_law = crown_authority_2
+						has_realm_law = crown_authority_3
+					}
+				}
+			}
+			trigger_if = {
+				limit = { realm_law_use_crown_authority = no }
+				custom_description = {
+					subject = root
+					text = "needs_absolute_crown_authority"
+					has_realm_law = tribal_authority_3
+				}
+			}
+		}
+
+		can_keep = {
+			trigger_if = {
+				limit = { 
+					realm_law_use_crown_authority = yes
+					has_realm_law = invisible_hand_centralization_3
+				}
+				custom_description = {
+					subject = root
+					text = "needs_high_crown_authority"
+					OR = {
+						has_realm_law = crown_authority_2
+						has_realm_law = crown_authority_3
+					}
+				}
+			}
+			trigger_if = {
+				limit = { 
+					realm_law_use_crown_authority = no
+					has_realm_law = invisible_hand_centralization_3
+				}
+				custom_description = {
+					subject = root
+					text = "needs_absolute_crown_authority"
+					has_realm_law = tribal_authority_3
+				}
+			}
+		}
+
+		modifier = { 
+			vassal_tax_contribution_mult = 0.1
+			vassal_levy_contribution_mult = 0.1
+			direct_vassal_opinion = -10
+			character_capital_county_monthly_development_growth_add = 0.25
+			tax_mult = -0.1
+			development_growth_factor = 0.05
+			monthly_county_control_change_factor = 0.05
+			vassal_limit = -5
+			domain_limit = 1
+		}
+		
+		on_pass = {
+			set_variable = {
+				name = centralization_cooldown
+				years = 25
+			}
+			if = {
+				limit = { has_realm_law = invisible_hand_centralization_4 }
+				add_tyranny = -5
+			}
+			else_if = {
+				limit = { has_realm_law = invisible_hand_centralization_2 }
+				add_tyranny = 5
+			}
+			else_if = {
+				limit = { has_realm_law = invisible_hand_centralization_1 }
+				add_tyranny = 10
+			}
+			else_if = {
+				limit = { has_realm_law = invisible_hand_centralization_0 }
+				add_tyranny = 15
+			}
+		}
+
+		pass_cost = {
+			prestige = {
+				add = increase_crown_authority_prestige_cost
+				divide = 1.5
+			}
+			gold = { 
+				add = massive_gold_value
+				divide = 2
+			}
+		}
+
+		ai_will_do = {
+		}
+	}
+
+	# Very high
+	invisible_hand_centralization_4 = {
+		
+		can_have = { highest_held_title_tier > tier_barony }
+
+		can_pass = {
+			has_government = feudal_government
+			custom_description = {
+				subject = root
+				text = "has_centralization_cooldown"
+				NOT = { has_variable = centralization_cooldown }
+			}
+			trigger_if = {
+				limit = { realm_law_use_crown_authority = yes }
+				custom_description = {
+					subject = root
+					text = "needs_absolute_crown_authority"
+					has_realm_law = crown_authority_3
+				}
+			}
+		}
+
+		can_keep = {
+			has_government = feudal_government
+			trigger_if = {
+				limit = { 
+					realm_law_use_crown_authority = yes
+					has_realm_law = invisible_hand_centralization_4
+				}
+				custom_description = {
+					subject = root
+					text = "needs_absolute_crown_authority"
+					has_realm_law = crown_authority_3
+				}
+			}
+		}
+
+		modifier = { 
+			vassal_tax_contribution_mult = 0.25
+			vassal_levy_contribution_mult = 0.25
+			direct_vassal_opinion = -20
+			character_capital_county_monthly_development_growth_add = 0.5
+			tax_mult = -0.2
+			development_growth_factor = 0.1
+			monthly_county_control_change_factor = 0.1
+			vassal_limit = -10
+			domain_limit = 2
+		}
+		
+		on_pass = {
+			set_variable = {
+				name = centralization_cooldown
+				years = 25
+			}
+			if = {
+				limit = { has_realm_law = invisible_hand_centralization_3 }
+				add_tyranny = 5
+			}
+			else_if = {
+				limit = { has_realm_law = invisible_hand_centralization_2 }
+				add_tyranny = 10
+			}
+			else_if = {
+				limit = { has_realm_law = invisible_hand_centralization_1 }
+				add_tyranny = 15
+			}
+			else_if = {
+				limit = { has_realm_law = invisible_hand_centralization_0 }
+				add_tyranny = 20
+			}
+		}
+
+		pass_cost = {
+			prestige = {
+				add = increase_crown_authority_prestige_cost
+				divide = 1.5
+			}
+			gold = { 
+				add = massive_gold_value
+				divide = 2
+			}
+		}
+
+		ai_will_do = {
+		}
+	}
+}
+
+# Title revocation
+invisible_hand_title_revocation_laws = {
+	default = invisible_hand_title_revocation_0
+	flag = realm_law
+	flag = invisible_hand_crown_law
+
+	# Disallowed
+	invisible_hand_title_revocation_0 = {
+		
+		can_have = { highest_held_title_tier > tier_barony }
+
+		can_pass = {
+			custom_description = {
+				subject = root
+				text = "has_realm_law_cooldown"
+				NOT = { has_variable = realm_law_cooldown }
+			}
+		}
+		
+		on_pass = {
+			set_variable = {
+				name = realm_law_cooldown
+				years = 5
+			}
+			add_tyranny = -10
+		}
+
+		ai_will_do = {
+		}
+	}
+
+	# Allowed
+	invisible_hand_title_revocation_1 = {
+		flag = title_revocation_allowed
+		
+		can_have = { highest_held_title_tier > tier_barony }
+		
+		can_keep = {
+			trigger_if = {
+				limit = { 
+					realm_law_use_crown_authority = yes 
+					has_realm_law = invisible_hand_title_revocation_1
+				}
+				custom_description = {
+					subject = root
+					text = "needs_limited_authority"
+					NOT = { has_realm_law = crown_authority_0 }
+				}
+			}
+			trigger_if = {
+				limit = { 
+					realm_law_use_crown_authority = no 
+					has_realm_law = invisible_hand_title_revocation_1
+				}
+				custom_description = {
+					subject = root
+					text = "needs_high_tribal_authority"
+					OR = {
+						has_realm_law = tribal_authority_2
+						has_realm_law = tribal_authority_3
+					}
+				}
+			}
+		}
+
+		can_pass = {
+			trigger_if = {
+				limit = { realm_law_use_crown_authority = yes }
+				custom_description = {
+					subject = root
+					text = "needs_limited_authority"
+					NOT = { has_realm_law = crown_authority_0 }
+				}
+			}
+			trigger_if = {
+				limit = { realm_law_use_crown_authority = no }
+				custom_description = {
+					subject = root
+					text = "needs_high_tribal_authority"
+					OR = {
+						has_realm_law = tribal_authority_2
+						has_realm_law = tribal_authority_3
+					}
+				}
+			}
+			custom_description = {
+				subject = root
+				text = "has_realm_law_cooldown"
+				NOT = { has_variable = realm_law_cooldown }
+			}
+		}
+
+		modifier = {
+			direct_vassal_opinion = -15
+		}
+
+		pass_cost = {
+			prestige = {
+				add = increase_crown_authority_prestige_cost
+				divide = 2
+			}
+		}
+		
+		on_pass = {
+			set_variable = {
+				name = realm_law_cooldown
+				years = 5
+			}
+			add_tyranny = 10
+		}
+
+		ai_will_do = {
+		}
+	}
+}
+
+# Vassal retraction
+invisible_hand_vassal_retraction_laws = {
+	default = invisible_hand_vassal_retraction_0
+	flag = realm_law
+	flag = invisible_hand_crown_law
+
+	# Disallowed
+	invisible_hand_vassal_retraction_0 = {
+		
+		can_have = { highest_held_title_tier > tier_barony }
+
+		can_pass = {
+			custom_description = {
+				subject = root
+				text = "has_realm_law_cooldown"
+				NOT = { has_variable = realm_law_cooldown }
+			}
+		}
+		
+		on_pass = {
+			set_variable = {
+				name = realm_law_cooldown
+				years = 5
+			}
+			add_tyranny = -10
+		}
+
+		ai_will_do = {
+		}
+	}
+
+	# Allowed
+	invisible_hand_vassal_retraction_1 = {
+		flag = vassal_retraction_allowed
+		
+		can_have = { highest_held_title_tier > tier_barony }
+		
+		can_keep = {
+			trigger_if = {
+				limit = { 
+					realm_law_use_crown_authority = yes 
+					has_realm_law = invisible_hand_vassal_retraction_1
+				}
+				custom_description = {
+					subject = root
+					text = "needs_limited_authority"
+					NOT = { has_realm_law = crown_authority_0 }
+				}
+			}
+			trigger_if = {
+				limit = { 
+					realm_law_use_crown_authority = no 
+					has_realm_law = invisible_hand_vassal_retraction_1
+				}
+				custom_description = {
+					subject = root
+					text = "needs_high_tribal_authority"
+					OR = {
+						has_realm_law = tribal_authority_2
+						has_realm_law = tribal_authority_3
+					}
+				}
+			}
+		}
+
+		can_pass = {
+			trigger_if = {
+				limit = { realm_law_use_crown_authority = yes }
+				custom_description = {
+					subject = root
+					text = "needs_limited_authority"
+					NOT = { has_realm_law = crown_authority_0 }
+				}
+			}
+			trigger_if = {
+				limit = { realm_law_use_crown_authority = no }
+				custom_description = {
+					subject = root
+					text = "needs_high_tribal_authority"
+					OR = {
+						has_realm_law = tribal_authority_2
+						has_realm_law = tribal_authority_3
+					}
+				}
+			}
+			custom_description = {
+				subject = root
+				text = "has_realm_law_cooldown"
+				NOT = { has_variable = realm_law_cooldown }
+			}
+		}
+
+		modifier = {
+			direct_vassal_opinion = -10
+		}
+
+		pass_cost = {
+			prestige = {
+				add = increase_crown_authority_prestige_cost
+				divide = 2
+			}
+		}
+		
+		on_pass = {
+			set_variable = {
+				name = realm_law_cooldown
+				years = 5
+			}
+			add_tyranny = 10
+		}
+
+		ai_will_do = {
+		}
+	}
+}
+
+# Realm's Peace
+invisible_hand_realms_peace_laws = {
+	flag = realm_law
+	flag = invisible_hand_crown_law
+
+	# None
+	invisible_hand_realms_peace_0 = {
+		
+		can_have = { 
+			realm_law_use_crown_authority = yes
+			highest_held_title_tier > tier_barony 
+		}
+		
+		should_start_with = {
+			NOR = {
+				has_realm_law = crown_authority_2
+				has_realm_law = crown_authority_3
+			}
+		}
+
+		can_pass = {
+			custom_description = {
+				subject = root
+				text = "has_realm_law_cooldown"
+				NOT = { has_variable = realm_law_cooldown }
+			}
+		}
+		
+		on_pass = {
+			set_variable = {
+				name = realm_law_cooldown
+				years = 5
+			}
+			if = {
+				limit = { has_realm_law = invisible_hand_realms_peace_1 }
+				add_tyranny = -5
+			}
+			else_if = {
+				limit = { has_realm_law = invisible_hand_realms_peace_2 }
+				add_tyranny = -10
+			}
+		}
+
+		ai_will_do = {
+		}
+	}
+
+	# Internal wars banned
+	invisible_hand_realms_peace_1 = {
+		flag = vassal_internal_wars_banned
+		
+		can_have = { 
+			realm_law_use_crown_authority = yes
+			highest_held_title_tier > tier_barony 
+		}
+		
+		should_start_with = {
+			OR = {
+				has_realm_law = crown_authority_2
+				has_realm_law = crown_authority_3
+			}
+		}
+		
+		can_keep = {
+			trigger_if = {
+				limit = { has_realm_law = invisible_hand_vassal_retraction_1 }
+				custom_description = {
+					subject = root
+					text = "needs_high_crown_authority"
+					OR = {
+						has_realm_law = crown_authority_2
+						has_realm_law = crown_authority_3
+					}
+				}
+			}
+		}
+
+		can_pass = {
+			custom_description = {
+				subject = root
+				text = "needs_high_crown_authority"
+				OR = {
+					has_realm_law = crown_authority_2
+					has_realm_law = crown_authority_3
+				}
+			}
+			custom_description = {
+				subject = root
+				text = "has_realm_law_cooldown"
+				NOT = { has_variable = realm_law_cooldown }
+			}
+		}
+
+		modifier = {
+			direct_vassal_opinion = -10
+		}
+
+		pass_cost = {
+			prestige = {
+				add = increase_crown_authority_prestige_cost
+				divide = 2
+			}
+		}
+		
+		on_pass = {
+			set_variable = {
+				name = realm_law_cooldown
+				years = 5
+			}
+			if = {
+				limit = { has_realm_law = invisible_hand_realms_peace_0 }
+				add_tyranny = 5
+			}
+			else_if = {
+				limit = { has_realm_law = invisible_hand_realms_peace_2 }
+				add_tyranny = -5
+			}
+		}
+
+		ai_will_do = {
+		}
+	}
+
+	# All wars banned
+	invisible_hand_realms_peace_2 = {
+		flag = vassal_internal_wars_banned
+		flag = vassal_all_wars_banned
+		
+		can_have = { 
+			realm_law_use_crown_authority = yes
+			highest_held_title_tier > tier_barony 
+		}
+		
+		can_keep = {
+			trigger_if = {
+				limit = { has_realm_law = invisible_hand_realms_peace_2 }
+				has_realm_law = crown_authority_3
+			}
+		}
+
+		can_pass = {
+			custom_description = {
+				subject = root
+				text = "needs_absolute_crown_authority"
+				has_realm_law = crown_authority_3
+			}
+			custom_description = {
+				subject = root
+				text = "has_realm_law_cooldown"
+				NOT = { has_variable = realm_law_cooldown }
+			}
+		}
+
+		modifier = {
+			direct_vassal_opinion = -20
+		}
+
+		pass_cost = {
+			prestige = {
+				add = increase_crown_authority_prestige_cost
+			}
+		}
+		
+		on_pass = {
+			set_variable = {
+				name = realm_law_cooldown
+				years = 5
+			}
+			if = {
+				limit = { has_realm_law = invisible_hand_realms_peace_0 }
+				add_tyranny = 10
+			}
+			else_if = {
+				limit = { has_realm_law = invisible_hand_realms_peace_1 }
+				add_tyranny = 5
+			}
+		}
+
+		ai_will_do = {
+		}
+	}
+}
+
+# Legal system
 invisible_hand_legal_system_laws = {
 	default = invisible_hand_customary_law
 	flag = invisible_hand_realm_law
@@ -7,16 +891,39 @@ invisible_hand_legal_system_laws = {
 	# Common law
 	invisible_hand_common_law = {
 		
+		can_have = { highest_held_title_tier > tier_barony }
+		
 		should_start_with = {
 			invisible_hand_common_law_trigger = yes
 		}
 
 		can_pass = {
 			trigger_if = {
-				limit = { NOT = { has_variable = trickle_down } }
-				OR = {
-					has_realm_law = crown_authority_2
-					has_realm_law = crown_authority_3
+				limit = { 
+					realm_law_use_crown_authority = yes 
+					NOT = { has_variable = trickle_down }
+				}
+				custom_description = {
+					subject = root
+					text = "needs_high_crown_authority"
+					OR = {
+						has_realm_law = crown_authority_2
+						has_realm_law = crown_authority_3
+					}
+				}
+			}
+			trigger_if = {
+				limit = { 
+					realm_law_use_crown_authority = no 
+					NOT = { has_variable = trickle_down }
+				}
+				custom_description = {
+					subject = root
+					text = "needs_high_tribal_authority"
+					OR = {
+						has_realm_law = tribal_authority_2
+						has_realm_law = tribal_authority_3
+					}
 				}
 			}
 			trigger_if = {
@@ -63,16 +970,39 @@ invisible_hand_legal_system_laws = {
 	# Civil law
 	invisible_hand_civil_law = {
 		
+		can_have = { highest_held_title_tier > tier_barony }
+		
 		should_start_with = {
 			invisible_hand_civil_law_trigger = yes
 		}
 
 		can_pass = {
 			trigger_if = {
-				limit = { NOT = { has_variable = trickle_down } }
-				OR = {
-					has_realm_law = crown_authority_2
-					has_realm_law = crown_authority_3
+				limit = { 
+					realm_law_use_crown_authority = yes 
+					NOT = { has_variable = trickle_down }
+				}
+				custom_description = {
+					subject = root
+					text = "needs_high_crown_authority"
+					OR = {
+						has_realm_law = crown_authority_2
+						has_realm_law = crown_authority_3
+					}
+				}
+			}
+			trigger_if = {
+				limit = { 
+					realm_law_use_crown_authority = no 
+					NOT = { has_variable = trickle_down }
+				}
+				custom_description = {
+					subject = root
+					text = "needs_high_tribal_authority"
+					OR = {
+						has_realm_law = tribal_authority_2
+						has_realm_law = tribal_authority_3
+					}
 				}
 			}
 			trigger_if = {
@@ -125,6 +1055,7 @@ invisible_hand_legal_system_laws = {
 		
 		can_have = {
 			invisible_hand_religious_law_trigger = yes
+			highest_held_title_tier > tier_barony
 		}
 		
 		can_keep = {
@@ -133,10 +1064,31 @@ invisible_hand_legal_system_laws = {
 
 		can_pass = {
 			trigger_if = {
-				limit = { NOT = { has_variable = trickle_down } }
-				OR = {
-					has_realm_law = crown_authority_2
-					has_realm_law = crown_authority_3
+				limit = { 
+					realm_law_use_crown_authority = yes 
+					NOT = { has_variable = trickle_down }
+				}
+				custom_description = {
+					subject = root
+					text = "needs_high_crown_authority"
+					OR = {
+						has_realm_law = crown_authority_2
+						has_realm_law = crown_authority_3
+					}
+				}
+			}
+			trigger_if = {
+				limit = { 
+					realm_law_use_crown_authority = no 
+					NOT = { has_variable = trickle_down }
+				}
+				custom_description = {
+					subject = root
+					text = "needs_high_tribal_authority"
+					OR = {
+						has_realm_law = tribal_authority_2
+						has_realm_law = tribal_authority_3
+					}
 				}
 			}
 			invisible_hand_religious_law_trigger = yes
@@ -187,16 +1139,39 @@ invisible_hand_legal_system_laws = {
 	# Customary law
 	invisible_hand_customary_law = {
 		
+		can_have = { highest_held_title_tier > tier_barony }
+		
 		should_start_with = {
 			invisible_hand_customary_law_trigger = yes
 		}
 
 		can_pass = {
 			trigger_if = {
-				limit = { NOT = { has_variable = trickle_down } }
-				OR = {
-					has_realm_law = crown_authority_2
-					has_realm_law = crown_authority_3
+				limit = { 
+					realm_law_use_crown_authority = yes 
+					NOT = { has_variable = trickle_down }
+				}
+				custom_description = {
+					subject = root
+					text = "needs_high_crown_authority"
+					OR = {
+						has_realm_law = crown_authority_2
+						has_realm_law = crown_authority_3
+					}
+				}
+			}
+			trigger_if = {
+				limit = { 
+					realm_law_use_crown_authority = no 
+					NOT = { has_variable = trickle_down }
+				}
+				custom_description = {
+					subject = root
+					text = "needs_high_tribal_authority"
+					OR = {
+						has_realm_law = tribal_authority_2
+						has_realm_law = tribal_authority_3
+					}
 				}
 			}
 			trigger_if = {
@@ -254,7 +1229,11 @@ invisible_hand_alienation_rights_laws = {
 		can_pass = {
 			trigger_if = {
 				limit = { NOT = { has_variable = trickle_down } }
-				NOT = { has_realm_law = crown_authority_0 }
+				custom_description = {
+					subject = root
+					text = "needs_limited_authority"
+					NOT = { has_realm_law = crown_authority_0 }
+				}
 			}
 			trigger_if = {
 				limit = { NOT = { has_variable = trickle_down } }
@@ -309,7 +1288,11 @@ invisible_hand_alienation_rights_laws = {
 		can_pass = {
 			trigger_if = {
 				limit = { NOT = { has_variable = trickle_down } }
-				NOT = { has_realm_law = crown_authority_0 }
+				custom_description = {
+					subject = root
+					text = "needs_limited_authority"
+					NOT = { has_realm_law = crown_authority_0 }
+				}
 			}
 			trigger_if = {
 				limit = { NOT = { has_variable = trickle_down } }
@@ -330,10 +1313,9 @@ invisible_hand_alienation_rights_laws = {
 
 		modifier = {
 			development_growth_factor = 0.05
-			monthly_county_control_change_factor = 0.1
-			vassal_opinion = -10
-			county_opinion_add = -5
-			domain_limit = 1
+			monthly_county_control_change_factor = 0.05
+			vassal_opinion = -5
+			vassal_limit = -2
 		}
 
 		pass_cost = {
@@ -370,9 +1352,13 @@ invisible_hand_alienation_rights_laws = {
 		can_pass = {
 			trigger_if = {
 				limit = { NOT = { has_variable = trickle_down } }
-				OR = { 
-					has_realm_law = crown_authority_2 
-					has_realm_law = crown_authority_3 
+				custom_description = {
+					subject = root
+					text = "needs_high_crown_authority"
+					OR = {
+						has_realm_law = crown_authority_2
+						has_realm_law = crown_authority_3
+					}
 				}
 			}
 			trigger_if = {
@@ -394,10 +1380,9 @@ invisible_hand_alienation_rights_laws = {
 
 		modifier = {
 			development_growth_factor = 0.1
-			monthly_county_control_change_factor = 0.2
-			vassal_opinion = -20
-			county_opinion_add = -10
-			domain_limit = 2
+			monthly_county_control_change_factor = 0.1
+			vassal_opinion = -10
+			vassal_limit = -5
 		}
 
 		pass_cost = {
@@ -441,7 +1426,11 @@ invisible_hand_unfree_tenure_protection_laws = {
 		can_pass = {
 			trigger_if = {
 				limit = { NOT = { has_variable = trickle_down } }
-				NOT = { has_realm_law = crown_authority_0 }
+				custom_description = {
+					subject = root
+					text = "needs_limited_authority"
+					NOT = { has_realm_law = crown_authority_0 }
+				}
 			}
 			trigger_if = {
 				limit = { NOT = { has_variable = trickle_down } }
@@ -497,7 +1486,11 @@ invisible_hand_unfree_tenure_protection_laws = {
 		can_pass = {
 			trigger_if = {
 				limit = { NOT = { has_variable = trickle_down } }
-				NOT = { has_realm_law = crown_authority_0 }
+				custom_description = {
+					subject = root
+					text = "needs_limited_authority"
+					NOT = { has_realm_law = crown_authority_0 }
+				}
 			}
 			trigger_if = {
 				limit = { NOT = { has_variable = trickle_down } }
@@ -558,7 +1551,11 @@ invisible_hand_unfree_tenure_protection_laws = {
 		can_pass = {
 			trigger_if = {
 				limit = { NOT = { has_variable = trickle_down } }
-				NOT = { has_realm_law = crown_authority_0 }
+				custom_description = {
+					subject = root
+					text = "needs_limited_authority"
+					NOT = { has_realm_law = crown_authority_0 }
+				}
 			}
 			trigger_if = {
 				limit = { NOT = { has_variable = trickle_down } }
@@ -626,7 +1623,11 @@ invisible_hand_quit_rent_laws = {
 		can_pass = {
 			trigger_if = {
 				limit = { NOT = { has_variable = trickle_down } }
-				NOT = { has_realm_law = crown_authority_0 }
+				custom_description = {
+					subject = root
+					text = "needs_limited_authority"
+					NOT = { has_realm_law = crown_authority_0 }
+				}
 			}
 			trigger_if = {
 				limit = { NOT = { has_variable = trickle_down } }
@@ -682,7 +1683,11 @@ invisible_hand_quit_rent_laws = {
 		can_pass = {
 			trigger_if = {
 				limit = { NOT = { has_variable = trickle_down } }
-				NOT = { has_realm_law = crown_authority_0 }
+				custom_description = {
+					subject = root
+					text = "needs_limited_authority"
+					NOT = { has_realm_law = crown_authority_0 }
+				}
 			}
 			trigger_if = {
 				limit = { NOT = { has_variable = trickle_down } }
@@ -745,7 +1750,11 @@ invisible_hand_quit_rent_laws = {
 		can_pass = {
 			trigger_if = {
 				limit = { NOT = { has_variable = trickle_down } }
-				NOT = { has_realm_law = crown_authority_0 }
+				custom_description = {
+					subject = root
+					text = "needs_limited_authority"
+					NOT = { has_realm_law = crown_authority_0 }
+				}
 			}
 			trigger_if = {
 				limit = { NOT = { has_variable = trickle_down } }

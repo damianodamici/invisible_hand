@@ -2664,6 +2664,84 @@ types LawTooltipTypes
 		}
 	}
 
+	type pass_law_tooltip_alt = container {
+		alwaystransparent = no
+		object_tooltip_pop_out = {
+			blockoverride "header_additions" {
+				#law_tooltip_header_additions = {}
+			}
+			blockoverride "title_text" {
+				text = "PASS_LAW_TOOLTIP_TITLE_ALT"
+			}
+
+			blockoverride "subtitle_text" {
+				text = "LAW_TOOLTIP_SUBTITLE"
+			}
+
+
+			blockoverride "concept_link" {
+				text = "AUTHORITY_LABEL"
+			}
+			blockoverride "extra_data" {
+				cooltip_paragraph = {
+					text = "[GuiLaw.GetCanEnactDescription]"
+				}
+				cooltip_paragraph = {
+					text = "[Law.GetEffectDescription]"
+				}
+				cooltip_paragraph = {
+					text = "[GuiLaw.GetEnactEffectDescription]"
+				}
+				cooltip_paragraph = {
+					text = "LAW_COST"
+					visible = "[And( GuiLaw.HasCost, Not( GuiLaw.IsEnacted ) )]"
+					tooltip = "[GuiLaw.GetCostDescription]"
+				}
+			}
+		}
+	}
+
+	type pass_law_tooltip_alt_2 = container {
+		alwaystransparent = no
+		object_tooltip_pop_out = {
+			blockoverride "header_additions" {
+				#law_tooltip_header_additions = {}
+			}
+			blockoverride "title_text" {
+				text = "PASS_LAW_TOOLTIP_TITLE_ALT"
+			}
+
+			blockoverride "subtitle_text" {
+				text = "LAW_TOOLTIP_SUBTITLE"
+			}
+
+
+			blockoverride "concept_link" {
+				text = [invisible_hand_centralization|E]
+			}
+			blockoverride "extra_data" {
+				cooltip_paragraph = {
+					text = "[GuiLaw.GetCanEnactDescription]"
+				}
+				cooltip_paragraph = {
+					text = "[Law.GetEffectDescription]"
+				}
+				cooltip_paragraph = {
+					text = "[GuiLaw.GetEnactEffectDescription]"
+				}
+				cooltip_paragraph = {
+					text = "LAW_COST"
+					visible = "[And( GuiLaw.HasCost, Not( GuiLaw.IsEnacted ) )]"
+					tooltip = "[GuiLaw.GetCostDescription]"
+				}
+				cooltip_paragraph = {
+					visible = "[GuiLaw.CanEnact]"
+					text = "CLICK_TO_PASS_LAW_ALT"
+				}
+			}
+		}
+	}
+
 	type general_law_tooltip = object_tooltip_pop_out {
 		blockoverride "header_additions" {
 			law_tooltip_header_additions = {}

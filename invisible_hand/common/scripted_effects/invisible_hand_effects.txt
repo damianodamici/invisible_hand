@@ -1,4 +1,38 @@
-﻿invisible_hand_war_refugee_spawn_effect = {
+﻿invisible_hand_calc_authority_level_effect = {
+	if = {
+		limit = { primary_title = { invisible_hand_authority_score > 75 } }
+		if = {
+			limit = { realm_law_use_crown_authority = yes }
+			add_realm_law_skip_effects = crown_authority_3
+		}
+		else = { add_realm_law_skip_effects = tribal_authority_3 }
+	}
+	else_if = {
+		limit = { primary_title = { invisible_hand_authority_score > 50 } }
+		if = {
+			limit = { realm_law_use_crown_authority = yes }
+			add_realm_law_skip_effects = crown_authority_2
+		}
+		else = { add_realm_law_skip_effects = tribal_authority_2 }
+	}
+	else_if = {
+		limit = { primary_title = { invisible_hand_authority_score > 25 } }
+		if = {
+			limit = { realm_law_use_crown_authority = yes }
+			add_realm_law_skip_effects = crown_authority_1
+		}
+		else = { add_realm_law_skip_effects = tribal_authority_1 }
+	}
+	else = {
+		if = {
+			limit = { realm_law_use_crown_authority = yes }
+			add_realm_law_skip_effects = crown_authority_0
+		}
+		else = { add_realm_law_skip_effects = tribal_authority_0 }
+	}
+}
+
+invisible_hand_war_refugee_spawn_effect = {
 	random_list = {
 		100 = { }
 		# refugee spawn
@@ -191,7 +225,7 @@ invisible_hand_assign_province_population_effect = {
 						this = title:b_constantinople
 						this = title:b_cordoba
 						this = title:b_fes
-						this = title:b_gangaikondacolapuram
+						#this = title:b_gangaikondacolapuram
 						this = title:b_genoa
 						this = title:b_halab
 						this = title:b_kalinjar
@@ -333,7 +367,7 @@ invisible_hand_assign_province_population_effect = {
 					barony = {
 						OR = {
 							this = title:b_constantinople
-							this = title:b_gangaikondacolapuram
+							#this = title:b_gangaikondacolapuram
 							this = title:b_tanjavur
 						}
 					}
@@ -350,7 +384,7 @@ invisible_hand_assign_province_population_effect = {
 			change_variable = {
 				name = province_population
 				add = { 
-					value = 501 # "clean" numbers look too scripted
+					value = 1001 # "clean" numbers look too scripted
 					multiply = county.development_level
 				}
 			}
@@ -543,28 +577,28 @@ invisible_hand_assign_province_population_effect = {
 				limit = { county = { has_county_modifier = invisible_hand_subtropical_climate_modifier } }
 				change_variable = {
 					name = province_population
-					multiply = 1.5
+					multiply = 1.25
 				}
 			}
 			else_if = {
 				limit = { county = { has_county_modifier = invisible_hand_subtropical_humid_climate_modifier } }
 				change_variable = {
 					name = province_population
-					multiply = 1.375
+					multiply = 1.125
 				}
 			}
 			else_if = {
 				limit = { county = { has_county_modifier = invisible_hand_oceanic_climate_modifier } }
 				change_variable = {
 					name = province_population
-					multiply = 1.25
+					multiply = 1
 				}
 			}
 			else_if = {
 				limit = { county = { has_county_modifier = invisible_hand_tropical_climate_modifier } }
 				change_variable = {
 					name = province_population
-					multiply = 1.125
+					multiply = 0.875
 				}
 			}
 			else_if = {
@@ -663,18 +697,6 @@ invisible_hand_assign_province_population_effect = {
 			10 = {
 				set_variable = {
 					name = population_randomizer
-					value = 0.9
-				}
-			}
-			10 = {
-				set_variable = {
-					name = population_randomizer
-					value = 0.925
-				}
-			}
-			10 = {
-				set_variable = {
-					name = population_randomizer
 					value = 0.95
 				}
 			}
@@ -694,18 +716,6 @@ invisible_hand_assign_province_population_effect = {
 				set_variable = {
 					name = population_randomizer
 					value = 1.05
-				}
-			}
-			10 = {
-				set_variable = {
-					name = population_randomizer
-					value = 1.075
-				}
-			}
-			10 = {
-				set_variable = {
-					name = population_randomizer
-					value = 1.1
 				}
 			}
 		}
