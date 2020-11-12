@@ -9,6 +9,7 @@ invisible_hand_gamestart.01 = {
 		every_county = {
 			invisible_hand_assign_county_climate_effect = yes
 			every_county_province = {
+				add_building_slot = 1 # needed for pop buildings
 				invisible_hand_assign_province_population_effect = yes
 				add_province_modifier = invisible_hand_tax_level_3
 				set_variable = {

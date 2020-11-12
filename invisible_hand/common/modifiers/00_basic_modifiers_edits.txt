@@ -22,5 +22,5 @@ king_modifier = {
 emperor_modifier = {
 	domain_limit = 5
 	knight_limit = 10
-	vassal_limit = 50
+	vassal_limit = 40
 }

@@ -1,4 +1,10 @@
-﻿max_contract_changes = 25
+﻿# Vanilla overrides
+
+max_contract_changes = 25
+
+low_feudal_tax = 0.05
+
+# End
 
 invisible_hand_authority_score = {
 	value = 0

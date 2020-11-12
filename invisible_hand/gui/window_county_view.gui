@@ -1278,13 +1278,13 @@ window = {
 									layoutpolicy_horizontal = expanding
 									text = "NO_MODIFIERS_TEXT"
 									default_format = "#high"
-									visible = "[LessThanOrEqualTo_int32(GetDataModelSize(HoldingView.GetHoldingModifiers), '(int32)4')]"
+									visible = "[LessThanOrEqualTo_int32(GetDataModelSize(HoldingView.GetHoldingModifiers), '(int32)3')]"
 								}
 							}
 
 							item = {
 								icon = {
-									visible = "[Not(Or(Or(Or(EqualTo_string( ModifierItem.GetName, 'From Population' ),EqualTo_string( ModifierItem.GetName, 'From Climate' )),EqualTo_string( ModifierItem.GetName, 'From Tax Obligations' )),EqualTo_string( ModifierItem.GetName, 'From Levy Obligations' )))]"
+									visible = "[Not(Or(Or(EqualTo_string( ModifierItem.GetName, 'From Climate' ),EqualTo_string( ModifierItem.GetName, 'From Tax Obligations' )),EqualTo_string( ModifierItem.GetName, 'From Levy Obligations' )))]"
 									size = { 18 18 }
 									texture = "[ModifierItem.GetIcon]"
 									using = tooltip_ne
@@ -2577,6 +2577,7 @@ types CountyViewTypes
 	type widget_building_item = widget {
 		parentanchor = bottom
 		size = { 55 55 }
+		visible = "[Not(EqualTo_string(GUIBuildingItem.GetCurrentOrConstrucingBuilding.GetTypeName,'building_type_invisible_hand_population_01'))]"
 		enabled = "[GUIBuildingItem.IsBuildingButtonEnabled]"
 		tooltip = "[GUIBuildingItem.GetTooltip]"
 		using = tooltip_ne
@@ -2612,34 +2613,7 @@ types CountyViewTypes
 				texture = "[GUIBuildingItem.GetCurrentOrConstrucingBuilding.GetTypeIcon]"
 			}
 
-			# button_icon_highlight = {
-			# 	name = "level_icon"
-			# 	parentanchor = bottom|right
-			# 	position = { -10 -5 }
-			# 	size = { 40 40 }
-			# 	scale = 0.4
-			# 	framesize = { 55 55 }
-			# 	visible = "[GUIBuildingItem.HasLevel]"
-			# 	texture = "[GUIBuildingItem.GetLevelTexture]"
-			# 	frame = "[GUIBuildingItem.GetLevelFrame]"
-
-			# 	background = {
-			# 		using = Background_Area_Dark
-			# 		margin = { 0 2 }
-			# 	}
-
-			# 	background = {
-			# 		using = Background_Area_Dark
-			# 		margin = { 0 2 }
-			# 	}
-
-			# 	background = {
-			# 		using = Background_Area_Dark
-			# 		margin = { 0 2 }
-			# 	}
-			# }
-
-			text_single= {
+			text_single = {
 				visible = "[GUIBuildingItem.HasLevel]"
 				text = "[GUIBuildingItem.GetCurrentOrConstrucingBuilding.GetLevel]"
 				parentanchor = bottom|right

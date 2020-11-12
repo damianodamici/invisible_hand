@@ -758,112 +758,8 @@ invisible_hand_assign_province_population_modifiers = {
 				NOT = { var:population_stacks = var:population_stacks_old } 
 			}
 		}
-		invisible_hand_remove_province_pop_modifiers = yes
 		invisible_hand_set_province_pop_modifier_from_stack_amount = yes
 	}
-}
-
-invisible_hand_remove_province_pop_modifiers = {
-	remove_province_modifier = invisible_hand_population_modifier_1
-	remove_province_modifier = invisible_hand_population_modifier_2
-	remove_province_modifier = invisible_hand_population_modifier_3
-	remove_province_modifier = invisible_hand_population_modifier_4
-	remove_province_modifier = invisible_hand_population_modifier_5
-	remove_province_modifier = invisible_hand_population_modifier_6
-	remove_province_modifier = invisible_hand_population_modifier_7
-	remove_province_modifier = invisible_hand_population_modifier_8
-	remove_province_modifier = invisible_hand_population_modifier_9
-	remove_province_modifier = invisible_hand_population_modifier_10
-	remove_province_modifier = invisible_hand_population_modifier_11
-	remove_province_modifier = invisible_hand_population_modifier_12
-	remove_province_modifier = invisible_hand_population_modifier_13
-	remove_province_modifier = invisible_hand_population_modifier_14
-	remove_province_modifier = invisible_hand_population_modifier_15
-	remove_province_modifier = invisible_hand_population_modifier_16
-	remove_province_modifier = invisible_hand_population_modifier_17
-	remove_province_modifier = invisible_hand_population_modifier_18
-	remove_province_modifier = invisible_hand_population_modifier_19
-	remove_province_modifier = invisible_hand_population_modifier_20
-	remove_province_modifier = invisible_hand_population_modifier_21
-	remove_province_modifier = invisible_hand_population_modifier_22
-	remove_province_modifier = invisible_hand_population_modifier_23
-	remove_province_modifier = invisible_hand_population_modifier_24
-	remove_province_modifier = invisible_hand_population_modifier_25
-	remove_province_modifier = invisible_hand_population_modifier_26
-	remove_province_modifier = invisible_hand_population_modifier_27
-	remove_province_modifier = invisible_hand_population_modifier_28
-	remove_province_modifier = invisible_hand_population_modifier_29
-	remove_province_modifier = invisible_hand_population_modifier_30
-	remove_province_modifier = invisible_hand_population_modifier_31
-	remove_province_modifier = invisible_hand_population_modifier_32
-	remove_province_modifier = invisible_hand_population_modifier_33
-	remove_province_modifier = invisible_hand_population_modifier_34
-	remove_province_modifier = invisible_hand_population_modifier_35
-	remove_province_modifier = invisible_hand_population_modifier_36
-	remove_province_modifier = invisible_hand_population_modifier_37
-	remove_province_modifier = invisible_hand_population_modifier_38
-	remove_province_modifier = invisible_hand_population_modifier_39
-	remove_province_modifier = invisible_hand_population_modifier_40
-	remove_province_modifier = invisible_hand_population_modifier_41
-	remove_province_modifier = invisible_hand_population_modifier_42
-	remove_province_modifier = invisible_hand_population_modifier_43
-	remove_province_modifier = invisible_hand_population_modifier_44
-	remove_province_modifier = invisible_hand_population_modifier_45
-	remove_province_modifier = invisible_hand_population_modifier_46
-	remove_province_modifier = invisible_hand_population_modifier_47
-	remove_province_modifier = invisible_hand_population_modifier_48
-	remove_province_modifier = invisible_hand_population_modifier_49
-	remove_province_modifier = invisible_hand_population_modifier_50
-	remove_province_modifier = invisible_hand_population_modifier_51
-	remove_province_modifier = invisible_hand_population_modifier_52
-	remove_province_modifier = invisible_hand_population_modifier_53
-	remove_province_modifier = invisible_hand_population_modifier_54
-	remove_province_modifier = invisible_hand_population_modifier_55
-	remove_province_modifier = invisible_hand_population_modifier_56
-	remove_province_modifier = invisible_hand_population_modifier_57
-	remove_province_modifier = invisible_hand_population_modifier_58
-	remove_province_modifier = invisible_hand_population_modifier_59
-	remove_province_modifier = invisible_hand_population_modifier_60
-	remove_province_modifier = invisible_hand_population_modifier_61
-	remove_province_modifier = invisible_hand_population_modifier_62
-	remove_province_modifier = invisible_hand_population_modifier_63
-	remove_province_modifier = invisible_hand_population_modifier_64
-	remove_province_modifier = invisible_hand_population_modifier_65
-	remove_province_modifier = invisible_hand_population_modifier_66
-	remove_province_modifier = invisible_hand_population_modifier_67
-	remove_province_modifier = invisible_hand_population_modifier_68
-	remove_province_modifier = invisible_hand_population_modifier_69
-	remove_province_modifier = invisible_hand_population_modifier_70
-	remove_province_modifier = invisible_hand_population_modifier_71
-	remove_province_modifier = invisible_hand_population_modifier_72
-	remove_province_modifier = invisible_hand_population_modifier_73
-	remove_province_modifier = invisible_hand_population_modifier_74
-	remove_province_modifier = invisible_hand_population_modifier_75
-	remove_province_modifier = invisible_hand_population_modifier_76
-	remove_province_modifier = invisible_hand_population_modifier_77
-	remove_province_modifier = invisible_hand_population_modifier_78
-	remove_province_modifier = invisible_hand_population_modifier_79
-	remove_province_modifier = invisible_hand_population_modifier_80
-	remove_province_modifier = invisible_hand_population_modifier_81
-	remove_province_modifier = invisible_hand_population_modifier_82
-	remove_province_modifier = invisible_hand_population_modifier_83
-	remove_province_modifier = invisible_hand_population_modifier_84
-	remove_province_modifier = invisible_hand_population_modifier_85
-	remove_province_modifier = invisible_hand_population_modifier_86
-	remove_province_modifier = invisible_hand_population_modifier_87
-	remove_province_modifier = invisible_hand_population_modifier_88
-	remove_province_modifier = invisible_hand_population_modifier_89
-	remove_province_modifier = invisible_hand_population_modifier_90
-	remove_province_modifier = invisible_hand_population_modifier_91
-	remove_province_modifier = invisible_hand_population_modifier_92
-	remove_province_modifier = invisible_hand_population_modifier_93
-	remove_province_modifier = invisible_hand_population_modifier_94
-	remove_province_modifier = invisible_hand_population_modifier_95
-	remove_province_modifier = invisible_hand_population_modifier_96
-	remove_province_modifier = invisible_hand_population_modifier_97
-	remove_province_modifier = invisible_hand_population_modifier_98
-	remove_province_modifier = invisible_hand_population_modifier_99
-	remove_province_modifier = invisible_hand_population_modifier_100
 }
 
 invisible_hand_set_province_pop_modifier_from_stack_amount = {
@@ -873,435 +769,435 @@ invisible_hand_set_province_pop_modifier_from_stack_amount = {
 			limit = { var:population_stacks <= 10 }
 			if = {
 				limit = { var:population_stacks <= 1 }
-				add_province_modifier = invisible_hand_population_modifier_1
+				add_building = invisible_hand_population_01
 			}
 			else_if = {
 				limit = { var:population_stacks <= 2 }
-				add_province_modifier = invisible_hand_population_modifier_2
+				add_building = invisible_hand_population_02
 			}
 			else_if = {
 				limit = { var:population_stacks <= 3 }
-				add_province_modifier = invisible_hand_population_modifier_3
+				add_building = invisible_hand_population_03
 			}
 			else_if = {
 				limit = { var:population_stacks <= 4 }
-				add_province_modifier = invisible_hand_population_modifier_4
+				add_building = invisible_hand_population_04
 			}
 			else_if = {
 				limit = { var:population_stacks <= 5 }
-				add_province_modifier = invisible_hand_population_modifier_5
+				add_building = invisible_hand_population_05
 			}
 			else_if = {
 				limit = { var:population_stacks <= 6 }
-				add_province_modifier = invisible_hand_population_modifier_6
+				add_building = invisible_hand_population_06
 			}
 			else_if = {
 				limit = { var:population_stacks <= 7 }
-				add_province_modifier = invisible_hand_population_modifier_7
+				add_building = invisible_hand_population_07
 			}
 			else_if = {
 				limit = { var:population_stacks <= 8 }
-				add_province_modifier = invisible_hand_population_modifier_8
+				add_building = invisible_hand_population_08
 			}
 			else_if = {
 				limit = { var:population_stacks <= 9 }
-				add_province_modifier = invisible_hand_population_modifier_9
+				add_building = invisible_hand_population_09
 			}
 			else_if = {
 				limit = { var:population_stacks <= 10 }
-				add_province_modifier = invisible_hand_population_modifier_10
+				add_building = invisible_hand_population_10
 			}
 		}
 		else_if = {
 			limit = { var:population_stacks <= 20 }
 			if = {
 				limit = { var:population_stacks <= 11 }
-				add_province_modifier = invisible_hand_population_modifier_11
+				add_building = invisible_hand_population_11
 			}
 			else_if = {
 				limit = { var:population_stacks <= 12 }
-				add_province_modifier = invisible_hand_population_modifier_12
+				add_building = invisible_hand_population_12
 			}
 			else_if = {
 				limit = { var:population_stacks <= 13 }
-				add_province_modifier = invisible_hand_population_modifier_13
+				add_building = invisible_hand_population_13
 			}
 			else_if = {
 				limit = { var:population_stacks <= 14 }
-				add_province_modifier = invisible_hand_population_modifier_14
+				add_building = invisible_hand_population_14
 			}
 			else_if = {
 				limit = { var:population_stacks <= 15 }
-				add_province_modifier = invisible_hand_population_modifier_15
+				add_building = invisible_hand_population_15
 			}
 			else_if = {
 				limit = { var:population_stacks <= 16 }
-				add_province_modifier = invisible_hand_population_modifier_16
+				add_building = invisible_hand_population_16
 			}
 			else_if = {
 				limit = { var:population_stacks <= 17 }
-				add_province_modifier = invisible_hand_population_modifier_17
+				add_building = invisible_hand_population_17
 			}
 			else_if = {
 				limit = { var:population_stacks <= 18 }
-				add_province_modifier = invisible_hand_population_modifier_18
+				add_building = invisible_hand_population_18
 			}
 			else_if = {
 				limit = { var:population_stacks <= 19 }
-				add_province_modifier = invisible_hand_population_modifier_19
+				add_building = invisible_hand_population_19
 			}
 			else_if = {
 				limit = { var:population_stacks <= 20 }
-				add_province_modifier = invisible_hand_population_modifier_20
+				add_building = invisible_hand_population_20
 			}
 		}
 		else_if = {
 			limit = { var:population_stacks <= 30 }
 			if = {
 				limit = { var:population_stacks <= 21 }
-				add_province_modifier = invisible_hand_population_modifier_21
+				add_building = invisible_hand_population_21
 			}
 			else_if = {
 				limit = { var:population_stacks <= 22 }
-				add_province_modifier = invisible_hand_population_modifier_22
+				add_building = invisible_hand_population_22
 			}
 			else_if = {
 				limit = { var:population_stacks <= 23 }
-				add_province_modifier = invisible_hand_population_modifier_23
+				add_building = invisible_hand_population_23
 			}
 			else_if = {
 				limit = { var:population_stacks <= 24 }
-				add_province_modifier = invisible_hand_population_modifier_24
+				add_building = invisible_hand_population_24
 			}
 			else_if = {
 				limit = { var:population_stacks <= 25 }
-				add_province_modifier = invisible_hand_population_modifier_25
+				add_building = invisible_hand_population_25
 			}
 			else_if = {
 				limit = { var:population_stacks <= 26 }
-				add_province_modifier = invisible_hand_population_modifier_26
+				add_building = invisible_hand_population_26
 			}
 			else_if = {
 				limit = { var:population_stacks <= 27 }
-				add_province_modifier = invisible_hand_population_modifier_27
+				add_building = invisible_hand_population_27
 			}
 			else_if = {
 				limit = { var:population_stacks <= 28 }
-				add_province_modifier = invisible_hand_population_modifier_28
+				add_building = invisible_hand_population_28
 			}
 			else_if = {
 				limit = { var:population_stacks <= 29 }
-				add_province_modifier = invisible_hand_population_modifier_29
+				add_building = invisible_hand_population_29
 			}
 			else_if = {
 				limit = { var:population_stacks <= 30 }
-				add_province_modifier = invisible_hand_population_modifier_30
+				add_building = invisible_hand_population_30
 			}
 		}
 		else_if = {
 			limit = { var:population_stacks <= 40 }
 			if = {
 				limit = { var:population_stacks <= 31 }
-				add_province_modifier = invisible_hand_population_modifier_31
+				add_building = invisible_hand_population_31
 			}
 			else_if = {
 				limit = { var:population_stacks <= 32 }
-				add_province_modifier = invisible_hand_population_modifier_32
+				add_building = invisible_hand_population_32
 			}
 			else_if = {
 				limit = { var:population_stacks <= 33 }
-				add_province_modifier = invisible_hand_population_modifier_33
+				add_building = invisible_hand_population_33
 			}
 			else_if = {
 				limit = { var:population_stacks <= 34 }
-				add_province_modifier = invisible_hand_population_modifier_34
+				add_building = invisible_hand_population_34
 			}
 			else_if = {
 				limit = { var:population_stacks <= 35 }
-				add_province_modifier = invisible_hand_population_modifier_35
+				add_building = invisible_hand_population_35
 			}
 			else_if = {
 				limit = { var:population_stacks <= 36 }
-				add_province_modifier = invisible_hand_population_modifier_36
+				add_building = invisible_hand_population_36
 			}
 			else_if = {
 				limit = { var:population_stacks <= 37 }
-				add_province_modifier = invisible_hand_population_modifier_37
+				add_building = invisible_hand_population_37
 			}
 			else_if = {
 				limit = { var:population_stacks <= 38 }
-				add_province_modifier = invisible_hand_population_modifier_38
+				add_building = invisible_hand_population_38
 			}
 			else_if = {
 				limit = { var:population_stacks <= 39 }
-				add_province_modifier = invisible_hand_population_modifier_39
+				add_building = invisible_hand_population_39
 			}
 			else_if = {
 				limit = { var:population_stacks <= 40 }
-				add_province_modifier = invisible_hand_population_modifier_40
+				add_building = invisible_hand_population_40
 			}
 		}
 		else_if = {
 			limit = { var:population_stacks <= 50 }
 			if = {
 				limit = { var:population_stacks <= 41 }
-				add_province_modifier = invisible_hand_population_modifier_41
+				add_building = invisible_hand_population_41
 			}
 			else_if = {
 				limit = { var:population_stacks <= 42 }
-				add_province_modifier = invisible_hand_population_modifier_42
+				add_building = invisible_hand_population_42
 			}
 			else_if = {
 				limit = { var:population_stacks <= 43 }
-				add_province_modifier = invisible_hand_population_modifier_43
+				add_building = invisible_hand_population_43
 			}
 			else_if = {
 				limit = { var:population_stacks <= 44 }
-				add_province_modifier = invisible_hand_population_modifier_44
+				add_building = invisible_hand_population_44
 			}
 			else_if = {
 				limit = { var:population_stacks <= 45 }
-				add_province_modifier = invisible_hand_population_modifier_45
+				add_building = invisible_hand_population_45
 			}
 			else_if = {
 				limit = { var:population_stacks <= 46 }
-				add_province_modifier = invisible_hand_population_modifier_46
+				add_building = invisible_hand_population_46
 			}
 			else_if = {
 				limit = { var:population_stacks <= 47 }
-				add_province_modifier = invisible_hand_population_modifier_47
+				add_building = invisible_hand_population_47
 			}
 			else_if = {
 				limit = { var:population_stacks <= 48 }
-				add_province_modifier = invisible_hand_population_modifier_48
+				add_building = invisible_hand_population_48
 			}
 			else_if = {
 				limit = { var:population_stacks <= 49 }
-				add_province_modifier = invisible_hand_population_modifier_49
+				add_building = invisible_hand_population_49
 			}
 			else_if = {
 				limit = { var:population_stacks <= 50 }
-				add_province_modifier = invisible_hand_population_modifier_50
+				add_building = invisible_hand_population_50
 			}
 		}
 		else_if = {
 			limit = { var:population_stacks <= 60 }
 			if = {
 				limit = { var:population_stacks <= 51 }
-				add_province_modifier = invisible_hand_population_modifier_51
+				add_building = invisible_hand_population_51
 			}
 			else_if = {
 				limit = { var:population_stacks <= 52 }
-				add_province_modifier = invisible_hand_population_modifier_52
+				add_building = invisible_hand_population_52
 			}
 			else_if = {
 				limit = { var:population_stacks <= 53 }
-				add_province_modifier = invisible_hand_population_modifier_53
+				add_building = invisible_hand_population_53
 			}
 			else_if = {
 				limit = { var:population_stacks <= 54 }
-				add_province_modifier = invisible_hand_population_modifier_54
+				add_building = invisible_hand_population_54
 			}
 			else_if = {
 				limit = { var:population_stacks <= 55 }
-				add_province_modifier = invisible_hand_population_modifier_55
+				add_building = invisible_hand_population_55
 			}
 			else_if = {
 				limit = { var:population_stacks <= 56 }
-				add_province_modifier = invisible_hand_population_modifier_56
+				add_building = invisible_hand_population_56
 			}
 			else_if = {
 				limit = { var:population_stacks <= 57 }
-				add_province_modifier = invisible_hand_population_modifier_57
+				add_building = invisible_hand_population_57
 			}
 			else_if = {
 				limit = { var:population_stacks <= 58 }
-				add_province_modifier = invisible_hand_population_modifier_58
+				add_building = invisible_hand_population_58
 			}
 			else_if = {
 				limit = { var:population_stacks <= 59 }
-				add_province_modifier = invisible_hand_population_modifier_59
+				add_building = invisible_hand_population_59
 			}
 			else_if = {
 				limit = { var:population_stacks <= 60 }
-				add_province_modifier = invisible_hand_population_modifier_60
+				add_building = invisible_hand_population_60
 			}
 		}
 		else_if = {
 			limit = { var:population_stacks <= 70 }
 			if = {
 				limit = { var:population_stacks <= 61 }
-				add_province_modifier = invisible_hand_population_modifier_61
+				add_building = invisible_hand_population_61
 			}
 			else_if = {
 				limit = { var:population_stacks <= 62 }
-				add_province_modifier = invisible_hand_population_modifier_62
+				add_building = invisible_hand_population_62
 			}
 			else_if = {
 				limit = { var:population_stacks <= 63 }
-				add_province_modifier = invisible_hand_population_modifier_63
+				add_building = invisible_hand_population_63
 			}
 			else_if = {
 				limit = { var:population_stacks <= 64 }
-				add_province_modifier = invisible_hand_population_modifier_64
+				add_building = invisible_hand_population_64
 			}
 			else_if = {
 				limit = { var:population_stacks <= 65 }
-				add_province_modifier = invisible_hand_population_modifier_65
+				add_building = invisible_hand_population_65
 			}
 			else_if = {
 				limit = { var:population_stacks <= 66 }
-				add_province_modifier = invisible_hand_population_modifier_66
+				add_building = invisible_hand_population_66
 			}
 			else_if = {
 				limit = { var:population_stacks <= 67 }
-				add_province_modifier = invisible_hand_population_modifier_67
+				add_building = invisible_hand_population_67
 			}
 			else_if = {
 				limit = { var:population_stacks <= 68 }
-				add_province_modifier = invisible_hand_population_modifier_68
+				add_building = invisible_hand_population_68
 			}
 			else_if = {
 				limit = { var:population_stacks <= 69 }
-				add_province_modifier = invisible_hand_population_modifier_69
+				add_building = invisible_hand_population_69
 			}
 			else_if = {
 				limit = { var:population_stacks <= 70 }
-				add_province_modifier = invisible_hand_population_modifier_70
+				add_building = invisible_hand_population_70
 			}
 		}
 		else_if = {
 			limit = { var:population_stacks <= 80 }
 			if = {
 				limit = { var:population_stacks <= 71 }
-				add_province_modifier = invisible_hand_population_modifier_71
+				add_building = invisible_hand_population_71
 			}
 			else_if = {
 				limit = { var:population_stacks <= 72 }
-				add_province_modifier = invisible_hand_population_modifier_72
+				add_building = invisible_hand_population_72
 			}
 			else_if = {
 				limit = { var:population_stacks <= 73 }
-				add_province_modifier = invisible_hand_population_modifier_73
+				add_building = invisible_hand_population_73
 			}
 			else_if = {
 				limit = { var:population_stacks <= 74 }
-				add_province_modifier = invisible_hand_population_modifier_74
+				add_building = invisible_hand_population_74
 			}
 			else_if = {
 				limit = { var:population_stacks <= 75 }
-				add_province_modifier = invisible_hand_population_modifier_75
+				add_building = invisible_hand_population_75
 			}
 			else_if = {
 				limit = { var:population_stacks <= 76 }
-				add_province_modifier = invisible_hand_population_modifier_76
+				add_building = invisible_hand_population_76
 			}
 			else_if = {
 				limit = { var:population_stacks <= 77 }
-				add_province_modifier = invisible_hand_population_modifier_77
+				add_building = invisible_hand_population_77
 			}
 			else_if = {
 				limit = { var:population_stacks <= 78 }
-				add_province_modifier = invisible_hand_population_modifier_78
+				add_building = invisible_hand_population_78
 			}
 			else_if = {
 				limit = { var:population_stacks <= 79 }
-				add_province_modifier = invisible_hand_population_modifier_79
+				add_building = invisible_hand_population_79
 			}
 			else_if = {
 				limit = { var:population_stacks <= 80 }
-				add_province_modifier = invisible_hand_population_modifier_80
+				add_building = invisible_hand_population_80
 			}
 		}
 		else_if = {
 			limit = { var:population_stacks <= 90 }
 			if = {
 				limit = { var:population_stacks <= 81 }
-				add_province_modifier = invisible_hand_population_modifier_81
+				add_building = invisible_hand_population_81
 			}
 			else_if = {
 				limit = { var:population_stacks <= 82 }
-				add_province_modifier = invisible_hand_population_modifier_82
+				add_building = invisible_hand_population_82
 			}
 			else_if = {
 				limit = { var:population_stacks <= 83 }
-				add_province_modifier = invisible_hand_population_modifier_83
+				add_building = invisible_hand_population_83
 			}
 			else_if = {
 				limit = { var:population_stacks <= 84 }
-				add_province_modifier = invisible_hand_population_modifier_84
+				add_building = invisible_hand_population_84
 			}
 			else_if = {
 				limit = { var:population_stacks <= 85 }
-				add_province_modifier = invisible_hand_population_modifier_85
+				add_building = invisible_hand_population_85
 			}
 			else_if = {
 				limit = { var:population_stacks <= 86 }
-				add_province_modifier = invisible_hand_population_modifier_86
+				add_building = invisible_hand_population_86
 			}
 			else_if = {
 				limit = { var:population_stacks <= 87 }
-				add_province_modifier = invisible_hand_population_modifier_87
+				add_building = invisible_hand_population_87
 			}
 			else_if = {
 				limit = { var:population_stacks <= 88 }
-				add_province_modifier = invisible_hand_population_modifier_88
+				add_building = invisible_hand_population_88
 			}
 			else_if = {
 				limit = { var:population_stacks <= 89 }
-				add_province_modifier = invisible_hand_population_modifier_89
+				add_building = invisible_hand_population_89
 			}
 			else_if = {
 				limit = { var:population_stacks <= 90 }
-				add_province_modifier = invisible_hand_population_modifier_90
+				add_building = invisible_hand_population_90
 			}
 		}
 		else_if = {
 			limit = { var:population_stacks <= 100 }
 			if = {
 				limit = { var:population_stacks <= 91 }
-				add_province_modifier = invisible_hand_population_modifier_91
+				add_building = invisible_hand_population_91
 			}
 			else_if = {
 				limit = { var:population_stacks <= 92 }
-				add_province_modifier = invisible_hand_population_modifier_92
+				add_building = invisible_hand_population_92
 			}
 			else_if = {
 				limit = { var:population_stacks <= 93 }
-				add_province_modifier = invisible_hand_population_modifier_93
+				add_building = invisible_hand_population_93
 			}
 			else_if = {
 				limit = { var:population_stacks <= 94 }
-				add_province_modifier = invisible_hand_population_modifier_94
+				add_building = invisible_hand_population_94
 			}
 			else_if = {
 				limit = { var:population_stacks <= 95 }
-				add_province_modifier = invisible_hand_population_modifier_95
+				add_building = invisible_hand_population_95
 			}
 			else_if = {
 				limit = { var:population_stacks <= 96 }
-				add_province_modifier = invisible_hand_population_modifier_96
+				add_building = invisible_hand_population_96
 			}
 			else_if = {
 				limit = { var:population_stacks <= 97 }
-				add_province_modifier = invisible_hand_population_modifier_97
+				add_building = invisible_hand_population_97
 			}
 			else_if = {
 				limit = { var:population_stacks <= 98 }
-				add_province_modifier = invisible_hand_population_modifier_98
+				add_building = invisible_hand_population_98
 			}
 			else_if = {
 				limit = { var:population_stacks <= 99 }
-				add_province_modifier = invisible_hand_population_modifier_99
+				add_building = invisible_hand_population_99
 			}
 			else_if = {
 				limit = { var:population_stacks <= 100 }
-				add_province_modifier = invisible_hand_population_modifier_100
+				add_building = invisible_hand_population_100
 			}
 		}
 	}
 	else = {
-		add_province_modifier = invisible_hand_population_modifier_100
+		add_building = invisible_hand_population_100
 	}
 }
 

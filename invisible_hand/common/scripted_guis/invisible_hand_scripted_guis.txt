@@ -1,4 +1,12 @@
-﻿invisible_hand_religious_rights = {
+﻿invisible_hand_realms_peace = {
+	scope =	root
+
+	is_valid = {
+		realm_law_use_crown_authority = yes
+	}
+}
+
+invisible_hand_religious_rights = {
 	scope =	root
 
 	is_valid = {

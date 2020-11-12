@@ -142,24 +142,10 @@ invisible_hand_levy_level_5 = {
 	levy_size = 0.25
 }
 
-invisible_hand_population_modifier_1 = {
-	icon = county_modifier_development_positive
-	tax_mult = 0.025
-	levy_size = 0.025
-	garrison_size = 0.025
-}
-
 invisible_hand_population_modifier_1_county = {
 	icon = county_modifier_development_positive
 	development_growth_factor = 0.01
 	monthly_county_control_change_factor = -0.01
-}
-
-invisible_hand_population_modifier_2 = {
-	icon = county_modifier_development_positive
-	tax_mult = 0.05
-	levy_size = 0.05
-	garrison_size = 0.05
 }
 
 invisible_hand_population_modifier_2_county = {
@@ -168,24 +154,10 @@ invisible_hand_population_modifier_2_county = {
 	monthly_county_control_change_factor = -0.02
 }
 
-invisible_hand_population_modifier_3 = {
-	icon = county_modifier_development_positive
-	tax_mult = 0.075
-	levy_size = 0.075
-	garrison_size = 0.075
-}
-
 invisible_hand_population_modifier_3_county = {
 	icon = county_modifier_development_positive
 	development_growth_factor = 0.03
 	monthly_county_control_change_factor = -0.03
-}
-
-invisible_hand_population_modifier_4 = {
-	icon = county_modifier_development_positive
-	tax_mult = 0.1
-	levy_size = 0.1
-	garrison_size = 0.1
 }
 
 invisible_hand_population_modifier_4_county = {
@@ -194,24 +166,10 @@ invisible_hand_population_modifier_4_county = {
 	monthly_county_control_change_factor = -0.04
 }
 
-invisible_hand_population_modifier_5 = {
-	icon = county_modifier_development_positive
-	tax_mult = 0.125
-	levy_size = 0.125
-	garrison_size = 0.125
-}
-
 invisible_hand_population_modifier_5_county = {
 	icon = county_modifier_development_positive
 	development_growth_factor = 0.05
 	monthly_county_control_change_factor = -0.05
-}
-
-invisible_hand_population_modifier_6 = {
-	icon = county_modifier_development_positive
-	tax_mult = 0.15
-	levy_size = 0.15
-	garrison_size = 0.15
 }
 
 invisible_hand_population_modifier_6_county = {
@@ -220,24 +178,10 @@ invisible_hand_population_modifier_6_county = {
 	monthly_county_control_change_factor = -0.06
 }
 
-invisible_hand_population_modifier_7 = {
-	icon = county_modifier_development_positive
-	tax_mult = 0.175
-	levy_size = 0.175
-	garrison_size = 0.175
-}
-
 invisible_hand_population_modifier_7_county = {
 	icon = county_modifier_development_positive
 	development_growth_factor = 0.07
 	monthly_county_control_change_factor = -0.07
-}
-
-invisible_hand_population_modifier_8 = {
-	icon = county_modifier_development_positive
-	tax_mult = 0.2
-	levy_size = 0.2
-	garrison_size = 0.2
 }
 
 invisible_hand_population_modifier_8_county = {
@@ -246,24 +190,10 @@ invisible_hand_population_modifier_8_county = {
 	monthly_county_control_change_factor = -0.08
 }
 
-invisible_hand_population_modifier_9 = {
-	icon = county_modifier_development_positive
-	tax_mult = 0.225
-	levy_size = 0.225
-	garrison_size = 0.225
-}
-
 invisible_hand_population_modifier_9_county = {
 	icon = county_modifier_development_positive
 	development_growth_factor = 0.09
 	monthly_county_control_change_factor = -0.09
-}
-
-invisible_hand_population_modifier_10 = {
-	icon = county_modifier_development_positive
-	tax_mult = 0.25
-	levy_size = 0.25
-	garrison_size = 0.25
 }
 
 invisible_hand_population_modifier_10_county = {
@@ -272,24 +202,10 @@ invisible_hand_population_modifier_10_county = {
 	monthly_county_control_change_factor = -0.1
 }
 
-invisible_hand_population_modifier_11 = {
-	icon = county_modifier_development_positive
-	tax_mult = 0.275
-	levy_size = 0.275
-	garrison_size = 0.275
-}
-
 invisible_hand_population_modifier_11_county = {
 	icon = county_modifier_development_positive
 	development_growth_factor = 0.11
 	monthly_county_control_change_factor = -0.11
-}
-
-invisible_hand_population_modifier_12 = {
-	icon = county_modifier_development_positive
-	tax_mult = 0.3
-	levy_size = 0.3
-	garrison_size = 0.3
 }
 
 invisible_hand_population_modifier_12_county = {
@@ -298,24 +214,10 @@ invisible_hand_population_modifier_12_county = {
 	monthly_county_control_change_factor = -0.12
 }
 
-invisible_hand_population_modifier_13 = {
-	icon = county_modifier_development_positive
-	tax_mult = 0.325
-	levy_size = 0.325
-	garrison_size = 0.325
-}
-
 invisible_hand_population_modifier_13_county = {
 	icon = county_modifier_development_positive
 	development_growth_factor = 0.13
 	monthly_county_control_change_factor = -0.13
-}
-
-invisible_hand_population_modifier_14 = {
-	icon = county_modifier_development_positive
-	tax_mult = 0.35
-	levy_size = 0.35
-	garrison_size = 0.35
 }
 
 invisible_hand_population_modifier_14_county = {
@@ -324,24 +226,10 @@ invisible_hand_population_modifier_14_county = {
 	monthly_county_control_change_factor = -0.14
 }
 
-invisible_hand_population_modifier_15 = {
-	icon = county_modifier_development_positive
-	tax_mult = 0.375
-	levy_size = 0.375
-	garrison_size = 0.375
-}
-
 invisible_hand_population_modifier_15_county = {
 	icon = county_modifier_development_positive
 	development_growth_factor = 0.15
 	monthly_county_control_change_factor = -0.15
-}
-
-invisible_hand_population_modifier_16 = {
-	icon = county_modifier_development_positive
-	tax_mult = 0.4
-	levy_size = 0.4
-	garrison_size = 0.4
 }
 
 invisible_hand_population_modifier_16_county = {
@@ -350,24 +238,10 @@ invisible_hand_population_modifier_16_county = {
 	monthly_county_control_change_factor = -0.16
 }
 
-invisible_hand_population_modifier_17 = {
-	icon = county_modifier_development_positive
-	tax_mult = 0.425
-	levy_size = 0.425
-	garrison_size = 0.425
-}
-
 invisible_hand_population_modifier_17_county = {
 	icon = county_modifier_development_positive
 	development_growth_factor = 0.17
 	monthly_county_control_change_factor = -0.17
-}
-
-invisible_hand_population_modifier_18 = {
-	icon = county_modifier_development_positive
-	tax_mult = 0.45
-	levy_size = 0.45
-	garrison_size = 0.45
 }
 
 invisible_hand_population_modifier_18_county = {
@@ -376,24 +250,10 @@ invisible_hand_population_modifier_18_county = {
 	monthly_county_control_change_factor = -0.18
 }
 
-invisible_hand_population_modifier_19 = {
-	icon = county_modifier_development_positive
-	tax_mult = 0.475
-	levy_size = 0.475
-	garrison_size = 0.475
-}
-
 invisible_hand_population_modifier_19_county = {
 	icon = county_modifier_development_positive
 	development_growth_factor = 0.19
 	monthly_county_control_change_factor = -0.19
-}
-
-invisible_hand_population_modifier_20 = {
-	icon = county_modifier_development_positive
-	tax_mult = 0.5
-	levy_size = 0.5
-	garrison_size = 0.5
 }
 
 invisible_hand_population_modifier_20_county = {
@@ -402,24 +262,10 @@ invisible_hand_population_modifier_20_county = {
 	monthly_county_control_change_factor = -0.2
 }
 
-invisible_hand_population_modifier_21 = {
-	icon = county_modifier_development_positive
-	tax_mult = 0.525
-	levy_size = 0.525
-	garrison_size = 0.525
-}
-
 invisible_hand_population_modifier_21_county = {
 	icon = county_modifier_development_positive
 	development_growth_factor = 0.21
 	monthly_county_control_change_factor = -0.21
-}
-
-invisible_hand_population_modifier_22 = {
-	icon = county_modifier_development_positive
-	tax_mult = 0.55
-	levy_size = 0.55
-	garrison_size = 0.55
 }
 
 invisible_hand_population_modifier_22_county = {
@@ -428,24 +274,10 @@ invisible_hand_population_modifier_22_county = {
 	monthly_county_control_change_factor = -0.22
 }
 
-invisible_hand_population_modifier_23 = {
-	icon = county_modifier_development_positive
-	tax_mult = 0.575
-	levy_size = 0.575
-	garrison_size = 0.575
-}
-
 invisible_hand_population_modifier_23_county = {
 	icon = county_modifier_development_positive
 	development_growth_factor = 0.23
 	monthly_county_control_change_factor = -0.23
-}
-
-invisible_hand_population_modifier_24 = {
-	icon = county_modifier_development_positive
-	tax_mult = 0.6
-	levy_size = 0.6
-	garrison_size = 0.6
 }
 
 invisible_hand_population_modifier_24_county = {
@@ -454,24 +286,10 @@ invisible_hand_population_modifier_24_county = {
 	monthly_county_control_change_factor = -0.24
 }
 
-invisible_hand_population_modifier_25 = {
-	icon = county_modifier_development_positive
-	tax_mult = 0.625
-	levy_size = 0.625
-	garrison_size = 0.625
-}
-
 invisible_hand_population_modifier_25_county = {
 	icon = county_modifier_development_positive
 	development_growth_factor = 0.25
 	monthly_county_control_change_factor = -0.25
-}
-
-invisible_hand_population_modifier_26 = {
-	icon = county_modifier_development_positive
-	tax_mult = 0.65
-	levy_size = 0.65
-	garrison_size = 0.65
 }
 
 invisible_hand_population_modifier_26_county = {
@@ -480,24 +298,10 @@ invisible_hand_population_modifier_26_county = {
 	monthly_county_control_change_factor = -0.26
 }
 
-invisible_hand_population_modifier_27 = {
-	icon = county_modifier_development_positive
-	tax_mult = 0.675
-	levy_size = 0.675
-	garrison_size = 0.675
-}
-
 invisible_hand_population_modifier_27_county = {
 	icon = county_modifier_development_positive
 	development_growth_factor = 0.27
 	monthly_county_control_change_factor = -0.27
-}
-
-invisible_hand_population_modifier_28 = {
-	icon = county_modifier_development_positive
-	tax_mult = 0.7
-	levy_size = 0.7
-	garrison_size = 0.7
 }
 
 invisible_hand_population_modifier_28_county = {
@@ -506,24 +310,10 @@ invisible_hand_population_modifier_28_county = {
 	monthly_county_control_change_factor = -0.28
 }
 
-invisible_hand_population_modifier_29 = {
-	icon = county_modifier_development_positive
-	tax_mult = 0.725
-	levy_size = 0.725
-	garrison_size = 0.725
-}
-
 invisible_hand_population_modifier_29_county = {
 	icon = county_modifier_development_positive
 	development_growth_factor = 0.29
 	monthly_county_control_change_factor = -0.29
-}
-
-invisible_hand_population_modifier_30 = {
-	icon = county_modifier_development_positive
-	tax_mult = 0.75
-	levy_size = 0.75
-	garrison_size = 0.75
 }
 
 invisible_hand_population_modifier_30_county = {
@@ -532,24 +322,10 @@ invisible_hand_population_modifier_30_county = {
 	monthly_county_control_change_factor = -0.3
 }
 
-invisible_hand_population_modifier_31 = {
-	icon = county_modifier_development_positive
-	tax_mult = 0.775
-	levy_size = 0.775
-	garrison_size = 0.775
-}
-
 invisible_hand_population_modifier_31_county = {
 	icon = county_modifier_development_positive
 	development_growth_factor = 0.31
 	monthly_county_control_change_factor = -0.31
-}
-
-invisible_hand_population_modifier_32 = {
-	icon = county_modifier_development_positive
-	tax_mult = 0.8
-	levy_size = 0.8
-	garrison_size = 0.8
 }
 
 invisible_hand_population_modifier_32_county = {
@@ -558,24 +334,10 @@ invisible_hand_population_modifier_32_county = {
 	monthly_county_control_change_factor = -0.32
 }
 
-invisible_hand_population_modifier_33 = {
-	icon = county_modifier_development_positive
-	tax_mult = 0.825
-	levy_size = 0.825
-	garrison_size = 0.825
-}
-
 invisible_hand_population_modifier_33_county = {
 	icon = county_modifier_development_positive
 	development_growth_factor = 0.33
 	monthly_county_control_change_factor = -0.33
-}
-
-invisible_hand_population_modifier_34 = {
-	icon = county_modifier_development_positive
-	tax_mult = 0.85
-	levy_size = 0.85
-	garrison_size = 0.85
 }
 
 invisible_hand_population_modifier_34_county = {
@@ -584,24 +346,10 @@ invisible_hand_population_modifier_34_county = {
 	monthly_county_control_change_factor = -0.34
 }
 
-invisible_hand_population_modifier_35 = {
-	icon = county_modifier_development_positive
-	tax_mult = 0.875
-	levy_size = 0.875
-	garrison_size = 0.875
-}
-
 invisible_hand_population_modifier_35_county = {
 	icon = county_modifier_development_positive
 	development_growth_factor = 0.35
 	monthly_county_control_change_factor = -0.35
-}
-
-invisible_hand_population_modifier_36 = {
-	icon = county_modifier_development_positive
-	tax_mult = 0.9
-	levy_size = 0.9
-	garrison_size = 0.9
 }
 
 invisible_hand_population_modifier_36_county = {
@@ -610,24 +358,10 @@ invisible_hand_population_modifier_36_county = {
 	monthly_county_control_change_factor = -0.36
 }
 
-invisible_hand_population_modifier_37 = {
-	icon = county_modifier_development_positive
-	tax_mult = 0.925
-	levy_size = 0.925
-	garrison_size = 0.925
-}
-
 invisible_hand_population_modifier_37_county = {
 	icon = county_modifier_development_positive
 	development_growth_factor = 0.37
 	monthly_county_control_change_factor = -0.37
-}
-
-invisible_hand_population_modifier_38 = {
-	icon = county_modifier_development_positive
-	tax_mult = 0.95
-	levy_size = 0.95
-	garrison_size = 0.95
 }
 
 invisible_hand_population_modifier_38_county = {
@@ -636,24 +370,10 @@ invisible_hand_population_modifier_38_county = {
 	monthly_county_control_change_factor = -0.38
 }
 
-invisible_hand_population_modifier_39 = {
-	icon = county_modifier_development_positive
-	tax_mult = 0.975
-	levy_size = 0.975
-	garrison_size = 0.975
-}
-
 invisible_hand_population_modifier_39_county = {
 	icon = county_modifier_development_positive
 	development_growth_factor = 0.39
 	monthly_county_control_change_factor = -0.39
-}
-
-invisible_hand_population_modifier_40 = {
-	icon = county_modifier_development_positive
-	tax_mult = 1
-	levy_size = 1
-	garrison_size = 1
 }
 
 invisible_hand_population_modifier_40_county = {
@@ -662,24 +382,10 @@ invisible_hand_population_modifier_40_county = {
 	monthly_county_control_change_factor = -0.4
 }
 
-invisible_hand_population_modifier_41 = {
-	icon = county_modifier_development_positive
-	tax_mult = 1.025
-	levy_size = 1.025
-	garrison_size = 1.025
-}
-
 invisible_hand_population_modifier_41_county = {
 	icon = county_modifier_development_positive
 	development_growth_factor = 0.41
 	monthly_county_control_change_factor = -0.41
-}
-
-invisible_hand_population_modifier_42 = {
-	icon = county_modifier_development_positive
-	tax_mult = 1.05
-	levy_size = 1.05
-	garrison_size = 1.05
 }
 
 invisible_hand_population_modifier_42_county = {
@@ -688,24 +394,10 @@ invisible_hand_population_modifier_42_county = {
 	monthly_county_control_change_factor = -0.42
 }
 
-invisible_hand_population_modifier_43 = {
-	icon = county_modifier_development_positive
-	tax_mult = 1.075
-	levy_size = 1.075
-	garrison_size = 1.075
-}
-
 invisible_hand_population_modifier_43_county = {
 	icon = county_modifier_development_positive
 	development_growth_factor = 0.43
 	monthly_county_control_change_factor = -0.43
-}
-
-invisible_hand_population_modifier_44 = {
-	icon = county_modifier_development_positive
-	tax_mult = 1.1
-	levy_size = 1.1
-	garrison_size = 1.1
 }
 
 invisible_hand_population_modifier_44_county = {
@@ -714,24 +406,10 @@ invisible_hand_population_modifier_44_county = {
 	monthly_county_control_change_factor = -0.44
 }
 
-invisible_hand_population_modifier_45 = {
-	icon = county_modifier_development_positive
-	tax_mult = 1.125
-	levy_size = 1.125
-	garrison_size = 1.125
-}
-
 invisible_hand_population_modifier_45_county = {
 	icon = county_modifier_development_positive
 	development_growth_factor = 0.45
 	monthly_county_control_change_factor = -0.45
-}
-
-invisible_hand_population_modifier_46 = {
-	icon = county_modifier_development_positive
-	tax_mult = 1.15
-	levy_size = 1.15
-	garrison_size = 1.15
 }
 
 invisible_hand_population_modifier_46_county = {
@@ -740,37 +418,16 @@ invisible_hand_population_modifier_46_county = {
 	monthly_county_control_change_factor = -0.46
 }
 
-invisible_hand_population_modifier_47 = {
-	icon = county_modifier_development_positive
-	tax_mult = 1.175
-	levy_size = 1.175
-	garrison_size = 1.175
-}
-
 invisible_hand_population_modifier_47_county = {
 	icon = county_modifier_development_positive
 	development_growth_factor = 0.47
 	monthly_county_control_change_factor = -0.47
 }
 
-invisible_hand_population_modifier_48 = {
-	icon = county_modifier_development_positive
-	tax_mult = 1.2
-	levy_size = 1.2
-	garrison_size = 1.2
-}
-
 invisible_hand_population_modifier_48_county = {
 	icon = county_modifier_development_positive
-	development_growth_factor = 0.48
+	development_growth = 0.48
 	monthly_county_control_change_factor = -0.48
-}
-
-invisible_hand_population_modifier_49 = {
-	icon = county_modifier_development_positive
-	tax_mult = 1.225
-	levy_size = 1.225
-	garrison_size = 1.225
 }
 
 invisible_hand_population_modifier_49_county = {
@@ -779,367 +436,10 @@ invisible_hand_population_modifier_49_county = {
 	monthly_county_control_change_factor = -0.49
 }
 
-invisible_hand_population_modifier_50 = {
-	icon = county_modifier_development_positive
-	tax_mult = 1.25
-	levy_size = 1.25
-	garrison_size = 1.25
-}
-
 invisible_hand_population_modifier_50_county = {
 	icon = county_modifier_development_positive
 	development_growth_factor = 0.5
 	monthly_county_control_change_factor = -0.5
-}
-
-invisible_hand_population_modifier_51 = {
-	icon = county_modifier_development_positive
-	tax_mult = 1.275
-	levy_size = 1.275
-	garrison_size = 1.275
-}
-
-invisible_hand_population_modifier_52 = {
-	icon = county_modifier_development_positive
-	tax_mult = 1.3
-	levy_size = 1.3
-	garrison_size = 1.3
-}
-
-invisible_hand_population_modifier_53 = {
-	icon = county_modifier_development_positive
-	tax_mult = 1.325
-	levy_size = 1.325
-	garrison_size = 1.325
-}
-
-invisible_hand_population_modifier_54 = {
-	icon = county_modifier_development_positive
-	tax_mult = 1.35
-	levy_size = 1.35
-	garrison_size = 1.35
-}
-
-invisible_hand_population_modifier_55 = {
-	icon = county_modifier_development_positive
-	tax_mult = 1.375
-	levy_size = 1.375
-	garrison_size = 1.375
-}
-
-invisible_hand_population_modifier_56 = {
-	icon = county_modifier_development_positive
-	tax_mult = 1.4
-	levy_size = 1.4
-	garrison_size = 1.4
-}
-
-invisible_hand_population_modifier_57 = {
-	icon = county_modifier_development_positive
-	tax_mult = 1.425
-	levy_size = 1.425
-	garrison_size = 1.425
-}
-
-invisible_hand_population_modifier_58 = {
-	icon = county_modifier_development_positive
-	tax_mult = 1.45
-	levy_size = 1.45
-	garrison_size = 1.45
-}
-
-invisible_hand_population_modifier_59 = {
-	icon = county_modifier_development_positive
-	tax_mult = 1.475
-	levy_size = 1.475
-	garrison_size = 1.475
-}
-
-invisible_hand_population_modifier_60 = {
-	icon = county_modifier_development_positive
-	tax_mult = 1.5
-	levy_size = 1.5
-	garrison_size = 1.5
-}
-
-invisible_hand_population_modifier_61 = {
-	icon = county_modifier_development_positive
-	tax_mult = 1.525
-	levy_size = 1.525
-	garrison_size = 1.525
-}
-
-invisible_hand_population_modifier_62 = {
-	icon = county_modifier_development_positive
-	tax_mult = 1.55
-	levy_size = 1.55
-	garrison_size = 1.55
-}
-
-invisible_hand_population_modifier_63 = {
-	icon = county_modifier_development_positive
-	tax_mult = 1.575
-	levy_size = 1.575
-	garrison_size = 1.575
-}
-
-invisible_hand_population_modifier_64 = {
-	icon = county_modifier_development_positive
-	tax_mult = 1.6
-	levy_size = 1.6
-	garrison_size = 1.6
-}
-
-invisible_hand_population_modifier_65 = {
-	icon = county_modifier_development_positive
-	tax_mult = 1.625
-	levy_size = 1.625
-	garrison_size = 1.625
-}
-
-invisible_hand_population_modifier_66 = {
-	icon = county_modifier_development_positive
-	tax_mult = 1.65
-	levy_size = 1.65
-	garrison_size = 1.65
-}
-
-invisible_hand_population_modifier_67 = {
-	icon = county_modifier_development_positive
-	tax_mult = 1.675
-	levy_size = 1.675
-	garrison_size = 1.675
-}
-
-invisible_hand_population_modifier_68 = {
-	icon = county_modifier_development_positive
-	tax_mult = 1.7
-	levy_size = 1.7
-	garrison_size = 1.7
-}
-
-invisible_hand_population_modifier_69 = {
-	icon = county_modifier_development_positive
-	tax_mult = 1.725
-	levy_size = 1.725
-	garrison_size = 1.725
-}
-
-invisible_hand_population_modifier_70 = {
-	icon = county_modifier_development_positive
-	tax_mult = 1.75
-	levy_size = 1.75
-	garrison_size = 1.75
-}
-
-invisible_hand_population_modifier_71 = {
-	icon = county_modifier_development_positive
-	tax_mult = 1.775
-	levy_size = 1.775
-	garrison_size = 1.775
-}
-
-invisible_hand_population_modifier_72 = {
-	icon = county_modifier_development_positive
-	tax_mult = 1.8
-	levy_size = 1.8
-	garrison_size = 1.8
-}
-
-invisible_hand_population_modifier_73 = {
-	icon = county_modifier_development_positive
-	tax_mult = 1.825
-	levy_size = 1.825
-	garrison_size = 1.825
-}
-
-invisible_hand_population_modifier_74 = {
-	icon = county_modifier_development_positive
-	tax_mult = 1.85
-	levy_size = 1.85
-	garrison_size = 1.85
-}
-
-invisible_hand_population_modifier_75 = {
-	icon = county_modifier_development_positive
-	tax_mult = 1.875
-	levy_size = 1.875
-	garrison_size = 1.875
-}
-
-invisible_hand_population_modifier_76 = {
-	icon = county_modifier_development_positive
-	tax_mult = 1.9
-	levy_size = 1.9
-	garrison_size = 1.9
-}
-
-invisible_hand_population_modifier_77 = {
-	icon = county_modifier_development_positive
-	tax_mult = 1.925
-	levy_size = 1.925
-	garrison_size = 1.925
-}
-
-invisible_hand_population_modifier_78 = {
-	icon = county_modifier_development_positive
-	tax_mult = 1.95
-	levy_size = 1.95
-	garrison_size = 1.95
-}
-
-invisible_hand_population_modifier_79 = {
-	icon = county_modifier_development_positive
-	tax_mult = 1.975
-	levy_size = 1.975
-	garrison_size = 1.975
-}
-
-invisible_hand_population_modifier_80 = {
-	icon = county_modifier_development_positive
-	tax_mult = 2
-	levy_size = 2
-	garrison_size = 2
-}
-
-invisible_hand_population_modifier_81 = {
-	icon = county_modifier_development_positive
-	tax_mult = 2.025
-	levy_size = 2.025
-	garrison_size = 2.025
-}
-
-invisible_hand_population_modifier_82 = {
-	icon = county_modifier_development_positive
-	tax_mult = 2.05
-	levy_size = 2.05
-	garrison_size = 2.05
-}
-
-invisible_hand_population_modifier_83 = {
-	icon = county_modifier_development_positive
-	tax_mult = 2.075
-	levy_size = 2.075
-	garrison_size = 2.075
-}
-
-invisible_hand_population_modifier_84 = {
-	icon = county_modifier_development_positive
-	tax_mult = 2.1
-	levy_size = 2.1
-	garrison_size = 2.1
-}
-
-invisible_hand_population_modifier_85 = {
-	icon = county_modifier_development_positive
-	tax_mult = 2.125
-	levy_size = 2.125
-	garrison_size = 2.125
-}
-
-invisible_hand_population_modifier_86 = {
-	icon = county_modifier_development_positive
-	tax_mult = 2.15
-	levy_size = 2.15
-	garrison_size = 2.15
-}
-
-invisible_hand_population_modifier_87 = {
-	icon = county_modifier_development_positive
-	tax_mult = 2.175
-	levy_size = 2.175
-	garrison_size = 2.175
-}
-
-invisible_hand_population_modifier_88 = {
-	icon = county_modifier_development_positive
-	tax_mult = 2.2
-	levy_size = 2.2
-	garrison_size = 2.2
-}
-
-invisible_hand_population_modifier_89 = {
-	icon = county_modifier_development_positive
-	tax_mult = 2.225
-	levy_size = 2.225
-	garrison_size = 2.225
-}
-
-invisible_hand_population_modifier_90 = {
-	icon = county_modifier_development_positive
-	tax_mult = 2.25
-	levy_size = 2.25
-	garrison_size = 2.25
-}
-
-invisible_hand_population_modifier_91 = {
-	icon = county_modifier_development_positive
-	tax_mult = 2.275
-	levy_size = 2.275
-	garrison_size = 2.275
-}
-
-invisible_hand_population_modifier_92 = {
-	icon = county_modifier_development_positive
-	tax_mult = 2.3
-	levy_size = 2.3
-	garrison_size = 2.3
-}
-
-invisible_hand_population_modifier_93 = {
-	icon = county_modifier_development_positive
-	tax_mult = 2.325
-	levy_size = 2.325
-	garrison_size = 2.325
-}
-
-invisible_hand_population_modifier_94 = {
-	icon = county_modifier_development_positive
-	tax_mult = 2.35
-	levy_size = 2.35
-	garrison_size = 2.35
-}
-
-invisible_hand_population_modifier_95 = {
-	icon = county_modifier_development_positive
-	tax_mult = 2.375
-	levy_size = 2.375
-	garrison_size = 2.375
-}
-
-invisible_hand_population_modifier_96 = {
-	icon = county_modifier_development_positive
-	tax_mult = 2.4
-	levy_size = 2.4
-	garrison_size = 2.4
-}
-
-invisible_hand_population_modifier_97 = {
-	icon = county_modifier_development_positive
-	tax_mult = 2.425
-	levy_size = 2.425
-	garrison_size = 2.425
-}
-
-invisible_hand_population_modifier_98 = {
-	icon = county_modifier_development_positive
-	tax_mult = 2.45
-	levy_size = 2.45
-	garrison_size = 2.45
-}
-
-invisible_hand_population_modifier_99 = {
-	icon = county_modifier_development_positive
-	tax_mult = 2.475
-	levy_size = 2.475
-	garrison_size = 2.475
-}
-
-invisible_hand_population_modifier_100 = {
-	icon = county_modifier_development_positive
-	tax_mult = 2.5
-	levy_size = 2.5
-	garrison_size = 2.5
 }
 
 invisible_hand_obligations_county_effect_neg_1 = {

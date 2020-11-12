@@ -1,0 +1,1497 @@
+﻿invisible_hand_population_01 = {
+	flag = population
+
+	can_construct_potential = { always = no }
+
+	next_building = invisible_hand_population_02
+	
+	levy = 50
+	
+	province_modifier = {
+		monthly_income = 0.05
+		garrison_size = 0.025
+	}
+}
+
+invisible_hand_population_02 = {
+	flag = population
+
+	can_construct_potential = { always = no }
+
+	next_building = invisible_hand_population_03
+	
+	levy = 100
+	
+	province_modifier = {
+		monthly_income = 0.1
+		garrison_size = 0.05
+	}
+}
+
+invisible_hand_population_03 = {
+	flag = population
+
+	can_construct_potential = { always = no }
+
+	next_building = invisible_hand_population_04
+	
+	levy = 150
+	
+	province_modifier = {
+		monthly_income = 0.15
+		garrison_size = 0.075
+	}
+}
+
+invisible_hand_population_04 = {
+	flag = population
+
+	can_construct_potential = { always = no }
+
+	next_building = invisible_hand_population_05
+	
+	levy = 200
+	
+	province_modifier = {
+		monthly_income = 0.2
+		garrison_size = 0.1
+	}
+}
+
+invisible_hand_population_05 = {
+	flag = population
+
+	can_construct_potential = { always = no }
+
+	next_building = invisible_hand_population_06
+	
+	levy = 250
+	
+	province_modifier = {
+		monthly_income = 0.25
+		garrison_size = 0.125
+	}
+}
+
+invisible_hand_population_06 = {
+	flag = population
+
+	can_construct_potential = { always = no }
+
+	next_building = invisible_hand_population_07
+	
+	levy = 300
+	
+	province_modifier = {
+		monthly_income = 0.3
+		garrison_size = 0.15
+	}
+}
+
+invisible_hand_population_07 = {
+	flag = population
+
+	can_construct_potential = { always = no }
+
+	next_building = invisible_hand_population_08
+	
+	levy = 350
+	
+	province_modifier = {
+		monthly_income = 0.35
+		garrison_size = 0.175
+	}
+}
+
+invisible_hand_population_08 = {
+	flag = population
+
+	can_construct_potential = { always = no }
+
+	next_building = invisible_hand_population_09
+	
+	levy = 400
+	
+	province_modifier = {
+		monthly_income = 0.4
+		garrison_size = 0.2
+	}
+}
+
+invisible_hand_population_09 = {
+	flag = population
+
+	can_construct_potential = { always = no }
+
+	next_building = invisible_hand_population_10
+	
+	levy = 450
+	
+	province_modifier = {
+		monthly_income = 0.45
+		garrison_size = 0.225
+	}
+}
+
+invisible_hand_population_10 = {
+	flag = population
+
+	can_construct_potential = { always = no }
+
+	next_building = invisible_hand_population_11
+	
+	levy = 500
+	
+	province_modifier = {
+		monthly_income = 0.5
+		garrison_size = 0.25
+	}
+}
+
+invisible_hand_population_11 = {
+	flag = population
+
+	can_construct_potential = { always = no }
+
+	next_building = invisible_hand_population_12
+	
+	levy = 550
+	
+	province_modifier = {
+		monthly_income = 0.55
+		garrison_size = 0.275
+	}
+}
+
+invisible_hand_population_12 = {
+	flag = population
+
+	can_construct_potential = { always = no }
+
+	next_building = invisible_hand_population_13
+	
+	levy = 600
+	
+	province_modifier = {
+		monthly_income = 0.6
+		garrison_size = 0.3
+	}
+}
+
+invisible_hand_population_13 = {
+	flag = population
+
+	can_construct_potential = { always = no }
+
+	next_building = invisible_hand_population_14
+	
+	levy = 650
+	
+	province_modifier = {
+		monthly_income = 0.65
+		garrison_size = 0.325
+	}
+}
+
+invisible_hand_population_14 = {
+	flag = population
+
+	can_construct_potential = { always = no }
+
+	next_building = invisible_hand_population_15
+	
+	levy = 700
+	
+	province_modifier = {
+		monthly_income = 0.7
+		garrison_size = 0.35
+	}
+}
+
+invisible_hand_population_15 = {
+	flag = population
+
+	can_construct_potential = { always = no }
+
+	next_building = invisible_hand_population_16
+	
+	levy = 750
+	
+	province_modifier = {
+		monthly_income = 0.75
+		garrison_size = 0.375
+	}
+}
+
+invisible_hand_population_16 = {
+	flag = population
+
+	can_construct_potential = { always = no }
+
+	next_building = invisible_hand_population_17
+	
+	levy = 800
+	
+	province_modifier = {
+		monthly_income = 0.8
+		garrison_size = 0.4
+	}
+}
+
+invisible_hand_population_17 = {
+	flag = population
+
+	can_construct_potential = { always = no }
+
+	next_building = invisible_hand_population_18
+	
+	levy = 850
+	
+	province_modifier = {
+		monthly_income = 0.85
+		garrison_size = 0.425
+	}
+}
+
+invisible_hand_population_18 = {
+	flag = population
+
+	can_construct_potential = { always = no }
+
+	next_building = invisible_hand_population_19
+	
+	levy = 900
+	
+	province_modifier = {
+		monthly_income = 0.9
+		garrison_size = 0.45
+	}
+}
+
+invisible_hand_population_19 = {
+	flag = population
+
+	can_construct_potential = { always = no }
+
+	next_building = invisible_hand_population_20
+	
+	levy = 950
+	
+	province_modifier = {
+		monthly_income = 0.95
+		garrison_size = 0.475
+	}
+}
+
+invisible_hand_population_20 = {
+	flag = population
+
+	can_construct_potential = { always = no }
+
+	next_building = invisible_hand_population_21
+	
+	levy = 1000
+	
+	province_modifier = {
+		monthly_income = 1
+		garrison_size = 0.5
+	}
+}
+
+invisible_hand_population_21 = {
+	flag = population
+
+	can_construct_potential = { always = no }
+
+	next_building = invisible_hand_population_22
+	
+	levy = 1050
+	
+	province_modifier = {
+		monthly_income = 1.05
+		garrison_size = 0.525
+	}
+}
+
+invisible_hand_population_22 = {
+	flag = population
+
+	can_construct_potential = { always = no }
+
+	next_building = invisible_hand_population_23
+	
+	levy = 1100
+	
+	province_modifier = {
+		monthly_income = 1.1
+		garrison_size = 0.55
+	}
+}
+
+invisible_hand_population_23 = {
+	flag = population
+
+	can_construct_potential = { always = no }
+
+	next_building = invisible_hand_population_24
+	
+	levy = 1150
+	
+	province_modifier = {
+		monthly_income = 1.15
+		garrison_size = 0.575
+	}
+}
+
+invisible_hand_population_24 = {
+	flag = population
+
+	can_construct_potential = { always = no }
+
+	next_building = invisible_hand_population_25
+	
+	levy = 1200
+	
+	province_modifier = {
+		monthly_income = 1.2
+		garrison_size = 0.6
+	}
+}
+
+invisible_hand_population_25 = {
+	flag = population
+
+	can_construct_potential = { always = no }
+
+	next_building = invisible_hand_population_26
+	
+	levy = 1250
+	
+	province_modifier = {
+		monthly_income = 1.25
+		garrison_size = 0.625
+	}
+}
+
+invisible_hand_population_26 = {
+	flag = population
+
+	can_construct_potential = { always = no }
+
+	next_building = invisible_hand_population_27
+	
+	levy = 1300
+	
+	province_modifier = {
+		monthly_income = 1.3
+		garrison_size = 0.65
+	}
+}
+
+invisible_hand_population_27 = {
+	flag = population
+
+	can_construct_potential = { always = no }
+
+	next_building = invisible_hand_population_28
+	
+	levy = 1350
+	
+	province_modifier = {
+		monthly_income = 1.35
+		garrison_size = 0.675
+	}
+}
+
+invisible_hand_population_28 = {
+	flag = population
+
+	can_construct_potential = { always = no }
+
+	next_building = invisible_hand_population_29
+	
+	levy = 1400
+	
+	province_modifier = {
+		monthly_income = 1.4
+		garrison_size = 0.7
+	}
+}
+
+invisible_hand_population_29 = {
+	flag = population
+
+	can_construct_potential = { always = no }
+
+	next_building = invisible_hand_population_30
+	
+	levy = 1450
+	
+	province_modifier = {
+		monthly_income = 1.45
+		garrison_size = 0.725
+	}
+}
+
+invisible_hand_population_30 = {
+	flag = population
+
+	can_construct_potential = { always = no }
+
+	next_building = invisible_hand_population_31
+	
+	levy = 1500
+	
+	province_modifier = {
+		monthly_income = 1.5
+		garrison_size = 0.75
+	}
+}
+
+invisible_hand_population_31 = {
+	flag = population
+
+	can_construct_potential = { always = no }
+
+	next_building = invisible_hand_population_32
+	
+	levy = 1550
+	
+	province_modifier = {
+		monthly_income = 1.55
+		garrison_size = 0.775
+	}
+}
+
+invisible_hand_population_32 = {
+	flag = population
+
+	can_construct_potential = { always = no }
+
+	next_building = invisible_hand_population_33
+	
+	levy = 1600
+	
+	province_modifier = {
+		monthly_income = 1.6
+		garrison_size = 0.8
+	}
+}
+
+invisible_hand_population_33 = {
+	flag = population
+
+	can_construct_potential = { always = no }
+
+	next_building = invisible_hand_population_34
+	
+	levy = 1650
+	
+	province_modifier = {
+		monthly_income = 1.65
+		garrison_size = 0.825
+	}
+}
+
+invisible_hand_population_34 = {
+	flag = population
+
+	can_construct_potential = { always = no }
+
+	next_building = invisible_hand_population_35
+	
+	levy = 1700
+	
+	province_modifier = {
+		monthly_income = 1.7
+		garrison_size = 0.85
+	}
+}
+
+invisible_hand_population_35 = {
+	flag = population
+
+	can_construct_potential = { always = no }
+
+	next_building = invisible_hand_population_36
+	
+	levy = 1750
+	
+	province_modifier = {
+		monthly_income = 1.75
+		garrison_size = 0.875
+	}
+}
+
+invisible_hand_population_36 = {
+	flag = population
+
+	can_construct_potential = { always = no }
+
+	next_building = invisible_hand_population_37
+	
+	levy = 1800
+	
+	province_modifier = {
+		monthly_income = 1.8
+		garrison_size = 0.9
+	}
+}
+
+invisible_hand_population_37 = {
+	flag = population
+
+	can_construct_potential = { always = no }
+
+	next_building = invisible_hand_population_38
+	
+	levy = 1850
+	
+	province_modifier = {
+		monthly_income = 1.85
+		garrison_size = 0.925
+	}
+}
+
+invisible_hand_population_38 = {
+	flag = population
+
+	can_construct_potential = { always = no }
+
+	next_building = invisible_hand_population_39
+	
+	levy = 1900
+	
+	province_modifier = {
+		monthly_income = 1.9
+		garrison_size = 0.95
+	}
+}
+
+invisible_hand_population_39 = {
+	flag = population
+
+	can_construct_potential = { always = no }
+
+	next_building = invisible_hand_population_40
+	
+	levy = 1950
+	
+	province_modifier = {
+		monthly_income = 1.95
+		garrison_size = 0.975
+	}
+}
+
+invisible_hand_population_40 = {
+	flag = population
+
+	can_construct_potential = { always = no }
+
+	next_building = invisible_hand_population_41
+	
+	levy = 2000
+	
+	province_modifier = {
+		monthly_income = 2
+		garrison_size = 1
+	}
+}
+
+invisible_hand_population_41 = {
+	flag = population
+
+	can_construct_potential = { always = no }
+
+	next_building = invisible_hand_population_42
+	
+	levy = 2050
+	
+	province_modifier = {
+		monthly_income = 2.05
+		garrison_size = 1.025
+	}
+}
+
+invisible_hand_population_42 = {
+	flag = population
+
+	can_construct_potential = { always = no }
+
+	next_building = invisible_hand_population_43
+	
+	levy = 2100
+	
+	province_modifier = {
+		monthly_income = 2.1
+		garrison_size = 1.05
+	}
+}
+
+invisible_hand_population_43 = {
+	flag = population
+
+	can_construct_potential = { always = no }
+
+	next_building = invisible_hand_population_44
+	
+	levy = 2150
+	
+	province_modifier = {
+		monthly_income = 2.15
+		garrison_size = 1.075
+	}
+}
+
+invisible_hand_population_44 = {
+	flag = population
+
+	can_construct_potential = { always = no }
+
+	next_building = invisible_hand_population_45
+	
+	levy = 2200
+	
+	province_modifier = {
+		monthly_income = 2.2
+		garrison_size = 1.1
+	}
+}
+
+invisible_hand_population_45 = {
+	flag = population
+
+	can_construct_potential = { always = no }
+
+	next_building = invisible_hand_population_46
+	
+	levy = 2250
+	
+	province_modifier = {
+		monthly_income = 2.25
+		garrison_size = 1.125
+	}
+}
+
+invisible_hand_population_46 = {
+	flag = population
+
+	can_construct_potential = { always = no }
+
+	next_building = invisible_hand_population_47
+	
+	levy = 2300
+	
+	province_modifier = {
+		monthly_income = 2.3
+		garrison_size = 1.15
+	}
+}
+
+invisible_hand_population_47 = {
+	flag = population
+
+	can_construct_potential = { always = no }
+
+	next_building = invisible_hand_population_48
+	
+	levy = 2350
+	
+	province_modifier = {
+		monthly_income = 2.35
+		garrison_size = 1.175
+	}
+}
+
+invisible_hand_population_48 = {
+	flag = population
+
+	can_construct_potential = { always = no }
+
+	next_building = invisible_hand_population_49
+	
+	levy = 2400
+	
+	province_modifier = {
+		monthly_income = 2.4
+		garrison_size = 1.2
+	}
+}
+
+invisible_hand_population_49 = {
+	flag = population
+
+	can_construct_potential = { always = no }
+
+	next_building = invisible_hand_population_50
+	
+	levy = 2450
+	
+	province_modifier = {
+		monthly_income = 2.45
+		garrison_size = 1.225
+	}
+}
+
+invisible_hand_population_50 = {
+	flag = population
+
+	can_construct_potential = { always = no }
+
+	next_building = invisible_hand_population_51
+	
+	levy = 2500
+	
+	province_modifier = {
+		monthly_income = 2.5
+		garrison_size = 1.25
+	}
+}
+
+invisible_hand_population_51 = {
+	flag = population
+
+	can_construct_potential = { always = no }
+
+	next_building = invisible_hand_population_52
+	
+	levy = 2550
+	
+	province_modifier = {
+		monthly_income = 2.55
+		garrison_size = 1.275
+	}
+}
+
+invisible_hand_population_52 = {
+	flag = population
+
+	can_construct_potential = { always = no }
+
+	next_building = invisible_hand_population_53
+	
+	levy = 2600
+	
+	province_modifier = {
+		monthly_income = 2.6
+		garrison_size = 1.3
+	}
+}
+
+invisible_hand_population_53 = {
+	flag = population
+
+	can_construct_potential = { always = no }
+
+	next_building = invisible_hand_population_54
+	
+	levy = 2650
+	
+	province_modifier = {
+		monthly_income = 2.65
+		garrison_size = 1.325
+	}
+}
+
+invisible_hand_population_54 = {
+	flag = population
+
+	can_construct_potential = { always = no }
+
+	next_building = invisible_hand_population_55
+	
+	levy = 2700
+	
+	province_modifier = {
+		monthly_income = 2.7
+		garrison_size = 1.35
+	}
+}
+
+invisible_hand_population_55 = {
+	flag = population
+
+	can_construct_potential = { always = no }
+
+	next_building = invisible_hand_population_56
+	
+	levy = 2750
+	
+	province_modifier = {
+		monthly_income = 2.75
+		garrison_size = 1.375
+	}
+}
+
+invisible_hand_population_56 = {
+	flag = population
+
+	can_construct_potential = { always = no }
+
+	next_building = invisible_hand_population_57
+	
+	levy = 2800
+	
+	province_modifier = {
+		monthly_income = 2.8
+		garrison_size = 1.4
+	}
+}
+
+invisible_hand_population_57 = {
+	flag = population
+
+	can_construct_potential = { always = no }
+
+	next_building = invisible_hand_population_58
+	
+	levy = 2850
+	
+	province_modifier = {
+		monthly_income = 2.85
+		garrison_size = 1.425
+	}
+}
+
+invisible_hand_population_58 = {
+	flag = population
+
+	can_construct_potential = { always = no }
+
+	next_building = invisible_hand_population_59
+	
+	levy = 2900
+	
+	province_modifier = {
+		monthly_income = 2.9
+		garrison_size = 1.45
+	}
+}
+
+invisible_hand_population_59 = {
+	flag = population
+
+	can_construct_potential = { always = no }
+
+	next_building = invisible_hand_population_60
+	
+	levy = 2950
+	
+	province_modifier = {
+		monthly_income = 2.95
+		garrison_size = 1.475
+	}
+}
+
+invisible_hand_population_60 = {
+	flag = population
+
+	can_construct_potential = { always = no }
+
+	next_building = invisible_hand_population_61
+	
+	levy = 3000
+	
+	province_modifier = {
+		monthly_income = 3
+		garrison_size = 1.5
+	}
+}
+
+invisible_hand_population_61 = {
+	flag = population
+
+	can_construct_potential = { always = no }
+
+	next_building = invisible_hand_population_62
+	
+	levy = 3050
+	
+	province_modifier = {
+		monthly_income = 3.05
+		garrison_size = 1.525
+	}
+}
+
+invisible_hand_population_62 = {
+	flag = population
+
+	can_construct_potential = { always = no }
+
+	next_building = invisible_hand_population_63
+	
+	levy = 3100
+	
+	province_modifier = {
+		monthly_income = 3.1
+		garrison_size = 1.55
+	}
+}
+
+invisible_hand_population_63 = {
+	flag = population
+
+	can_construct_potential = { always = no }
+
+	next_building = invisible_hand_population_64
+	
+	levy = 3150
+	
+	province_modifier = {
+		monthly_income = 3.15
+		garrison_size = 1.575
+	}
+}
+
+invisible_hand_population_64 = {
+	flag = population
+
+	can_construct_potential = { always = no }
+
+	next_building = invisible_hand_population_65
+	
+	levy = 3200
+	
+	province_modifier = {
+		monthly_income = 3.2
+		garrison_size = 1.6
+	}
+}
+
+invisible_hand_population_65 = {
+	flag = population
+
+	can_construct_potential = { always = no }
+
+	next_building = invisible_hand_population_66
+	
+	levy = 3250
+	
+	province_modifier = {
+		monthly_income = 3.25
+		garrison_size = 1.625
+	}
+}
+
+invisible_hand_population_66 = {
+	flag = population
+
+	can_construct_potential = { always = no }
+
+	next_building = invisible_hand_population_67
+	
+	levy = 3300
+	
+	province_modifier = {
+		monthly_income = 3.3
+		garrison_size = 1.65
+	}
+}
+
+invisible_hand_population_67 = {
+	flag = population
+
+	can_construct_potential = { always = no }
+
+	next_building = invisible_hand_population_68
+	
+	levy = 3350
+	
+	province_modifier = {
+		monthly_income = 3.35
+		garrison_size = 1.675
+	}
+}
+
+invisible_hand_population_68 = {
+	flag = population
+
+	can_construct_potential = { always = no }
+
+	next_building = invisible_hand_population_69
+	
+	levy = 3400
+	
+	province_modifier = {
+		monthly_income = 3.4
+		garrison_size = 1.7
+	}
+}
+
+invisible_hand_population_69 = {
+	flag = population
+
+	can_construct_potential = { always = no }
+
+	next_building = invisible_hand_population_70
+	
+	levy = 3450
+	
+	province_modifier = {
+		monthly_income = 3.45
+		garrison_size = 1.725
+	}
+}
+
+invisible_hand_population_70 = {
+	flag = population
+
+	can_construct_potential = { always = no }
+
+	next_building = invisible_hand_population_71
+	
+	levy = 3500
+	
+	province_modifier = {
+		monthly_income = 3.5
+		garrison_size = 1.75
+	}
+}
+
+invisible_hand_population_71 = {
+	flag = population
+
+	can_construct_potential = { always = no }
+
+	next_building = invisible_hand_population_72
+	
+	levy = 3550
+	
+	province_modifier = {
+		monthly_income = 3.55
+		garrison_size = 1.775
+	}
+}
+
+invisible_hand_population_72 = {
+	flag = population
+
+	can_construct_potential = { always = no }
+
+	next_building = invisible_hand_population_73
+	
+	levy = 3600
+	
+	province_modifier = {
+		monthly_income = 3.6
+		garrison_size = 1.8
+	}
+}
+
+invisible_hand_population_73 = {
+	flag = population
+
+	can_construct_potential = { always = no }
+
+	next_building = invisible_hand_population_74
+	
+	levy = 3650
+	
+	province_modifier = {
+		monthly_income = 3.65
+		garrison_size = 1.825
+	}
+}
+
+invisible_hand_population_74 = {
+	flag = population
+
+	can_construct_potential = { always = no }
+
+	next_building = invisible_hand_population_75
+	
+	levy = 3700
+	
+	province_modifier = {
+		monthly_income = 3.7
+		garrison_size = 1.85
+	}
+}
+
+invisible_hand_population_75 = {
+	flag = population
+
+	can_construct_potential = { always = no }
+
+	next_building = invisible_hand_population_76
+	
+	levy = 3750
+	
+	province_modifier = {
+		monthly_income = 3.75
+		garrison_size = 1.875
+	}
+}
+
+invisible_hand_population_76 = {
+	flag = population
+
+	can_construct_potential = { always = no }
+
+	next_building = invisible_hand_population_77
+	
+	levy = 3800
+	
+	province_modifier = {
+		monthly_income = 3.8
+		garrison_size = 1.9
+	}
+}
+
+invisible_hand_population_77 = {
+	flag = population
+
+	can_construct_potential = { always = no }
+
+	next_building = invisible_hand_population_78
+	
+	levy = 3850
+	
+	province_modifier = {
+		monthly_income = 3.85
+		garrison_size = 1.925
+	}
+}
+
+invisible_hand_population_78 = {
+	flag = population
+
+	can_construct_potential = { always = no }
+
+	next_building = invisible_hand_population_79
+	
+	levy = 3900
+	
+	province_modifier = {
+		monthly_income = 3.9
+		garrison_size = 1.95
+	}
+}
+
+invisible_hand_population_79 = {
+	flag = population
+
+	can_construct_potential = { always = no }
+
+	next_building = invisible_hand_population_80
+	
+	levy = 3950
+	
+	province_modifier = {
+		monthly_income = 3.95
+		garrison_size = 1.975
+	}
+}
+
+invisible_hand_population_80 = {
+	flag = population
+
+	can_construct_potential = { always = no }
+
+	next_building = invisible_hand_population_81
+	
+	levy = 4000
+	
+	province_modifier = {
+		monthly_income = 4
+		garrison_size = 2
+	}
+}
+
+invisible_hand_population_81 = {
+	flag = population
+
+	can_construct_potential = { always = no }
+
+	next_building = invisible_hand_population_82
+	
+	levy = 4050
+	
+	province_modifier = {
+		monthly_income = 4.05
+		garrison_size = 2.025
+	}
+}
+
+invisible_hand_population_82 = {
+	flag = population
+
+	can_construct_potential = { always = no }
+
+	next_building = invisible_hand_population_83
+	
+	levy = 4100
+	
+	province_modifier = {
+		monthly_income = 4.1
+		garrison_size = 2.05
+	}
+}
+
+invisible_hand_population_83 = {
+	flag = population
+
+	can_construct_potential = { always = no }
+
+	next_building = invisible_hand_population_84
+	
+	levy = 4150
+	
+	province_modifier = {
+		monthly_income = 4.15
+		garrison_size = 2.075
+	}
+}
+
+invisible_hand_population_84 = {
+	flag = population
+
+	can_construct_potential = { always = no }
+
+	next_building = invisible_hand_population_85
+	
+	levy = 4200
+	
+	province_modifier = {
+		monthly_income = 4.2
+		garrison_size = 2.1
+	}
+}
+
+invisible_hand_population_85 = {
+	flag = population
+
+	can_construct_potential = { always = no }
+
+	next_building = invisible_hand_population_86
+	
+	levy = 4250
+	
+	province_modifier = {
+		monthly_income = 4.25
+		garrison_size = 2.125
+	}
+}
+
+invisible_hand_population_86 = {
+	flag = population
+
+	can_construct_potential = { always = no }
+
+	next_building = invisible_hand_population_87
+	
+	levy = 4300
+	
+	province_modifier = {
+		monthly_income = 4.3
+		garrison_size = 2.15
+	}
+}
+
+invisible_hand_population_87 = {
+	flag = population
+
+	can_construct_potential = { always = no }
+
+	next_building = invisible_hand_population_88
+	
+	levy = 4350
+	
+	province_modifier = {
+		monthly_income = 4.35
+		garrison_size = 2.175
+	}
+}
+
+invisible_hand_population_88 = {
+	flag = population
+
+	can_construct_potential = { always = no }
+
+	next_building = invisible_hand_population_89
+	
+	levy = 4400
+	
+	province_modifier = {
+		monthly_income = 4.4
+		garrison_size = 2.2
+	}
+}
+
+invisible_hand_population_89 = {
+	flag = population
+
+	can_construct_potential = { always = no }
+
+	next_building = invisible_hand_population_90
+	
+	levy = 4450
+	
+	province_modifier = {
+		monthly_income = 4.45
+		garrison_size = 2.225
+	}
+}
+
+invisible_hand_population_90 = {
+	flag = population
+
+	can_construct_potential = { always = no }
+
+	next_building = invisible_hand_population_91
+	
+	levy = 4500
+	
+	province_modifier = {
+		monthly_income = 4.5
+		garrison_size = 2.25
+	}
+}
+
+invisible_hand_population_91 = {
+	flag = population
+
+	can_construct_potential = { always = no }
+
+	next_building = invisible_hand_population_92
+	
+	levy = 4550
+	
+	province_modifier = {
+		monthly_income = 4.55
+		garrison_size = 2.275
+	}
+}
+
+invisible_hand_population_92 = {
+	flag = population
+
+	can_construct_potential = { always = no }
+
+	next_building = invisible_hand_population_93
+	
+	levy = 4600
+	
+	province_modifier = {
+		monthly_income = 4.6
+		garrison_size = 2.3
+	}
+}
+
+invisible_hand_population_93 = {
+	flag = population
+
+	can_construct_potential = { always = no }
+
+	next_building = invisible_hand_population_94
+	
+	levy = 4650
+	
+	province_modifier = {
+		monthly_income = 4.65
+		garrison_size = 2.325
+	}
+}
+
+invisible_hand_population_94 = {
+	flag = population
+
+	can_construct_potential = { always = no }
+
+	next_building = invisible_hand_population_95
+	
+	levy = 4700
+	
+	province_modifier = {
+		monthly_income = 4.7
+		garrison_size = 2.35
+	}
+}
+
+invisible_hand_population_95 = {
+	flag = population
+
+	can_construct_potential = { always = no }
+
+	next_building = invisible_hand_population_96
+	
+	levy = 4750
+	
+	province_modifier = {
+		monthly_income = 4.75
+		garrison_size = 2.375
+	}
+}
+
+invisible_hand_population_96 = {
+	flag = population
+
+	can_construct_potential = { always = no }
+
+	next_building = invisible_hand_population_97
+	
+	levy = 4800
+	
+	province_modifier = {
+		monthly_income = 4.8
+		garrison_size = 2.4
+	}
+}
+
+invisible_hand_population_97 = {
+	flag = population
+
+	can_construct_potential = { always = no }
+
+	next_building = invisible_hand_population_98
+	
+	levy = 4850
+	
+	province_modifier = {
+		monthly_income = 4.85
+		garrison_size = 2.425
+	}
+}
+
+invisible_hand_population_98 = {
+	flag = population
+
+	can_construct_potential = { always = no }
+
+	next_building = invisible_hand_population_99
+	
+	levy = 4900
+	
+	province_modifier = {
+		monthly_income = 4.9
+		garrison_size = 2.45
+	}
+}
+
+invisible_hand_population_99 = {
+	flag = population
+
+	can_construct_potential = { always = no }
+
+	next_building = invisible_hand_population_100
+	
+	levy = 4950
+	
+	province_modifier = {
+		monthly_income = 4.95
+		garrison_size = 2.475
+	}
+}
+
+invisible_hand_population_100 = {
+	flag = population
+
+	can_construct_potential = { always = no }
+	
+	levy = 5000
+	
+	province_modifier = {
+		monthly_income = 5
+		garrison_size = 2.5
+	}
+}

@@ -36,6 +36,7 @@
 			long_reign_bonus_mult = 0.25
 			title_creation_cost_mult = -0.25
 			vassal_opinion = 5
+			monthly_county_control_change_add = 0.1
 		}
 
 		can_have = { realm_law_use_crown_authority = yes }
@@ -62,6 +63,7 @@
 			long_reign_bonus_mult = 0.25
 			title_creation_cost_mult = -0.25
 			vassal_opinion = 5
+			monthly_county_control_change_add = 0.1
 		}
 		
 		can_have = { realm_law_use_crown_authority = yes }
@@ -84,6 +86,7 @@
 			short_reign_duration_mult = -0.25
 			title_creation_cost_mult = -0.25
 			vassal_opinion = 5
+			monthly_county_control_change_add = 0.1
 		}
 		
 		can_have = { realm_law_use_crown_authority = yes }
@@ -129,6 +132,7 @@ tribal_authority = {
 			long_reign_bonus_mult = 0.25
 			title_creation_cost_mult = -0.25
 			vassal_opinion = 5
+			monthly_county_control_change_add = 0.1
 		}
 		
 		can_have = { realm_law_use_crown_authority = no }
@@ -153,6 +157,7 @@ tribal_authority = {
 			long_reign_bonus_mult = 0.25
 			title_creation_cost_mult = -0.25
 			vassal_opinion = 5
+			monthly_county_control_change_add = 0.1
 		}
 		
 		can_have = { realm_law_use_crown_authority = no }
@@ -173,6 +178,7 @@ tribal_authority = {
 			short_reign_duration_mult = -0.25
 			title_creation_cost_mult = -0.25
 			vassal_opinion = 5
+			monthly_county_control_change_add = 0.1
 		}
 
 		#Settling is disabled unless you have this law. Script is in the decisions, currently in 80_major_decisions.

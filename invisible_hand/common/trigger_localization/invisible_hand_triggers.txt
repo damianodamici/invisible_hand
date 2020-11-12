@@ -69,3 +69,7 @@ needs_absolute_crown_authority = {
 has_centralization_cooldown = {
 	first_not = CENTRALIZATION_ON_COOLDOWN
 }
+
+religious_legal_system_trigger = {
+	first_not = RELIGIOUS_LEGAL_SYSTEM_TRIGGER
+}

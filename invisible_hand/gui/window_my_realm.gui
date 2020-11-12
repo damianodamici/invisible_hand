@@ -188,6 +188,7 @@ window = {
 					}
 				}
 
+				# Tabs Buttons
 				hbox = {
 					name = "vassals_succession_tabs"
 					layoutpolicy_horizontal = expanding
@@ -221,7 +222,7 @@ window = {
 						visible = "[GetPlayer.HasLiege]"
 						layoutpolicy_horizontal = expanding
 						layoutpolicy_vertical = expanding
-						onclick = "[GetVariableSystem.Toggle( 'liege_tab' )]"
+						onclick = "[GetVariableSystem.Set( 'liege_tab', 'true' )]"
 						onclick = "[GetVariableSystem.Clear( 'laws_tab' )]"
 						down = "[GetVariableSystem.Exists( 'liege_tab' )]"
 
@@ -231,8 +232,7 @@ window = {
 					button_tab = {
 						layoutpolicy_horizontal = expanding
 						layoutpolicy_vertical = expanding
-						onclick = "[MyRealmWindow.ShowSuccession]"
-						onclick = "[GetVariableSystem.Toggle( 'laws_tab' )]"
+						onclick = "[GetVariableSystem.Set( 'laws_tab', 'true' )]"
 						onclick = "[GetVariableSystem.Clear( 'liege_tab' )]"
 						down = "[GetVariableSystem.Exists( 'laws_tab' )]"
 
@@ -352,6 +352,7 @@ window = {
 															margin_left = -12
 															minimumsize = { 130 0 }
 															maximumsize = { 130 400 }
+															allow_outside = yes
 
 															hbox = {
 																allow_outside = yes
@@ -360,6 +361,7 @@ window = {
 																margin_right = 6
 
 																hbox = {
+																	allow_outside = yes
 																	margin_bottom = -6
 
 																	icon = {
@@ -1440,32 +1442,6 @@ window = {
 								}
 
 								hbox = {
-									margin_top = 10
-									margin_left = 10
-									spacing = 4
-
-									text_single = {
-										text = "MRW_LIEGE_TAB_AUTHORITY_LABEL"
-									}
-
-									text_single = {
-										text = "[Character.GetActiveLawInGroupWithFlag( 'crown_authority_law' ).GetName]"
-									}
-
-									hbox = {
-										margin_bottom = -5
-										margin_left = -2
-
-										button_icon_highlight = {
-											datacontext = "[Character.GetActiveLawInGroupWithFlag( 'crown_authority_law' )]"
-											size = { 26 26 }
-											texture = "[Law.GetIcon]"
-											using = tooltip_ws
-										}
-									}
-								}
-
-								hbox = {
 									visible = "[GetPlayer.IsPowerfulVassal]"
 									spacing = 2
 									margin_top = 5
@@ -1510,7 +1486,7 @@ window = {
 
 								hbox = {
 									datacontext = "[GetPlayer.GetVassalContract]"
-									visible = "[Not( VassalContract.IsRightfulLiege )]"
+									visible = "[Not( VassalContract.IsRightfulLiege)]"
 									tooltip = "MRW_TT_NOT_RIGHTFUL_LIEGE_ALT"
 									spacing = 2
 									margin_top = 4
@@ -1527,6 +1503,130 @@ window = {
 
 									text_single = {
 										text = "MY_REALM_WINDOW_NOT_RIGHTFUL_LIEGE"
+									}
+								}
+
+								hbox = {
+									layoutpolicy_horizontal = expanding
+									margin_left = -30
+									margin_right = -30
+									margin_top = 18
+									margin_bottom = -6
+
+									divider = {
+										layoutpolicy_horizontal = expanding
+									}
+								}
+
+								hbox = {
+									margin_top = 18
+
+									text_label_center = {
+										text = "MRW_LIEGE_AUTHORITY_LABEL"
+									}
+								}
+								hbox = {
+									margin_top = 6
+									margin_left = 10
+									spacing = 4
+
+									text_single = {
+										text = "MRW_LIEGE_TAB_AUTHORITY_LABEL"
+									}
+
+									text_single = {
+										text = "[Character.GetActiveLawInGroupWithFlag( 'crown_authority_law' ).GetName]"
+									}
+
+									hbox = {
+										margin_bottom = -5
+										margin_left = -2
+
+										button_icon_highlight = {
+											datacontext = "[Character.GetActiveLawInGroupWithFlag( 'crown_authority_law' )]"
+											size = { 26 26 }
+											texture = "[Law.GetIcon]"
+											using = tooltip_ws
+										}
+									}
+								}
+
+								hbox = {
+									spacing = 4
+									margin_top = 5
+
+									text_single = {
+										text = "[invisible_hand_centralization|e]:"
+									}
+
+									text_single = {
+										text = "[Character.GetActiveLawInGroupWithFlag( 'invisible_hand_centralization_law' ).GetName]"
+									}
+								}
+
+								hbox = {
+									layoutpolicy_horizontal = expanding
+									margin_left = -30
+									margin_right = -30
+									margin_top = 18
+									margin_bottom = -6
+
+									divider = {
+										layoutpolicy_horizontal = expanding
+									}
+								}
+
+								hbox = {
+									margin_top = 18
+									margin_bottom = 2
+
+									text_label_center = {
+										text = "[liege] [invisible_hand_crown_laws]"
+									}
+								}
+
+								hbox = {
+									spacing = 12
+
+									hbox = {
+										spacing = 4
+										margin_top = 5
+
+										text_single = {
+											text = "[title|e] [revocation|e]:"
+										}
+
+										text_single = {
+											text = "[Character.GetActiveLawInGroupWithFlag( 'invisible_hand_title_revocation' ).GetName]"
+										}
+									}
+
+									hbox = {
+										spacing = 4
+										margin_top = 5
+
+										text_single = {
+											text = "[vassal|e] [retraction|e]:"
+										}
+
+										text_single = {
+											text = "[Character.GetActiveLawInGroupWithFlag( 'invisible_hand_vassal_retraction' ).GetName]"
+										}
+									}
+								}
+
+								hbox = {
+									datacontext = "[GetScriptedGui( 'invisible_hand_realms_peace' )]"
+									visible = "[ScriptedGui.IsValid( GuiScope.SetRoot( GetPlayer.MakeScope ).End)]"
+									spacing = 4
+									margin_top = 5
+
+									text_single = {
+										text = "MRW_REALMS_PEACE_LABEL_LIEGE"
+									}
+
+									text_single = {
+										text = "[Character.GetActiveLawInGroupWithFlag( 'invisible_hand_realms_peace' ).GetName]"
 									}
 								}
 							}
@@ -1702,14 +1802,7 @@ window = {
 										text = "TAX_OBLIGATIONS_AMOUNT"
 
 										tooltipwidget = {
-											my_realm_window_contribution_tooltip = {
-												datacontext = "[MyRealmWindow.GetCharacter]"
-												blockoverride "contribution_tooltip_header"
-												{
-													text = "MRW_TT_TAXES_TO_MY_LIEGE"
-												}
-												blockoverride "contribution_tooltip_content_suffix" {}
-											}
+											widget_gold_breakdown_tooltip_alt_4 = { }
 										}
 									}
 								}
@@ -1845,14 +1938,7 @@ window = {
 										text = "LEVY_OBLIGATIONS_AMOUNT"
 
 										tooltipwidget = {
-											my_realm_window_contribution_tooltip = {
-												datacontext = "[MyRealmWindow.GetCharacter]"
-												blockoverride "contribution_tooltip_header"
-												{
-													text = "MRW_TT_LEVIES_TO_MY_LIEGE"
-												}
-												blockoverride "contribution_tooltip_content_suffix" {}
-											}
+											widget_gold_breakdown_tooltip_alt_3 = { }
 										}
 									}
 								}
@@ -2264,7 +2350,7 @@ window = {
 													}
 
 													text_single = {
-														text = "[GuiLaw.GetLaw.GetNameNoTooltip]"
+														text = "[GuiLaw.GetLaw.GetSubName]"
 													}
 												}
 											}
@@ -3017,6 +3103,7 @@ window = {
 					}
 				}
 
+				### Bottom Info
 				vbox = {
 					visible = "[Or(Or(Or( MyRealmWindow.IsShowingDomain, MyRealmWindow.IsShowingVassals),GetVariableSystem.Exists('liege_tab')),GetVariableSystem.Exists('laws_tab'))]"
 					layoutpolicy_horizontal = expanding
@@ -3173,6 +3260,7 @@ window = {
 
 							hbox = {
 								spacing = 2
+								tooltip = "[GetPlayer.GetLiege.GetDomainLimitTooltip]"
 
 								icon = {
 									size = { 35 35 }
@@ -3197,6 +3285,7 @@ window = {
 
 							hbox = {
 								spacing = 2
+								tooltip = "[GetPlayer.GetLiege.GetVassalLimitTooltip]"
 
 								icon = {
 									size = { 30 30 }
@@ -3300,18 +3389,13 @@ window = {
 
 							text_single = {
 								datacontext = "[MyRealmWindow.GetDomainIncome]"
-								text = "[ValueBreakdown.GetValue]"
+								text = "[ValueBreakdown.GetFixedPointValue|V]"
 								min_width = 100
 								max_width = 100
 								align = right
 
 								tooltipwidget = {
-									widget_gold_breakdown_tooltip = {
-										blockoverride "income"
-										{
-											visible = no
-										}
-									}
+									widget_gold_breakdown_tooltip_alt = { }
 								}
 							}
 
@@ -3322,8 +3406,7 @@ window = {
 								align = right
 								tooltipwidget = {
 									widget_gold_breakdown_tooltip = {
-										blockoverride "income"
-										{
+										blockoverride "income" {
 											visible = no
 										}
 									}
@@ -3348,18 +3431,13 @@ window = {
 
 							text_single = {
 								datacontext = "[MyRealmWindow.GetVassalsIncome]"
-								text = "[ValueBreakdown.GetValue]"
+								text = "[ValueBreakdown.GetFixedPointValue|V]"
 								min_width = 100
 								max_width = 100
 								align = right
 
 								tooltipwidget = {
-									widget_gold_breakdown_tooltip = {
-										blockoverride "income"
-										{
-											visible = no
-										}
-									}
+									widget_gold_breakdown_tooltip_alt_2 = { }
 								}
 							}
 
@@ -3397,39 +3475,25 @@ window = {
 
 							text_single = {
 								datacontext = "[MyRealmWindow.GetIncomeTax]"
-								text = "[ValueBreakdown.GetValue]"
+								text = "[MyRealmWindow.GetCachedTaxToLiege|+V2]"
 								min_width = 100
 								max_width = 100
 								align = right
 
 								tooltipwidget = {
-									my_realm_window_contribution_tooltip = {
-										datacontext = "[MyRealmWindow.GetCharacter]"
-										blockoverride "contribution_tooltip_header"
-										{
-											text = "MRW_TT_TAXES_TO_MY_LIEGE"
-										}
-										blockoverride "contribution_tooltip_content_suffix" {}
-									}
+									widget_gold_breakdown_tooltip_alt_4 = { }
 								}
 							}
 
 							text_single = {
 								datacontext = "[MyRealmWindow.GetLevyTax]"
-								text = "[ValueBreakdown.GetValue]"
+								text = "[ValueBreakdown.GetFixedPointValue|+0V]"
 								min_width = 100
 								max_width = 100
 								align = right
 
 								tooltipwidget = {
-									my_realm_window_contribution_tooltip = {
-										datacontext = "[MyRealmWindow.GetCharacter]"
-										blockoverride "contribution_tooltip_header"
-										{
-											text = "MRW_TT_LEVIES_TO_MY_LIEGE"
-										}
-										blockoverride "contribution_tooltip_content_suffix" {}
-									}
+									widget_gold_breakdown_tooltip_alt_3 = { }
 								}
 							}
 						}
@@ -3443,7 +3507,7 @@ window = {
 							}
 
 							text_single = {
-								text = "[GetPlayerBalance|1V]"
+								text = "[GetPlayerBalance|2V]"
 								min_width = 100
 								max_width = 100
 								align = right
@@ -3452,7 +3516,7 @@ window = {
 							text_single = {
 								datacontext = "[GetPlayer]"
 								datacontext = "[GetPlayerArmyComposition]"
-								text = "[ArmyComposition.GetLeviesCountString|V]"
+								text = "[ArmyComposition.GetLeviesCountString]"
 								min_width = 100
 								max_width = 100
 								align = right
